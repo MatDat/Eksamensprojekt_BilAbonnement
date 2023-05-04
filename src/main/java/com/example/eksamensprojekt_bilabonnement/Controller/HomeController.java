@@ -21,4 +21,9 @@ public class HomeController {
     public String dataRegistrering() {
         return "dataRegistrering/dataregistrering";
     }
+
+    @GetMapping("login")
+    public String login(){
+        return "loginPage";
+    }
 }
