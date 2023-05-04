@@ -9,7 +9,11 @@ public class HomeController {
     @GetMapping("/")
     public String index() {
         System.out.println("test - frikke");
-        return "index";
+        return "home/index";
     }
 
+    @GetMapping("SkadeOgUdbedringLandingPage")
+    public String skadeOgUdbedringLandingPage() {
+        return "SkadeOgUdbedring/landingPage";
+    }
 }
