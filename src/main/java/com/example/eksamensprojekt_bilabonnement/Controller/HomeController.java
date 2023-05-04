@@ -8,7 +8,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String index() {
-        System.out.println("test - frikke");
         return "index";
     }
 
