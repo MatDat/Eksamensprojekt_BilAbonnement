@@ -9,21 +9,45 @@ public class Kontrakt {
     private int kunde_id;
     private int afhentningslokation_id;
     private int afleveringslokation_id;
+
+    private double total_pris;
+
+    private int bruger_id;
     private int vognnummer;
+
+
 
     public Kontrakt(){
 
     }
 
     public Kontrakt(int kontrakt_id, Date start_dato, Date slut_dato, int kunde_id,
-                    int afhentningslokation_id, int afleveringslokation_id, int vognnummer) {
+                    int afhentningslokation_id, int afleveringslokation_id, double total_pris, int bruger_id, int vognnummer) {
         this.kontrakt_id = kontrakt_id;
         this.start_dato = start_dato;
         this.slut_dato = slut_dato;
         this.kunde_id = kunde_id;
         this.afhentningslokation_id = afhentningslokation_id;
         this.afleveringslokation_id = afleveringslokation_id;
+        this.total_pris = total_pris;
+        this.bruger_id = bruger_id;
         this.vognnummer = vognnummer;
+    }
+
+    public double getTotal_pris() {
+        return total_pris;
+    }
+
+    public void setTotal_pris(double total_pris) {
+        this.total_pris = total_pris;
+    }
+
+    public int getBruger_id() {
+        return bruger_id;
+    }
+
+    public void setBruger_id(int bruger_id) {
+        this.bruger_id = bruger_id;
     }
 
     public int getKontrakt_id() {
