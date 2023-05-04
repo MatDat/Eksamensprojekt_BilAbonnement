@@ -16,4 +16,9 @@ public class HomeController {
     public String skadeOgUdbedringLandingPage() {
         return "skadeOgUdbedring/skadeOgUdbedring";
     }
+
+    @GetMapping("dataRegistrering")
+    public String dataRegistrering() {
+        return "dataRegistrering/dataregistrering";
+    }
 }
