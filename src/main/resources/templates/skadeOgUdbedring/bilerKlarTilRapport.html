@@ -7,5 +7,21 @@
 <body>
 <h1>Biler klar til rapport</h1>
 
+<div id="table_design">
+    <table>
+        <tr>
+            <th>Vognnummer</th>
+            <th>stelnummer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bil: ${biler}">
+            <td th:text="${bil.vognnummer}"/>
+            <td th:text="${bil.stelnummer}"/>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
 </body>
 </html>
