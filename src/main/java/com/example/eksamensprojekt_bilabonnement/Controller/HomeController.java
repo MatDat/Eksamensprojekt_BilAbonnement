@@ -22,4 +22,9 @@ public class HomeController {
     public String dataRegistrering() {
         return "dataRegistrering/dataregistrering";
     }
+
+    @GetMapping("login")    //Ved ikke om denne skal bruges
+    public String login(){
+        return "loginPage";
+    }
 }
