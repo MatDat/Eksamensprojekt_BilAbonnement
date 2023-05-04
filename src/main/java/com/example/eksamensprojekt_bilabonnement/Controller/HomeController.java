@@ -14,6 +14,6 @@ public class HomeController {
 
     @GetMapping("SkadeOgUdbedringLandingPage")
     public String skadeOgUdbedringLandingPage() {
-        return "SkadeOgUdbedring/landingPage";
+        return "skadeOgUdbedring/skadeOgUdbedring";
     }
 }
