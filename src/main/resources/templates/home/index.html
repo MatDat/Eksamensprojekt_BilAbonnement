@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
 <form action="SkadeOgUdbedringLandingPage"method="get">
@@ -11,5 +12,26 @@
 <form action="dataRegistrering"method="get">
     <button>Data Registrering</button>
 </form>
+
+
+<form action="login"  method="get">
+    <button class="loginButton">Login</button>
+</form>
+
+<form id="login-form" action="/login" method="post" target="_blank">
+
+    <h2>Login</h2>
+
+    <label class="loginForm-label">Brugernavn: </label>
+    <input class="loginForm-input" type="text" placeholder="Skriv dit brugernavn her...">
+
+    <label class="loginForm-label">Adgangskode: </label>
+    <input class="loginForm-input" type="text" placeholder="Skriv din adgangskode her...">
+
+    <button class="loginForm-submitButton"type="submit">Login</button>
+    <button class="loginForm-submitButton"type="submit">Annuller</button>
+
+</form>
+
 </body>
 </html>
