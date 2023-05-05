@@ -4,22 +4,29 @@ public class Bil {
     private int vognnummer;
     private String stelnummer;
     private int model_id;
-    private double stålpris;
+    private double staalpris;
     private double registrerings_afgift;
     private double CO2_udledning;
     private BilTilstand bilTilstand;
 
+    private String maerke_navn;
+
+    private String model_navn;
+
     public Bil() {
     }
 
-    public Bil(int vognnummer, String stelnummer, int model_id, double stålpris, double registrerings_afgift, double CO2_udledning, BilTilstand bilTilstand) {
+    public Bil(int vognnummer, String stelnummer, int model_id, double staalpris, double registrerings_afgift,
+               double CO2_udledning, BilTilstand bilTilstand, String maerke_navn, String model_navn) {
         this.vognnummer = vognnummer;
         this.stelnummer = stelnummer;
         this.model_id = model_id;
-        this.stålpris = stålpris;
+        this.staalpris = staalpris;
         this.registrerings_afgift = registrerings_afgift;
         this.CO2_udledning = CO2_udledning;
         this.bilTilstand = bilTilstand;
+        this.maerke_navn = maerke_navn;
+        this.model_navn = model_navn;
     }
 
     public int getVognnummer() {
@@ -46,12 +53,12 @@ public class Bil {
         this.model_id = model_id;
     }
 
-    public double getStålpris() {
-        return stålpris;
+    public double getStaalpris() {
+        return staalpris;
     }
 
-    public void setStålpris(double stålpris) {
-        this.stålpris = stålpris;
+    public void setStaalpris(double staalpris) {
+        this.staalpris = staalpris;
     }
 
     public double getRegistrerings_afgift() {
