@@ -15,8 +15,9 @@ public class BrugerRepo {
     JdbcTemplate template;
 
     public boolean loginBruger(Bruger bruger){
-        String sql = "SELECT * FROM bruger WHERE brugernavn = ? AND kode = ?";
+        String sql = "SELECT * FROM bilabonnementDB.bruger WHERE brugernavn = ? AND kode = ?";
         RowMapper<Bruger> rm = new BeanPropertyRowMapper<>(Bruger.class);
+
         try {
             Bruger b = template.queryForObject(sql, rm, bruger.getBrugernavn(), bruger.getKode());
             return true;
