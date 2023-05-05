@@ -6,5 +6,26 @@
 </head>
 <body>
 <h1>Opret Lejeaftale</h1>
+<form action="/saveLejeaftale" method="post">
+    <label>Skriv Start Dato:(DROP DOWN)</label>
+    <input type="text" name="start_dato">
+    <br>
+    <label>Skriv Slut Dato:(DROP DOWN)</label>
+    <input type="text" name="slut_dato">
+    <br>
+    <label>Skriv Kunde id:(DROP DOWN)</label>
+    <input type="text" name="kunde_id">
+    <br>
+    <label>Skriv afhentningslokation_id: (DROP DOWN)</label>
+    <input type="text" name="afhentningslokation_id">
+    <br>
+    <label>Skriv afleveringslokation_id: (DROP DOWN)</label>
+    <input type="text" name="afleveringslokation_id">
+    <br>
+    <label>Skriv vognnummer: (DROP DOWN)</label>
+    <input type="text" name="vognnummer">
+    <br>
+    <input type="submit" value="Lav Kontrakt">
+</form>
 </body>
 </html>
