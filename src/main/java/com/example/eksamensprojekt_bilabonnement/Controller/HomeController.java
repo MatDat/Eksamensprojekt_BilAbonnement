@@ -23,8 +23,8 @@ public class HomeController {
         return "dataRegistrering/dataregistrering";
     }
 
-    @GetMapping("login")
+    @GetMapping("loginButton")
     public String login(){
-        return "loginPage";
+        return "home/loginPage";
     }
 }
