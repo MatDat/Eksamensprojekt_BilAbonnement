@@ -15,6 +15,7 @@ public class DataRegistreringController {
     }
     @PostMapping("/saveLejeaftale")
     public String saveLejeaftale(@ModelAttribute Kontrakt kontrakt){
+        System.out.println(kontrakt);
         return ("dataRegistrering/dataregistrering");
     }
 
