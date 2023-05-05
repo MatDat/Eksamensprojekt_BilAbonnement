@@ -1,11 +1,10 @@
 package com.example.eksamensprojekt_bilabonnement.Model;
 
-import java.util.Date;
 public class Kontrakt {
 
     private int kontrakt_id;
-    private Date start_dato;
-    private Date slut_dato;
+    private String start_dato;
+    private String slut_dato;
     private int kunde_id;
     private int afhentningslokation_id;
     private int afleveringslokation_id;
@@ -16,12 +15,11 @@ public class Kontrakt {
     private int vognnummer;
 
 
-
-    public Kontrakt(){
+    public Kontrakt() {
 
     }
 
-    public Kontrakt(int kontrakt_id, Date start_dato, Date slut_dato, int kunde_id,
+    public Kontrakt(int kontrakt_id, String start_dato, String slut_dato, int kunde_id,
                     int afhentningslokation_id, int afleveringslokation_id, double total_pris, int bruger_id, int vognnummer) {
         this.kontrakt_id = kontrakt_id;
         this.start_dato = start_dato;
@@ -58,19 +56,19 @@ public class Kontrakt {
         this.kontrakt_id = kontrakt_id;
     }
 
-    public Date getStart_dato() {
+    public String getStart_dato() {
         return start_dato;
     }
 
-    public void setStart_dato(Date start_dato) {
+    public void setStart_dato(String start_dato) {
         this.start_dato = start_dato;
     }
 
-    public Date getSlut_dato() {
+    public String getSlut_dato() {
         return slut_dato;
     }
 
-    public void setSlut_dato(Date slut_dato) {
+    public void setSlut_dato(String slut_dato) {
         this.slut_dato = slut_dato;
     }
 
@@ -104,5 +102,20 @@ public class Kontrakt {
 
     public void setVognnummer(int vognnummer) {
         this.vognnummer = vognnummer;
+    }
+
+    @Override
+    public String toString() {
+        return "Kontrakt{" +
+                "kontrakt_id=" + kontrakt_id +
+                ", start_dato=" + start_dato +
+                ", slut_dato=" + slut_dato +
+                ", kunde_id=" + kunde_id +
+                ", afhentningslokation_id=" + afhentningslokation_id +
+                ", afleveringslokation_id=" + afleveringslokation_id +
+                ", total_pris=" + total_pris +
+                ", bruger_id=" + bruger_id +
+                ", vognnummer=" + vognnummer +
+                '}';
     }
 }
