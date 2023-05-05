@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>LoginPage</title>
-  <link rel="stylesheet" type="text/css" href="/MyCSS.css">
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 
 <body>
 <div id="loginModul">
-    <form id="login-form" action="/login" method="post" target="_blank">
+    <form id="login-form" action="/loginBruger" method="post">
 
         <h2>Login</h2>
 
@@ -19,9 +19,13 @@
         <input class="loginForm-input" type="text" placeholder="Indtast her...">
 
         <button class="loginForm-submitButton" type="submit">Login</button>
-        <button class="loginForm-submitButton" type="submit">Annuller</button>
 
     </form>
+
+    <form id="annullerButton" action="/" method="get">
+        <button class="loginForm-submitButton" type="submit">Annuller</button>
+    </form>
+
 </div>
 </body>
 </html>
