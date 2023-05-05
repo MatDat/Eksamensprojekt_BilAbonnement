@@ -13,11 +13,16 @@ public class Bil {
 
     private String model_navn;
 
+    private gear_type gear_type;
+    private braendstof braendstof;
+
+
     public Bil() {
     }
 
     public Bil(int vognnummer, String stelnummer, int model_id, double staalpris, double registrerings_afgift,
-               double CO2_udledning, BilTilstand bilTilstand, String maerke_navn, String model_navn) {
+               double CO2_udledning, BilTilstand bilTilstand, String maerke_navn, String model_navn, gear_type gear_type,
+               braendstof braendstof) {
         this.vognnummer = vognnummer;
         this.stelnummer = stelnummer;
         this.model_id = model_id;
@@ -27,6 +32,40 @@ public class Bil {
         this.bilTilstand = bilTilstand;
         this.maerke_navn = maerke_navn;
         this.model_navn = model_navn;
+        this.gear_type = gear_type;
+        this.braendstof = braendstof;
+    }
+
+    public String getMaerke_navn() {
+        return maerke_navn;
+    }
+
+    public void setMaerke_navn(String maerke_navn) {
+        this.maerke_navn = maerke_navn;
+    }
+
+    public String getModel_navn() {
+        return model_navn;
+    }
+
+    public void setModel_navn(String model_navn) {
+        this.model_navn = model_navn;
+    }
+
+    public com.example.eksamensprojekt_bilabonnement.Model.gear_type getGear_type() {
+        return gear_type;
+    }
+
+    public void setGear_type(com.example.eksamensprojekt_bilabonnement.Model.gear_type gear_type) {
+        this.gear_type = gear_type;
+    }
+
+    public com.example.eksamensprojekt_bilabonnement.Model.braendstof getBraendstof() {
+        return braendstof;
+    }
+
+    public void setBraendstof(com.example.eksamensprojekt_bilabonnement.Model.braendstof braendstof) {
+        this.braendstof = braendstof;
     }
 
     public int getVognnummer() {

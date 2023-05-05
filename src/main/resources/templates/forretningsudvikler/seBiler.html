@@ -27,8 +27,9 @@
         <tr th:each="bil: ${biler}">
             <td th:text="${bil.vognnummer}"/>
             <td th:text="${bil.stelnummer}"/>
-            <td th:text="${bil.mærke}"/>
-            <td th:text="${bil.model}"/>
+            <td th:text="${bil.maerke_navn}"/>
+            <td th:text="${bil.model_navn}"/>
+            <td th:text="${bil.gear_type}"/>
             <td th:text="${wish.wish_desc}"/>
             <td th:text="${wish.wish_price}"/>
             <td th:text="${wish.wish_link}"/>
