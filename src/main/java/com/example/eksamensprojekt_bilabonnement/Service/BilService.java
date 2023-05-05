@@ -15,4 +15,6 @@ public class BilService {
     public List<Bil> hentBiler() {
         return bilRepo.hentBiler();
     }
+
+    public List<Bil> hentAlleBiler(){return bilRepo.hentAlleBiler();}
 }

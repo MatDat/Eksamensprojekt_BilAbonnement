@@ -10,21 +10,30 @@
     <table>
         <thead>
         <tr>
-<!--            <th>name</th>-->
-<!--            <th>desc</th>-->
-<!--            <th>price</th>-->
-<!--            <th>link</th>-->
+            <th>Vognnummer</th>
+            <th>Stelnummer</th>
+            <th>Mærke</th>
+            <th>Model</th>
+            <th>Gear</th>
+            <th>Brændstof</th>
+            <th>Tilstand</th>
+            <th>CO2</th>
+            <th>Stålpris</th>
+            <th>Registreringsafgift</th>
 
         </tr>
         </thead>
         <tbody>
-<!--        <tr th:each="wish: ${wishes}">-->
-<!--            <td th:text="${wish.wish_name}"/>-->
-<!--            <td th:text="${wish.wish_desc}"/>-->
-<!--            <td th:text="${wish.wish_price}"/>-->
-<!--            <td th:text="${wish.wish_link}"/>-->
-<!--            -->
-<!--        </tr>-->
+        <tr th:each="bil: ${biler}">
+            <td th:text="${bil.vognnummer}"/>
+            <td th:text="${bil.stelnummer}"/>
+            <td th:text="${bil.mærke}"/>
+            <td th:text="${bil.model}"/>
+            <td th:text="${wish.wish_desc}"/>
+            <td th:text="${wish.wish_price}"/>
+            <td th:text="${wish.wish_link}"/>
+
+        </tr>
         </tbody>
     </table>
 </div>

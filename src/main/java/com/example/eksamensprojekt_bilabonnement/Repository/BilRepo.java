@@ -18,4 +18,11 @@ public class BilRepo {
         RowMapper<Bil> rowMapper = new BeanPropertyRowMapper<>(Bil.class);
         return template.query(sql, rowMapper);
     }
+
+    public List<Bil> hentAlleBiler() {
+        String sql = "SELECT * FROM bilabonnementDB.bil, bilabonnementDB.model, bilabonnementDB.maerke " +
+                "WHERE bil.model_id = model.model_id AND model.maerke_id = maerke.maerke_id;";
+        RowMapper<Bil> rowMapper = new BeanPropertyRowMapper<>(Bil.class);
+        return template.query(sql, rowMapper);
+    }
 }
