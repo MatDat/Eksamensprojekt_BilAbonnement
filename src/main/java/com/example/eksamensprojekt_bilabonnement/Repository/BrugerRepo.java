@@ -14,15 +14,41 @@ public class BrugerRepo {
     @Autowired
     JdbcTemplate template;
 
-    public boolean loginBruger(Bruger bruger){
+    public boolean loginBruger(Bruger bruger) {
         String sql = "SELECT * FROM bilabonnementDB.bruger WHERE brugernavn = ? AND kode = ?";
         RowMapper<Bruger> rm = new BeanPropertyRowMapper<>(Bruger.class);
-
         try {
             Bruger b = template.queryForObject(sql, rm, bruger.getBrugernavn(), bruger.getKode());
             return true;
-        } catch (EmptyResultDataAccessException e){
+        } catch (EmptyResultDataAccessException e) {
             return false;
         }
+    }
+
+    public boolean opretBruger(Bruger bruger) {
+        if (!eksistererBruger(bruger)) {
+            String sql = "INSERT INTO bruger (bruger_id, brugernavn, kode) VALUES (?, ?, ?)";
+            template.update(sql, bruger.getBruger_id(), bruger.getBrugernavn(), bruger.getKode());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean eksistererBruger(Bruger bruger) {
+        String sql = "SELECT * FROM bruger WHERE brugernavn = ?";
+        RowMapper<Bruger> rm = new BeanPropertyRowMapper<>(Bruger.class);
+        try {
+            Bruger b = template.queryForObject(sql, rm, bruger.getBrugernavn());
+            return true;
+        } catch (EmptyResultDataAccessException e) {
+            return false;
+        }
+    }
+
+    public boolean sletBruger(Bruger bruger){
+            String sql = "DELETE FROM bruger WHERE brugernavn = ?";
+            template.update(sql, bruger.getBrugernavn());
+            return true;
     }
 }

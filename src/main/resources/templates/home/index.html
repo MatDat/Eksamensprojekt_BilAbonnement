@@ -9,6 +9,8 @@
 
 <h1>Bilabonnements admin system</h1>
 
+<div id="loggedInAs-section" th:text="${loggedInUser}"></div>
+
 <form action="SkadeOgUdbedringLandingPage" method="get">
     <button>Skade og udbedring bruger</button>
 </form>
@@ -18,9 +20,16 @@
 <form action="/forretningsudviklerSide" method="post">
     <input type="submit" value="Forretningsudvikler">
 </form>
+<form action="/adminPage" method="post">
+    <input type="submit" value="Admin">
+</form>
 
 <form action="/loginButton" method="get">
-    <button class="loginButton">Login</button>
+    <button class="loginButton">Log ind</button>
+</form>
+
+<form action="/logBrugerUd" method="get">
+    <button class="logoutButton">Log ud</button>
 </form>
 
 </body>
