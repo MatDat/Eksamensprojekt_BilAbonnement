@@ -49,4 +49,9 @@ public class HomeController {
     public String adminPage(){
         return "home/admin";
     }
+
+    @GetMapping("brugerlisteSide")
+    public String brugerlisteSide(){
+        return "bruger/brugerliste";
+    }
 }

@@ -5,6 +5,7 @@ import com.example.eksamensprojekt_bilabonnement.Service.BrugerService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -27,6 +28,13 @@ public class BrugerController {
         }
     }
 
+    @GetMapping("logBrugerUd")
+    public String logBrugerUd(HttpSession session) {
+        session.removeAttribute("bruger");
+        return "redirect:/";
+    }
+
+
     @PostMapping("opretBruger")
     public String opretBruger(@ModelAttribute Bruger bruger, HttpSession session) {
         boolean brugerOprettet = brugerService.opretBruger(bruger);
@@ -35,6 +43,16 @@ public class BrugerController {
             return "redirect:/";
         } else {
             return "bruger/opretBrugerFejl";
+        }
+    }
+
+    @PostMapping("/sletBruger")
+    public String sletBruger(@ModelAttribute Bruger bruger){
+        boolean brugerSlettet = brugerService.sletBruger(bruger);
+        if (brugerSlettet){
+            return "redirect:/";
+        } else{
+            return "brugerlisteFejl";
         }
     }
 

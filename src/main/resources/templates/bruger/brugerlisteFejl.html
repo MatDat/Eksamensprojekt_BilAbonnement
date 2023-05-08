@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Slet bruger</h1>
+
+<form id="login-form" action="/sletBruger" method="post">
+
+    <label class="loginForm-label">Indtast brugernavn: </label>
+    <input class="loginForm-input" type="text" placeholder="Indtast her..." name="brugernavn">
+
+    <button class="loginForm-submitButton" type="submit">SLET</button>
+    <p class="advarselstekst">Brugernavn findes ikke - prøv igen.</p>
+</form>
+
+<form id="annullerButton" action="/" method="get">
+    <button class="loginForm-submitButton" type="submit">Til forside</button>
+</form>
+
+
+</body>
+</html>
