@@ -44,6 +44,11 @@ public class BrugerRepo {
         } catch (EmptyResultDataAccessException e) {
             return false;
         }
+    }
 
+    public boolean sletBruger(Bruger bruger){
+            String sql = "DELETE FROM bruger WHERE brugernavn = ?";
+            template.update(sql, bruger.getBrugernavn());
+            return true;
     }
 }
