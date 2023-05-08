@@ -2,10 +2,14 @@ package com.example.eksamensprojekt_bilabonnement.Repository;
 
 import com.example.eksamensprojekt_bilabonnement.Model.Kontrakt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class KontraktRepo {
@@ -25,4 +29,23 @@ public class KontraktRepo {
             return false;
         }
     }
+
+
+    public List<Double> getTotalPrisFraVognnummre(List<Integer>vognnumre){
+        String sql = "SELECT total_pris " +
+                "FROM bilabonnementDB.kontrakt " +
+                "WHERE vognnummer = ? " +
+                "AND CURDATE() BETWEEN start_dato AND slut_dato;";
+
+        List<Double> rl = new ArrayList<>();
+
+        for (int i = 0; i < vognnumre.size(); i++) {
+            rl.add(template.queryForObject(sql,Double.class,vognnumre.get(i)));
+        }
+
+        return rl;
+
+    }
+
+
 }

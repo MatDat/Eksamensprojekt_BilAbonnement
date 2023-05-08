@@ -15,19 +15,19 @@ public class BrugerController {
     @Autowired
     BrugerService brugerService;
 
-    @PostMapping("loginBruger")
-    public String logBrugerInd(@ModelAttribute Bruger bruger, HttpSession session) {
-        if (brugerService.loginBruger(bruger)){
-            session.setAttribute("bruger", bruger);
-            Bruger bTemp = (Bruger) session.getAttribute("bruger");
-            System.out.println(bTemp.getBrugernavn() + ", " + bTemp.getKode());
-        }else {
-            System.out.println(":(");
-        }
-        return "home/index";
-    }
+//    @PostMapping("loginBruger")
+//    public String logBrugerInd(@ModelAttribute Bruger bruger, HttpSession session) {
+//        if (brugerService.loginBruger(bruger)){
+//            session.setAttribute("bruger", bruger);
+//            Bruger bTemp = (Bruger) session.getAttribute("bruger");
+//            System.out.println(bTemp.getBrugernavn() + ", " + bTemp.getKode());
+//        }else {
+//            System.out.println(":(");
+//        }
+//        return "home/index";
+//    }
 
-    /*@PostMapping("loginBruger")
+    @PostMapping("loginBruger")
     public String logBrugerInd(@ModelAttribute Bruger bruger, HttpSession session) {
         if (brugerService.loginBruger(bruger)){
             session.setAttribute("bruger", bruger);
@@ -35,7 +35,7 @@ public class BrugerController {
             System.out.println(bTemp.getBruger_id() + ", " + bTemp.getBrugernavn());
             return "home/index";
         }else {
-            return "redirect:/loginNaegtet";
+            return "bruger/loginNaegtet";
         }
-    }*/
+    }
 }

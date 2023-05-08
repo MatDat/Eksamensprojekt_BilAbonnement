@@ -5,6 +5,8 @@ import com.example.eksamensprojekt_bilabonnement.Repository.KontraktRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class KontraktService {
 
@@ -20,5 +22,10 @@ public class KontraktService {
         //start_dato er før slut_dato
         //tilføj bruger_id til tracking - k.setBruger_id();
         return kontraktRepo.addKontrakt(k);
+    }
+
+
+    public List<Double> getTotalPrisFraVognnummre(List<Integer>vognnumre){
+        return kontraktRepo.getTotalPrisFraVognnummre(vognnumre);
     }
 }
