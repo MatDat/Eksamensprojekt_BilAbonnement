@@ -21,7 +21,7 @@ public class BrugerController {
             session.setAttribute("bruger", bruger);
             Bruger bTemp = (Bruger) session.getAttribute("bruger");
 //            System.out.println("Bruger id: " + bTemp.getBruger_id() + "\nBrugernavn: "
-//                    + bTemp.getBrugernavn() + "\nkode:  " + bTemp.getKode());
+//                    + bTemp.getBrugernavn() + "\nkode:  " + bTemp.getKode());     // UDSKRIFT TIL KONSOL
             return "redirect:/";
         }else {
             return "bruger/loginNaegtet";

@@ -17,16 +17,16 @@ public class HomeController {
     }*/
 
     @GetMapping("/")
-    public String indexLoggedInAs(Model model, @NotNull HttpSession session) {
-        Bruger bruger = (Bruger) session.getAttribute("bruger");
-        if (bruger != null) {
-            String loggedInUser = "{Logged in as: " + bruger.getBrugernavn() + "}";
-            model.addAttribute("loggedInUser", loggedInUser);
-            System.out.println("{Logged ind som: " + bruger.getBrugernavn() + "}");     //UDSKRIFT TIL KONSOL
+    public String indexLoggedInAs(Model model, HttpSession session) {
+        Bruger bruger = (Bruger) session.getAttribute("bruger");    //Henter brugerobjektet fra sessionen.
+        if (bruger != null) {                                          //Tjekker om brugeren er logget ind eller ej.
+            String loggedInUser = "{Logged in as: " + bruger.getBrugernavn() + "}"; //Opretter en passende besked om logindstatus.
+            model.addAttribute("loggedInUser", loggedInUser);           // Tilføjer beskeden som en attribut til modellen.
+            System.out.println("{Logged ind som: " + bruger.getBrugernavn() + "}"); //Udskrift til konsol
         } else {
-            String loggedInUser = "{Ikke logged ind}";
-            model.addAttribute("loggedInUser", loggedInUser);
-            System.out.println("{Ikke logged ind}");                                    //UDSKRIFT TIL KONSOL
+            String loggedInUser = "{Ikke logged ind}";                      //Opretter en passende besked om logindstatus.
+            model.addAttribute("loggedInUser", loggedInUser);   // Tilføjer beskeden som en attribut til modellen.
+            System.out.println("{Ikke logged ind}");                        //Udskrift til konsol
         }
         return "home/index";
     }
