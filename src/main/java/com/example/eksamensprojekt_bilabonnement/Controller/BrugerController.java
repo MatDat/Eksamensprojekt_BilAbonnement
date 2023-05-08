@@ -20,8 +20,9 @@ public class BrugerController {
         if (brugerService.loginBruger(bruger)){
             session.setAttribute("bruger", bruger);
             Bruger bTemp = (Bruger) session.getAttribute("bruger");
-            System.out.println(bTemp.getBruger_id() + ", " + bTemp.getBrugernavn());
-            return "home/index";
+//            System.out.println("Bruger id: " + bTemp.getBruger_id() + "\nBrugernavn: "
+//                    + bTemp.getBrugernavn() + "\nkode:  " + bTemp.getKode());
+            return "redirect:/";
         }else {
             return "bruger/loginNaegtet";
         }
