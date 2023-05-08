@@ -14,4 +14,8 @@ public class BrugerService {
     public boolean loginBruger(Bruger bruger){
         return brugerRepo.loginBruger(bruger);
     }
+
+    public boolean opretBruger(Bruger bruger){
+        return brugerRepo.opretBruger(bruger);
+    }
 }
