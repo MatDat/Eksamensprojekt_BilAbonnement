@@ -8,11 +8,20 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BrugerRepo {
 
     @Autowired
     JdbcTemplate template;
+
+    public List<Bruger> hentBrugerListe(){
+        String sql = "SELECT bruger_id, brugernavn, kode FROM bruger";
+        RowMapper<Bruger> rm = new BeanPropertyRowMapper<>(Bruger.class);
+        List<Bruger> brugerListe = template.query(sql, rm);
+        return brugerListe;
+    }
 
     public boolean loginBruger(Bruger bruger) {
         String sql = "SELECT * FROM bilabonnementDB.bruger WHERE brugernavn = ? AND kode = ?";
@@ -47,8 +56,8 @@ public class BrugerRepo {
     }
 
     public boolean sletBruger(Bruger bruger){
-            String sql = "DELETE FROM bruger WHERE brugernavn = ?";
-            template.update(sql, bruger.getBrugernavn());
+            String sql = "DELETE FROM bruger WHERE bruger_id = ?";
+            template.update(sql, bruger.getBruger_id());
             return true;
     }
 }
