@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Opret Lejeaftale</title>
@@ -7,35 +7,62 @@
 <body>
 <h1>Opret Lejeaftale</h1>
 <form action="/saveLejeaftale" method="post">
-    <label>Vognnummer</label>
-    <input type="text" name="vognnummer">
-    <br>
+    <div style="margin-left: 2%;width: 30%;height: 80%; background-color: lightblue; padding: 5px; float: left">
 
-    <label>Kunde id</label>
-    <input type="text" name="kunde_id">
-    <br>
+        <label>Vognnummer</label>
+        <input type="text" name="vognnummer">
+<!--        value="${kontrakt.vognnummer}"-->
+        <br>
 
-    <label>Start Dato</label>
-    <input type="date" name="start_dato" value="2023-05-05">
-    <br>
+        <label>Kunde id</label>
+        <input type="text" name="kunde_id">
+        <br>
 
-    <label>Slut Dato</label>
-    <input type="date" name="slut_dato" value="2023-05-06">
-    <br>
+        <label>Start Dato</label>
+        <input type="date" name="start_dato" value="2023-05-05">
+        <br>
 
-    <label>Afhentningslokations id</label>
-    <input type="text" name="afhentningslokation_id">
-    <br>
+        <label>Slut Dato</label>
+        <input type="date" name="slut_dato" value="2023-05-06">
+        <br>
 
-    <label>Afleveringslokation id</label>
-    <input type="text" name="afleveringslokation_id">
-    <br>
+        <label>Afhentningslokations id</label>
+        <input type="text" name="afhentningslokation_id">
+        <br>
 
-    <label>Total pris</label>
-    <input type="text" name="total_pris">
-    <br>
+        <label>Afleveringslokation id</label>
+        <input type="text" name="afleveringslokation_id">
+        <br>
 
-    <input type="submit" value="Lav Kontrakt">
+        <label>Total pris</label>
+        <input type="text" name="total_pris">
+        <br>
+
+        <input type="submit" value="Lav Kontrakt">
+    </div>
 </form>
+    <div style="width: 50%;height: 80%; background-color: lightblue; padding: 5px;margin-right: 2%; float: right">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <form action="/opretLejeaftale" method="get">
+                <input type="submit"name="seBiler" value="Biler">
+            </form>
+            <button>Button 2</button>
+            <button>Button 3</button>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th th:each="kolonneNavn : ${kolonneNavne}" th:text="${kolonneNavn}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="row : ${data}">
+                <td th:each="cell : ${row}" th:text="${cell}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
 </body>
 </html>
