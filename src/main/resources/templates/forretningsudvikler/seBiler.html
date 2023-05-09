@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/MyCSS.css">
 </head>
 <body>
 
@@ -33,7 +34,7 @@
             <th>CO2</th>
             <th>Stålpris</th>
             <th>Registreringsafgift</th>
-            <th th:if="${toggle == 1}">priser</th>
+            <th th:if="${toggle == 1}">kontraktpris</th>
 
 
         </tr>
@@ -52,26 +53,15 @@
             <td th:text="${bil.registrerings_afgift}"/>
             <td th:if="${priser != null and not #lists.isEmpty(priser)}" th:text="${priser[statistikIndex.index]}"></td>
         </tr>
-
-<!--        <tr th:each="bil: ${biler} ">-->
-<!--            <td th:text="${bil.vognnummer}"/>-->
-<!--            <td th:text="${bil.stelnummer}"/>-->
-<!--            <td th:text="${bil.maerke_navn}"/>-->
-<!--            <td th:text="${bil.model_navn}"/>-->
-<!--            <td th:text="${bil.gear_type}"/>-->
-<!--            <td th:text="${bil.braendstof}"/>-->
-<!--            <td th:text="${bil.bilTilstand}"/>-->
-<!--            <td th:text="${bil.CO2_udledning}"/>-->
-<!--            <td th:text="${bil.staalpris}"/>-->
-<!--            <td th:text="${bil.registrerings_afgift}"/>-->
-
-<!--        </tr>-->
-
-
         </tbody>
     </table>
 </div>
 
+<div th:if="${toggle == 1}">
+    <h4>Den samlede pris for nuværende udlejede bilers kontrakter</h4>
+    <p>sum: <span th:text="${#aggregates.sum(priser)}"/></p>
+
+</div>
 
 
 </body>
