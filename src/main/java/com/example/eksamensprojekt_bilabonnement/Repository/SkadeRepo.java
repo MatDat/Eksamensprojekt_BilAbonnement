@@ -21,9 +21,9 @@ public class SkadeRepo {
     }
 
     public void nySkadeRapport(Skaderapport skaderapport) {
-        String sql = "INSERT INTO skaderapport (skaderapport_id, skaderapport_dato, kunde_id, vognnummer, bruger_id) " +
-                "VALUES (?, ?, ?, ?, ?)";
-        template.update(sql, skaderapport.getSkaderapport_id(), skaderapport.getSkaderapport_dato(),
+        String sql = "INSERT INTO skaderapport (skaderapport_dato, kunde_id, vognnummer, bruger_id) " +
+                "VALUES (?, ?, ?, ?)";
+        template.update(sql, skaderapport.getSkaderapport_dato(),
                 skaderapport.getKunde_id(), skaderapport.getVognnummer(), skaderapport.getBruger_id());
     }
 }

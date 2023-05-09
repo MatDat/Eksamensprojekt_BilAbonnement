@@ -10,27 +10,22 @@
   <h2 style="float: right; padding-right: 50%">Opslagstavle</h2>
   <form action="/indsendRapportForm" style="float: left" method="post">
 
-      <label for="skade_id">Skade id</label>
-      <input type="text" id="skade_id" name="skade_id">
+<!--      <label for="skaderapport_id">Skaderapport id</label>   BEHØVER IKKE SKRIVE ID DA DET ER AUTO INCREMENT-->
+<!--      <input type="text" id="skaderapport_id" name="skaderapport_id">-->
+<!--      <br>-->
+      <label for="skaderapport_dato">Skaderapport dato</label>
+      <input type="date" id="skaderapport_dato" name="skaderapport_dato">
       <br>
-      <label for="beskrivelse">Beskrivelse af skaden</label>
-      <input type="text" id="beskrivelse" name="beskrivelse">
+      <label for="kunde_id">Kunde ID</label>
+      <input type="text" id="kunde_id" name="kunde_id">
       <br>
-      <label for="pris">Pris</label>
-      <input type="text" id="pris" name="pris">
-      <br>
-      <input type="hidden" name="vognnummer" value="${vognnummer}" />
+<!--      <p type="hidden" name="vognnummer" th:text="${vn}"></p>-->
+      <input type="hidden" name="vognnummer" th:value="${vn}" />
 <!--      <label for="vognnummer">Vognnummer</label> VOGNNUMMER BLIVER TAGET MED AUTOMATISK-->
 <!--      <input type="text" id="vognnummer">-->
 <!--      <br>-->
-      <label for="dato">Dato</label>
-      <input type="date" id="dato">
-      <br>
-      <label for="kunde_id">Kunde ID</label>
-      <input type="text" id="kunde_id">
-      <br>
       <label for="bruger_id">Medarbejer ID (bruger_id)</label>
-      <input type="text" id="bruger_id">
+      <input type="text" id="bruger_id" name="bruger_id">
       <br>
       <input type="submit">
   </form>

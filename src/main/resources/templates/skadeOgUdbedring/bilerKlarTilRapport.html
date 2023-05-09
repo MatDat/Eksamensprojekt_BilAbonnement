@@ -20,7 +20,7 @@
             <td th:text="${bil.vognnummer}"/>
             <td th:text="${bil.stelnummer}"/>
             <td>
-                <a th:href="@{'/rapportForm/vognnummer='+${bil.vognnummer}}">
+                <a th:href="@{'/rapportForm/'+${bil.vognnummer}}">
                     <button>Lav rapport</button></a>
             </td>
         </tr>
