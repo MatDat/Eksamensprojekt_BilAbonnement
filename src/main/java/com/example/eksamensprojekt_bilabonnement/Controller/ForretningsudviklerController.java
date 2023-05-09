@@ -67,6 +67,7 @@ public class ForretningsudviklerController {
                 model.addAttribute("toggle",1);
                 model.addAttribute("priser",priser);
             }
+            case "SOLGT", "LEJEKLAR" -> biler = bilService.hentBilerMedTilstand(selectedOption);
         }
 
         model.addAttribute("biler", biler);
