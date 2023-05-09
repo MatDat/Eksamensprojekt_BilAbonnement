@@ -1,6 +1,7 @@
 package com.example.eksamensprojekt_bilabonnement.Repository;
 
 import com.example.eksamensprojekt_bilabonnement.Model.Bil;
+import com.example.eksamensprojekt_bilabonnement.Model.BilTilstand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -35,4 +36,11 @@ public class BilRepo {
 
 
 
+
+    public void opdaterBilTilstand(String bilTilstand, int vognnummer) {
+        String sql = "UPDATE bil " +
+                "SET bil_tilstand = ? " +
+                "WHERE vognnummer = ?";
+        template.update(sql, bilTilstand, vognnummer);
+    }
 }

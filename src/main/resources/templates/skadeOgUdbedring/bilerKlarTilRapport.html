@@ -2,26 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RegistrerFejl</title>
+    <title>BilerKlarTilRapport</title>
 </head>
 <body>
 <h1>Biler klar til rapport</h1>
 
 <div id="table_design">
-    <table>
+    <table style="float: left">
         <tr>
             <th>Vognnummer</th>
             <th>stelnummer</th>
+            <th>Lav rapport</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="bil: ${biler}">
             <td th:text="${bil.vognnummer}"/>
             <td th:text="${bil.stelnummer}"/>
+            <td>
+                <a th:href="@{'/rapportForm/'+${bil.vognnummer}}">
+                    <button>Lav rapport</button></a>
+            </td>
         </tr>
         </tbody>
     </table>
-
 </div>
+
 </body>
 </html>
