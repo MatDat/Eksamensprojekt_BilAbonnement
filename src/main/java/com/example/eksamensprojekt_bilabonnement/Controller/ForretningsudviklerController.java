@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.WebRequest;
 
 import java.util.*;
 
@@ -36,20 +37,22 @@ public class ForretningsudviklerController {
         return "forretningsudvikler/seBiler";
     }
 
-    @PostMapping("/testRS")
-    public String testRS(){
-
-        List<Integer> testliste = new ArrayList<>();
-
-
-        testliste.add(2);
-
-        List<Double> lulu = kontraktService.getTotalPrisFraVognnummre(testliste);
-        System.out.println(lulu.get(0));
-
-        return "forretningsudvikler/seBiler";
-
-    }
+//    @PostMapping("/testRS")
+//    public String testRS(){
+//
+//
+//
+//        List<Integer> testliste = new ArrayList<>();
+//
+//
+//        testliste.add(2);
+//
+//        List<Double> lulu = kontraktService.getTotalPrisFraVognnummre(testliste);
+//        System.out.println(lulu.get(0));
+//
+//        return "forretningsudvikler/seBiler";
+//
+//    }
 
     @PostMapping("/seBilerDropdown")
     public String handleFormSubmission(@RequestParam("dropdown") String selectedOption, Model model) {
