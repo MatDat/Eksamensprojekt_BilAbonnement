@@ -44,14 +44,4 @@ public class HomeController {
     public String opretBrugerSide(){
         return "bruger/opretBruger";
     }
-
-    @PostMapping("adminPage")
-    public String adminPage(){
-        return "home/admin";
-    }
-
-    @GetMapping("brugerlisteSide")
-    public String brugerlisteSide(){
-        return "bruger/brugerliste";
-    }
 }
