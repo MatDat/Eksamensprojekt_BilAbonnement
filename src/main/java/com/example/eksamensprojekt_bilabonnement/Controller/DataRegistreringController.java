@@ -1,8 +1,6 @@
 package com.example.eksamensprojekt_bilabonnement.Controller;
 
-import com.example.eksamensprojekt_bilabonnement.Model.Bil;
 import com.example.eksamensprojekt_bilabonnement.Model.Kontrakt;
-import com.example.eksamensprojekt_bilabonnement.Service.BilService;
 import com.example.eksamensprojekt_bilabonnement.Service.DataService;
 import com.example.eksamensprojekt_bilabonnement.Service.KontraktService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +34,7 @@ public class DataRegistreringController {
 
     @PostMapping("/saveLejeaftale")
     public String saveLejeaftale(@ModelAttribute Kontrakt kontrakt) {
-        if (kontraktService.addKontrakt(kontrakt)) {
+        if (kontraktService.tilføjKontrakt(kontrakt)) {
             System.out.println("DEBUG: " + kontrakt);
             System.out.println("DEBUG: Kontrakt tilføjet til DB");
         }
