@@ -7,6 +7,19 @@
 <body>
 
 <div>
+    <form th:action="@{/seBilerDropdown}" method="post">
+        <select name="dropdown">
+            <option value="alle">Alle</option>
+            <option value="UDLEJET">Udlejede</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+
+
+</div>
+
+
+<div>
     <table>
         <thead>
         <tr>
@@ -20,11 +33,13 @@
             <th>CO2</th>
             <th>Stålpris</th>
             <th>Registreringsafgift</th>
+            <th th:if="${toggle == 1}">priser</th>
+
 
         </tr>
         </thead>
         <tbody>
-        <tr th:each="bil: ${biler}">
+        <tr th:each="bil, statistikIndex : ${biler}">
             <td th:text="${bil.vognnummer}"/>
             <td th:text="${bil.stelnummer}"/>
             <td th:text="${bil.maerke_navn}"/>
@@ -35,9 +50,24 @@
             <td th:text="${bil.CO2_udledning}"/>
             <td th:text="${bil.staalpris}"/>
             <td th:text="${bil.registrerings_afgift}"/>
-
-
+            <td th:if="${priser != null and not #lists.isEmpty(priser)}" th:text="${priser[statistikIndex.index]}"></td>
         </tr>
+
+<!--        <tr th:each="bil: ${biler} ">-->
+<!--            <td th:text="${bil.vognnummer}"/>-->
+<!--            <td th:text="${bil.stelnummer}"/>-->
+<!--            <td th:text="${bil.maerke_navn}"/>-->
+<!--            <td th:text="${bil.model_navn}"/>-->
+<!--            <td th:text="${bil.gear_type}"/>-->
+<!--            <td th:text="${bil.braendstof}"/>-->
+<!--            <td th:text="${bil.bilTilstand}"/>-->
+<!--            <td th:text="${bil.CO2_udledning}"/>-->
+<!--            <td th:text="${bil.staalpris}"/>-->
+<!--            <td th:text="${bil.registrerings_afgift}"/>-->
+
+<!--        </tr>-->
+
+
         </tbody>
     </table>
 </div>
