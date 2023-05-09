@@ -1,6 +1,7 @@
 package com.example.eksamensprojekt_bilabonnement.Service;
 
 import com.example.eksamensprojekt_bilabonnement.Model.Bil;
+import com.example.eksamensprojekt_bilabonnement.Model.BilTilstand;
 import com.example.eksamensprojekt_bilabonnement.Repository.BilRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,4 +29,8 @@ public class BilService {
         return vn;
     }
 
+
+    public void opdaterBilTilstand(String bilTilstand, int vognnummer) {
+        bilRepo.opdaterBilTilstand(bilTilstand, vognnummer);
+    }
 }

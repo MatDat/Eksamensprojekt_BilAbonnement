@@ -5,38 +5,48 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Brugerliste</h1>
-
+<h1>Opret bruger</h1>
 <table>
+    <div id="opretBrugerBoks">
+        <form class="login-form" action="/opretBruger" method="post">
 
+            <label class="loginForm-label">Indtast ønskede brugernavn: </label>
+            <input class="loginForm-input" type="text" placeholder="Indtast her..." name="brugernavn">
+
+            <label class="loginForm-label">Indtast ønskede adgangskode: </label>
+            <input class="loginForm-input" type="text" placeholder="Indtast her..." name="kode">
+
+            <button class="loginForm-submitButton" type="submit">Opret bruger</button>
+        </form>
+    </div>
+
+    <h2>Brugerliste</h2>
     <thead>
         <tr>
-            <th></th>
+            <th>Bruger ID</th>
+            <th>Brugernavn</th>
+            <th>Kodeord</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>
-
-            </td>
+        <tr th:each="bruger : ${brugerListe}">
+            <td th:text="${bruger.bruger_id}"></td>
+            <td th:text="${bruger.brugernavn}"></td>
+            <td th:text="${bruger.kode}"></td>
         </tr>
     </tbody>
 
 </table>
 
 <h2>Slet bruger</h2>
-<div id="sletBrugerBoks">
-  <form id="login-form" action="/sletBruger" method="post">
 
-    <label class="loginForm-label">Indtast brugernavn: </label>
-    <input class="loginForm-input" type="text" placeholder="Indtast her..." name="brugernavn">
+<form id="login-form" action="/sletBrugerSide" method="post">
+    <label class="loginForm-label">Husk bruger ID på den bruger du vil slette: </label>
+    <button class="loginForm-submitButton" type="submit">SLET EN BRUGER</button>
+</form>
 
-    <button class="loginForm-submitButton" type="submit">SLET</button>
-  </form>
-</div>
-
-  <form id="annullerButton" action="/" method="get">
-    <button class="loginForm-submitButton" type="submit">Til forside</button>
+  <form class="annullerButton" action="/" method="get">
+    <button class="loginForm-submitButton" type="submit">Tilbage knappen</button>
   </form>
 
 

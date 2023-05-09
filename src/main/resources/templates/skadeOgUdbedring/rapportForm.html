@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RapportForm</title>
+</head>
+<body>
+  <h1>Her laver du en rapport på den bil du lige har klikket ind på</h1>
+  <h2>Input</h2>
+  <h2 style="float: right; padding-right: 50%">Opslagstavle</h2>
+  <form action="/indsendRapportForm" style="float: left" method="post">
+
+<!--      <label for="skaderapport_id">Skaderapport id</label>   BEHØVER IKKE SKRIVE ID DA DET ER AUTO INCREMENT-->
+<!--      <input type="text" id="skaderapport_id" name="skaderapport_id">-->
+<!--      <br>-->
+      <label for="skaderapport_dato">Skaderapport dato</label>
+      <input type="date" id="skaderapport_dato" name="skaderapport_dato">
+      <br>
+      <label for="kunde_id">Kunde ID</label>
+      <input type="text" id="kunde_id" name="kunde_id">
+      <br>
+<!--      <p type="hidden" name="vognnummer" th:text="${vn}"></p>-->
+      <input type="hidden" name="vognnummer" th:value="${vn}" />
+<!--      <label for="vognnummer">Vognnummer</label> VOGNNUMMER BLIVER TAGET MED AUTOMATISK-->
+<!--      <input type="text" id="vognnummer">-->
+<!--      <br>-->
+      <label for="bruger_id">Medarbejer ID (bruger_id)</label>
+      <input type="text" id="bruger_id" name="bruger_id">
+      <br>
+      <input type="submit">
+  </form>
+</body>
+</html>
