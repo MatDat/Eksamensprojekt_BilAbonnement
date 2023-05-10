@@ -14,7 +14,7 @@ public class BilController {
     BilService bilService;
 
     @GetMapping("opdaterBilTilstand")
-    public String opdaterBilTilstand(String bilTilstand, int vognnummer) {
+    public String opdaterBilTilstand(BilTilstand bilTilstand, int vognnummer) {
         bilService.opdaterBilTilstand(bilTilstand, vognnummer);
         return "home/index";
     }

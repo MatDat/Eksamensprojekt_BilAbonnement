@@ -30,7 +30,7 @@ public class BilService {
     }
 
 
-    public void opdaterBilTilstand(String bilTilstand, int vognnummer) {
-        bilRepo.opdaterBilTilstand(bilTilstand, vognnummer);
+    public void opdaterBilTilstand(BilTilstand bilTilstand, int vognnummer) {
+        bilRepo.opdaterBilTilstand(String.valueOf(bilTilstand), vognnummer);
     }
 }
