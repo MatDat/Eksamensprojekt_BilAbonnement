@@ -44,7 +44,7 @@ public class BilService {
         return co2;
     }
 
-    public void opdaterBilTilstand(String bilTilstand, int vognnummer) {
-        bilRepo.opdaterBilTilstand(bilTilstand, vognnummer);
+    public void opdaterBilTilstand(BilTilstand bilTilstand, int vognnummer) {
+        bilRepo.opdaterBilTilstand(String.valueOf(bilTilstand), vognnummer);
     }
 }
