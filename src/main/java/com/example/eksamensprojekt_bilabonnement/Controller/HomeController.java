@@ -14,13 +14,13 @@ public class HomeController {
     public String indexLoggedInAs(Model model, HttpSession session) {
         Bruger bruger = (Bruger) session.getAttribute("bruger");    //Henter brugerobjektet fra sessionen.
         if (bruger != null) {                                          //Tjekker om brugeren er logget ind eller ej.
-            String loggedInUser = "{Logget ind som: " + bruger.getBrugernavn() + "}"; //Opretter en passende besked om logindstatus.
+            String loggedInUser = "Status: {Logget ind som: " + bruger.getBrugernavn() + "}"; //Opretter en passende besked om logindstatus.
             model.addAttribute("loggedInUser", loggedInUser);           // Tilføjer beskeden som en attribut til modellen.
-            System.out.println("{Logget ind som: " + bruger.getBrugernavn() + "}"); //Udskrift til konsol
+            System.out.println("Status: {Logget ind som: " + bruger.getBrugernavn() + "}"); //Udskrift til konsol
         } else {
-            String loggedInUser = "{Ikke logget ind}";                      //Opretter en passende besked om logindstatus.
+            String loggedInUser = "Status: {Ikke logget ind}";                      //Opretter en passende besked om logindstatus.
             model.addAttribute("loggedInUser", loggedInUser);   // Tilføjer beskeden som en attribut til modellen.
-            System.out.println("{Ikke logget ind}");                        //Udskrift til konsol
+            System.out.println("Status: {Ikke logget ind}");                        //Udskrift til konsol
         }
         return "home/index";
     }
