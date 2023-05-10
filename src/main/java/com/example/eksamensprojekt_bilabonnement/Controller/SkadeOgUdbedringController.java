@@ -40,7 +40,14 @@ public class SkadeOgUdbedringController {
     @PostMapping("/indsendRapportForm")
     public String indsendRapportForm(@ModelAttribute Skaderapport skaderapport) { //Vi får vognnummer med fra html i hidden form
         skadeService.nySkadeRapport(skaderapport);
+        return "skadeOgUdbedring/opretSkade";
+    }
 
+    @PostMapping("/opretSkade")
+    public String opretSkade(@ModelAttribute Skade skade) { //Vi får vognnummer med fra html i hidden form
+        skadeService.nySkade(skade);
         return "home/index";
     }
+
+
 }

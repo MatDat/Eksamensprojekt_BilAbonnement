@@ -14,10 +14,9 @@ public class SkadeRepo {
     //Modtag skade data og opret ny rapport i databasen
 
     public void nySkade(Skade skade) {
-        String sql = "INSERT INTO skade (skade_id, beskrivelse, pris, vognnummer, skaderapport_id) " +
-                "VALUES (?, ?, ?, ?, ?)";
-        template.update(sql, skade.getSkade_id(), skade.getBeskrivelse(), skade.getPris(),
-                skade.getVognnummer(), skade.getSkaderapport_id());
+        String sql = "INSERT INTO skade (beskrivelse, pris, skaderapport_id) " +
+                "VALUES (?, ?, ?)";
+        template.update(sql, skade.getBeskrivelse(), skade.getPris(), skade.getSkaderapport_id());
     }
 
     public void nySkadeRapport(Skaderapport skaderapport) {
