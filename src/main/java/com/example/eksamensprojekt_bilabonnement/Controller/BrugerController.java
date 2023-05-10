@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -18,12 +19,30 @@ public class BrugerController {
     @Autowired
     BrugerService brugerService;
 
-    @PostMapping("adminSide")
-    public String adminSide(Model model){
+
+    @GetMapping("adminSide")
+    public String adminSide(Model model, HttpSession session){
         List<Bruger> brugerListe = brugerService.hentBrugerListe();
         model.addAttribute("brugerListe", brugerListe);
         return "bruger/brugerliste";
     }
+
+    @PostMapping("adminLogin")
+    public String adminLogin() {
+        return "bruger/logIndAdmin";
+    }
+
+    @PostMapping("adminLoggedInd")
+    public String adminSide(@RequestParam("admin_adgangskode") String adgangskode, HttpSession session) {
+        String korrektAdgangskode = "Jegvilind";
+        if (adgangskode.equals(korrektAdgangskode)) {
+            session.setAttribute("loggedInUser", "admin"); // Gem det logget ind som "admin" i sessionen
+            return "redirect:adminSide";
+        } else {
+            return "bruger/logIndAdminFejl";
+        }
+    }
+
 
     @PostMapping("loginBruger")
     public String logBrugerInd(@ModelAttribute Bruger bruger, HttpSession session) {
@@ -48,7 +67,6 @@ public class BrugerController {
     public String opretBruger(@ModelAttribute Bruger bruger, HttpSession session) {
         boolean brugerOprettet = brugerService.opretBruger(bruger);
         if (brugerOprettet) {
-            //session.setAttribute("bruger", bruger); // Logger brugeren ind med det samme
             return "bruger/opretBrugerSuccess";
         } else {
             return "bruger/opretBrugerFejl";

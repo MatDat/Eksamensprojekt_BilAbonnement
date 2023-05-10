@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin adgang krævet</title>
+</head>
+<body>
+<h1>Admin adgang krævet</h1>
+
+<form id="login-form" action="/adminLoggedInd" method="post">
+
+  <h2>Login</h2>
+  <label class="loginForm-label">Admin adgangskode: </label>
+  <input class="loginForm-input" type="password" placeholder="Indtast her..." name="admin_adgangskode">
+
+  <button class="loginForm-submitButton" type="submit">Login</button>
+
+  <p class="advarselstekst">Den indtastede adminadgangskode er ikke korrekt.</p>
+  <p class="advarselstekst">Venligst forsøg igen eller kontakt autoriseret personale for assistance.</p>
+
+</form>
+
+<form id="annullerButton" action="/" method="get">
+  <button class="loginForm-submitButton" type="submit">Tilbage</button>
+</form>
+
+</body>
+</html>
