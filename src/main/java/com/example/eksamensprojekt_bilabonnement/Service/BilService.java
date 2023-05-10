@@ -20,15 +20,29 @@ public class BilService {
 
     public List<Bil> hentAlleBiler(){return bilRepo.hentAlleBiler();}
     public List<Bil> hentBilerMedTilstand(String tilstand){return bilRepo.hentBilerMedTilstand(tilstand);}
+    public List<Bil> hentBilerMedBraendstof(String braendstof){return bilRepo.hentBilerMedBraendstof(braendstof);}
 
     public List<Integer> hentVognnumre(List<Bil> biler){
         List<Integer> vn = new ArrayList<>();
-        for (int i = 0; i < biler.size(); i++) {
-            vn.add(biler.get(i).getVognnummer());
+        for (Bil bil : biler) {
+            vn.add(bil.getVognnummer());
         }
         return vn;
     }
-
+    public List<Double> hentStaalpriser(List<Bil> biler){
+        List<Double> sp = new ArrayList<>();
+        for (Bil bil : biler) {
+            sp.add(bil.getStaalpris());
+        }
+        return sp;
+    }
+    public List<Double> hentCo2(List<Bil> biler){
+        List<Double> co2 = new ArrayList<>();
+        for (Bil bil : biler) {
+            co2.add(bil.getCO2_udledning());
+        }
+        return co2;
+    }
 
     public void opdaterBilTilstand(String bilTilstand, int vognnummer) {
         bilRepo.opdaterBilTilstand(bilTilstand, vognnummer);
