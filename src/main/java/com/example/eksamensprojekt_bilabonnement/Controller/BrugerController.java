@@ -67,7 +67,7 @@ public class BrugerController {
     public String opretBruger(@ModelAttribute Bruger bruger, HttpSession session) {
         boolean brugerOprettet = brugerService.opretBruger(bruger);
         if (brugerOprettet) {
-            return "bruger/opretBrugerSuccess";
+            return "redirect:adminSide";
         } else {
             return "bruger/opretBrugerFejl";
         }
@@ -77,7 +77,7 @@ public class BrugerController {
     public String sletBruger(Bruger bruger){
         boolean brugerSlettet = brugerService.sletBruger(bruger);
         if (brugerSlettet){
-            return "redirect:/";
+            return "redirect:adminSide";
         } else{
             return "brugerlisteFejl";
         }

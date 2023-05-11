@@ -1,3 +1,107 @@
+*{
+    font-family: Verdana;
+    padding:0;
+    margin:0;
+}
+#aboveHeaderDiv {
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 5px 20px 5px 20px;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom: 1px solid #E7E4D3;
+}
+.aboveHeaderItem {
+    display: inline-block;
+    padding: 5px 20px 5px 20px;
+    background-color: white;
+    border: 1px solid white;
+}
+.aboveHeaderItem:hover {
+    background-color: #BBD9EE;
+    border: 1px solid #206BA4;
+    transition: 0.4s;
+}
+.aboveHeaderItem:last-child {
+    margin-right: 30px;
+}
+h1{
+    text-transform: uppercase;
+    font-size: 38px;
+    color: #206BA4;
+    text-align: center;
+    padding:40px 0 40px 0;
+}
+#statusBar{
+    width:100%;
+    padding: 15px 0 15px 0;
+    background-color: #E7E4D3;
+    font-size: 12px;
+    color: #206BA4;
+}
+#loggedInAsFunction{
+    text-align: center;
+}
+.myText {
+    color: black;
+    border: 2px solid white;
+    padding: 5px;
+}
+#bodyDiv{
+    justify-content: space-between;
+    display:flex;
+    background-color: gray;
+}
+.c2aDiv1 {
+    background-image: url("img/c2a1-test(1).jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.c2aDiv2 {
+    background-image: url("img/c2a2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.c2aDiv3 {
+    background-image: url("img/c2a3.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.c2aDivInner{
+    background-color: rgb(255,255,255, 0);
+    padding: 90px 100px;
+
+}
+.c2aButton {
+    background-color: rgb(13,42,64, 0.5);
+    border: 1px solid white;
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 200px 30px;
+    color:white;
+}
+.c2aButton:hover{
+    background-color: rgb(13,42,64, 0.9);
+    transition: 0.3s;
+    color: white;
+    border: 1px solid white;
+}
+
+.c2aButton3 {
+    background-color: white;
+    border: none;
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 300px 120px;
+}
+.c2aButton3:hover{
+    background-color: darkorange;
+    transition: 0.5s;
+}
 #annullerButton{
     float:left;
 }

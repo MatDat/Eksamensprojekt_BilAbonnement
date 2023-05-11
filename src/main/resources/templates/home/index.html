@@ -7,30 +7,54 @@
 </head>
 <body>
 
-<h1>Bilabonnements admin system</h1>
+<div id="aboveHeaderDiv">
+    <form action="/adminLogin" method="post">
+        <input class="aboveHeaderItem" type="submit" value="Admin">
+    </form>
+    <form action="/loginButton" method="get">
+        <button class="aboveHeaderItem">Log ind</button>
+    </form>
 
-<div id="loggedInAs-section" th:text="${loggedInUser}"></div>
+    <form action="/logBrugerUd" method="get">
+        <button class="aboveHeaderItem">Log ud</button>
+    </form>
+</div>
 
-<form action="SkadeOgUdbedringLandingPage" method="get">
-    <button>Skade og udbedring bruger</button>
-</form>
-<form action="dataRegistrering" method="get">
-    <button>Data Registrering</button>
-</form>
-<form action="/forretningsudviklerSide" method="post">
-    <input type="submit" value="Forretningsudvikler">
-</form>
-<form action="/adminLogin" method="post">
-    <input type="submit" value="Admin">
-</form>
+<div id="headerDiv">
+    <h1>Bilabonnements admin system</h1>
 
-<form action="/loginButton" method="get">
-    <button class="loginButton">Log ind</button>
-</form>
+    <div id="statusBar">
+        <div id="loggedInAsFunction" th:text="${loggedInUser}"></div>
+    </div>
+</div>
 
-<form action="/logBrugerUd" method="get">
-    <button class="logoutButton">Log ud</button>
-</form>
+<div id="bodyDiv">
+
+    <div class="c2aDiv1">
+        <div class="c2aDivInner">
+            <form action="SkadeOgUdbedringLandingPage" method="get">
+                <button class="c2aButton">Skade og udbedring</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="c2aDiv2">
+        <div class="c2aDivInner">
+            <form action="dataRegistrering" method="get">
+                <button class="c2aButton">Data Registrering</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="c2aDiv3">
+        <div class="c2aDivInner">
+            <form action="/forretningsudviklerSide" method="post">
+                <button class="c2aButton">Forretningsudvikler</button>
+            </form>
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>
