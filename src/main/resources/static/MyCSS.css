@@ -4,7 +4,6 @@
     margin:0;
 }
 #aboveHeaderDiv {
-    width: 100%;
     height: auto;
     display: flex;
     padding: 5px 20px 5px 20px;
@@ -19,9 +18,10 @@
     border: 1px solid white;
 }
 .aboveHeaderItem:hover {
-    background-color: #BBD9EE;
+    background-color: #144164;
     border: 1px solid #206BA4;
     transition: 0.4s;
+    color: white;
 }
 .aboveHeaderItem:last-child {
     margin-right: 30px;
@@ -29,29 +29,24 @@
 h1{
     text-transform: uppercase;
     font-size: 38px;
-    color: #206BA4;
+    color: #144164;
     text-align: center;
     padding:40px 0 40px 0;
 }
 #statusBar{
     width:100%;
     padding: 15px 0 15px 0;
-    background-color: #E7E4D3;
+    background-color: #144164;
     font-size: 12px;
-    color: #206BA4;
+    color: white;
 }
 #loggedInAsFunction{
     text-align: center;
 }
-.myText {
-    color: black;
-    border: 2px solid white;
-    padding: 5px;
-}
 #bodyDiv{
-    justify-content: space-between;
+    justify-content: space-evenly;
     display:flex;
-    background-color: gray;
+    background-color: #206BA4;
 }
 .c2aDiv1 {
     background-image: url("img/c2a1-test(1).jpg");
@@ -77,7 +72,7 @@ h1{
 
 }
 .c2aButton {
-    background-color: rgb(13,42,64, 0.5);
+    background-color: rgb(13,42,64, 0.4);
     border: 1px solid white;
     font-size: 20px;
     text-transform: uppercase;
@@ -104,6 +99,16 @@ h1{
 }
 #annullerButton{
     float:left;
+}
+#footerForside{
+    width:100%;
+    padding: 15px 0 15px 0;
+    background-color: #144164;
+    font-size: 12px;
+    color: white;
+}
+#footerForside{
+    text-align: center;
 }
 
 
