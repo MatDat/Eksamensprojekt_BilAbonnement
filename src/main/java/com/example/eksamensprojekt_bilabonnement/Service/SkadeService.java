@@ -6,6 +6,8 @@ import com.example.eksamensprojekt_bilabonnement.Repository.SkadeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SkadeService {
 
@@ -18,6 +20,14 @@ public class SkadeService {
 
     public void nySkadeRapport(Skaderapport skaderapport) {
         skadeRepo.nySkadeRapport(skaderapport);
+    }
+
+    public List<Skaderapport> hentSkaderapporter() {
+        return skadeRepo.hentSkaderapporter();
+    }
+
+    public List<Skade> hentSkader(int skaderapport_id) {
+        return skadeRepo.hentSkader(skaderapport_id);
     }
 
 }

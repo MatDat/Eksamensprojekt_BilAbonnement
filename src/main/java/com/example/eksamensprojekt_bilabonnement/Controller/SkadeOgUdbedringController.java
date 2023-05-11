@@ -32,15 +32,39 @@ public class SkadeOgUdbedringController {
 
     @GetMapping("/rapportForm/{vognnummer}")
     public String rapportForm(@PathVariable ("vognnummer") int vognnummer, Model model) {
-        System.out.println(vognnummer);
         model.addAttribute("vn", vognnummer);
+        //TODO: Tjek om rapport allerede findes med det valgte vognnummer??
+
         return "skadeOgUdbedring/rapportForm";
     }
 
     @PostMapping("/indsendRapportForm")
-    public String indsendRapportForm(@ModelAttribute Skaderapport skaderapport) { //Vi får vognnummer med fra html i hidden form
+    public String indsendRapportForm(@ModelAttribute Skaderapport skaderapport, Model model) { //Vi får vognnummer med fra html i hidden form
+        int skaderapport_id = skadeService.hentSkaderapporter().size() + 2; //Der står +2 da listen starter fra 1 og
+        // ikke 0. Den går ud fra den nuværende størrelse og ikke størrelsen med rapporten du er igang med at tilføje
+
+        model.addAttribute("srID", skaderapport_id);
         skadeService.nySkadeRapport(skaderapport);
 
-        return "home/index";
+//        FIXME: Hvis man trykker afslut rapport uden at have trykke submit først så bliver skaden ikke oprettet.
+
+        return "skadeOgUdbedring/opretSkade";
     }
+
+    @PostMapping("/opretSkade")
+    public String opretSkade(@ModelAttribute Skade skade, Model model) { //Vi får vognnummer med fra html i hidden form
+
+        //Her giver vi igen rapport ID, og det er +1 nu i stedet for +2 da listen ER blevet oprettet.
+        int skaderapport_id = skadeService.hentSkaderapporter().size() + 1;
+        model.addAttribute("srID", skaderapport_id);
+
+        skadeService.nySkade(skade);
+
+        //Vi laver en liste over skader for at kunne få alle det tilføjede skader vist efter hver tilføjelse af ny skade.
+        List<Skade> skader = skadeService.hentSkader(skade.getSkaderapport_id());
+        model.addAttribute("skader", skader);
+
+        return "skadeOgUdbedring/opretSkade";
+    }
+
 }

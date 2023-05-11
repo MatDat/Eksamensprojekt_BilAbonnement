@@ -9,13 +9,14 @@
 <h1>Slet en bruger</h1>
 
     <form id="login-form" action="/sletBruger" method="post">
+        <p>Dobbelt tjek det bruger ID du indtaster.</p>
         <label class="loginForm-label">Indtast brugerens ID for at slette: </label>
 
         <input type="input" name="bruger_id" th:value="${bruger_id}"/>
         <button class="loginForm-submitButton" type="submit">SLET</button>
     </form>
 
-<form class="annullerButton" action="/adminSide" method="post">
+<form class="annullerButton" action="/adminSide" method="get">
   <button class="loginForm-submitButton" type="submit">Tilbage</button>
 </form>
 </body>
