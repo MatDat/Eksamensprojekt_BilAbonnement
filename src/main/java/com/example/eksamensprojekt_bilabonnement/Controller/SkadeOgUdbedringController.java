@@ -32,15 +32,31 @@ public class SkadeOgUdbedringController {
 
     @GetMapping("/rapportForm/{vognnummer}")
     public String rapportForm(@PathVariable ("vognnummer") int vognnummer, Model model) {
-        System.out.println(vognnummer);
         model.addAttribute("vn", vognnummer);
+        //TODO: Tjek om rapport allerede findes med det valgte vognnummer??
+
         return "skadeOgUdbedring/rapportForm";
     }
 
     @PostMapping("/indsendRapportForm")
-    public String indsendRapportForm(@ModelAttribute Skaderapport skaderapport) { //Vi får vognnummer med fra html i hidden form
+    public String indsendRapportForm(@ModelAttribute Skaderapport skaderapport, Model model) { //Vi får vognnummer med fra html i hidden form
+        int skaderapport_id = skadeService.hentSkaderapporter().size() + 2;
+        model.addAttribute("srID", skaderapport_id);
         skadeService.nySkadeRapport(skaderapport);
+//        Man kunne måske lave en fetch på alle skaderapporter, og sige at skaderapport id skal være
+//        lig størrelsen at listen da skaderapport_id er auto increment
+//        model.addAttribute("srID", skaderapport_id);
+//        Hvis man trykker afslut rapport uden at have trykke submit først så bliver skaden ikke oprettet.
 
-        return "home/index";
+        return "skadeOgUdbedring/opretSkade";
     }
+
+    @PostMapping("/opretSkade")
+    public String opretSkade(@ModelAttribute Skade skade) { //Vi får vognnummer med fra html i hidden form
+        //TODO: Man skal kunne blive ved med at tilføje skader
+        skadeService.nySkade(skade);
+
+        return "skadeOgUdbedring/opretSkade";
+    }
+
 }

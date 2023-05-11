@@ -4,7 +4,6 @@ public class Skade {
     private int skade_id;
     private String beskrivelse;
     private double pris;
-    private int vognnummer;
     private int skaderapport_id;
 
     public Skade() {
@@ -13,7 +12,6 @@ public class Skade {
         this.skade_id = skade_id;
         this.beskrivelse = beskrivelse;
         this.pris = pris;
-        this.vognnummer = vognnummer;
         this.skaderapport_id = skaderapport_id;
     }
 
@@ -40,15 +38,7 @@ public class Skade {
     public void setPris(double pris) {
         this.pris = pris;
     }
-
-    public int getVognnummer() {
-        return vognnummer;
-    }
-
-    public void setVognnummer(int vognnummer) {
-        this.vognnummer = vognnummer;
-    }
-
+    
     public int getSkaderapport_id() {
         return skaderapport_id;
     }
