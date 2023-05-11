@@ -17,9 +17,14 @@
     <input type="text" id="pris" name="pris" placeholder="pris">
     <br>
     <!--    MAN SKAL KUNNE SE LISTE AF UAFSLUTTEDE RAPPORTER-->
-    <label for="skaderapport_id">Skaderapport ID: </label>
-    <input type="text" id="skaderapport_id" name="skaderapport_id" placeholder="skaderapport_id">
+<!--      Man skal ikke behøve at skrive rapport ID-->
+      <input type="hidden" name="skaderapport_id" th:value="${srID}" />
+<!--      <label for="skaderapport_id">Skaderapport ID: </label>-->
+<!--    <input type="text" id="skaderapport_id" name="skaderapport_id" placeholder="skaderapport_id">-->
     <input type="submit" value="SUBMIT">
   </form>
+
+  <a th:href="@{'/'}">
+      <button>Afslut rapport</button></a>
 </body>
 </html>

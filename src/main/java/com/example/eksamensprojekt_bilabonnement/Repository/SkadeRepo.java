@@ -1,10 +1,15 @@
 package com.example.eksamensprojekt_bilabonnement.Repository;
 
+import com.example.eksamensprojekt_bilabonnement.Model.Kunde;
 import com.example.eksamensprojekt_bilabonnement.Model.Skade;
 import com.example.eksamensprojekt_bilabonnement.Model.Skaderapport;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class SkadeRepo {
@@ -24,5 +29,11 @@ public class SkadeRepo {
                 "VALUES (?, ?, ?, ?)";
         template.update(sql, skaderapport.getSkaderapport_dato(),
                 skaderapport.getKunde_id(), skaderapport.getVognnummer(), skaderapport.getBruger_id());
+    }
+
+    public List<Skaderapport> hentSkaderapporter() {
+        String sql = "SELECT * FROM skaderapport";
+        RowMapper<Skaderapport> rowMapper = new BeanPropertyRowMapper<>(Skaderapport.class);
+        return template.query(sql,rowMapper);
     }
 }
