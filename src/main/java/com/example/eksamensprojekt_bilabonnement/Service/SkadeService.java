@@ -26,4 +26,8 @@ public class SkadeService {
         return skadeRepo.hentSkaderapporter();
     }
 
+    public List<Skade> hentSkader(int skaderapport_id) {
+        return skadeRepo.hentSkader(skaderapport_id);
+    }
+
 }
