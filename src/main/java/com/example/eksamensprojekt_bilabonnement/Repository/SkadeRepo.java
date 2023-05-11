@@ -36,4 +36,11 @@ public class SkadeRepo {
         RowMapper<Skaderapport> rowMapper = new BeanPropertyRowMapper<>(Skaderapport.class);
         return template.query(sql,rowMapper);
     }
+
+    public List<Skade> hentSkader(int skaderapport_id) {
+        String sql = "SELECT * FROM skade WHERE skaderapport_id = ?";
+
+        RowMapper<Skade> rowMapper = new BeanPropertyRowMapper<>(Skade.class);
+        return template.query(sql,rowMapper, skaderapport_id);
+    }
 }
