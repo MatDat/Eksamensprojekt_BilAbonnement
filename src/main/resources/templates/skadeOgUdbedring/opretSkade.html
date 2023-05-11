@@ -6,6 +6,21 @@
 </head>
 <body>
   <h1>Opret skade</h1>
+
+  <h2>Skader tilføjet indtil videre</h2>
+  <table style="float: left">
+      <tr>
+          <th>Beskrivelse</th>
+          <th>Pris</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="skade: ${skader}">
+          <td th:text="${skade.beskrivelse}"/>
+          <td th:text="${skade.pris}"/>
+      </tr>
+      </tbody>
+  </table>
   <form action="opretSkade" method="post">
 <!--    <label for="skade_id">Skade ID: </label> AUTO INCREMENTIVE-->
 <!--    <input type="text" id="skade_id" name="skade_id" placeholder="skade_id">-->
