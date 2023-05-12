@@ -52,7 +52,7 @@ public class KontraktService {
 
         if (!vognnumerOgBilTilstandErValid(k, bilListe)) {
             fejlBeskeder.add("Bilen med vognnummeret " + k.getVognnummer() + ", findes ikke i systemet" +
-                    "eller er ikke tilgængelig til udlejning");
+                    " eller er ikke tilgængelig til udlejning");
         }
         if (!kundeIdErValid(k, kundeList)) {
             fejlBeskeder.add("Kunden med id: " + k.getKunde_id() + " findes ikke i systemet");
@@ -61,7 +61,7 @@ public class KontraktService {
             fejlBeskeder.add("Totalprisen skal være større end 0");
         }
         if (!datoerErValid(k)) {
-            fejlBeskeder.add("Startdatoen skal være før slutdatoen og ikke tidligere end i dag");
+            fejlBeskeder.add("Startdatoen må ikke være før slutdatoen eller før i dag");
         }
         if (!afhentningslokationIdErValid(k, lokationList)) {
             fejlBeskeder.add("Afhentningslokationen med id " + k.getAfhentningslokation_id() + " findes ikke i systemet");

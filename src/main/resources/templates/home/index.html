@@ -11,14 +11,21 @@
     <form action="/adminLogin" method="post">
         <input class="aboveHeaderItem" type="submit" value="Admin">
     </form>
-    <form action="/loginButton" method="get">
-        <button class="aboveHeaderItem">Log ind</button>
-    </form>
 
-    <form action="/logBrugerUd" method="get">
-        <button class="aboveHeaderItem">Log ud</button>
-    </form>
+    <div th:if="${toggle == 1}">
+        <form action="/loginButton" method="get">
+            <button class="aboveHeaderItem">Log ind</button>
+        </form>
+    </div>
+
+    <div th:if="${toggle == 0}">
+        <form action="/logBrugerUd" method="get">
+            <button class="aboveHeaderItem">Log ud</button>
+        </form>
+    </div>
 </div>
+
+
 
 <div id="headerDiv">
     <h1><a href="/">Bilabonnements admin system</a></h1>

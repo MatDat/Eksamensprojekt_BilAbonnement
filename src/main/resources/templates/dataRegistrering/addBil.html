@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
+</head>
+<body>
+
+<h1>Tilføj en ny bil</h1>
+
+<div id="addBilFormDiv">
+    <form action="/" method="post">
+
+        <table>
+            <tr>
+                <td><label class="addBilLabel">Tilføj stelnummer: </label></td>
+                <td><input class="addBilFormInput" type="text" name="stelnummer" placeholder="Indtast her..."></td>
+            </tr>
+
+            <tr>
+                <td><label class="addBilLabel">Tilføj stålpris: </label></td>
+                <td><input class="addBilFormInput" type="text" name="stålpris" placeholder="Indtast her..."></td>
+            </tr>
+
+            <tr>
+                <td><label class="addBilLabel">Tilføj registreringspris: </label></td>
+                <td><input class="addBilFormInput" type="text" name="registreringspris" placeholder="Indtast her...">
+                </td>
+            </tr>
+
+            <tr>
+                <td><label class="addBilLabel">Tilføj Co2-udledning: </label></td>
+                <td><input class="addBilFormInput" type="text" name="co2-udledning" placeholder="Indtast her..."></td>
+            </tr>
+
+            <tr>
+                <td><label class="addBilLabel">Vælg bil mærke: </label></td>
+                <td>
+                    <select class="addBilFormInput" name="maerke">
+                        <option value="Vælg">Vælg her...</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Mercedes">Mercedes</option>
+                        <option value="Audi">Audi</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label class="addBilLabel">Vælg model: </label></td>
+                <td>
+                    <select class="addBilFormInput" name="model">
+                        <option value="eks1">eks1</option>
+                        <option value="eks2">eks2</option>
+                        <option value="eks3">eks3</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label class="addBilLabel">Bil tilstand: </label></td>
+                <td>
+                    <select class="addBilFormInput" name="model">
+                        <option value="input1">Ledig</option>
+                        <option value="input2">Reserveret</option>
+                        <option value="input3">Skadet</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <input class="addBilFormSubmit" type="submit" value="Opret bil">
+
+    </form>
+
+</div>
+
+<div id="annullerButtonAddBilDiv">
+    <form action="/" method="get">
+        <button class="annullerButtonAddBil" type="submit">Tilbage til forsiden</button>
+    </form>
+</div>
+
+</body>
+</html>
