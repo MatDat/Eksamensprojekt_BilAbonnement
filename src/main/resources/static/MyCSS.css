@@ -8,6 +8,7 @@ a{
     text-decoration:none;
 }
 #aboveHeaderDiv {
+    /*width:100%;*/
     height: auto;
     display: flex;
     padding: 5px 20px 5px 20px;
@@ -117,7 +118,42 @@ h1{
     text-align: center;
 }
 
-
+/* ADD BILL-SIDE CSS*/
+#addBilFormDiv{
+    background-color: #144164;
+    padding:80px;
+    color:white;
+    justify-content: center;
+    display: flex;
+}
+.addBilLabel{
+    margin-right:50px;
+}
+.addBilFormInput{
+    background-color: #BBD9EE;
+    border: 1px solid white;
+    padding:5px 8px;
+}
+#annullerButtonAddBilDiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #641419;
+    padding:10px 0px;
+}
+.annullerButtonAddBil{
+    padding:10px 25px;
+    width:100%;
+    border: 1px solid #641419;
+    background-color: #641419;
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.annullerButtonAddBil:hover{
+    border: 1px solid white;
+    transition: 0.5s;
+}
 
 
 
