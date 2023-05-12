@@ -33,13 +33,15 @@
     <br>
     <!--    MAN SKAL KUNNE SE LISTE AF UAFSLUTTEDE RAPPORTER-->
 <!--      Man skal ikke behøve at skrive rapport ID-->
-      <input type="hidden" name="skaderapport_id" th:value="${srID}" />
+      <input type="hidden" name="vognnummer" th:value="${vognnummer}" />
 <!--      <label for="skaderapport_id">Skaderapport ID: </label>-->
 <!--    <input type="text" id="skaderapport_id" name="skaderapport_id" placeholder="skaderapport_id">-->
     <input type="submit" value="SUBMIT">
   </form>
 
-  <a th:href="@{'/'}">
-      <button>Afslut rapport</button></a>
+
+      <form action="afslutRapport" method="post">
+          <input type="submit" value="Afslut rapport">
+      </form>
 </body>
 </html>
