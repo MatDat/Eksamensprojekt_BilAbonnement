@@ -3,6 +3,10 @@
     padding:0;
     margin:0;
 }
+a{
+    color: #144164;
+    text-decoration:none;
+}
 #aboveHeaderDiv {
     height: auto;
     display: flex;
@@ -46,7 +50,7 @@ h1{
 #bodyDiv{
     justify-content: space-evenly;
     display:flex;
-    background-color: #206BA4;
+    background-color: #144164;
 }
 .c2aDiv1 {
     background-image: url("img/c2a1-test(1).jpg");
@@ -69,6 +73,7 @@ h1{
 .c2aDivInner{
     background-color: rgb(255,255,255, 0);
     padding: 90px 100px;
+    background-size: cover;
 
 }
 .c2aButton {
@@ -78,6 +83,7 @@ h1{
     text-transform: uppercase;
     padding: 200px 30px;
     color:white;
+    cursor: pointer;
 }
 .c2aButton:hover{
     background-color: rgb(13,42,64, 0.9);
