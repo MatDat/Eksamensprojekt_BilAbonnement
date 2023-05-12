@@ -30,4 +30,11 @@ public class SkadeService {
         return skadeRepo.hentSkader(skaderapport_id);
     }
 
+    public int hentSkaderapportIDFraKontraktID(int kontrakt_id) {
+        return skadeRepo.hentSkaderapportIDFraKontraktID(kontrakt_id);
+    }
+
+    public boolean bilErSkadet(int skaderapport_id) {
+        return skadeRepo.bilErSkadet(skaderapport_id);
+    }
 }

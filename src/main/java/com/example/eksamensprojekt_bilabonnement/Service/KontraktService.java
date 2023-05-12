@@ -135,4 +135,8 @@ public class KontraktService {
         }
         return false;
     }
+
+    public List<Integer> hentKontraktIDFraVognnummer(int vognnummer) {
+        return kontraktRepo.hentKontraktIDFraVognnummer(vognnummer);
+    }
 }

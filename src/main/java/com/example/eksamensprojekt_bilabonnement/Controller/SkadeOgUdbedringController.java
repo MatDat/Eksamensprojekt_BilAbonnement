@@ -1,9 +1,11 @@
 package com.example.eksamensprojekt_bilabonnement.Controller;
 
 import com.example.eksamensprojekt_bilabonnement.Model.Bil;
+import com.example.eksamensprojekt_bilabonnement.Model.BilTilstand;
 import com.example.eksamensprojekt_bilabonnement.Model.Skade;
 import com.example.eksamensprojekt_bilabonnement.Model.Skaderapport;
 import com.example.eksamensprojekt_bilabonnement.Service.BilService;
+import com.example.eksamensprojekt_bilabonnement.Service.KontraktService;
 import com.example.eksamensprojekt_bilabonnement.Service.SkadeService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class SkadeOgUdbedringController {
     @Autowired
     SkadeService skadeService;
 
+    @Autowired
+    KontraktService kontraktService;
+
     @PostMapping("bilerKlarTilRapport")
     public String printBilerKlarTilSkadesRapport(@ModelAttribute Bil bil, Model model) {
 
@@ -39,12 +44,16 @@ public class SkadeOgUdbedringController {
     }
 
     @PostMapping("/indsendRapportForm")
-    public String indsendRapportForm(@ModelAttribute Skaderapport skaderapport, Model model) { //Vi får vognnummer med fra html i hidden form
-        int skaderapport_id = skadeService.hentSkaderapporter().size() + 2; //Der står +2 da listen starter fra 1 og
-        // ikke 0. Den går ud fra den nuværende størrelse og ikke størrelsen med rapporten du er igang med at tilføje
+    public String indsendRapportForm(@ModelAttribute Skaderapport skaderapport, Model model, WebRequest wr) { //Vi får vognnummer med fra html i hidden form
 
-        model.addAttribute("srID", skaderapport_id);
+
+        List<Integer> kontrakt_ider = kontraktService.hentKontraktIDFraVognnummer(Integer.valueOf(wr.getParameter("vognnummer")));
+        skaderapport.setKontrakt_id(kontrakt_ider.get(0));
+
+
         skadeService.nySkadeRapport(skaderapport);
+
+        model.addAttribute("vognnummer",Integer.valueOf(wr.getParameter("vognnummer")));
 
 //        FIXME: Hvis man trykker afslut rapport uden at have trykke submit først så bliver skaden ikke oprettet.
 
@@ -52,11 +61,15 @@ public class SkadeOgUdbedringController {
     }
 
     @PostMapping("/opretSkade")
-    public String opretSkade(@ModelAttribute Skade skade, Model model) { //Vi får vognnummer med fra html i hidden form
+    public String opretSkade(@ModelAttribute Skade skade, Model model, WebRequest wr) { //Vi får vognnummer med fra html i hidden form
 
-        //Her giver vi igen rapport ID, og det er +1 nu i stedet for +2 da listen ER blevet oprettet.
-        int skaderapport_id = skadeService.hentSkaderapporter().size() + 1;
-        model.addAttribute("srID", skaderapport_id);
+        //hidden vognnumer skal bruges her
+
+        int vognnummer = Integer.valueOf(wr.getParameter("vognnummer"));
+
+        List<Integer> kontrakt_ider = kontraktService.hentKontraktIDFraVognnummer(vognnummer);
+        skade.setSkaderapport_id(skadeService.hentSkaderapportIDFraKontraktID(kontrakt_ider.get(0)));
+
 
         skadeService.nySkade(skade);
 
@@ -64,7 +77,31 @@ public class SkadeOgUdbedringController {
         List<Skade> skader = skadeService.hentSkader(skade.getSkaderapport_id());
         model.addAttribute("skader", skader);
 
+        model.addAttribute("vognnummer", vognnummer);
+
         return "skadeOgUdbedring/opretSkade";
     }
+
+
+    @PostMapping("afslutRapport")
+    public String afslutRapport(WebRequest wr) {  //TODO: HVOR FOR VI SKADERAPPORT_ID FRA? OG HVOR FÅR VI VOGNNUMMER FRA?
+        int vognnummer = Integer.valueOf(wr.getParameter("vognnummer"));
+        List<Integer> kontrakt_ider = kontraktService.hentKontraktIDFraVognnummer(vognnummer);
+        int skaderapport_id = skadeService.hentSkaderapportIDFraKontraktID(kontrakt_ider.get(0));
+
+        if (skadeService.bilErSkadet(skaderapport_id)) {
+            bilService.opdaterBilTilstand(BilTilstand.SKADET, vognnummer);
+        } else {
+            bilService.opdaterBilTilstand(BilTilstand.LEJEKLAR, vognnummer);
+        }
+        return "home/index";
+    }
+
+
+    // TODO: Metode hvor uafsluttede rapporter bliver printet: Metoden skal tjekke bilen som høre til den rapports
+    // tilstand, hvis tilstanden er rapportklar skal den vises, alt andet så skal den ikke. Når man så trykker afslut
+    // rapport skal bilens tilstand jo også ændres til klar til leje ellet whatever, noget andet i hvert fald
+
+
 
 }

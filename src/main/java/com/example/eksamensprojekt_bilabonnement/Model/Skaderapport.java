@@ -3,19 +3,17 @@ package com.example.eksamensprojekt_bilabonnement.Model;
 public class Skaderapport {
     private int skaderapport_id;
     private String skaderapport_dato; //FIXME: SKULLE DEN HER VÆRE DATE ELLER STRING?
-    private int kunde_id;
-    private int vognnummer;
+    private int kontrakt_id;
     private int bruger_id;
 
     public Skaderapport() {
 
     }
 
-    public Skaderapport(int skaderapport_id, String skaderapport_dato, int kunde_id, int vognnummer, int bruger_id) {
+    public Skaderapport(int skaderapport_id, String skaderapport_dato, int kunde_id, int kontrakt_id, int bruger_id) {
         this.skaderapport_id = skaderapport_id;
         this.skaderapport_dato = skaderapport_dato;
-        this.kunde_id = kunde_id;
-        this.vognnummer = vognnummer;
+        this.kontrakt_id = kontrakt_id;
         this.bruger_id = bruger_id;
     }
 
@@ -35,20 +33,13 @@ public class Skaderapport {
         this.skaderapport_dato = skaderapport_dato;
     }
 
-    public int getKunde_id() {
-        return kunde_id;
+
+    public int getKontrakt_id() {
+        return kontrakt_id;
     }
 
-    public void setKunde_id(int kunde_id) {
-        this.kunde_id = kunde_id;
-    }
-
-    public int getVognnummer() {
-        return vognnummer;
-    }
-
-    public void setVognnummer(int vognnummer) {
-        this.vognnummer = vognnummer;
+    public void setKontrakt_id(int kontrakt_id) {
+        this.kontrakt_id = kontrakt_id;
     }
 
     public int getBruger_id() {
