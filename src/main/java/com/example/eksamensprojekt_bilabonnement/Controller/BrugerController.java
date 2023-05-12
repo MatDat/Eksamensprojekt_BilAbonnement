@@ -21,7 +21,7 @@ public class BrugerController {
 
 
     @GetMapping("adminSide")
-    public String adminSide(Model model, HttpSession session){
+    public String adminSide(Model model){
         List<Bruger> brugerListe = brugerService.hentBrugerListe();
         model.addAttribute("brugerListe", brugerListe);
         return "bruger/brugerliste";
@@ -45,23 +45,23 @@ public class BrugerController {
 
 
     @PostMapping("loginBruger")
-    public String logBrugerInd(@ModelAttribute Bruger bruger, HttpSession session) {
-        if (brugerService.loginBruger(bruger)){
+    public String logBrugerInd(@ModelAttribute Bruger bruger, HttpSession session, Model model) {
+        if (brugerService.loginBruger(bruger)) {
             session.setAttribute("bruger", bruger);
-            Bruger bTemp = (Bruger) session.getAttribute("bruger");
-//            System.out.println("Bruger id: " + bTemp.getBruger_id() + "\nBrugernavn: "
-//                    + bTemp.getBrugernavn() + "\nkode:  " + bTemp.getKode());     // UDSKRIFT TIL KONSOL
             return "redirect:/";
-        }else {
+        } else {
+
             return "bruger/loginFejl";
         }
     }
 
     @GetMapping("logBrugerUd")
-    public String logBrugerUd(HttpSession session) {
+    public String logBrugerUd(HttpSession session, Model model) {
         session.removeAttribute("bruger");
         return "redirect:/";
     }
+
+
 
     @PostMapping("opretBruger")
     public String opretBruger(@ModelAttribute Bruger bruger, HttpSession session) {
