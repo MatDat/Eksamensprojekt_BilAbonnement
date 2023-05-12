@@ -37,7 +37,7 @@ public class SkadeOgUdbedringController {
 
     @GetMapping("/rapportForm/{vognnummer}")
     public String rapportForm(@PathVariable ("vognnummer") int vognnummer, Model model) {
-        model.addAttribute("vn", vognnummer);
+        model.addAttribute("vognnummer", vognnummer);
         //TODO: Tjek om rapport allerede findes med det valgte vognnummer??
 
         return "skadeOgUdbedring/rapportForm";
@@ -54,6 +54,7 @@ public class SkadeOgUdbedringController {
         skadeService.nySkadeRapport(skaderapport);
 
         model.addAttribute("vognnummer",Integer.valueOf(wr.getParameter("vognnummer")));
+
 
 //        FIXME: Hvis man trykker afslut rapport uden at have trykke submit først så bliver skaden ikke oprettet.
 
@@ -77,14 +78,16 @@ public class SkadeOgUdbedringController {
         List<Skade> skader = skadeService.hentSkader(skade.getSkaderapport_id());
         model.addAttribute("skader", skader);
 
+
         model.addAttribute("vognnummer", vognnummer);
+
 
         return "skadeOgUdbedring/opretSkade";
     }
 
 
-    @PostMapping("afslutRapport")
-    public String afslutRapport(WebRequest wr) {  //TODO: HVOR FOR VI SKADERAPPORT_ID FRA? OG HVOR FÅR VI VOGNNUMMER FRA?
+    @PostMapping("/afslutRapport")
+    public String afslutRapport(WebRequest wr) {  //TODO: VOGNNUMMER WWWWTTTTTFFFFF?
         int vognnummer = Integer.valueOf(wr.getParameter("vognnummer"));
         List<Integer> kontrakt_ider = kontraktService.hentKontraktIDFraVognnummer(vognnummer);
         int skaderapport_id = skadeService.hentSkaderapportIDFraKontraktID(kontrakt_ider.get(0));

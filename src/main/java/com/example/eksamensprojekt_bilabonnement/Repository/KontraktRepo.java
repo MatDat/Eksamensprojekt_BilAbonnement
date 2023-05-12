@@ -49,7 +49,7 @@ public class KontraktRepo {
 
     public List<Integer> hentKontraktIDFraVognnummer(int vognnummer) {
         String sql = "SELECT kontrakt_id FROM kontrakt WHERE vognnummer = ? AND " +
-                "slut_dato < CURDATE() ORDER BY slut_dato DESC";
+                "slut_dato <= CURDATE() ORDER BY slut_dato DESC";
 
 
         List<Integer> vns = template.queryForList(sql, Integer.class, vognnummer);
