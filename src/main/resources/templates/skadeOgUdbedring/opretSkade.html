@@ -33,7 +33,8 @@
     <br>
     <!--    MAN SKAL KUNNE SE LISTE AF UAFSLUTTEDE RAPPORTER-->
 <!--      Man skal ikke behøve at skrive rapport ID-->
-      <input type="hidden" name="vognnummer" th:value="${vognnummer}" />
+      <input type="hidden" name="vognnummer2a" th:value="${vognnummer2a}" />
+      <input type="hidden" name="vognnummer2b" th:value="${vognnummer2b}" />
 
 
 <!--      <label for="skaderapport_id">Skaderapport ID: </label>-->
@@ -43,6 +44,8 @@
 
 
       <form action="/afslutRapport" method="post">
+          <input type="hidden" name="vognnummer2b" th:value="${vognnummer2b}">
+          <input type="hidden" name="vognnummer2a" th:value="${vognnummer2a}">
           <input type="submit" value="Afslut rapport">
       </form>
 </body>
