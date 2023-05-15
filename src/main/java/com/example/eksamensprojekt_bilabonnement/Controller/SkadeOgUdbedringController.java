@@ -28,7 +28,7 @@ public class SkadeOgUdbedringController {
     KontraktService kontraktService;
 
     @PostMapping("bilerKlarTilRapport")
-    public String printBilerKlarTilSkadesRapport(@ModelAttribute Bil bil, Model model) {
+    public String printBilerKlarTilSkadesRapport(Model model) {
 
         List<Bil> biler = bilService.hentBiler();
         model.addAttribute("biler", biler);
@@ -105,6 +105,11 @@ public class SkadeOgUdbedringController {
     // tilstand, hvis tilstanden er rapportklar skal den vises, alt andet så skal den ikke. Når man så trykker afslut
     // rapport skal bilens tilstand jo også ændres til klar til leje ellet whatever, noget andet i hvert fald
 
-
-
+    @GetMapping("printRapporter")
+    public String printRapporter(Model model) {
+        //Her modtager vi en liste over alle skaderapporter, som vi skal print
+        List<Skaderapport> skaderapporter = skadeService.hentSkaderapporter();
+        model.addAttribute("skaderapporter", skaderapporter);
+        return "skadeOgUdbedring/printRapporter";
+    }
 }
