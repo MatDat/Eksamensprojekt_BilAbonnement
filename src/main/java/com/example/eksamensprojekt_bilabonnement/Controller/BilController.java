@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class BilController {
@@ -23,5 +24,11 @@ public class BilController {
     @GetMapping("addBilSide")
     public String addBilSide(@ModelAttribute Bil bil){
         return "dataregistrering/addBil";
+    }
+
+    @PostMapping("opretBil")
+    public String opretBil(){
+
+        return "home/index";
     }
 }
