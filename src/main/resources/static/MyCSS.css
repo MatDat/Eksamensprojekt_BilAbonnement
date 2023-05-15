@@ -38,6 +38,31 @@ h1{
     text-align: center;
     padding:40px 0 40px 0;
 }
+.menuBoxDiv{
+    width: 100%;
+    padding: 15px 0px;
+    background-color: #144164;
+    display: flex;
+    justify-content: center;
+}
+.menuBoxDiv:nth-child(odd){
+    width: 100%;
+    padding: 15px 0px;
+    background-color: #10334f;
+    display: flex;
+    justify-content: center;
+}
+.menuPageItem{
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: white;
+    font-size: 25px;
+    padding: 30px 120px;
+    cursor: pointer;
+}
+.menuPageItem:hover{
+    border: 1px solid white;
+}
 #statusBar{
     width:100%;
     padding: 15px 0 15px 0;
