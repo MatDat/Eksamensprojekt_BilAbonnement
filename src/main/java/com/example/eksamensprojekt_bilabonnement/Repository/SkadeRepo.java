@@ -50,12 +50,14 @@ public class SkadeRepo {
     }
 
     public boolean bilErSkadet(int skaderapport_id) {
+        String sql = "SELECT * FROM skade WHERE skaderapport_id = ?";
+        RowMapper<Skade> rowMapper = new BeanPropertyRowMapper(Skade.class);
+
         try {
-            String sql = "SELECT * FROM skade WHERE skaderapport_id = ?";
-            RowMapper<Skade> rowMapper = new BeanPropertyRowMapper(Skade.class);
-            template.query(sql, rowMapper, skaderapport_id);
+            List<Skade> test = template.query(sql, rowMapper, skaderapport_id);
+            System.out.println(test.get(0));
             return true;
-        } catch (EmptyResultDataAccessException e) {
+        } catch (IndexOutOfBoundsException e) {
             return false;
         }
     }

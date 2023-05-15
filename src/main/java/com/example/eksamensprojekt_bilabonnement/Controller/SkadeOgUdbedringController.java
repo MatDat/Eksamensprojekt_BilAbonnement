@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class SkadeOgUdbedringController {
@@ -37,7 +38,7 @@ public class SkadeOgUdbedringController {
 
     @GetMapping("/rapportForm/{vognnummer}")
     public String rapportForm(@PathVariable ("vognnummer") int vognnummer, Model model) {
-        model.addAttribute("vognnummer", vognnummer);
+        model.addAttribute("vognnummer1", vognnummer);
         //TODO: Tjek om rapport allerede findes med det valgte vognnummer??
 
         return "skadeOgUdbedring/rapportForm";
@@ -46,14 +47,16 @@ public class SkadeOgUdbedringController {
     @PostMapping("/indsendRapportForm")
     public String indsendRapportForm(@ModelAttribute Skaderapport skaderapport, Model model, WebRequest wr) { //Vi får vognnummer med fra html i hidden form
 
+        int vognnummer2a =Integer.parseInt(wr.getParameter("vognnummer1"));
 
-        List<Integer> kontrakt_ider = kontraktService.hentKontraktIDFraVognnummer(Integer.valueOf(wr.getParameter("vognnummer")));
+        List<Integer> kontrakt_ider = kontraktService.hentKontraktIDFraVognnummer(vognnummer2a);
         skaderapport.setKontrakt_id(kontrakt_ider.get(0));
 
 
         skadeService.nySkadeRapport(skaderapport);
 
-        model.addAttribute("vognnummer",Integer.valueOf(wr.getParameter("vognnummer")));
+        model.addAttribute("vognnummer2a",vognnummer2a);
+
 
 
 //        FIXME: Hvis man trykker afslut rapport uden at have trykke submit først så bliver skaden ikke oprettet.
@@ -64,11 +67,11 @@ public class SkadeOgUdbedringController {
     @PostMapping("/opretSkade")
     public String opretSkade(@ModelAttribute Skade skade, Model model, WebRequest wr) { //Vi får vognnummer med fra html i hidden form
 
-        //hidden vognnumer skal bruges her
 
-        int vognnummer = Integer.valueOf(wr.getParameter("vognnummer"));
 
-        List<Integer> kontrakt_ider = kontraktService.hentKontraktIDFraVognnummer(vognnummer);
+        int vognnummer2b = Integer.parseInt(wr.getParameter("vognnummer2a"));
+
+        List<Integer> kontrakt_ider = kontraktService.hentKontraktIDFraVognnummer(vognnummer2b);
         skade.setSkaderapport_id(skadeService.hentSkaderapportIDFraKontraktID(kontrakt_ider.get(0)));
 
 
@@ -79,7 +82,9 @@ public class SkadeOgUdbedringController {
         model.addAttribute("skader", skader);
 
 
-        model.addAttribute("vognnummer", vognnummer);
+        model.addAttribute("vognnummer2b", vognnummer2b);
+
+        System.out.println(vognnummer2b);
 
 
         return "skadeOgUdbedring/opretSkade";
@@ -88,7 +93,20 @@ public class SkadeOgUdbedringController {
 
     @PostMapping("/afslutRapport")
     public String afslutRapport(WebRequest wr) {  //TODO: VOGNNUMMER WWWWTTTTTFFFFF?
-        int vognnummer = Integer.valueOf(wr.getParameter("vognnummer"));
+
+        int vognnummer;
+
+        if(wr.getParameter("vognnummer2a") != null){
+            vognnummer = Integer.parseInt(wr.getParameter("vognnummer2a"));
+        }else{
+            vognnummer = Integer.parseInt(wr.getParameter("vognnummer2b"));
+        }
+
+
+
+
+
+
         List<Integer> kontrakt_ider = kontraktService.hentKontraktIDFraVognnummer(vognnummer);
         int skaderapport_id = skadeService.hentSkaderapportIDFraKontraktID(kontrakt_ider.get(0));
 
