@@ -31,7 +31,7 @@ public class SkadeOgUdbedringController {
     @PostMapping("bilerKlarTilRapport")
     public String printBilerKlarTilSkadesRapport(@ModelAttribute Bil bil, Model model) {
 
-        List<Bil> biler = bilService.hentBiler();
+        List<Bil> biler = bilService.hentBilerMedTilstand("RAPPORTKLAR");
         model.addAttribute("biler", biler);
         return "skadeOgUdbedring/bilerKlarTilRapport";
     }
@@ -68,10 +68,17 @@ public class SkadeOgUdbedringController {
     public String opretSkade(@ModelAttribute Skade skade, Model model, WebRequest wr) { //Vi får vognnummer med fra html i hidden form
 
 
+        int vognnummer;
 
-        int vognnummer2b = Integer.parseInt(wr.getParameter("vognnummer2a"));
+        if(wr.getParameter("vognnummer2b") != null && !wr.getParameter("vognnummer2b").equals("")){
+            vognnummer = Integer.parseInt(wr.getParameter("vognnummer2b"));
+        }else{
+            vognnummer = Integer.parseInt(wr.getParameter("vognnummer2a"));
+        }
 
-        List<Integer> kontrakt_ider = kontraktService.hentKontraktIDFraVognnummer(vognnummer2b);
+//        int vognnummer2b = Integer.parseInt(wr.getParameter("vognnummer2a"));
+
+        List<Integer> kontrakt_ider = kontraktService.hentKontraktIDFraVognnummer(vognnummer);
         skade.setSkaderapport_id(skadeService.hentSkaderapportIDFraKontraktID(kontrakt_ider.get(0)));
 
 
@@ -82,9 +89,9 @@ public class SkadeOgUdbedringController {
         model.addAttribute("skader", skader);
 
 
-        model.addAttribute("vognnummer2b", vognnummer2b);
+        model.addAttribute("vognnummer2b", vognnummer);
 
-        System.out.println(vognnummer2b);
+//        System.out.println(vognnummer);
 
 
         return "skadeOgUdbedring/opretSkade";
@@ -96,7 +103,7 @@ public class SkadeOgUdbedringController {
 
         int vognnummer;
 
-        if(wr.getParameter("vognnummer2a") != null){
+        if(wr.getParameter("vognnummer2a") != null && !wr.getParameter("vognnummer2a").equals("")){
             vognnummer = Integer.parseInt(wr.getParameter("vognnummer2a"));
         }else{
             vognnummer = Integer.parseInt(wr.getParameter("vognnummer2b"));
