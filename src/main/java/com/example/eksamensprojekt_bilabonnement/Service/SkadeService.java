@@ -26,6 +26,11 @@ public class SkadeService {
         return skadeRepo.hentSkaderapporter();
     }
 
+    public List<Skaderapport> hentSkaderapporterSORT(String sortering) {
+        return skadeRepo.hentSkaderapporterSORT(sortering);
+    }
+
+
     public List<Skade> hentSkader(int skaderapport_id) {
         return skadeRepo.hentSkader(skaderapport_id);
     }

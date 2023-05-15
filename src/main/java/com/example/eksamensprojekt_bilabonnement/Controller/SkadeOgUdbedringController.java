@@ -123,11 +123,29 @@ public class SkadeOgUdbedringController {
     // tilstand, hvis tilstanden er rapportklar skal den vises, alt andet så skal den ikke. Når man så trykker afslut
     // rapport skal bilens tilstand jo også ændres til klar til leje ellet whatever, noget andet i hvert fald
 
-    @GetMapping("printRapporter")
-    public String printRapporter(Model model) {
+    @PostMapping("printRapporter") //fejl med sortMuligheder
+    public String printRapporter() {
+        return "skadeOgUdbedring/printRapporter";
+    }
+
+    @PostMapping("printRapporterSORT") //TODO: Skal have tilføjet nogle skadesrapporter så man kan sortere
+    public String printRapporter(@RequestParam("sortMuligheder") String selectedOption, Model model) {
         //Her modtager vi en liste over alle skaderapporter, som vi skal print
         List<Skaderapport> skaderapporter = skadeService.hentSkaderapporter();
         model.addAttribute("skaderapporter", skaderapporter);
+
+        // Lav switch med hvordan man vil sortere
+        switch (selectedOption) { //De her virker
+            case "ID" -> {
+                //Sorter efter ID
+                skadeService.hentSkaderapporterSORT("ID");
+            }
+            case "dato" -> System.out.println("dato");
+            case "bruger_id" -> System.out.println("bruger_id");
+            case "kontrakt_id" -> System.out.println("kontrakt_id");
+        }
         return "skadeOgUdbedring/printRapporter";
     }
+
+
 }

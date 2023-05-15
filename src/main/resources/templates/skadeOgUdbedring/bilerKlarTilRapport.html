@@ -30,8 +30,9 @@
 <!--        Man kunne evt. bare lave en ny liste til højre for de biler der er klar til rapport som viser de uafsluttede -->
 
 <div>
-    <a th:href="@{'/printRapporter'}">
-        <input type="submit" value="Se rapporter"></a>
+    <form action="printRapporter" method="post">
+        <input type="submit" value="Se rapporter">
+    </form>
 </div>
 
 </body>
