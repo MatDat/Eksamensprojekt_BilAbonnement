@@ -14,11 +14,7 @@ public class BilRepo {
     @Autowired
     JdbcTemplate template;
 
-    public List<Bil> hentBiler() {
-        String sql = "SELECT * FROM bilabonnementdb.bil WHERE bil_tilstand = 'RAPPORTKLAR'";
-        RowMapper<Bil> rowMapper = new BeanPropertyRowMapper<>(Bil.class);
-        return template.query(sql, rowMapper);
-    }
+
 
     public List<Bil> hentAlleBiler() {
         String sql = "SELECT * FROM bilabonnementDB.bil, bilabonnementDB.model, bilabonnementDB.maerke " +

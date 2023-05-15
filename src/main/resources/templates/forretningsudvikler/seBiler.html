@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/MyCSS.css">
+    <style>
+        .seBilerPageBox{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    </style>
 </head>
 <body>
-
+<div class="seBilerPageBox">
 <div>
     <form th:action="@{/seBilerDropdown}" method="post">
         <select name="dropdown">
@@ -67,21 +74,25 @@
     </table>
 </div>
 
-<div th:if="${toggle == 1}">
-    <h4>Pris for nuværende udlejede bilers kontrakter</h4>
-    <p>sum: <span th:text="${#aggregates.sum(priser)}"/> DKK</p>
-    <p>gennemsnit pr. bil: <span th:text="${#aggregates.avg(priser)}"/> DKK</p>
-</div>
+<div class="statBoxContainer">
 
-<div>
-    <h4>Stålpris for viste biler</h4>
-    <p>sum: <span th:text="${#aggregates.sum(staalpriser)}"/> DKK</p>
-    <p>gennemsnit pr. bil: <span th:text="${#aggregates.avg(staalpriser)}"/> DKK</p>
+    <div class="statBox" th:if="${toggle == 1}">
+        <h4>Pris for nuværende udlejede bilers kontrakter</h4>
+        <p>sum: <span th:text="${#aggregates.sum(priser)}"/> DKK</p>
+        <p>gennemsnit pr. bil: <span th:text="${#aggregates.avg(priser)}"/> DKK</p>
+    </div>
+
+    <div class="statBox">
+        <h4>Stålpris for viste biler</h4>
+        <p>sum: <span th:text="${#aggregates.sum(staalpriser)}"/> DKK</p>
+        <p>gennemsnit pr. bil: <span th:text="${#aggregates.avg(staalpriser)}"/> DKK</p>
+    </div>
+    <div class="statBox">
+        <h4>Co2 udledning for viste biler</h4>
+        <p>sum: <span th:text="${#aggregates.sum(co2)}"/> g/km</p>
+        <p>gennemsnit pr. bil: <span th:text="${#aggregates.avg(co2)}"/> g/km</p>
+    </div>
 </div>
-<div>
-    <h4>Co2 udledning for viste biler</h4>
-    <p>sum: <span th:text="${#aggregates.sum(co2)}"/> g/km</p>
-    <p>gennemsnit pr. bil: <span th:text="${#aggregates.avg(co2)}"/> g/km</p>
 </div>
 
 </body>
