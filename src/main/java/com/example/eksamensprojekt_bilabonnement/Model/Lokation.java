@@ -1,6 +1,6 @@
 package com.example.eksamensprojekt_bilabonnement.Model;
 
-public class Lokation {
+public class Lokation {//COMMENT
     private int lokation_id;
     private String adresse;
     private String lokation_navn;

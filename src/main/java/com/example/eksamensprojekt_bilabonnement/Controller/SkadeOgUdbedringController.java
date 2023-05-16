@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Controller
-public class SkadeOgUdbedringController {
+public class SkadeOgUdbedringController {//COMMENT
 
     @Autowired
     BilService bilService;

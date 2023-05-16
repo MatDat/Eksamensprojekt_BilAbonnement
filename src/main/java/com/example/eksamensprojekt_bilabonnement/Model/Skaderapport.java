@@ -1,6 +1,6 @@
 package com.example.eksamensprojekt_bilabonnement.Model;
 
-public class Skaderapport {
+public class Skaderapport {//COMMENT
     private int skaderapport_id;
     private String skaderapport_dato; //FIXME: SKULLE DEN HER VÆRE DATE ELLER STRING?
     private int kontrakt_id;

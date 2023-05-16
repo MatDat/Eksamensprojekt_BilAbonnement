@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class SkadeRepo {
+public class SkadeRepo {//COMMENT
 
     @Autowired
     JdbcTemplate template;

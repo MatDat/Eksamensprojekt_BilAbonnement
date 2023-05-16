@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BrugerRepo {
+public class BrugerRepo {//COMMENT
 
     @Autowired
     JdbcTemplate template;

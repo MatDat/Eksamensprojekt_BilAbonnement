@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class KontraktService {
+public class KontraktService {//COMMENT
 
 
     @Autowired

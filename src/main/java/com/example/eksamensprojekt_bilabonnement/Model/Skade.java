@@ -1,6 +1,6 @@
 package com.example.eksamensprojekt_bilabonnement.Model;
 
-public class Skade {
+public class Skade {//COMMENT
     private int skade_id;
     private String beskrivelse;
     private double pris;
