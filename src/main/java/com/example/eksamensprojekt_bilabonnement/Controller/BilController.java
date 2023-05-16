@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class BilController {
-// COMMENT
+
     @Autowired
     BilService bilService;
 
@@ -29,6 +29,16 @@ public class BilController {
     @GetMapping("vaelgMaerkeSide")
     public String vaelgMaerkeSide(){
         return "dataregistrering/vaelgMaerke";
+    }
+
+    @GetMapping("vaelgModelSide")
+    public String vaelgModelSide(){
+        return "dataregistrering/vaelgModel";
+    }
+
+    @GetMapping("opretBilSide")
+    public String opretBilSide(){
+        return "dataregistrering/addBil";
     }
 
     @PostMapping("opretBil")
