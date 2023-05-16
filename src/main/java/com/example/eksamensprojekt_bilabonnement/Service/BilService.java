@@ -14,9 +14,7 @@ public class BilService {
     @Autowired
     BilRepo bilRepo;
 
-    public List<Bil> hentBiler() {
-        return bilRepo.hentBiler();
-    }
+
 
     public List<Bil> hentAlleBiler(){return bilRepo.hentAlleBiler();}
     public List<Bil> hentBilerMedTilstand(String tilstand){return bilRepo.hentBilerMedTilstand(tilstand);}
