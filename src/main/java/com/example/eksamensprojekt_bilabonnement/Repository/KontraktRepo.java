@@ -46,6 +46,26 @@ public class KontraktRepo {
         return rl;
 
     }
+    public Kontrakt hentKontraktMedId(int kontrakt_id){
+        String sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt_id = ?";
+        RowMapper<Kontrakt> rowmapper = new BeanPropertyRowMapper(Kontrakt.class);
+        return template.queryForObject(sql, rowmapper, kontrakt_id);
+    }
+    public List<Kontrakt> hentAlleKontrakter(){
+        String sql = "SELECT * FROM bilabonnementDB.kontrakt;";
+        RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper(Kontrakt.class);
+        return template.query(sql,rowMapper);
+    }
+    public List<Kontrakt> hentAfsluttedeKontrakter(){
+        String sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt.slut_dato < CURDATE();";
+        RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper<>(Kontrakt.class);
+        return template.query(sql, rowMapper);
+    }
+    public List<Kontrakt> hentNuvaerendeKontrakter(){
+        String sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt.slut_dato > CURDATE();";
+        RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper<>(Kontrakt.class);
+        return template.query(sql, rowMapper);
+    }
 
 
 }
