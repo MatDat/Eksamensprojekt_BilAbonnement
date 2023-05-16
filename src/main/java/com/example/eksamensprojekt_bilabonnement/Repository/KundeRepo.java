@@ -21,4 +21,9 @@ public class KundeRepo {//COMMENT
         return template.query(sql,rowMapper);
     }
 
+    public Kunde hentKundeFraId(int kunde_id){
+        String sql = "SELECT * FROM bilabonnementDB.kunde WHERE kunde_id = ?";
+        return template.queryForObject(sql, Kunde.class,kunde_id);
+    }
+
 }

@@ -16,4 +16,9 @@ public class KundeService {//COMMENT
     public List<Kunde> hentAlleKunder(){
         return kundeRepo.hentAlleKunder();
     }
+
+
+    public Kunde hentKundeFraId(int kunde_id){
+        return kundeRepo.hentKundeFraId(kunde_id);
+    }
 }

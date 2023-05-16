@@ -1,8 +1,12 @@
 package com.example.eksamensprojekt_bilabonnement.Controller;
 
 import com.example.eksamensprojekt_bilabonnement.Model.Kontrakt;
+import com.example.eksamensprojekt_bilabonnement.Model.Kunde;
+import com.example.eksamensprojekt_bilabonnement.Model.Lokation;
 import com.example.eksamensprojekt_bilabonnement.Service.DataService;
 import com.example.eksamensprojekt_bilabonnement.Service.KontraktService;
+import com.example.eksamensprojekt_bilabonnement.Service.KundeService;
+import com.example.eksamensprojekt_bilabonnement.Service.LokationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +26,12 @@ public class DataRegistreringController {
 
     @Autowired
     DataService dataService;
+
+    @Autowired
+    LokationService lokationService;
+
+    @Autowired
+    KundeService kundeService;
 
     @GetMapping("/opretLejeaftale")
     public String opretLejeaftale(@ModelAttribute Kontrakt kontrakt,Model model) {
@@ -55,6 +65,22 @@ public class DataRegistreringController {
     public String visLejeaftale(@RequestParam("kontrakt_id") int kontrakt_id, Model model){
         Kontrakt kontrakt = kontraktService.hentKontraktMedId(kontrakt_id);
         model.addAttribute("kontrakt", kontrakt);
+        return "dataregistrering/visLejeaftale";
+    }
+
+    @PostMapping("/visLejeaftalePlus")
+    public String visLejeaftalePlus(@RequestParam("kontrakt_id") int kontrakt_id, Model model){
+
+        Kontrakt kontrakt = kontraktService.hentKontraktMedId(kontrakt_id);
+        Lokation afhentningslokation = lokationService.hentLokationFraId(kontrakt.getAfhentningslokation_id());
+        Lokation afleveringslokation = lokationService.hentLokationFraId(kontrakt.getAfleveringslokation_id());
+        Kunde kunde = kundeService.hentKundeFraId(kontrakt.getKunde_id());
+
+        model.addAttribute("kontrakt",kontrakt);
+        model.addAttribute("afhentningslokation",afhentningslokation);
+        model.addAttribute("afleveringslokation",afleveringslokation);
+        model.addAttribute("kunde",kunde);
+
         return "dataregistrering/visLejeaftale";
     }
 

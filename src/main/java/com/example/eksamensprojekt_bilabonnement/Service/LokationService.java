@@ -18,4 +18,8 @@ public class LokationService {//COMMENT
     public List<Lokation> hentAlleLokationer(){
         return lokationRepo.hentAlleLokationer();
     }
+
+    public Lokation hentLokationFraId(int lokation_id){
+       return lokationRepo.hentLokationFraId(lokation_id);
+    }
 }
