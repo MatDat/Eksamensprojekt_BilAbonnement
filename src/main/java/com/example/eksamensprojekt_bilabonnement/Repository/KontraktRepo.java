@@ -1,6 +1,7 @@
 package com.example.eksamensprojekt_bilabonnement.Repository;
 
 import com.example.eksamensprojekt_bilabonnement.Model.Kontrakt;
+import com.example.eksamensprojekt_bilabonnement.Model.Skaderapport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,10 +20,10 @@ public class KontraktRepo {//COMMENT
 
     public boolean addKontrakt(Kontrakt k) {
         String sql = "INSERT INTO bilabonnementDB.kontrakt (kontrakt_id, start_dato, slut_dato, kunde_id, " +
-                "afhentningslokation_id, total_pris, afleveringslokation_id, vognnummer) VALUES (?,?,?,?,?,?,?,?)";
+                "afhentningslokation_id, total_pris, afleveringslokation_id, bruger_id,vognnummer) VALUES (?,?,?,?,?,?,?,?,?)";
         try {
             template.update(sql, k.getKontrakt_id(), k.getStart_dato(), k.getSlut_dato(), k.getKunde_id(),
-                    k.getAfhentningslokation_id(), k.getTotal_pris(), k.getAfleveringslokation_id(), k.getVognnummer());
+                    k.getAfhentningslokation_id(), k.getTotal_pris(), k.getAfleveringslokation_id(), k.getBruger_id(), k.getVognnummer());
             return true;
         } catch (Exception e) {
             System.out.println("Noget gik galt i KontraktRepo.addKontrakt(k):   " + e.getMessage());
@@ -53,6 +54,23 @@ public class KontraktRepo {//COMMENT
         return template.queryForObject(sql, rowmapper, kontrakt_id);
     }
 
+    public List<Kontrakt> hentKontrakterSORT(String sortering) {
+        String sql = "SELECT * FROM bilabonnementDB.kontrakt ORDER BY " + sortering + " ASC";
+        RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper<>(Kontrakt.class);
+        return template.query(sql, rowMapper);
+    }
+
+    public List<Kontrakt> hentKontrakter(boolean erNuværende, String sortering) {
+        String sql;
+        if (erNuværende) {
+            sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt.slut_dato <= CURDATE() ORDER BY " + sortering + " DESC";
+        } else {
+            sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt.slut_dato >= CURDATE() ORDER BY " + sortering + " DESC";
+        }
+        RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper<>(Kontrakt.class);
+        return template.query(sql, rowMapper);
+    }
+
     public List<Kontrakt> hentAlleKontrakter() {
         String sql = "SELECT * FROM bilabonnementDB.kontrakt;";
         RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper(Kontrakt.class);
@@ -60,13 +78,13 @@ public class KontraktRepo {//COMMENT
     }
 
     public List<Kontrakt> hentAfsluttedeKontrakter() {
-        String sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt.slut_dato < CURDATE();";
+        String sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt.slut_dato <= CURDATE();";
         RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper<>(Kontrakt.class);
         return template.query(sql, rowMapper);
     }
 
     public List<Kontrakt> hentNuvaerendeKontrakter() {
-        String sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt.slut_dato > CURDATE();";
+        String sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt.slut_dato >= CURDATE();";
         RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper<>(Kontrakt.class);
         return template.query(sql, rowMapper);
     }

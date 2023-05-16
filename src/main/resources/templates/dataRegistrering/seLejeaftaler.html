@@ -9,12 +9,22 @@
 <h1>Se Lejeaftaler</h1>
 <div id="lejeAftaleTopDiv">
     <form action="/seLejeaftaler" method="get">
-        <input type="submit" value="Nuværende">
-        <input type="hidden" name="toggle" value="0">
-    </form>
-    <form action="/seLejeaftaler" method="get">
-        <input type="submit" value="Afsluttede">
-        <input type="hidden" name="toggle" value="1">
+        <select name="sortMuligheder">
+            <option value="kontrakt_id">ID</option>
+            <option value="start_dato">Start Dato</option>
+            <option value="slut_dato">Slut Dato</option>
+            <option value="total_pris">Pris</option>
+        </select>
+        <!--        <input type="submit" value="Sorter">-->
+
+        <form action="/seLejeaftaler" method="get">
+            <input type="submit" value="Nuværende">
+            <input type="hidden" name="toggle" value="0">
+        </form>
+        <form action="/seLejeaftaler" method="get">
+            <input type="submit" value="Afsluttede">
+            <input type="hidden" name="toggle" value="1">
+        </form>
     </form>
 </div>
 <div>
@@ -23,13 +33,15 @@
 </div>
 <div class="kontrakt-box-container">
     <div th:each="kontrakt : ${kontraktListe}" class="kontrakt-box">
+        <p>Kontrakt ID: <span th:text="${kontrakt.kontrakt_id}"></span></p>
         <p>Start dato: <span th:text="${kontrakt.start_dato}"></span></p>
         <p>Slut dato: <span th:text="${kontrakt.slut_dato}"></span></p>
-        <p>Kunde ID: <span th:text="${kontrakt.kunde_id}"></span></p>
-            <form action="/visLejeaftale" method="post">
-                <input type="hidden" name="kontrakt_id" th:value="${kontrakt.kontrakt_id}">
-                <input type="submit" value="Se Kontrakt">
-            </form>
+        <!--        <p>Kunde ID: <span th:text="${kontrakt.kunde_id}"></span></p>-->
+        <p>Total Pris: <span th:text="${kontrakt.total_pris}"></span></p>
+        <form action="/visLejeaftale" method="post">
+            <input type="hidden" name="kontrakt_id" th:value="${kontrakt.kontrakt_id}">
+            <input type="submit" value="Se Kontrakt">
+        </form>
     </div>
 </div>
 

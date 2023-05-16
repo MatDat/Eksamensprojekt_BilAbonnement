@@ -6,6 +6,8 @@ import com.example.eksamensprojekt_bilabonnement.Repository.KontraktRepo;
 import com.example.eksamensprojekt_bilabonnement.Repository.KundeRepo;
 import com.example.eksamensprojekt_bilabonnement.Repository.LokationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -129,6 +131,12 @@ public class KontraktService {
             }
         }
         return false;
+    }
+    public List<Kontrakt> hentKontrakterSORT(String sortering) {
+        return kontraktRepo.hentKontrakterSORT(sortering);
+    }
+    public List<Kontrakt> hentKontrakter(boolean erNuværende, String sortering) {
+        return kontraktRepo.hentKontrakter(erNuværende, sortering);
     }
 
     private boolean afleveringslokationIdErValid(Kontrakt k, List<Lokation> lokationList) {

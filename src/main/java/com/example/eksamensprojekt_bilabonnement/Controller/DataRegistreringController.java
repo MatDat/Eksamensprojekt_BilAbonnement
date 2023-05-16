@@ -3,6 +3,7 @@ package com.example.eksamensprojekt_bilabonnement.Controller;
 import com.example.eksamensprojekt_bilabonnement.Model.Kontrakt;
 import com.example.eksamensprojekt_bilabonnement.Model.Kunde;
 import com.example.eksamensprojekt_bilabonnement.Model.Lokation;
+import com.example.eksamensprojekt_bilabonnement.Model.Skaderapport;
 import com.example.eksamensprojekt_bilabonnement.Service.DataService;
 import com.example.eksamensprojekt_bilabonnement.Service.KontraktService;
 import com.example.eksamensprojekt_bilabonnement.Service.KundeService;
@@ -20,7 +21,6 @@ import java.util.List;
 
 @Controller
 public class DataRegistreringController {
-//COMMENT
     @Autowired
     KontraktService kontraktService;
 
@@ -51,16 +51,31 @@ public class DataRegistreringController {
         }
         return ("dataRegistrering/dataregistrering");
     }
-    @GetMapping("/seLejeaftaler")
-    public String seLejeafaler(@RequestParam(name = "toggle", defaultValue = "0") int toggle, Model model){
-        model.addAttribute("toggle",toggle);
+    @GetMapping ("/seLejeaftaler")
+    public String seLejeafaler(@RequestParam(name = "toggle", defaultValue = "0") int toggle,
+                               @RequestParam(value = "sortMuligheder", required = false) String selectedOption, Model model){
+        model.addAttribute("toggle", toggle);
+        model.addAttribute("sortMuligheder", selectedOption);
         if (toggle == 0){
-            model.addAttribute("kontraktListe", kontraktService.hentNuvaerendeKontrakter());
+            model.addAttribute("kontraktListe", kontraktService.hentKontrakter(true, selectedOption));
         }else if (toggle == 1){
-            model.addAttribute("kontraktListe", kontraktService.hentAfsluttedeKontrakter());
+            model.addAttribute("kontraktListe", kontraktService.hentKontrakter(false, selectedOption));
         }
         return "dataregistrering/seLejeaftaler";
     }
+//    @PostMapping("/printKontrakterSORT")
+//    public String printKontrakterSORT(@RequestParam("sortMuligheder") String selectedOption, Model model) {
+//        List<Kontrakt> lejeKontrakter = null;
+//
+//        switch (selectedOption) {
+//            case "kontrakt_id" -> lejeKontrakter = kontraktService.hentKontrakterSORT("kontrakt_id");
+//            case "start_dato" -> lejeKontrakter = kontraktService.hentKontrakterSORT("start_dato");
+//            case "slut_dato" -> lejeKontrakter = kontraktService.hentKontrakterSORT("slut_dato");
+//            case "total_pris" -> lejeKontrakter = kontraktService.hentKontrakterSORT("total_pris");
+//        }
+//        model.addAttribute("kontraktListe", lejeKontrakter);
+//        return "skadeOgUdbedring/seLejeaftaler";
+//    }
     @PostMapping("/visLejeaftale")
     public String visLejeaftale(@RequestParam("kontrakt_id") int kontrakt_id, Model model){
         Kontrakt kontrakt = kontraktService.hentKontraktMedId(kontrakt_id);
@@ -80,7 +95,6 @@ public class DataRegistreringController {
         model.addAttribute("afhentningslokation",afhentningslokation);
         model.addAttribute("afleveringslokation",afleveringslokation);
         model.addAttribute("kunde",kunde);
-//hej
         return "dataregistrering/visLejeaftale";
     }
 
