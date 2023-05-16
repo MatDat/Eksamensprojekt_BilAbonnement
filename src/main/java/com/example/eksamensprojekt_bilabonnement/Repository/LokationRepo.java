@@ -21,9 +21,13 @@ public class LokationRepo {//COMMENT
         return template.query(sql,rowMapper);
     }
 
-    public Lokation hentLokationFraId(int lokation_id){
-        String sql = "SELECT * FROM bilabbonnementDB.lokation WHERE lokation_id = ?";
-        return template.queryForObject(sql, Lokation.class,lokation_id);
+    public List<Lokation> hentLokationFraId(int lokation_id){
+//        String sql = "SELECT * FROM bilabonnementDB.lokation, bilabonnementDB.postby WHERE lokation.lokation_id = ?" +
+//                " AND lokation.lokation_id = postby.lokation_id";
+        String sql = "SELECT * FROM bilabonnementDB.lokation, bilabonnementDB.postby WHERE lokation.lokation_id = ?" +
+                " AND postby.lokation_id = ?";
+        RowMapper<Lokation> rm = new BeanPropertyRowMapper<>(Lokation.class);
+        return template.query(sql, rm,lokation_id,lokation_id);
     }
 
 }

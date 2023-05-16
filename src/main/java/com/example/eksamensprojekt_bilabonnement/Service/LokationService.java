@@ -19,7 +19,7 @@ public class LokationService {//COMMENT
         return lokationRepo.hentAlleLokationer();
     }
 
-    public Lokation hentLokationFraId(int lokation_id){
+    public List<Lokation> hentLokationFraId(int lokation_id){
        return lokationRepo.hentLokationFraId(lokation_id);
     }
 }
