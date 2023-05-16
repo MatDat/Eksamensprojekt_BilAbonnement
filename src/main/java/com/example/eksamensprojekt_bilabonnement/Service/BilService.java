@@ -19,6 +19,7 @@ public class BilService {//COMMENT
 //        return bilRepo.hentBiler();
 //    }
 
+
     public List<Bil> hentAlleBiler(){return bilRepo.hentAlleBiler();}
     public List<Bil> hentBilerMedTilstand(String tilstand){return bilRepo.hentBilerMedTilstand(tilstand);}
     public List<Bil> hentBilerMedBraendstof(String braendstof){return bilRepo.hentBilerMedBraendstof(braendstof);}

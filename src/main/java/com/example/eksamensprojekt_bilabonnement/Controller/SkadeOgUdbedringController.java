@@ -99,7 +99,7 @@ public class SkadeOgUdbedringController {//COMMENT
 
 
     @PostMapping("/afslutRapport")
-    public String afslutRapport(WebRequest wr) {  //TODO: VOGNNUMMER WWWWTTTTTFFFFF?
+    public String afslutRapport(WebRequest wr) {
 
         int vognnummer;
 
