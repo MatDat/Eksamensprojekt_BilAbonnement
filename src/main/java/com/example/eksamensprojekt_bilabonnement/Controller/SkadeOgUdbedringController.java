@@ -131,26 +131,24 @@ public class SkadeOgUdbedringController {
     // rapport skal bilens tilstand jo også ændres til klar til leje ellet whatever, noget andet i hvert fald
 
     @PostMapping("printRapporter") //fejl med sortMuligheder
-    public String printRapporter() {
+    public String printRapporter(Model model) {
+        List<Skaderapport> skaderapporter = skadeService.hentSkaderapporter();
+        model.addAttribute("skaderapporter", skaderapporter);
         return "skadeOgUdbedring/printRapporter";
     }
 
     @PostMapping("printRapporterSORT") //TODO: Skal have tilføjet nogle skadesrapporter så man kan sortere
-    public String printRapporter(@RequestParam("sortMuligheder") String selectedOption, Model model) {
-        //Her modtager vi en liste over alle skaderapporter, som vi skal print
-        List<Skaderapport> skaderapporter = skadeService.hentSkaderapporter();
-        model.addAttribute("skaderapporter", skaderapporter);
+    public String printRapporterSORT(@RequestParam("sortMuligheder") String selectedOption, Model model) {
+        List<Skaderapport> skaderapporter = null;
 
         // Lav switch med hvordan man vil sortere
         switch (selectedOption) { //De her virker
-            case "ID" -> {
-                //Sorter efter ID
-                skadeService.hentSkaderapporterSORT("ID");
-            }
-            case "dato" -> System.out.println("dato");
-            case "bruger_id" -> System.out.println("bruger_id");
-            case "kontrakt_id" -> System.out.println("kontrakt_id");
+            case "skaderapport_id" -> skaderapporter = skadeService.hentSkaderapporterSORT("skaderapport_id");
+            case "skaderapport_dato" -> skaderapporter = skadeService.hentSkaderapporterSORT("skaderapport_dato");
+            case "bruger_id" -> skaderapporter = skadeService.hentSkaderapporterSORT("bruger_id");
+            case "kontrakt_id" -> skaderapporter = skadeService.hentSkaderapporterSORT("kontrakt_id");
         }
+        model.addAttribute("skaderapporter", skaderapporter);
         return "skadeOgUdbedring/printRapporter";
     }
 

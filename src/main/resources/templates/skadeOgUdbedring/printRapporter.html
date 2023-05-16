@@ -28,10 +28,10 @@
 </div>
 <div>
 
-    <form action="printRapporterSORT" method="post">
+    <form th:action="@{printRapporterSORT}" method="post">
     <select name="sortMuligheder">
-        <option value="ID">ID</option>
-        <option value="dato">Dato</option>
+        <option value="skaderapport_id">ID</option>
+        <option value="skaderapport_dato">Dato</option>
         <option value="bruger_id">Bruger ID</option>
         <option value="kontrakt_id">Kontrakt ID</option>
     </select>

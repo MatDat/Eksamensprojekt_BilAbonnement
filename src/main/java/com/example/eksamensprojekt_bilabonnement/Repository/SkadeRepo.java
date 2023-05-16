@@ -38,9 +38,10 @@ public class SkadeRepo {
     }
 
     public List<Skaderapport> hentSkaderapporterSORT(String sortering) {
-        String sql = "SELECT * FROM skaderapport ORDER BY ? DESC";
+        String sql = "SELECT * FROM skaderapport ORDER BY "+ sortering +" ASC";
         RowMapper<Skaderapport> rowMapper = new BeanPropertyRowMapper<>(Skaderapport.class);
-        return template.query(sql,rowMapper, sortering);
+
+        return template.query(sql,rowMapper);
     }
 
     public List<Skade> hentSkader(int skaderapport_id) {
