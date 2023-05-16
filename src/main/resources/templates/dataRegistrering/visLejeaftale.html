@@ -9,5 +9,20 @@
 <h1>Lejeaftale</h1>
 <p>Kontrakt_id:</p>
 <p> <span th:text="${kontrakt.kontrakt_id}"></span></p>
+
+<div>
+    <p>kunde navn: <span th:text="${kunde.fornavn}"></span></p>
+    <p>kunde navn: <span th:text="${kunde.efternavn}"></span></p>
+    <p>Start dato: <span th:text="${kontrakt.start_dato}"></span></p>
+    <p>Slut dato: <span th:text="${kontrakt.slut_dato}"></span></p>
+    <p>afl lok: <span th:text="${afleveringslokation.lokation_navn}"></span></p>
+    <p>aft lok: <span th:text="${afhentningslokation.lokation_navn}"></span></p>
+
+
+
+
+</div>
+
+
 </body>
 </html>

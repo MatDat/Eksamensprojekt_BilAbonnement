@@ -61,26 +61,27 @@ public class DataRegistreringController {
         }
         return "dataregistrering/seLejeaftaler";
     }
+//    @PostMapping("/visLejeaftale")
+//    public String visLejeaftale(@RequestParam("kontrakt_id") int kontrakt_id, Model model){
+//        Kontrakt kontrakt = kontraktService.hentKontraktMedId(kontrakt_id);
+//        model.addAttribute("kontrakt", kontrakt);
+//        return "dataregistrering/visLejeaftale";
+//    }
+
     @PostMapping("/visLejeaftale")
     public String visLejeaftale(@RequestParam("kontrakt_id") int kontrakt_id, Model model){
-        Kontrakt kontrakt = kontraktService.hentKontraktMedId(kontrakt_id);
-        model.addAttribute("kontrakt", kontrakt);
-        return "dataregistrering/visLejeaftale";
-    }
-
-    @PostMapping("/visLejeaftalePlus")
-    public String visLejeaftalePlus(@RequestParam("kontrakt_id") int kontrakt_id, Model model){
 
         Kontrakt kontrakt = kontraktService.hentKontraktMedId(kontrakt_id);
-        Lokation afhentningslokation = lokationService.hentLokationFraId(kontrakt.getAfhentningslokation_id());
-        Lokation afleveringslokation = lokationService.hentLokationFraId(kontrakt.getAfleveringslokation_id());
-        Kunde kunde = kundeService.hentKundeFraId(kontrakt.getKunde_id());
+        System.out.println(kontrakt.getAfhentningslokation_id());
+        Lokation afhentningslokation = lokationService.hentLokationFraId(kontrakt.getAfhentningslokation_id()).get(0);
+        Lokation afleveringslokation = lokationService.hentLokationFraId(kontrakt.getAfleveringslokation_id()).get(0);
+        Kunde kunde = kundeService.hentKundeFraId(kontrakt.getKunde_id()).get(0);
 
         model.addAttribute("kontrakt",kontrakt);
         model.addAttribute("afhentningslokation",afhentningslokation);
         model.addAttribute("afleveringslokation",afleveringslokation);
         model.addAttribute("kunde",kunde);
-//hej
+
         return "dataregistrering/visLejeaftale";
     }
 

@@ -18,7 +18,7 @@ public class KundeService {//COMMENT
     }
 
 
-    public Kunde hentKundeFraId(int kunde_id){
+    public List<Kunde> hentKundeFraId(int kunde_id){
         return kundeRepo.hentKundeFraId(kunde_id);
     }
 }
