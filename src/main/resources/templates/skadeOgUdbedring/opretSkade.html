@@ -22,23 +22,19 @@
       </tbody>
   </table>
   <form action="opretSkade" method="post">
-<!--    <label for="skade_id">Skade ID: </label> AUTO INCREMENTIVE-->
-<!--    <input type="text" id="skade_id" name="skade_id" placeholder="skade_id">-->
-<!--    <br>-->
+
     <label for="beskrivelse">Beskrivelse af skaden: </label>
     <input type="text" id="beskrivelse" name="beskrivelse" placeholder="beskrivelse">
     <br>
     <label for="pris">Pris på skaden: </label>
     <input type="text" id="pris" name="pris" placeholder="pris">
     <br>
-    <!--    MAN SKAL KUNNE SE LISTE AF UAFSLUTTEDE RAPPORTER-->
-<!--      Man skal ikke behøve at skrive rapport ID-->
+
       <input type="hidden" name="vognnummer2a" th:value="${vognnummer2a}" />
       <input type="hidden" name="vognnummer2b" th:value="${vognnummer2b}" />
 
 
-<!--      <label for="skaderapport_id">Skaderapport ID: </label>-->
-<!--    <input type="text" id="skaderapport_id" name="skaderapport_id" placeholder="skaderapport_id">-->
+
     <input type="submit" value="SUBMIT">
   </form>
 
