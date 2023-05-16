@@ -31,6 +31,16 @@ public class BilController {
         return "dataregistrering/vaelgMaerke";
     }
 
+    @GetMapping("vaelgModelSide")
+    public String vaelgModelSide(){
+        return "dataregistrering/vaelgModel";
+    }
+
+    @GetMapping("opretBilSide")
+    public String opretBilSide(){
+        return "dataregistrering/addBil";
+    }
+
     @PostMapping("opretBil")
     public String opretBil(@ModelAttribute Bil bil){
         bilService.opretBil(bil);
