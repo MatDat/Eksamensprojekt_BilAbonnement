@@ -239,8 +239,42 @@ h2{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-
 }
+
+
+
+/*Biler klar til rapport - Laurits*/
+
+.statBoxBilerRapport{
+    display: flex;
+    background-color: #144164;
+    color:white;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.statBoxBilerDATA{
+    display: flex;
+    background-color: #144164;
+    color:white;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.statBoxBilerDATA:nth-child(odd){
+    display: flex;
+    background-color: pink;
+    color:white;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+
 
 
 /*pop up bøf kode*/

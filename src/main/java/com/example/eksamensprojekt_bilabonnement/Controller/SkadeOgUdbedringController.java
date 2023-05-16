@@ -28,7 +28,7 @@ public class SkadeOgUdbedringController {//COMMENT
     @Autowired
     KontraktService kontraktService;
 
-    @PostMapping("bilerKlarTilRapport")
+    @GetMapping("bilerKlarTilRapport")
     public String printBilerKlarTilSkadesRapport(Model model) {
 
         List<Bil> biler = bilService.hentBilerMedTilstand("RAPPORTKLAR");
@@ -130,14 +130,14 @@ public class SkadeOgUdbedringController {//COMMENT
     // tilstand, hvis tilstanden er rapportklar skal den vises, alt andet så skal den ikke. Når man så trykker afslut
     // rapport skal bilens tilstand jo også ændres til klar til leje ellet whatever, noget andet i hvert fald
 
-    @PostMapping("printRapporter") //fejl med sortMuligheder
+    @GetMapping("/printRapporter") //fejl med sortMuligheder
     public String printRapporter(Model model) {
         List<Skaderapport> skaderapporter = skadeService.hentSkaderapporter();
         model.addAttribute("skaderapporter", skaderapporter);
         return "skadeOgUdbedring/printRapporter";
     }
 
-    @PostMapping("printRapporterSORT") //TODO: Skal have tilføjet nogle skadesrapporter så man kan sortere
+    @PostMapping("/printRapporterSORT") //TODO: Skal have tilføjet nogle skadesrapporter så man kan sortere
     public String printRapporterSORT(@RequestParam("sortMuligheder") String selectedOption, Model model) {
         List<Skaderapport> skaderapporter = null;
 
