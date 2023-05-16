@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Print Rapporter</title>
+</head>
+<body>
+<h1>Her kommer en liste over alle rapporter, dem skal man kunne sortere i osv.</h1>
+
+<div>
+    <table style="float: left">
+        <tr>
+            <th>ID: </th>
+            <th>Dato: </th>
+            <th>Bruger ID: </th>
+            <th>Kontrakt ID: </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="skaderapport: ${skaderapporter}">
+            <td th:text="${skaderapport.skaderapport_id}"/>
+            <td th:text="${skaderapport.skaderapport_dato}"/>
+            <td th:text="${skaderapport.bruger_id}"/>
+            <td th:text="${skaderapport.kontrakt_id}"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+
+    <form th:action="@{printRapporterSORT}" method="post">
+    <select name="sortMuligheder">
+        <option value="skaderapport_id">ID</option>
+        <option value="skaderapport_dato">Dato</option>
+        <option value="bruger_id">Bruger ID</option>
+        <option value="kontrakt_id">Kontrakt ID</option>
+    </select>
+        <input type="submit" value="Sorter">
+    </form>
+</div>
+</body>
+</html>
