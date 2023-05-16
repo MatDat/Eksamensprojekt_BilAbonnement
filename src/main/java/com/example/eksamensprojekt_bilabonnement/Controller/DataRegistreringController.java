@@ -80,7 +80,7 @@ public class DataRegistreringController {
         model.addAttribute("afhentningslokation",afhentningslokation);
         model.addAttribute("afleveringslokation",afleveringslokation);
         model.addAttribute("kunde",kunde);
-
+//hej
         return "dataregistrering/visLejeaftale";
     }
 

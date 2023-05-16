@@ -44,4 +44,8 @@ public class Lokation {//COMMENT
     public void setLokation_navn(String lokation_navn) {
         this.lokation_navn = lokation_navn;
     }
+
+
+
+
 }
