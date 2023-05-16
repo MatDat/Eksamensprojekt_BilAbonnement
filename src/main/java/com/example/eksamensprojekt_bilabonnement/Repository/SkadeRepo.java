@@ -1,9 +1,9 @@
 package com.example.eksamensprojekt_bilabonnement.Repository;
 
+import com.example.eksamensprojekt_bilabonnement.Model.Kunde;
 import com.example.eksamensprojekt_bilabonnement.Model.Skade;
 import com.example.eksamensprojekt_bilabonnement.Model.Skaderapport;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -25,10 +25,10 @@ public class SkadeRepo {
     }
 
     public void nySkadeRapport(Skaderapport skaderapport) {
-        String sql = "INSERT INTO skaderapport (skaderapport_dato, kontrakt_id, bruger_id) " +
-                "VALUES (?, ?, ?)";
+        String sql = "INSERT INTO skaderapport (skaderapport_dato, kunde_id, vognnummer, bruger_id) " +
+                "VALUES (?, ?, ?, ?)";
         template.update(sql, skaderapport.getSkaderapport_dato(),
-                skaderapport.getKontrakt_id(), skaderapport.getBruger_id());
+                skaderapport.getKunde_id(), skaderapport.getVognnummer(), skaderapport.getBruger_id());
     }
 
     public List<Skaderapport> hentSkaderapporter() {
@@ -42,23 +42,5 @@ public class SkadeRepo {
 
         RowMapper<Skade> rowMapper = new BeanPropertyRowMapper<>(Skade.class);
         return template.query(sql,rowMapper, skaderapport_id);
-    }
-
-    public int hentSkaderapportIDFraKontraktID(int kontrakt_id) {
-        String sql = "SELECT skaderapport_id FROM skaderapport WHERE kontrakt_id = ?";
-        return template.queryForObject(sql, Integer.class, kontrakt_id);
-    }
-
-    public boolean bilErSkadet(int skaderapport_id) {
-        String sql = "SELECT * FROM skade WHERE skaderapport_id = ?";
-        RowMapper<Skade> rowMapper = new BeanPropertyRowMapper(Skade.class);
-
-        try {
-            List<Skade> test = template.query(sql, rowMapper, skaderapport_id);
-            System.out.println(test.get(0));
-            return true;
-        } catch (IndexOutOfBoundsException e) {
-            return false;
-        }
     }
 }
