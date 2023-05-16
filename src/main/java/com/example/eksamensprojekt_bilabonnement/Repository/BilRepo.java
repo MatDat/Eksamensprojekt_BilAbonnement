@@ -34,13 +34,21 @@ public class BilRepo {
         return template.query(sql, rowMapper, tilstand);
     }
 
-
-
-
     public void opdaterBilTilstand(String bilTilstand, int vognnummer) {
         String sql = "UPDATE bil " +
                 "SET bil_tilstand = ? " +
                 "WHERE vognnummer = ?";
         template.update(sql, bilTilstand, vognnummer);
+    }
+
+
+    public boolean opretBil(Bil bil) {
+        String sql = "INSERT INTO bil (vognnummer, stelnummer,maerke_id, model_id, staalpris, registrerings_afgift, " +
+                "CO2_udledning, bil_tilstand) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        template.update(sql, bil.getVognnummer(), bil.getStelnummer(), bil.getMaerke_navn(), bil.getModel_id(), bil.getStaalpris(),
+                bil.getRegistrerings_afgift(), bil.getCO2_udledning(), bil.getBilTilstand());
+        return true;
     }
 }

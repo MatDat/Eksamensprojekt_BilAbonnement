@@ -29,8 +29,11 @@ public class BilService {
         return vn;
     }
 
-
     public void opdaterBilTilstand(BilTilstand bilTilstand, int vognnummer) {
         bilRepo.opdaterBilTilstand(String.valueOf(bilTilstand), vognnummer);
+    }
+
+    public boolean opretBil(Bil bil){
+        return bilRepo.opretBil(bil);
     }
 }
