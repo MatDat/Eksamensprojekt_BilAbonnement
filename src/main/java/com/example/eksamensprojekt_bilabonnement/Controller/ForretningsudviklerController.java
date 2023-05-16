@@ -18,7 +18,7 @@ public class ForretningsudviklerController {
 
     @Autowired
     BilService bilService;
-    //COMMENT
+
     @Autowired
     KontraktService kontraktService;
 
@@ -33,31 +33,18 @@ public class ForretningsudviklerController {
 
         List<Bil> biler = bilService.hentAlleBiler();
         model.addAttribute("biler", biler);
+        model.addAttribute("staalpriser",bilService.hentStaalpriser(biler));
+        model.addAttribute("co2",bilService.hentCo2(biler));
+
 
         return "forretningsudvikler/seBiler";
     }
 
-//    @PostMapping("/testRS")
-//    public String testRS(){
-//
-//
-//
-//        List<Integer> testliste = new ArrayList<>();
-//
-//
-//        testliste.add(2);
-//
-//        List<Double> lulu = kontraktService.getTotalPrisFraVognnummre(testliste);
-//        System.out.println(lulu.get(0));
-//
-//        return "forretningsudvikler/seBiler";
-//
-//    }
 
     @PostMapping("/seBilerDropdown")
-    public String handleFormSubmission(@RequestParam("dropdown") String selectedOption, Model model) {
+    public String seBilerDropdown(@RequestParam("dropdown") String selectedOption, Model model) {
         List<Bil> biler = null;
-        System.out.println(selectedOption);
+
 
         switch (selectedOption){
             case "alle" -> biler = bilService.hentAlleBiler();
@@ -68,9 +55,13 @@ public class ForretningsudviklerController {
                 model.addAttribute("priser",priser);
             }
             case "SOLGT", "LEJEKLAR" -> biler = bilService.hentBilerMedTilstand(selectedOption);
+            case "EL","BENZIN","DIESEL" -> biler = bilService.hentBilerMedBraendstof(selectedOption);
         }
 
         model.addAttribute("biler", biler);
+        model.addAttribute("staalpriser",bilService.hentStaalpriser(biler));
+        model.addAttribute("co2",bilService.hentCo2(biler));
+
 
 
         return "forretningsudvikler/seBiler";

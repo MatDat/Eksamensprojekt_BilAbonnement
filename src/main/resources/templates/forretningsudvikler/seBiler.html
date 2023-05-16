@@ -4,67 +4,96 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/MyCSS.css">
+    <style>
+        .seBilerPageBox{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    </style>
 </head>
 <body>
+<div class="seBilerPageBox">
+    <div>
+        <form th:action="@{/seBilerDropdown}" method="post">
+            <select name="dropdown">
+                <option value="alle">Alle</option>
+                <optgroup label="Tilstand">
+                    <option value="UDLEJET">Udlejede biler</option>
+                    <option value="SOLGT">Solgte biler</option>
+                    <option value="LEJEKLAR">biler klar til leje</option>
+                </optgroup>
+                <optgroup label="brændstof">
+                    <option value="BENZIN">Benzin</option>
+                    <option value="EL">El</option>
+                    <option value="DIESEL">Diesel</option>
+                </optgroup>
+            </select>
 
-<div>
-    <form th:action="@{/seBilerDropdown}" method="post">
-        <select name="dropdown">
-            <option value="alle">Alle</option>
-            <option value="UDLEJET">Udlejede</option>
-            <option value="SOLGT">solgte biler</option>
-            <option value="LEJEKLAR">biler klar til leje</option>
-        </select>
-        <input type="submit" value="Submit">
-    </form>
+            <input type="submit" value="Submit">
+        </form>
 
 
+    </div>
+
+
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>Vognnummer</th>
+                <th>Stelnummer</th>
+                <th>Mærke</th>
+                <th>Model</th>
+                <th>Gear</th>
+                <th>Brændstof</th>
+                <th>Tilstand</th>
+                <th>CO2</th>
+                <th>Stålpris</th>
+                <th>Registreringsafgift</th>
+                <th th:if="${toggle == 1}">kontraktpris</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="bil, statistikIndex : ${biler}">
+                <td th:text="${bil.vognnummer}"/>
+                <td th:text="${bil.stelnummer}"/>
+                <td th:text="${bil.maerke_navn}"/>
+                <td th:text="${bil.model_navn}"/>
+                <td th:text="${bil.gear_type}"/>
+                <td th:text="${bil.braendstof}"/>
+                <td th:text="${bil.bilTilstand}"/>
+                <td th:text="${bil.CO2_udledning}"/>
+                <td th:text="${bil.staalpris}"/>
+                <td th:text="${bil.registrerings_afgift}"/>
+                <td th:if="${priser != null and not #lists.isEmpty(priser)}" th:text="${priser[statistikIndex.index]}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="statBoxContainer">
+
+        <div class="statBox" th:if="${toggle == 1}">
+            <h4>Pris for nuværende udlejede bilers kontrakter</h4>
+            <p>sum: <span th:text="${#aggregates.sum(priser)}"/> DKK</p>
+            <p>gennemsnit pr. bil: <span th:text="${#aggregates.avg(priser)}"/> DKK</p>
+        </div>
+
+        <div class="statBox">
+            <h4>Stålpris for viste biler</h4>
+            <p>sum: <span th:text="${#aggregates.sum(staalpriser)}"/> DKK</p>
+            <p>gennemsnit pr. bil: <span th:text="${#aggregates.avg(staalpriser)}"/> DKK</p>
+        </div>
+        <div class="statBox">
+            <h4>Co2 udledning for viste biler</h4>
+            <p>sum: <span th:text="${#aggregates.sum(co2)}"/> g/km</p>
+            <p>gennemsnit pr. bil: <span th:text="${#aggregates.avg(co2)}"/> g/km</p>
+        </div>
+    </div>
 </div>
-
-
-<div>
-    <table>
-        <thead>
-        <tr>
-            <th>Vognnummer</th>
-            <th>Stelnummer</th>
-            <th>Mærke</th>
-            <th>Model</th>
-            <th>Gear</th>
-            <th>Brændstof</th>
-            <th>Tilstand</th>
-            <th>CO2</th>
-            <th>Stålpris</th>
-            <th>Registreringsafgift</th>
-            <th th:if="${toggle == 1}">kontraktpris</th>
-
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="bil, statistikIndex : ${biler}">
-            <td th:text="${bil.vognnummer}"/>
-            <td th:text="${bil.stelnummer}"/>
-            <td th:text="${bil.maerke_navn}"/>
-            <td th:text="${bil.model_navn}"/>
-            <td th:text="${bil.gear_type}"/>
-            <td th:text="${bil.braendstof}"/>
-            <td th:text="${bil.bilTilstand}"/>
-            <td th:text="${bil.CO2_udledning}"/>
-            <td th:text="${bil.staalpris}"/>
-            <td th:text="${bil.registrerings_afgift}"/>
-            <td th:if="${priser != null and not #lists.isEmpty(priser)}" th:text="${priser[statistikIndex.index]}"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-<div th:if="${toggle == 1}">
-    <h4>Den samlede pris for nuværende udlejede bilers kontrakter</h4>
-    <p>sum: <span th:text="${#aggregates.sum(priser)}"/></p>
-
-</div>
-
 
 </body>
 </html>

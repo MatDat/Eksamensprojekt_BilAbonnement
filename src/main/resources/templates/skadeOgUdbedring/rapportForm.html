@@ -2,47 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Opret skade</title>
+    <title>RapportForm</title>
 </head>
 <body>
-<h1>Opret skade</h1>
+<h1>Her laver du en rapport på den bil du lige har klikket ind på</h1>
+<h2>Input</h2>
+<h2 style="float: right; padding-right: 50%">Opslagstavle</h2>
+<form action="/indsendRapportForm" style="float: left" method="post">
 
-<h2>Skader tilføjet indtil videre</h2>
-<table style="float: left">
-    <tr>
-        <th>Beskrivelse</th>
-        <th>Pris</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="skade: ${skader}">
-        <td th:text="${skade.beskrivelse}"/>
-        <td th:text="${skade.pris}"/>
-    </tr>
-    </tbody>
-</table>
-<form action="opretSkade" method="post">
-
-    <label for="beskrivelse">Beskrivelse af skaden: </label>
-    <input type="text" id="beskrivelse" name="beskrivelse" placeholder="beskrivelse">
+    <label for="skaderapport_dato">Skaderapport dato</label>
+    <input type="date" id="skaderapport_dato" name="skaderapport_dato">
     <br>
-    <label for="pris">Pris på skaden: </label>
-    <input type="text" id="pris" name="pris" placeholder="pris">
+    <!--      <label for="kunde_id">Kunde ID</label>-->
+    <!--      <input type="text" id="kunde_id" name="kunde_id">-->
+    <!--      <br>-->
+    <input type="hidden" name="vognnummer1" th:value="${vognnummer1}" />
+    <!--      <label for="vognnummer">Vognnummer</label> VOGNNUMMER BLIVER TAGET MED AUTOMATISK-->
+    <!--      <input type="text" id="vognnummer">-->
+    <!--      <br>-->
+    <label for="bruger_id">Medarbejer ID (bruger_id)</label>
+    <input type="text" id="bruger_id" name="bruger_id">
     <br>
-
-    <input type="hidden" name="vognnummer2a" th:value="${vognnummer2a}" />
-    <input type="hidden" name="vognnummer2b" th:value="${vognnummer2b}" />
-
-
-
-    <input type="submit" value="SUBMIT">
-</form>
-
-
-<form action="/afslutRapport" method="post">
-    <input type="hidden" name="vognnummer2b" th:value="${vognnummer2b}">
-    <input type="hidden" name="vognnummer2a" th:value="${vognnummer2a}">
-    <input type="submit" value="Afslut rapport">
+    <input type="submit">
 </form>
 </body>
 </html>
