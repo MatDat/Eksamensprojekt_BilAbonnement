@@ -33,6 +33,12 @@ public class BilRepo {
         RowMapper<Bil> rowMapper = new BeanPropertyRowMapper<>(Bil.class);
         return template.query(sql, rowMapper, tilstand);
     }
+    public List<Bil> hentBilerMedBraendstof(String braendstof) {
+        String sql = "SELECT * FROM bilabonnementDB.bil, bilabonnementDB.model, bilabonnementDB.maerke " +
+                "WHERE braendstof = ? AND bil.model_id = model.model_id AND model.maerke_id = maerke.maerke_id;";
+        RowMapper<Bil> rowMapper = new BeanPropertyRowMapper<>(Bil.class);
+        return template.query(sql, rowMapper, braendstof);
+    }
 
     public void opdaterBilTilstand(String bilTilstand, int vognnummer) {
         String sql = "UPDATE bil " +
