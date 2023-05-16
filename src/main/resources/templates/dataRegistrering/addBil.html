@@ -10,8 +10,8 @@
 <h1>Tilføj en ny bil</h1>
 
 <div id="addBilFormDiv">
-    <form action="/" method="post">
 
+    <form action="opretBil" method="post">
         <table>
             <tr>
                 <td><label class="addBilLabel">Tilføj stelnummer: </label></td>
@@ -20,24 +20,33 @@
 
             <tr>
                 <td><label class="addBilLabel">Tilføj stålpris: </label></td>
-                <td><input class="addBilFormInput" type="text" name="stålpris" placeholder="Indtast her..."></td>
+                <td><input class="addBilFormInput" type="text" name="staalpris" placeholder="Indtast her..."></td>
             </tr>
 
             <tr>
                 <td><label class="addBilLabel">Tilføj registreringspris: </label></td>
-                <td><input class="addBilFormInput" type="text" name="registreringspris" placeholder="Indtast her...">
+                <td><input class="addBilFormInput" type="text" name="registrerings_afgift" placeholder="Indtast her...">
                 </td>
             </tr>
 
             <tr>
                 <td><label class="addBilLabel">Tilføj Co2-udledning: </label></td>
-                <td><input class="addBilFormInput" type="text" name="co2-udledning" placeholder="Indtast her..."></td>
+                <td><input class="addBilFormInput" type="text" name="CO2_udledning" placeholder="Indtast her..."></td>
+            </tr>
+
+            <tr>
+                <td><label class="addBilLabel">Bil tilstand: </label></td>
+                <td>
+                    <input type="radio" class="addBilFormInput" name="bilTilstand" value="Ledig" checked> Ledig
+                    <input type="radio" class="addBilFormInput" name="bilTilstand" value="Reserveret"> Reserveret
+                    <input type="radio" class="addBilFormInput" name="bilTilstand" value="Skadet"> Skadet
+                </td>
             </tr>
 
             <tr>
                 <td><label class="addBilLabel">Vælg bil mærke: </label></td>
                 <td>
-                    <select class="addBilFormInput" name="maerke">
+                    <select class="addBilFormInput" name="maerke_navn">
                         <option value="Vælg">Vælg her...</option>
                         <option value="BMW">BMW</option>
                         <option value="Mercedes">Mercedes</option>
@@ -47,29 +56,39 @@
             </tr>
 
             <tr>
-                <td><label class="addBilLabel">Vælg model: </label></td>
+                <td><label class="addBilLabel">Vælg Model: </label></td>
                 <td>
-                    <select class="addBilFormInput" name="model">
-                        <option value="eks1">eks1</option>
-                        <option value="eks2">eks2</option>
-                        <option value="eks3">eks3</option>
+                    <select class="addBilFormInput" name="model_navn">
+                        <option value="Vælg">Vælg her...</option>
+                        <option value="Test1">Test1</option>
+                        <option value="Test2">Test2</option>
+                        <option value="Test3">Test3</option>
                     </select>
                 </td>
             </tr>
 
             <tr>
-                <td><label class="addBilLabel">Bil tilstand: </label></td>
+                <td><label class="addBilLabel">Gear type: </label></td>
                 <td>
-                    <select class="addBilFormInput" name="model">
-                        <option value="input1">Ledig</option>
-                        <option value="input2">Reserveret</option>
-                        <option value="input3">Skadet</option>
-                    </select>
+                    <input type="radio" class="addBilFormInput" name="gear_type" value="Manuelt" checked> Manuelt
+                    <input type="radio" class="addBilFormInput" name="gear_type" value="Automat"> Automat
                 </td>
             </tr>
+
+            <tr>
+                <td><label class="addBilLabel">Brændstofs type: </label></td>
+                <td>
+                    <input type="radio" class="addBilFormInput" name="braendstof" value="BENZIN" checked> Benzin
+                    <input type="radio" class="addBilFormInput" name="braendstof" value="EL"> EL
+                    <input type="radio" class="addBilFormInput" name="braendstof" value="Diesel"> Diesel
+                    <input type="radio" class="addBilFormInput" name="braendstof" value="Hybrid"> Hybrid
+                </td>
+            </tr>
+
+
         </table>
 
-        <input class="addBilFormSubmit" type="submit" value="Opret bil">
+        <input class="greenButton" type="submit" value="Tilføj bil til databasen" style="float: right;margin-top:15px;">
 
     </form>
 
@@ -77,7 +96,7 @@
 
 <div id="annullerButtonAddBilDiv">
     <form action="dataRegistrering" method="get">
-        <button class="annullerButtonAddBil" type="submit">Tilbage</button>
+        <button class="redButton" type="submit">Tilbage</button>
     </form>
 </div>
 

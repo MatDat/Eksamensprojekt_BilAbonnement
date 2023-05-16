@@ -14,7 +14,9 @@ public class BilService {
     @Autowired
     BilRepo bilRepo;
 
-
+    public List<Bil> hentBiler() {
+        return bilRepo.hentBiler();
+    }
 
     public List<Bil> hentAlleBiler(){return bilRepo.hentAlleBiler();}
     public List<Bil> hentBilerMedTilstand(String tilstand){return bilRepo.hentBilerMedTilstand(tilstand);}
@@ -44,5 +46,9 @@ public class BilService {
 
     public void opdaterBilTilstand(BilTilstand bilTilstand, int vognnummer) {
         bilRepo.opdaterBilTilstand(String.valueOf(bilTilstand), vognnummer);
+    }
+
+    public boolean opretBil(Bil bil){
+        return bilRepo.opretBil(bil);
     }
 }

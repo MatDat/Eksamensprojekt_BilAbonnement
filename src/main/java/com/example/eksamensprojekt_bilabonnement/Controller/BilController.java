@@ -22,13 +22,18 @@ public class BilController {
     }
 
     @GetMapping("addBilSide")
-    public String addBilSide(@ModelAttribute Bil bil){
+    public String addBilSide(){
         return "dataregistrering/addBil";
     }
 
-    @PostMapping("opretBil")
-    public String opretBil(){
+    @GetMapping("vaelgMaerkeSide")
+    public String vaelgMaerkeSide(){
+        return "dataregistrering/vaelgMaerke";
+    }
 
+    @PostMapping("opretBil")
+    public String opretBil(@ModelAttribute Bil bil){
+        bilService.opretBil(bil);
         return "home/index";
     }
 }

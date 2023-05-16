@@ -180,41 +180,6 @@ h1{
     transition: 0.5s;
 }
 
-#lejeAftaleTopDiv{
-    width: 100%;
-    height: 40px;
-    background-color: #206BA4;
-    display: flex;
-    justify-content: space-evenly;
-}
-.kontrakt-box{
-    background-color: #206BA4;
-    width: 300px;
-    height: 300px;
-    margin: 5px;
-    padding: 2px;
-}
-.kontrakt-box-container{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-}
-
-/*Forretningsudvikler/seBiler*/
-.statBox{
-    display: flex;
-    background-color: #144164;
-    color:white;
-    justify-content: center;
-    flex-direction: column;
-}
-.statBoxContainer{
-    background-color: #144164;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-
-}
 
 
 /*pop up bøf kode*/
