@@ -2,16 +2,20 @@ package com.example.eksamensprojekt_bilabonnement.Controller;
 
 import com.example.eksamensprojekt_bilabonnement.Model.Bil;
 import com.example.eksamensprojekt_bilabonnement.Model.BilTilstand;
+import com.example.eksamensprojekt_bilabonnement.Model.Maerke;
 import com.example.eksamensprojekt_bilabonnement.Service.BilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class BilController {
-// COMMENT
+
     @Autowired
     BilService bilService;
 
@@ -27,8 +31,21 @@ public class BilController {
     }
 
     @GetMapping("vaelgMaerkeSide")
-    public String vaelgMaerkeSide(){
+    public String vaelgMaerkeSide(Model model){
+        List<Maerke> alleMaerkeNavne = bilService.hentAlleMaerker();
+
+        model.addAttribute("maerke_navn", alleMaerkeNavne);
         return "dataregistrering/vaelgMaerke";
+    }
+
+    @GetMapping("vaelgModelSide")
+    public String vaelgModelSide(){
+        return "dataregistrering/vaelgModel";
+    }
+
+    @GetMapping("opretBilSide")
+    public String opretBilSide(){
+        return "dataregistrering/addBil";
     }
 
     @PostMapping("opretBil")
