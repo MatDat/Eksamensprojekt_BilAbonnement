@@ -7,15 +7,23 @@
 </head>
 <body>
 <h1>Bruger: Skade og udbedring</h1>
-<form action="bilerKlarTilRapport" method="post">
-    <button>Vis biler klar til skade rapport</button>
-</form>
-<form action="NEEDACTION">
-    <button>Hvis bruger skal kunne andre ting</button>
-</form>
+<div class="menuBoxDiv">
+    <form action="bilerKlarTilRapport" method="get">
+        <input class="menuPageItem" type="submit" value="Vis biler klar til skaderapport">
+    </form>
+</div>
 
-<form id="annullerButton" action="/" method="get">
-    <button class="loginForm-submitButton" type="submit">Tilbage</button>
-</form>
+<div class="menuBoxDiv">
+    <form action="/printRapporter" method="get">
+        <input class="menuPageItem" type="submit" value="Se rapporter">
+    </form>
+</div>
+
+<div id="annullerButtonAddBilDiv">
+    <form action="/" method="get">
+        <button class="redButton" type="submit">Tilbage til forsiden</button>
+    </form>
+</div>
+
 </body>
 </html>

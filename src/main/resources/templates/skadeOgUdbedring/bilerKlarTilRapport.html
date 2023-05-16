@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>BilerKlarTilRapport</title>
+    <link rel="stylesheet" href="/MyCSS.css">
 </head>
 <body>
 <h1>Biler klar til rapport</h1>
 
-<div id="table_design">
+<div class="statBoxBilerRapport">
     <table style="float: left">
         <tr>
             <th>Vognnummer</th>
@@ -16,22 +17,21 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="bil: ${biler}">
+        <tr th:each="bil: ${biler}" style="text-align: center">
             <td th:text="${bil.vognnummer}"/>
             <td th:text="${bil.stelnummer}"/>
             <td>
-                <a th:href="@{'/rapportForm/'+${bil.vognnummer}}">
-                    <button>Lav rapport</button></a>
+                <a th:href="@{'/rapportForm/'+${bil.vognnummer}}" >
+                    <input type="submit" value="Lav rapport" class="greenButton"></a>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
-<!--        Man kunne evt. bare lave en ny liste til højre for de biler der er klar til rapport som viser de uafsluttede -->
 
-<div>
-    <form action="printRapporter" method="post">
-        <input type="submit" value="Se rapporter">
+<div id="annullerButtonAddBilDiv">
+    <form action="/" method="get">
+        <button class="redButton" type="submit">Tilbage til forsiden</button>
     </form>
 </div>
 
