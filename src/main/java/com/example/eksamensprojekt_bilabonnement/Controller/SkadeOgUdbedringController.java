@@ -25,7 +25,7 @@ public class SkadeOgUdbedringController {
     @PostMapping("bilerKlarTilRapport")
     public String printBilerKlarTilSkadesRapport(@ModelAttribute Bil bil, Model model) {
 
-        List<Bil> biler = bilService.hentBiler();
+        List<Bil> biler = bilService.hentBilerMedTilstand("RAPPORTKLAR");
         model.addAttribute("biler", biler);
         return "skadeOgUdbedring/bilerKlarTilRapport";
     }
