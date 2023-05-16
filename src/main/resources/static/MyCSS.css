@@ -38,6 +38,16 @@ h1{
     text-align: center;
     padding:40px 0 40px 0;
 }
+h2{
+    text-align: center;
+    font-size: 28px;
+    color: white;
+}
+#h2Div{
+    width: 100%;
+    background-color: #10334f;
+    padding: 15px 0;
+}
 .menuBoxDiv{
     width: 100%;
     padding: 15px 0px;
@@ -56,12 +66,13 @@ h1{
     background-color: transparent;
     border: 1px solid transparent;
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     padding: 30px 120px;
     cursor: pointer;
 }
 .menuPageItem:hover{
     border: 1px solid white;
+    transition: 0.5s;
 }
 #statusBar{
     width:100%;
@@ -158,6 +169,8 @@ h1{
     background-color: #BBD9EE;
     border: 1px solid white;
     padding:5px 8px;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 #annullerButtonAddBilDiv{
     width: 100%;
@@ -166,55 +179,37 @@ h1{
     background-color: #641419;
     padding:10px 0px;
 }
-.annullerButtonAddBil{
-    padding:10px 25px;
+.greenButton{
+    background-color: #146437;
+    color: white;
+    padding:10px 30px;
+    border: 1px solid white;
+    cursor: pointer;
+}
+.greenButton:hover{
+    background-color: #0c3a20;
+    transition: 0.5s;
+}
+.redButton{
+    padding:10px 150px;
     width:100%;
     border: 1px solid #641419;
     background-color: #641419;
     color: white;
     font-size: 12px;
     text-transform: uppercase;
+    cursor: pointer;
 }
-.annullerButtonAddBil:hover{
+.redButton:hover{
     border: 1px solid white;
     transition: 0.5s;
 }
 
-#lejeAftaleTopDiv{
-    width: 100%;
-    height: 40px;
-    background-color: #206BA4;
-    display: flex;
-    justify-content: space-evenly;
-}
-.kontrakt-box{
-    background-color: #206BA4;
-    width: 300px;
-    height: 300px;
-    margin: 5px;
-    padding: 2px;
-}
-.kontrakt-box-container{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
+/*TABLE CSS*/
+tr{
+    margin-bottom: 30px;
 }
 
-/*Forretningsudvikler/seBiler*/
-.statBox{
-    display: flex;
-    background-color: #144164;
-    color:white;
-    justify-content: center;
-    flex-direction: column;
-}
-.statBoxContainer{
-    background-color: #144164;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-
-}
 
 
 /*pop up bøf kode*/
