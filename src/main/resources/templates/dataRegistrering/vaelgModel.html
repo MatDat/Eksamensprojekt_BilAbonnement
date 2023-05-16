@@ -18,24 +18,25 @@
 
 
 <div id="h2Div">
-    <h2>Vælg mærke</h2>
+    <h2>Vælg model</h2>
 </div>
 
 <div id="addBilFormDiv">
 
-    <form action="vaelgModelSide" method="get">
+    <form action="opretBilSide" method="get">
         <table>
-            <tr>
-            <td><label class="addBilLabel">Vælg bil mærke: </label></td>
-            <td>
-                <select class="addBilFormInput" name="maerke_navn">
-                    <th:forEach items="${maerker}" var="maerke">
-                        <option value="${maerke.maerkeNavn}">${maerke.maerkeNavn}</option>
-                    </th:forEach>
-                </select>
-            </td>
-        </tr>
 
+            <tr>
+                <td><label class="addBilLabel">Vælg Model: </label></td>
+                <td>
+                    <select class="addBilFormInput" name="model_navn">
+                        <option value="Vælg">Vælg her...</option>
+                        <option value="Test1">Test1</option>
+                        <option value="Test2">Test2</option>
+                        <option value="Test3">Test3</option>
+                    </select>
+                </td>
+            </tr>
 
         </table>
 
@@ -47,7 +48,7 @@
 
 <div id="annullerButtonAddBilDiv">
     <form action="dataRegistrering" method="get">
-        <button class="redButton" type="submit">Tilbage</button>
+        <button class="redButton" type="submit">Annuller</button>
     </form>
 </div>
 
