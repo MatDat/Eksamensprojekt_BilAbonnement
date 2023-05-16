@@ -2,7 +2,9 @@ package com.example.eksamensprojekt_bilabonnement.Repository;
 
 import com.example.eksamensprojekt_bilabonnement.Model.Bil;
 import com.example.eksamensprojekt_bilabonnement.Model.BilTilstand;
+import com.example.eksamensprojekt_bilabonnement.Model.Maerke;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -25,6 +27,12 @@ public class BilRepo {//COMMENT
                 "WHERE bil.model_id = model.model_id AND model.maerke_id = maerke.maerke_id;";
         RowMapper<Bil> rowMapper = new BeanPropertyRowMapper<>(Bil.class);
         return template.query(sql, rowMapper);
+    }
+
+    public List<Maerke> hentAlleMaerker(){
+        String sql = "SELECT * FROM bilabonnementDB.maerke";
+        RowMapper<Maerke> rm = new BeanPropertyRowMapper<>(Maerke.class);
+        return template.query(sql, rm);
     }
 
     public List<Bil> hentBilerMedTilstand(String tilstand) {

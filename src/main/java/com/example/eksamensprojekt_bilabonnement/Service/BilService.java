@@ -2,6 +2,7 @@ package com.example.eksamensprojekt_bilabonnement.Service;
 
 import com.example.eksamensprojekt_bilabonnement.Model.Bil;
 import com.example.eksamensprojekt_bilabonnement.Model.BilTilstand;
+import com.example.eksamensprojekt_bilabonnement.Model.Maerke;
 import com.example.eksamensprojekt_bilabonnement.Repository.BilRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,10 @@ public class BilService {//COMMENT
     public List<Bil> hentAlleBiler(){return bilRepo.hentAlleBiler();}
     public List<Bil> hentBilerMedTilstand(String tilstand){return bilRepo.hentBilerMedTilstand(tilstand);}
     public List<Bil> hentBilerMedBraendstof(String braendstof){return bilRepo.hentBilerMedBraendstof(braendstof);}
+
+    public List<Maerke> hentAlleMaerker(){
+        return bilRepo.hentAlleMaerker();
+    }
 
     public List<Integer> hentVognnumre(List<Bil> biler){
         List<Integer> vn = new ArrayList<>();

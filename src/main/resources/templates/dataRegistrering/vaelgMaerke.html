@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Vælg mærke</title>
+    <meta charset="UTF-8">
+    <title>Vælg mærke</title>
 </head>
 <body>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <link rel="stylesheet" type="text/css" href="/MyCSS.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
 
@@ -18,38 +18,37 @@
 
 
 <div id="h2Div">
-  <h2>Vælg mærke</h2>
+    <h2>Vælg mærke</h2>
 </div>
 
 <div id="addBilFormDiv">
 
-  <form action="vaelgModelSide" method="get">
-    <table>
+    <form action="vaelgModelSide" method="get">
+        <table>
+            <tr>
+            <td><label class="addBilLabel">Vælg bil mærke: </label></td>
+            <td>
+                <select class="addBilFormInput" name="maerke_navn">
+                    <th:forEach items="${maerker}" var="maerke">
+                        <option value="${maerke.maerkeNavn}">${maerke.maerkeNavn}</option>
+                    </th:forEach>
+                </select>
+            </td>
+        </tr>
 
-      <tr>
-        <td><label class="addBilLabel">Vælg bil mærke: </label></td>
-        <td>
-          <select class="addBilFormInput" name="maerke_navn">
-            <option value="Vælg">Vælg her...</option>
-            <option value="BMW">BMW</option>
-            <option value="Mercedes">Mercedes</option>
-            <option value="Audi">Audi</option>
-          </select>
-        </td>
-      </tr>
 
-    </table>
+        </table>
 
-    <input class="greenButton" type="submit" value="Næste" style="float: right;margin-top:15px;">
+        <input class="greenButton" type="submit" value="Næste" style="float: right;margin-top:15px;">
 
-  </form>
+    </form>
 
 </div>
 
 <div id="annullerButtonAddBilDiv">
-  <form action="dataRegistrering" method="get">
-    <button class="redButton" type="submit">Tilbage</button>
-  </form>
+    <form action="dataRegistrering" method="get">
+        <button class="redButton" type="submit">Tilbage</button>
+    </form>
 </div>
 
 </body>
