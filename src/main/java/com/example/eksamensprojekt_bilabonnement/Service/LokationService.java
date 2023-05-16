@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class LokationService {
+public class LokationService {//COMMENT
 
     @Autowired
     LokationRepo lokationRepo;

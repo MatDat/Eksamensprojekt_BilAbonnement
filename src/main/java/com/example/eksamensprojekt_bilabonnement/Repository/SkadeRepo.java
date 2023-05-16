@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class SkadeRepo {
+public class SkadeRepo {//COMMENT
 
     @Autowired
     JdbcTemplate template;
@@ -34,6 +34,13 @@ public class SkadeRepo {
     public List<Skaderapport> hentSkaderapporter() {
         String sql = "SELECT * FROM skaderapport";
         RowMapper<Skaderapport> rowMapper = new BeanPropertyRowMapper<>(Skaderapport.class);
+        return template.query(sql,rowMapper);
+    }
+
+    public List<Skaderapport> hentSkaderapporterSORT(String sortering) {
+        String sql = "SELECT * FROM skaderapport ORDER BY "+ sortering +" ASC";
+        RowMapper<Skaderapport> rowMapper = new BeanPropertyRowMapper<>(Skaderapport.class);
+
         return template.query(sql,rowMapper);
     }
 

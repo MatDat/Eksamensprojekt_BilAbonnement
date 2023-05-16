@@ -1,6 +1,6 @@
 package com.example.eksamensprojekt_bilabonnement.Model;
 
-public class Kontrakt {
+public class Kontrakt {//COMMENT
 
     private int kontrakt_id;
     private String start_dato;

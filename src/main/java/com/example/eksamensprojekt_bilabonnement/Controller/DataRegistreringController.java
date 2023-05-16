@@ -16,7 +16,7 @@ import java.util.List;
 
 @Controller
 public class DataRegistreringController {
-
+//COMMENT
     @Autowired
     KontraktService kontraktService;
 

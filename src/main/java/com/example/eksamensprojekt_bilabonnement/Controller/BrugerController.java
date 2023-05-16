@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 public class BrugerController {
-
+//COMMENT
     @Autowired
     BrugerService brugerService;
 

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class KontraktRepo {
+public class KontraktRepo {//COMMENT
 
     @Autowired
     JdbcTemplate template;
