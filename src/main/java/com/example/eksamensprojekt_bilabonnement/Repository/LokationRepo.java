@@ -21,4 +21,9 @@ public class LokationRepo {//COMMENT
         return template.query(sql,rowMapper);
     }
 
+    public Lokation hentLokationFraId(int lokation_id){
+        String sql = "SELECT * FROM bilabbonnementDB.lokation WHERE lokation_id = ?";
+        return template.queryForObject(sql, Lokation.class,lokation_id);
+    }
+
 }

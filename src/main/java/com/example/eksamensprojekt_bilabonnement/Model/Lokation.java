@@ -5,13 +5,20 @@ public class Lokation {//COMMENT
     private String adresse;
     private String lokation_navn;
 
+    private String by_navn;
+    private int postnummer;
+
+
+
     public Lokation() {
     }
 
-    public Lokation(int lokation_id, String adresse, String lokation_navn) {
+    public Lokation(int lokation_id, String adresse, String lokation_navn, String by_navn, int postnummer) {
         this.lokation_id = lokation_id;
         this.adresse = adresse;
         this.lokation_navn = lokation_navn;
+        this.by_navn = by_navn;
+        this.postnummer = postnummer;
     }
 
     public int getLokation_id() {
@@ -37,4 +44,8 @@ public class Lokation {//COMMENT
     public void setLokation_navn(String lokation_navn) {
         this.lokation_navn = lokation_navn;
     }
+
+
+
+
 }
