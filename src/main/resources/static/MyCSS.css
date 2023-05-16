@@ -185,6 +185,7 @@ h2{
     padding:10px 30px;
     border: 1px solid white;
     cursor: pointer;
+    font-size: 15px;
 }
 .greenButton:hover{
     background-color: #0c3a20;
@@ -196,7 +197,7 @@ h2{
     border: 1px solid #641419;
     background-color: #641419;
     color: white;
-    font-size: 12px;
+    font-size: 15px;
     text-transform: uppercase;
     cursor: pointer;
 }
