@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -39,6 +40,22 @@ public class DataRegistreringController {
             System.out.println("DEBUG: Kontrakt tilføjet til DB");
         }
         return ("dataRegistrering/dataregistrering");
+    }
+    @GetMapping("/seLejeaftaler")
+    public String seLejeafaler(@RequestParam(name = "toggle", defaultValue = "0") int toggle, Model model){
+        model.addAttribute("toggle",toggle);
+        if (toggle == 0){
+            model.addAttribute("kontraktListe", kontraktService.hentNuvaerendeKontrakter());
+        }else if (toggle == 1){
+            model.addAttribute("kontraktListe", kontraktService.hentAfsluttedeKontrakter());
+        }
+        return "dataregistrering/seLejeaftaler";
+    }
+    @PostMapping("/visLejeaftale")
+    public String visLejeaftale(@RequestParam("kontrakt_id") int kontrakt_id, Model model){
+        Kontrakt kontrakt = kontraktService.hentKontraktMedId(kontrakt_id);
+        model.addAttribute("kontrakt", kontrakt);
+        return "dataregistrering/visLejeaftale";
     }
 
 }
