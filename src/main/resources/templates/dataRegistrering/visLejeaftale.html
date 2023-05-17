@@ -11,15 +11,38 @@
 <p> <span th:text="${kontrakt.kontrakt_id}"></span></p>
 
 <div>
-    <p>kunde navn: <span th:text="${kunde.fornavn}"></span></p>
-    <p>kunde navn: <span th:text="${kunde.efternavn}"></span></p>
-    <p>Start dato: <span th:text="${kontrakt.start_dato}"></span></p>
-    <p>Slut dato: <span th:text="${kontrakt.slut_dato}"></span></p>
-    <p>afl lok: <span th:text="${afleveringslokation.lokation_navn}"></span></p>
-    <p>aft lok: <span th:text="${afhentningslokation.lokation_navn}"></span></p>
 
+    <div>
+        <h4>Kontrakt info</h4>
+        <p>kontrakt_id: <span th:text="${kontrakt.kontrakt_id}"></span></p>
+        <p>Start dato: <span th:text="${kontrakt.start_dato}"></span></p>
+        <p>Slut dato: <span th:text="${kontrakt.slut_dato}"></span></p>
+        <p>vognnummer: <span th:text="${kontrakt.vognnummer}"></span></p>
+        <p>Total pris: <span th:text="${kontrakt.total_pris}"></span> DKK</p>
 
+    </div>
 
+    <div>
+        <h4>Kunde info</h4>
+        <p>kunde navn: <span th:text="${kunde.fornavn}"></span> <span th:text="${kunde.efternavn}"></span></p>
+        <p>Email adresse: <span th:text="${kunde.email}"></span></p>
+        <p>Mobil: <span th:text="${kunde.mobil}"></span></p>
+    </div>
+
+    <div>
+        <h4>Afhentningslokation</h4>
+        <p>Lokationsnavn: <span th:text="${afhentningslokation.lokation_navn}"></span></p>
+        <p>Adresse: <span th:text="${afhentningslokation.adresse}"></span></p>
+        <p>By: <span th:text="${afhentningslokation.by_navn}"></span></p>
+        <p>Postnummer: <span th:text="${afhentningslokation.postnummer}"></span></p>
+    </div>
+    <div>
+        <h4>Afleveringslokation</h4>
+        <p>Lokationsnavn: <span th:text="${afleveringslokation.lokation_navn}"></span></p>
+        <p>Adresse: <span th:text="${afleveringslokation.adresse}"></span></p>
+        <p>By: <span th:text="${afleveringslokation.by_navn}"></span></p>
+        <p>Postnummer: <span th:text="${afleveringslokation.postnummer}"></span></p>
+    </div>
 
 </div>
 
