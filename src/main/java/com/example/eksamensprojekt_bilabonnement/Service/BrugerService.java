@@ -17,6 +17,10 @@ public class BrugerService {//COMMENT
         return brugerRepo.loginBruger(bruger);
     }
 
+    public boolean loginAdmin(Bruger bruger){
+        return brugerRepo.loginAdmin(bruger);
+    }
+
     public boolean opretBruger(Bruger bruger){
         return brugerRepo.opretBruger(bruger);
     }

@@ -15,13 +15,13 @@ import java.util.List;
 
 @Controller
 public class BrugerController {
-//COMMENT
+    //COMMENT
     @Autowired
     BrugerService brugerService;
 
 
     @GetMapping("adminSide")
-    public String adminSide(Model model){
+    public String adminSide(Model model) {
         List<Bruger> brugerListe = brugerService.hentBrugerListe();
         model.addAttribute("brugerListe", brugerListe);
         return "bruger/brugerliste";
@@ -33,10 +33,9 @@ public class BrugerController {
     }
 
     @PostMapping("adminLoggedInd")
-    public String adminSide(@RequestParam("admin_adgangskode") String adgangskode, HttpSession session) {
-        String korrektAdgangskode = "Jegvilind";
-        if (adgangskode.equals(korrektAdgangskode)) {
-            session.setAttribute("loggedInUser", "admin"); // Gem det loggede ind som "admin" i sessionen
+    public String adminSide(@ModelAttribute Bruger bruger, HttpSession session) {
+        if (brugerService.loginAdmin(bruger)) {
+            session.setAttribute("loggedInUser", "admin");
             return "redirect:adminSide";
         } else {
             return "bruger/logIndAdminFejl";
@@ -45,7 +44,7 @@ public class BrugerController {
 
 
     @PostMapping("loginBruger")
-    public String logBrugerInd(@ModelAttribute Bruger bruger, HttpSession session, Model model) {
+    public String logBrugerInd(@ModelAttribute Bruger bruger, HttpSession session) {
         if (brugerService.loginBruger(bruger)) {
             session.setAttribute("bruger", bruger);
             return "redirect:/";
@@ -62,7 +61,6 @@ public class BrugerController {
     }
 
 
-
     @PostMapping("opretBruger")
     public String opretBruger(@ModelAttribute Bruger bruger, HttpSession session) {
         boolean brugerOprettet = brugerService.opretBruger(bruger);
@@ -74,17 +72,19 @@ public class BrugerController {
     }
 
     @PostMapping("sletBruger")
-    public String sletBruger(Bruger bruger){
+    public String sletBruger(@ModelAttribute Bruger bruger) {
         boolean brugerSlettet = brugerService.sletBruger(bruger);
-        if (brugerSlettet){
+        if (brugerSlettet) {
             return "redirect:adminSide";
-        } else{
-            return "brugerlisteFejl";
+        } else {
+            return "bruger/brugerlisteFejl";
         }
     }
 
+
+
     @PostMapping("sletBrugerSide")
-    public String sletBrugerConfirm(){
+    public String sletBrugerConfirm() {
         return "bruger/sletBrugerConfirm";
     }
 }

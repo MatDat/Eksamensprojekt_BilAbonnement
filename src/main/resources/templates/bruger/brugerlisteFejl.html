@@ -5,14 +5,26 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Hov!</h1>
-    <p class="advarselstekst">Brugernavn findes ikke - prøv igen.</p>
+<h1>Slet en bruger</h1>
+
+<div id="advarselsDiv">
+    <h2>Hov! noget gik galt</h2>
+    <h3>Tjek: </h3>
+    <p class="advarselstekst">- at brugeren findes <br>
+        - at du ikke prøver at slette adminbrugeren</p>
+    </form>
+</div>
+
+<form id="login-form" action="/sletBruger" method="post">
+    <label class="loginForm-label">Indtast brugerens ID for at slette: </label>
+
+    <input type="input" name="bruger_id" th:value="${bruger_id}"/>
+    <button class="loginForm-submitButton" type="submit">SLET</button>
 </form>
 
-<form class="annullerButton" action="/adminPage" method="post">
+<form class="annullerButton" action="/adminSide" method="get">
     <button class="loginForm-submitButton" type="submit">Tilbage</button>
 </form>
-
 
 </body>
 </html>

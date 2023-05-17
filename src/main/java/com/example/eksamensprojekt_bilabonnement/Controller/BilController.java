@@ -73,6 +73,6 @@ public class BilController {
 
         bilService.opretBil(bil);
 
-        return "home/index";
+        return "redirect:/";
     }
 }
