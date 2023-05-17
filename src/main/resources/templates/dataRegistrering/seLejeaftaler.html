@@ -10,21 +10,13 @@
 <div id="lejeAftaleTopDiv">
     <form action="/seLejeaftaler" method="get">
         <select name="sortMuligheder">
-            <option value="kontrakt_id">ID</option>
-            <option value="start_dato">Start Dato</option>
-            <option value="slut_dato">Slut Dato</option>
-            <option value="total_pris">Pris</option>
+            <option value="kontrakt_id" th:selected="${sortMuligheder == 'kontrakt_id'}">ID</option>
+            <option value="start_dato" th:selected="${sortMuligheder == 'start_dato'}">Start Dato</option>
+            <option value="slut_dato" th:selected="${sortMuligheder == 'slut_dato'}">Slut Dato</option>
+            <option value="total_pris" th:selected="${sortMuligheder == 'total_pris'}">Pris</option>
         </select>
-        <!--        <input type="submit" value="Sorter">-->
-
-        <form action="/seLejeaftaler" method="get">
-            <input type="submit" value="Nuværende">
-            <input type="hidden" name="toggle" value="0">
-        </form>
-        <form action="/seLejeaftaler" method="get">
-            <input type="submit" value="Afsluttede">
-            <input type="hidden" name="toggle" value="1">
-        </form>
+        <button type="submit" name="toggle" value="0">Nuværende</button>
+        <button type="submit" name="toggle" value="1">Afsluttede</button>
     </form>
 </div>
 <div>

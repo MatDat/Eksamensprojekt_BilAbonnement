@@ -53,7 +53,8 @@ public class DataRegistreringController {
     }
     @GetMapping ("/seLejeaftaler")
     public String seLejeafaler(@RequestParam(name = "toggle", defaultValue = "0") int toggle,
-                               @RequestParam(value = "sortMuligheder", required = false) String selectedOption, Model model){
+                               @RequestParam(value = "sortMuligheder", required = false) String selectedOption,
+                               Model model){
         model.addAttribute("toggle", toggle);
         model.addAttribute("sortMuligheder", selectedOption);
         if (toggle == 0){
@@ -63,19 +64,6 @@ public class DataRegistreringController {
         }
         return "dataregistrering/seLejeaftaler";
     }
-//    @PostMapping("/printKontrakterSORT")
-//    public String printKontrakterSORT(@RequestParam("sortMuligheder") String selectedOption, Model model) {
-//        List<Kontrakt> lejeKontrakter = null;
-//
-//        switch (selectedOption) {
-//            case "kontrakt_id" -> lejeKontrakter = kontraktService.hentKontrakterSORT("kontrakt_id");
-//            case "start_dato" -> lejeKontrakter = kontraktService.hentKontrakterSORT("start_dato");
-//            case "slut_dato" -> lejeKontrakter = kontraktService.hentKontrakterSORT("slut_dato");
-//            case "total_pris" -> lejeKontrakter = kontraktService.hentKontrakterSORT("total_pris");
-//        }
-//        model.addAttribute("kontraktListe", lejeKontrakter);
-//        return "skadeOgUdbedring/seLejeaftaler";
-//    }
     @PostMapping("/visLejeaftale")
     public String visLejeaftale(@RequestParam("kontrakt_id") int kontrakt_id, Model model){
 

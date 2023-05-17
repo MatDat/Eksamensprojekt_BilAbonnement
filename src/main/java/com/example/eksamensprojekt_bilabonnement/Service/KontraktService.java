@@ -39,22 +39,13 @@ public class KontraktService {
             return kontraktRepo.addKontrakt(k);
     }
 
-    public List<Kontrakt> hentAlleKontrakter(){
-        return kontraktRepo.hentAlleKontrakter();
-    }
     public Kontrakt hentKontraktMedId(int kontrakt_id){
         return kontraktRepo.hentKontraktMedId(kontrakt_id);
     }
 
-    public List<Kontrakt> hentAfsluttedeKontrakter(){
-        return kontraktRepo.hentAfsluttedeKontrakter();
-    }
 
     public List<Double> getTotalPrisFraVognnummre(List<Integer> vognnumre) {
         return kontraktRepo.getTotalPrisFraVognnummre(vognnumre);
-    }
-    public List<Kontrakt> hentNuvaerendeKontrakter(){
-        return kontraktRepo.hentNuvaerendeKontrakter();
     }
 
     private List<String> opretFejlBeskeder(Kontrakt k) {
@@ -131,9 +122,6 @@ public class KontraktService {
             }
         }
         return false;
-    }
-    public List<Kontrakt> hentKontrakterSORT(String sortering) {
-        return kontraktRepo.hentKontrakterSORT(sortering);
     }
     public List<Kontrakt> hentKontrakter(boolean erNuværende, String sortering) {
         return kontraktRepo.hentKontrakter(erNuværende, sortering);
