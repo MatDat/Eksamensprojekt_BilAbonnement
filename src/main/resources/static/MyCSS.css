@@ -227,19 +227,35 @@ h2{
 }
 
 /*Forretningsudvikler/seBiler*/
+
+.dropDownDiv{
+    margin: 20px;
+}
+
+.seBilerTable{
+    overflow-y: auto;
+    overflow-x: auto;
+    height: 600px;
+}
+
 .statBox{
     display: flex;
     background-color: #144164;
     color:white;
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 20px 20px 20px 20px;
+    border: 1px solid black;
 }
 .statBoxContainer{
-    background-color: #144164;
+    /*background-color: #144164;*/
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
+
 
 
 
