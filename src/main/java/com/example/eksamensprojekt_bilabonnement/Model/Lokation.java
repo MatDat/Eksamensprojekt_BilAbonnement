@@ -21,6 +21,23 @@ public class Lokation {//COMMENT
         this.postnummer = postnummer;
     }
 
+
+    public String getBy_navn() {
+        return by_navn;
+    }
+
+    public void setBy_navn(String by_navn) {
+        this.by_navn = by_navn;
+    }
+
+    public int getPostnummer() {
+        return postnummer;
+    }
+
+    public void setPostnummer(int postnummer) {
+        this.postnummer = postnummer;
+    }
+
     public int getLokation_id() {
         return lokation_id;
     }
