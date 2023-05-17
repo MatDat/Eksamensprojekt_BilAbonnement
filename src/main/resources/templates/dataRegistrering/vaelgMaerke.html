@@ -23,19 +23,18 @@
 
 <div id="addBilFormDiv">
 
-    <form action="vaelgModelSide" method="get">
+    <form action="/vaelgModelSide" method="get">
         <table>
-            <tr>
-            <td><label class="addBilLabel">Vælg bil mærke: </label></td>
-            <td>
-                <select class="addBilFormInput" name="maerke_navn">
-                    <th:forEach items="${maerker}" var="maerke">
-                        <option value="${maerke.maerkeNavn}">${maerke.maerkeNavn}</option>
-                    </th:forEach>
-                </select>
-            </td>
-        </tr>
 
+            <tr>
+                <td><label class="addBilLabel">Vælg bil mærke:</label></td>
+                <td>
+                    <select class="addBilFormInput" name="maerke_id">
+                        <option th:each="maerke : ${maerker}" th:value="${maerke.maerke_id}"
+                                th:text="${maerke.maerke_navn}" th:name="${maerke_id}"></option>
+                    </select>
+                </td>
+            </tr>
 
         </table>
 

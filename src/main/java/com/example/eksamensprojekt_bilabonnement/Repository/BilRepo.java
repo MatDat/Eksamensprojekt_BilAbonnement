@@ -1,10 +1,9 @@
 package com.example.eksamensprojekt_bilabonnement.Repository;
 
 import com.example.eksamensprojekt_bilabonnement.Model.Bil;
-import com.example.eksamensprojekt_bilabonnement.Model.BilTilstand;
+import com.example.eksamensprojekt_bilabonnement.Model.Bil_Model;
 import com.example.eksamensprojekt_bilabonnement.Model.Maerke;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -35,6 +34,32 @@ public class BilRepo {//COMMENT
         return template.query(sql, rm);
     }
 
+    public List<Maerke> hentMaerkeNavnFraID(int maerke_id){
+        String sql = "SELECT maerke_navn FROM bilabonnementDB.maerke " +
+                "WHERE maerke_id = ?";
+        RowMapper<Maerke> rm = new BeanPropertyRowMapper<>(Maerke.class);
+        return template.query(sql, rm, maerke_id);
+    }
+    public List<Bil_Model> hentModelNavnFraID(int model_id){
+        String sql = "SELECT model_navn FROM bilabonnementDB.model " +
+                "WHERE model_id = ?";
+        RowMapper<Bil_Model> rm = new BeanPropertyRowMapper<>(Bil_Model.class);
+        return template.query(sql, rm, model_id);
+    }
+
+    public List<Bil_Model> hentValgteModeller(String maerke_id){
+        String sql = "SELECT * FROM bilabonnementDB.model " +
+                "WHERE maerke_id = ?";
+        RowMapper<Bil_Model> rm = new BeanPropertyRowMapper<>(Bil_Model.class);
+        return template.query(sql, rm, maerke_id);
+    }
+
+    public List<Bil_Model> hentAlleBil_Models(){
+        String sql = "SELECT * FROM bilabonnementDB.model";
+        RowMapper<Bil_Model> rm = new BeanPropertyRowMapper<>(Bil_Model.class);
+        return template.query(sql, rm);
+    }
+
     public List<Bil> hentBilerMedTilstand(String tilstand) {
         String sql = "SELECT * FROM bilabonnementDB.bil, bilabonnementDB.model, bilabonnementDB.maerke " +
                 "WHERE bil_tilstand = ? AND bil.model_id = model.model_id AND model.maerke_id = maerke.maerke_id;";
@@ -57,11 +82,11 @@ public class BilRepo {//COMMENT
 
 
     public boolean opretBil(Bil bil) {
-        String sql = "INSERT INTO bil (vognnummer, stelnummer,maerke_id, model_id, staalpris, registrerings_afgift, " +
+        String sql = "INSERT INTO bil (model_id, stelnummer, staalpris, registrerings_afgift, " +
                 "CO2_udledning, bil_tilstand) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                "VALUES (?, ?, ?, ?, ?, ?)";
 
-        template.update(sql, bil.getVognnummer(), bil.getStelnummer(), bil.getMaerke_navn(), bil.getModel_id(), bil.getStaalpris(),
+        template.update(sql, bil.getModel_id(), bil.getStelnummer(), bil.getStaalpris(),
                 bil.getRegistrerings_afgift(), bil.getCO2_udledning(), bil.getBilTilstand());
         return true;
     }

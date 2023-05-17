@@ -3,45 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Vælg mærke</title>
-</head>
-<body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
     <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
 
 <h1>Tilføj en ny bil</h1>
 
-
 <div id="h2Div">
-    <h2>Vælg model</h2>
+    <h2>Vælg en <span th:text="${maerke_navn}" th:value="${maerke_navn}"></span> model</h2>
 </div>
 
 <div id="addBilFormDiv">
 
     <form action="opretBilSide" method="get">
         <table>
-
             <tr>
-                <td><label class="addBilLabel">Vælg Model: </label></td>
+                <td><label class="addBilLabel">Vælg en model: </label></td>
                 <td>
-                    <select class="addBilFormInput" name="model_navn">
-                        <option value="Vælg">Vælg her...</option>
-                        <option value="Test1">Test1</option>
-                        <option value="Test2">Test2</option>
-                        <option value="Test3">Test3</option>
+                    <select class="addBilFormInput" name="model_id">
+                        <option th:each="model : ${models}"
+                                th:value="${model.model_id}"
+                                th:text="${model.model_navn}"></option>
                     </select>
                 </td>
             </tr>
-
         </table>
 
         <input class="greenButton" type="submit" value="Næste" style="float: right;margin-top:15px;">
-
     </form>
 
 </div>
@@ -52,7 +40,5 @@
     </form>
 </div>
 
-</body>
-</html>
 </body>
 </html>

@@ -36,7 +36,7 @@ public class BrugerController {
     public String adminSide(@RequestParam("admin_adgangskode") String adgangskode, HttpSession session) {
         String korrektAdgangskode = "Jegvilind";
         if (adgangskode.equals(korrektAdgangskode)) {
-            session.setAttribute("loggedInUser", "admin"); // Gem det logget ind som "admin" i sessionen
+            session.setAttribute("loggedInUser", "admin"); // Gem det loggede ind som "admin" i sessionen
             return "redirect:adminSide";
         } else {
             return "bruger/logIndAdminFejl";
