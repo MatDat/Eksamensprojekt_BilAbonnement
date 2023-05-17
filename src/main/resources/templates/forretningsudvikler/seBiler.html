@@ -5,10 +5,16 @@
     <title>Title</title>
     <link rel="stylesheet" href="/MyCSS.css">
     <style>
+        body{
+            background-color: #BBD9EE;
+            margin: 20px;
+        }
         .seBilerPageBox{
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            align-items: flex-start;
+
         }
         table, th, td {
             border: 1px solid;
@@ -17,7 +23,7 @@
 </head>
 <body>
 <div class="seBilerPageBox">
-<div>
+<div class="dropDownDiv">
     <form th:action="@{/seBilerDropdown}" method="post">
         <select name="dropdown">
                 <option value="alle">Alle</option>
@@ -40,7 +46,7 @@
 </div>
 
 
-<div style="overflow-x:auto;">
+<div class="seBilerTable">
     <table>
         <thead>
         <tr>
