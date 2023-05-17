@@ -12,7 +12,13 @@
 <div id="addBilFormDiv">
 
     <form action="opretBil" method="post">
+        <input type="hidden" th:value="${model_id}" name="model_id"/>
+
         <table>
+            <tr>
+                <td><label class="addBilLabel">Model: </label></td>
+                <td><p><span th:text="${model}"></span></p></td>
+            </tr>
             <tr>
                 <td><label class="addBilLabel">Tilføj stelnummer: </label></td>
                 <td><input class="addBilFormInput" type="text" name="stelnummer" placeholder="Indtast her..."></td>
@@ -37,17 +43,17 @@
             <tr>
                 <td><label class="addBilLabel">Bil tilstand: </label></td>
                 <td>
-                    <input type="radio" class="addBilFormInput" name="bilTilstand" value="Ledig" checked> Ledig
-                    <input type="radio" class="addBilFormInput" name="bilTilstand" value="Reserveret"> Reserveret
-                    <input type="radio" class="addBilFormInput" name="bilTilstand" value="Skadet"> Skadet
+                    <input type="radio" class="addBilFormInput" name="bilTilstand" value="LEJEKLAR" checked> Lejeklar
+                    <input type="radio" class="addBilFormInput" name="bilTilstand" value="RESERVERET"> Reserveret
+                    <input type="radio" class="addBilFormInput" name="bilTilstand" value="SKADET"> Skadet
                 </td>
             </tr>
 
             <tr>
                 <td><label class="addBilLabel">Gear type: </label></td>
                 <td>
-                    <input type="radio" class="addBilFormInput" name="gear_type" value="Manuelt" checked> Manuelt
-                    <input type="radio" class="addBilFormInput" name="gear_type" value="Automat"> Automat
+                    <input type="radio" class="addBilFormInput" name="gear_type" value="MANUELT" checked> Manuelt
+                    <input type="radio" class="addBilFormInput" name="gear_type" value="AUTOMATISK"> Automat
                 </td>
             </tr>
 

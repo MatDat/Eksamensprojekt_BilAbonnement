@@ -2,6 +2,7 @@ package com.example.eksamensprojekt_bilabonnement.Service;
 
 import com.example.eksamensprojekt_bilabonnement.Model.Bil;
 import com.example.eksamensprojekt_bilabonnement.Model.BilTilstand;
+import com.example.eksamensprojekt_bilabonnement.Model.Bil_Model;
 import com.example.eksamensprojekt_bilabonnement.Model.Maerke;
 import com.example.eksamensprojekt_bilabonnement.Repository.BilRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,18 @@ public class BilService {//COMMENT
 
     public List<Maerke> hentAlleMaerker(){
         return bilRepo.hentAlleMaerker();
+    }
+
+    public List<Bil_Model> hentValgteModeller(String maerke_id){
+        return bilRepo.hentValgteModeller(maerke_id);
+    }
+
+    public List<Maerke> hentMaerkeNavnFraID(int maerke_id){
+        return bilRepo.hentMaerkeNavnFraID(maerke_id);
+    }
+
+    public List<Bil_Model> hentModelNavnFraID(int model_id){
+        return bilRepo.hentModelNavnFraID(model_id);
     }
 
     public List<Integer> hentVognnumre(List<Bil> biler){
