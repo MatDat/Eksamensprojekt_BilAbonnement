@@ -87,7 +87,7 @@ public class BilRepo {//COMMENT
                 "VALUES (?, ?, ?, ?, ?, ?)";
 
         template.update(sql, bil.getModel_id(), bil.getStelnummer(), bil.getStaalpris(),
-                bil.getRegistrerings_afgift(), bil.getCO2_udledning(), bil.getBilTilstand());
+                bil.getRegistrerings_afgift(), bil.getCO2_udledning(), String.valueOf(bil.getBilTilstand()));
         return true;
     }
 }

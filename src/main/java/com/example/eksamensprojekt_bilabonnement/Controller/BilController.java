@@ -70,7 +70,6 @@ public class BilController {
         bil.setRegistrerings_afgift(Double.valueOf(wr.getParameter("registrerings_afgift")));
         bil.setCO2_udledning(Double.valueOf(wr.getParameter("CO2_udledning")));
         bil.setBilTilstand(BilTilstand.valueOf(wr.getParameter("bilTilstand")));
-        bil.setGear_type(gear_type.valueOf(wr.getParameter("gear_type")));
 
         bilService.opretBil(bil);
 
