@@ -43,6 +43,11 @@ h2{
     font-size: 28px;
     color: white;
 }
+h3{
+    /*text-align: left;*/
+    font-size: 25px;
+    color: white;
+}
 #h2Div{
     width: 100%;
     background-color: #10334f;
@@ -191,6 +196,14 @@ h2{
     background-color: #0c3a20;
     transition: 0.5s;
 }
+.greenButtonSelected {
+    background-color: #0c3a20;
+    color: white;
+    padding:10px 30px;
+    border: 1px solid white;
+    cursor: pointer;
+    font-size: 15px;
+}
 .redButton{
     padding:10px 150px;
     width:100%;
@@ -206,12 +219,19 @@ h2{
     transition: 0.5s;
 }
 
-#lejeAftaleTopDiv{
+#lejeAftaleSortDiv{
     width: 100%;
-    height: 40px;
+    padding: 20px;
     background-color: #206BA4;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+}
+#lejeAftaleSearchDiv{
+    width: 100%;
+    padding: 20px;
+    background-color: #144164;
+    display: flex;
+    justify-content: flex-start;
 }
 .kontrakt-box{
     background-color: #206BA4;

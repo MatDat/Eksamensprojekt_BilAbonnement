@@ -7,36 +7,43 @@
 </head>
 <body>
 <h1>Se Lejeaftaler</h1>
-<div id="lejeAftaleTopDiv">
-    <form action="/seLejeaftaler" method="get">
-        <select name="sortMuligheder">
-            <option value="kontrakt_id">ID</option>
-            <option value="start_dato">Start Dato</option>
-            <option value="slut_dato">Slut Dato</option>
-            <option value="total_pris">Pris</option>
-        </select>
-        <!--        <input type="submit" value="Sorter">-->
-
-        <form action="/seLejeaftaler" method="get">
-            <input type="submit" value="Nuværende">
-            <input type="hidden" name="toggle" value="0">
+<div id="lejeAftaleSearchDiv">
+    <div style="align-self: flex-start">
+        <h3>Søg</h3>
+    </div>
+    <div style="margin-left: auto;margin-right: auto">
+        <form action="/visLejeaftale" method="post">
+            <input class="addBilFormInput" type="text" name="kontrakt_id" placeholder="Kontrakt ID">
+            <input class="greenButton" type="submit" value="Gå til Lejeaftale">
         </form>
-        <form action="/seLejeaftaler" method="get">
-            <input type="submit" value="Afsluttede">
-            <input type="hidden" name="toggle" value="1">
-        </form>
-    </form>
+    </div>
 </div>
-<div>
-    <p th:if="${toggle == 0}">Nuværende</p>
-    <p th:if="${toggle == 1}">Afsluttede</p>
+<div id="lejeAftaleSortDiv">
+    <div style="align-self: flex-start">
+        <h3>Sorter</h3>
+    </div>
+    <div style="margin-left: auto;margin-right: auto">
+        <form action="/seLejeaftaler" method="get">
+            <select class="addBilFormInput" name="sortMuligheder">
+                <option value="kontrakt_id" th:selected="${sortMuligheder == 'kontrakt_id'}">ID</option>
+                <option value="start_dato" th:selected="${sortMuligheder == 'start_dato'}">Start Dato</option>
+                <option value="slut_dato" th:selected="${sortMuligheder == 'slut_dato'}">Slut Dato</option>
+                <option value="total_pris" th:selected="${sortMuligheder == 'total_pris'}">Pris</option>
+            </select>
+            <button th:class="${toggle == 0 ? 'greenButtonSelected' : 'greenButton'}" type="submit" name="toggle"
+                    value="0">Nuværende
+            </button>
+            <button th:class="${toggle == 1 ? 'greenButtonSelected' : 'greenButton'}" type="submit" name="toggle"
+                    value="1">Afsluttede
+            </button>
+        </form>
+    </div>
 </div>
 <div class="kontrakt-box-container">
     <div th:each="kontrakt : ${kontraktListe}" class="kontrakt-box">
         <p>Kontrakt ID: <span th:text="${kontrakt.kontrakt_id}"></span></p>
         <p>Start dato: <span th:text="${kontrakt.start_dato}"></span></p>
         <p>Slut dato: <span th:text="${kontrakt.slut_dato}"></span></p>
-        <!--        <p>Kunde ID: <span th:text="${kontrakt.kunde_id}"></span></p>-->
         <p>Total Pris: <span th:text="${kontrakt.total_pris}"></span></p>
         <form action="/visLejeaftale" method="post">
             <input type="hidden" name="kontrakt_id" th:value="${kontrakt.kontrakt_id}">

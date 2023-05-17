@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class KontraktRepo {//COMMENT
+public class KontraktRepo {
 
     @Autowired
     JdbcTemplate template;
@@ -31,33 +31,22 @@ public class KontraktRepo {//COMMENT
         }
     }
 
-
     public List<Double> getTotalPrisFraVognnummre(List<Integer> vognnumre) {
         String sql = "SELECT total_pris " +
                 "FROM bilabonnementDB.kontrakt " +
                 "WHERE vognnummer = ? " +
                 "AND CURDATE() BETWEEN start_dato AND slut_dato;";
-
         List<Double> rl = new ArrayList<>();
-
         for (int i = 0; i < vognnumre.size(); i++) {
             rl.add(template.queryForObject(sql, Double.class, vognnumre.get(i)));
         }
-
         return rl;
-
     }
 
     public Kontrakt hentKontraktMedId(int kontrakt_id) {
         String sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt_id = ?";
         RowMapper<Kontrakt> rowmapper = new BeanPropertyRowMapper(Kontrakt.class);
         return template.queryForObject(sql, rowmapper, kontrakt_id);
-    }
-
-    public List<Kontrakt> hentKontrakterSORT(String sortering) {
-        String sql = "SELECT * FROM bilabonnementDB.kontrakt ORDER BY " + sortering + " ASC";
-        RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper<>(Kontrakt.class);
-        return template.query(sql, rowMapper);
     }
 
     public List<Kontrakt> hentKontrakter(boolean erNuværende, String sortering) {
@@ -71,33 +60,10 @@ public class KontraktRepo {//COMMENT
         return template.query(sql, rowMapper);
     }
 
-    public List<Kontrakt> hentAlleKontrakter() {
-        String sql = "SELECT * FROM bilabonnementDB.kontrakt;";
-        RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper(Kontrakt.class);
-        return template.query(sql, rowMapper);
-    }
-
-    public List<Kontrakt> hentAfsluttedeKontrakter() {
-        String sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt.slut_dato <= CURDATE();";
-        RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper<>(Kontrakt.class);
-        return template.query(sql, rowMapper);
-    }
-
-    public List<Kontrakt> hentNuvaerendeKontrakter() {
-        String sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt.slut_dato >= CURDATE();";
-        RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper<>(Kontrakt.class);
-        return template.query(sql, rowMapper);
-    }
-
     public List<Integer> hentKontraktIDFraVognnummer(int vognnummer) {
         String sql = "SELECT kontrakt_id FROM kontrakt WHERE vognnummer = ? AND " +
                 "slut_dato <= CURDATE() ORDER BY slut_dato DESC";
-
-
         List<Integer> vns = template.queryForList(sql, Integer.class, vognnummer);
-
         return vns;
     }
-
-
 }
