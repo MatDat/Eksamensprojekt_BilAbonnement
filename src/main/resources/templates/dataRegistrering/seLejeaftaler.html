@@ -13,7 +13,7 @@
     </div>
     <div style="margin-left: auto;margin-right: auto">
         <form action="/visLejeaftale" method="post">
-            <input class="addBilFormInput" type="text" name="kontrakt_id" placeholder="Kontrakt ID">
+            <input class="generelFormInput" type="text" name="kontrakt_id" placeholder="Kontrakt ID">
             <input class="greenButton" type="submit" value="Gå til Lejeaftale">
         </form>
     </div>
@@ -24,7 +24,7 @@
     </div>
     <div style="margin-left: auto;margin-right: auto">
         <form action="/seLejeaftaler" method="get">
-            <select class="addBilFormInput" name="sortMuligheder">
+            <select class="generelFormInput" name="sortMuligheder">
                 <option value="kontrakt_id" th:selected="${sortMuligheder == 'kontrakt_id'}">ID</option>
                 <option value="start_dato" th:selected="${sortMuligheder == 'start_dato'}">Start Dato</option>
                 <option value="slut_dato" th:selected="${sortMuligheder == 'slut_dato'}">Slut Dato</option>

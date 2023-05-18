@@ -21,15 +21,15 @@
     <h2>Vælg mærke</h2>
 </div>
 
-<div id="addBilFormDiv">
+<div id="generelBodyDiv">
 
     <form action="/vaelgModelSide" method="get">
         <table>
 
             <tr>
-                <td><label class="addBilLabel">Vælg bil mærke:</label></td>
+                <td><label class="generelFormLable">Vælg bilmærke:</label></td>
                 <td>
-                    <select class="addBilFormInput" name="maerke_id">
+                    <select class="generelFormInput" name="maerke_id">
                         <option th:each="maerke : ${maerker}" th:value="${maerke.maerke_id}"
                                 th:text="${maerke.maerke_navn}" th:name="${maerke_id}"></option>
                     </select>
@@ -38,7 +38,7 @@
 
         </table>
 
-        <input class="greenButton" type="submit" value="Næste" style="float: right;margin-top:15px;">
+        <input class="greenButton" type="submit" value="Næste" style="margin-top:15px; width: 100%;">
 
     </form>
 

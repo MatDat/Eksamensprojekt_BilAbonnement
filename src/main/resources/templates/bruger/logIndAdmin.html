@@ -3,26 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin adgang krævet</title>
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
 <h1>Administrativ adgang</h1>
 
-<form id="login-form" action="/adminLoggedInd" method="post">
+<div id="h2Div">
+    <h2>Login admin</h2>
+</div>
 
-    <h2>Login</h2>
-    <label class="loginForm-label">Brugernavn:</label>
-    <input class="loginForm-input" type="text" placeholder="Indtast brugernavn..." name="brugernavn">
+<div id="generelBodyDiv">
+    <form id="login-form" action="/adminLoggedInd" method="post">
 
-    <label class="loginForm-label">Adgangskode:</label>
-    <input class="loginForm-input" type="password" placeholder="Indtast kode..." name="kode">
+        <table>
+            <tr>
+                <td><label class="generelFormLable">Brugernavn:</label></td>
+                <td>
+                    <input class="generelFormInput" type="text" placeholder="Indtast brugernavn..." name="brugernavn">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="generelFormLable">Adgangskode:</label>
+                </td>
+                <td>
+                    <input class="generelFormInput" type="password" placeholder="Indtast kode..." name="kode">
+                </td>
+            </tr>
+        </table>
+        <button class="greenButton" type="submit" style="margin-top:15px; width: 100%;">Login</button>
+    </form>
+</div>
 
-    <button class="loginForm-submitButton" type="submit">Login</button>
 
-</form>
-
-<form id="annullerButton" action="/" method="get">
-    <button class="loginForm-submitButton" type="submit">Tilbage</button>
-</form>
+<div id="annullerButtonAddBilDiv">
+    <form action="/" method="get">
+        <button class="redButton" type="submit">Tilbage</button>
+    </form>
+</div>
 
 </body>
 </html>
