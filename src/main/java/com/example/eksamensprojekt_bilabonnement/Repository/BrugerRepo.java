@@ -36,9 +36,10 @@ public class BrugerRepo {//COMMENT
     }
 
     public boolean loginAdmin(Bruger bruger) {
-        String sql = "SELECT * FROM bilabonnementDB.bruger WHERE brugernavn = 'ADMIN' AND kode = ?";
+        String sql = "SELECT * FROM bilabonnementDB.bruger WHERE brugernavn = 'Admin' AND kode = ? AND brugernavn = ?";
+        //^Denne linie tjekker om indtastede brugernavn & kode stemmeroverens med Admin brugernavnet.
         try {
-            template.queryForObject(sql, new BeanPropertyRowMapper<>(Bruger.class), bruger.getKode());
+            template.queryForObject(sql, new BeanPropertyRowMapper<>(Bruger.class), bruger.getKode(), bruger.getBrugernavn());
             return true;
         } catch (EmptyResultDataAccessException e) {
             return false;

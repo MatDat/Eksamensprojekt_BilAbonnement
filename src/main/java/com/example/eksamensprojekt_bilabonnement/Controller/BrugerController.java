@@ -32,16 +32,15 @@ public class BrugerController {
         return "bruger/logIndAdmin";
     }
 
-    @PostMapping("adminLoggedInd")
+    @PostMapping("/adminLoggedInd")
     public String adminSide(@ModelAttribute Bruger bruger, HttpSession session) {
         if (brugerService.loginAdmin(bruger)) {
             session.setAttribute("loggedInUser", "admin");
-            return "redirect:adminSide";
+            return "redirect:/adminSide";
         } else {
             return "bruger/logIndAdminFejl";
         }
     }
-
 
     @PostMapping("loginBruger")
     public String logBrugerInd(@ModelAttribute Bruger bruger, HttpSession session) {
@@ -73,15 +72,12 @@ public class BrugerController {
 
     @PostMapping("sletBruger")
     public String sletBruger(@ModelAttribute Bruger bruger) {
-        boolean brugerSlettet = brugerService.sletBruger(bruger);
-        if (brugerSlettet) {
+        if (brugerService.sletBruger(bruger)) {
             return "redirect:adminSide";
         } else {
             return "bruger/brugerlisteFejl";
         }
     }
-
-
 
     @PostMapping("sletBrugerSide")
     public String sletBrugerConfirm() {
