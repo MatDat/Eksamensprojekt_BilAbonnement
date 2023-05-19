@@ -6,6 +6,11 @@
     <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
+<div id="annullerButtonAddBilDiv" style="justify-content: flex-start;padding: 0px">
+    <form action="/" method="get">
+        <button class="redButton"style="padding: 5px; font-size: 10px" type="submit">Tilbage til forsiden</button>
+    </form>
+</div>
 <h1>Se Lejeaftaler</h1>
 <div id="lejeAftaleSearchDiv">
     <div style="align-self: flex-start">
@@ -47,7 +52,7 @@
         <p>Total Pris: <span th:text="${kontrakt.total_pris}"></span></p>
         <form action="/visLejeaftale" method="post">
             <input type="hidden" name="kontrakt_id" th:value="${kontrakt.kontrakt_id}">
-            <input type="submit" value="Se Kontrakt">
+            <input class="greenButton" type="submit" value="Se Kontrakt">
         </form>
     </div>
 </div>
