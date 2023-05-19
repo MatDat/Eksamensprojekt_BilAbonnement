@@ -6,6 +6,8 @@ import com.example.eksamensprojekt_bilabonnement.Repository.KontraktRepo;
 import com.example.eksamensprojekt_bilabonnement.Repository.KundeRepo;
 import com.example.eksamensprojekt_bilabonnement.Repository.LokationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -73,7 +75,9 @@ public class KontraktService {
         }
         return fejlBeskeder;
     }
-
+    public List<Kontrakt> hentAlleKontrakter(){
+        return kontraktRepo.hentAlleKontrakter();
+    }
 
     private boolean vognnumerOgBilTilstandErValid(Kontrakt kontrakt, List<Bil> bilList) {
         for (int i = 0; i < bilList.size(); i++) {

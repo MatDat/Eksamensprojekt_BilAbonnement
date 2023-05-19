@@ -52,6 +52,7 @@ public class DataRegistreringController {
     public String seLejeafaler(@RequestParam(name = "toggle", defaultValue = "0") int toggle,
                                @RequestParam(value = "sortMuligheder", required = false) String selectedOption,
                                Model model) {
+        model.addAttribute("maxKontraktId",kontraktService.hentAlleKontrakter().size());
         model.addAttribute("toggle", toggle);
         model.addAttribute("sortMuligheder", selectedOption);
         if (toggle == 0) {

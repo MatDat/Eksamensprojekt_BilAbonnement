@@ -59,6 +59,11 @@ public class KontraktRepo {
         RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper<>(Kontrakt.class);
         return template.query(sql, rowMapper);
     }
+    public List<Kontrakt> hentAlleKontrakter(){
+        String sql = "SELECT * FROM bilabonnementDB.kontrakt";
+        RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper<>(Kontrakt.class);
+        return template.query(sql,rowMapper);
+    }
 
     public List<Integer> hentKontraktIDFraVognnummer(int vognnummer) {
         String sql = "SELECT kontrakt_id FROM kontrakt WHERE vognnummer = ? AND " +
