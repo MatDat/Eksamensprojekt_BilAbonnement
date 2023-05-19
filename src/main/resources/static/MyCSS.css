@@ -47,6 +47,7 @@ h3{
     /*text-align: left;*/
     font-size: 25px;
     color: white;
+    margin-bottom: 15px;
 }
 #h2Div{
     width: 100%;
@@ -186,6 +187,11 @@ h3{
     justify-content: center;
     text-align: center;
     display: flex;
+}
+.advarselsInnerDiv{
+    border:1px solid white;
+    padding:15px;
+    background-color: #641419;
 }
 .generelFormLable{
     margin-right:50px;
