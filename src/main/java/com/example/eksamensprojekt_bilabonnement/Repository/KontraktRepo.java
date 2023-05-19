@@ -52,9 +52,9 @@ public class KontraktRepo {
     public List<Kontrakt> hentKontrakter(boolean erNuværende, String sortering) {
         String sql;
         if (erNuværende) {
-            sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt.slut_dato <= CURDATE() ORDER BY " + sortering + " DESC";
-        } else {
             sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt.slut_dato >= CURDATE() ORDER BY " + sortering + " DESC";
+        } else {
+            sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt.slut_dato <= CURDATE() ORDER BY " + sortering + " DESC";
         }
         RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper<>(Kontrakt.class);
         return template.query(sql, rowMapper);
