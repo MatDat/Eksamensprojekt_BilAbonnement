@@ -8,7 +8,7 @@
 <body>
 <div id="annullerButtonAddBilDiv" style="justify-content: flex-start;padding: 0px">
     <form action="/" method="get">
-        <button class="redButton"style="padding: 5px; font-size: 10px" type="submit">Tilbage til forsiden</button>
+        <button class="redButton" style="padding: 5px; font-size: 10px" type="submit">Tilbage til forsiden</button>
     </form>
 </div>
 <h1>Se Lejeaftaler</h1>
@@ -18,7 +18,7 @@
     </div>
     <div style="margin-left: auto;margin-right: auto">
         <form action="/visLejeaftale" method="post">
-            <input class="generelFormInput" type="text" name="kontrakt_id" placeholder="Kontrakt ID">
+            <input class="generelFormInput" type="number" min="1" th:max="${maxKontraktId}" name="kontrakt_id" placeholder="ID">
             <input class="greenButton" type="submit" value="Gå til Lejeaftale">
         </form>
     </div>
@@ -52,7 +52,8 @@
         <p>Total Pris: <span th:text="${kontrakt.total_pris}"></span> DKK</p>
         <form action="/visLejeaftale" method="post">
             <input type="hidden" name="kontrakt_id" th:value="${kontrakt.kontrakt_id}">
-            <input class="greenButton" style="padding: 8px;font-size: 12px;margin-top: 6px" type="submit" value="Se Kontrakt">
+            <input class="greenButton" style="padding: 8px;font-size: 12px;margin-top: 6px" type="submit"
+                   value="Se Kontrakt">
         </form>
     </div>
 </div>
