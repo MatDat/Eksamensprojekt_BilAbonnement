@@ -6,8 +6,6 @@ import com.example.eksamensprojekt_bilabonnement.Repository.KontraktRepo;
 import com.example.eksamensprojekt_bilabonnement.Repository.KundeRepo;
 import com.example.eksamensprojekt_bilabonnement.Repository.LokationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -30,16 +28,17 @@ public class KontraktService {
     @Autowired
     LokationRepo lokationRepo;
 
-    public boolean tilføjKontrakt(Kontrakt k) {
+    public List<String> validerOgTilføjKontrakt(Kontrakt k) {
         List<String> fejlBeskeder = opretFejlBeskeder(k);
         if (!fejlBeskeder.isEmpty()) {          //TODO vi skal bruge List<String> fejlbeskeder til at informere hvilke
             System.out.println(fejlBeskeder);   //input felter der er forkerte
-            return false;
-        } else
-            return kontraktRepo.addKontrakt(k);
+        } else {
+            kontraktRepo.addKontrakt(k);
+        }
+        return fejlBeskeder;
     }
 
-    public Kontrakt hentKontraktMedId(int kontrakt_id){
+    public Kontrakt hentKontraktMedId(int kontrakt_id) {
         return kontraktRepo.hentKontraktMedId(kontrakt_id);
     }
 
@@ -57,14 +56,11 @@ public class KontraktService {
         //TODO tilføj bruger_id til tracking - tag den fra session? - k.setBruger_id();
 
         if (!vognnumerOgBilTilstandErValid(k, bilListe)) {
-            fejlBeskeder.add("Bilen med vognnummeret " + k.getVognnummer() + ", findes ikke i systemet" +
+            fejlBeskeder.add("Bilen med vognnummeret " + k.getVognnummer() + " findes ikke i systemet" +
                     " eller er ikke tilgængelig til udlejning");
         }
         if (!kundeIdErValid(k, kundeList)) {
             fejlBeskeder.add("Kunden med id: " + k.getKunde_id() + " findes ikke i systemet");
-        }
-        if (!total_prisErValid(k)) {
-            fejlBeskeder.add("Totalprisen skal være større end 0");
         }
         if (!datoerErValid(k)) {
             fejlBeskeder.add("Startdatoen må ikke være før slutdatoen eller før i dag");
@@ -81,18 +77,9 @@ public class KontraktService {
 
     private boolean vognnumerOgBilTilstandErValid(Kontrakt kontrakt, List<Bil> bilList) {
         for (int i = 0; i < bilList.size(); i++) {
-            //TODO linje under er til debug
-            System.out.println(bilList.get(i).getVognnummer() + " " + bilList.get(i).getBilTilstand());
             if (bilList.get(i).getVognnummer() == kontrakt.getVognnummer() && bilList.get(i).getBilTilstand() == BilTilstand.LEJEKLAR) {
                 return true;
             }
-        }
-        return false;
-    }
-
-    private boolean total_prisErValid(Kontrakt kontrakt) {
-        if (kontrakt.getTotal_pris() > 0) {
-            return true;
         }
         return false;
     }
@@ -123,6 +110,7 @@ public class KontraktService {
         }
         return false;
     }
+
     public List<Kontrakt> hentKontrakter(boolean erNuværende, String sortering) {
         return kontraktRepo.hentKontrakter(erNuværende, sortering);
     }

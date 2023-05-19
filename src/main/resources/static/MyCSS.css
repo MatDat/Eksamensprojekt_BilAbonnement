@@ -270,6 +270,8 @@ h3{
     border-radius: 15px;
     overflow: hidden;
     text-align: center;
+    color: white;
+
 }
 .kontrakt-box-container{
     display: flex;
