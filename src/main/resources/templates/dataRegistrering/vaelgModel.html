@@ -10,17 +10,17 @@
 <h1>Tilføj en ny bil</h1>
 
 <div id="h2Div">
-    <h2>Vælg en <span th:text="${maerke_navn}" th:value="${maerke_navn}"></span> model</h2>
+    <h2>Vælg en <span th:text="${maerke_navn}" th:value="${maerke_navn}"></span>-model</h2>
 </div>
 
-<div id="addBilFormDiv">
+<div id="generelBodyDiv">
 
     <form action="opretBilSide" method="get">
         <table>
             <tr>
-                <td><label class="addBilLabel">Vælg en model: </label></td>
+                <td><label class="generelFormLable">Vælg en model: </label></td>
                 <td>
-                    <select class="addBilFormInput" name="model_id">
+                    <select class="generelFormInput" name="model_id">
                         <option th:each="model : ${models}"
                                 th:value="${model.model_id}"
                                 th:text="${model.model_navn}"></option>
@@ -29,7 +29,7 @@
             </tr>
         </table>
 
-        <input class="greenButton" type="submit" value="Næste" style="float: right;margin-top:15px;">
+        <input class="greenButton" type="submit" value="Næste" style="margin-top:15px; width: 100%;">
     </form>
 
 </div>

@@ -25,15 +25,20 @@ public class BrugerRepo {//COMMENT
     }
 
     public boolean loginBruger(Bruger bruger) {
-        String sql = "SELECT * FROM bilabonnementDB.bruger WHERE brugernavn = ? AND kode = ?";
-        RowMapper<Bruger> rm = new BeanPropertyRowMapper<>(Bruger.class);
+        if (bruger.getBrugernavn() == null || bruger.getKode() == null
+                || bruger.getBrugernavn().isEmpty() || bruger.getKode().isEmpty()) {
+            return false; //^Nægter adgang hvis man prøver at logge ind uden at skrive noget
+        }
+        String sql = "SELECT COUNT(*) FROM bilabonnementDB.bruger WHERE brugernavn = ? AND kode = ?";
         try {
-            template.queryForObject(sql, rm, bruger.getBrugernavn(), bruger.getKode());
-            return true;
+            int count = template.queryForObject(sql, Integer.class, bruger.getBrugernavn(), bruger.getKode());
+            return count > 0;
         } catch (EmptyResultDataAccessException e) {
             return false;
         }
     }
+
+
 
     public boolean loginAdmin(Bruger bruger) {
         String sql = "SELECT * FROM bilabonnementDB.bruger WHERE brugernavn = 'Admin' AND kode = ? AND brugernavn = ?";
@@ -51,9 +56,8 @@ public class BrugerRepo {//COMMENT
             String sql = "INSERT INTO bruger (bruger_id, brugernavn, kode) VALUES (?, ?, ?)";
             template.update(sql, bruger.getBruger_id(), bruger.getBrugernavn(), bruger.getKode());
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     public boolean eksistererBruger(Bruger bruger) {

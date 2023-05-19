@@ -47,8 +47,14 @@ h3{
     /*text-align: left;*/
     font-size: 25px;
     color: white;
+    margin-bottom: 15px;
 }
 #h2Div{
+    width: 100%;
+    background-color: #10334f;
+    padding: 15px 0;
+}
+.h2Div{
     width: 100%;
     background-color: #10334f;
     padding: 15px 0;
@@ -160,17 +166,37 @@ h3{
 }
 
 /* ADD BILL-SIDE CSS*/
-#addBilFormDiv{
+#generelBodyDiv{
     background-color: #144164;
     padding:80px;
     color:white;
     justify-content: center;
     display: flex;
 }
-.addBilLabel{
+.generelBodyDiv{
+    background-color: #144164;
+    padding:80px;
+    color:white;
+    justify-content: center;
+    display: flex;
+}
+.advarselsDiv{
+    background-color: #10334f;
+    padding:15px 0;
+    color:white;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+.advarselsInnerDiv{
+    border:1px solid white;
+    padding:15px;
+    background-color: #641419;
+}
+.generelFormLable{
     margin-right:50px;
 }
-.addBilFormInput{
+.generelFormInput{
     background-color: #BBD9EE;
     border: 1px solid white;
     padding:5px 8px;
@@ -281,7 +307,37 @@ h3{
     justify-content: space-evenly;
 }
 
-
+/*ADMINISTRATIONS STYLING START*/
+.tableBody {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0px;
+    height: 500px;
+    overflow: auto;
+}
+.brugerlisteTh{
+    padding: 10px 100px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #144164;
+    border-top: 1px solid #144164;
+    text-transform: uppercase;
+    color: #144164;
+    background-color: white;
+}
+.brugerlisteTd {
+    padding: 10px 100px;
+    text-align: center;
+    vertical-align: middle;
+}
+.brugerlisteTr:nth-child(even) {
+    background-color: rgb(20,100,55, 0.15);
+}
+.brugerlisteTr {
+    justify-content: center;
+    margin-top: 6px;
+}
+/*ADMINISTRATIONS STYLING END*/
 
 
 /*Biler klar til rapport - Laurits*/

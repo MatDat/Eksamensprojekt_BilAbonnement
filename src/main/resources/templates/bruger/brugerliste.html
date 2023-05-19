@@ -3,52 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
-<h1>Opret bruger</h1>
-<table>
-    <div id="opretBrugerBoks">
-        <form class="login-form" action="/opretBruger" method="post">
+<h1>Administrationen</h1>
 
-            <label class="loginForm-label">Indtast ønskede brugernavn: </label>
-            <input class="loginForm-input" type="text" placeholder="Indtast her..." name="brugernavn">
+<div id="h2Div">
+    <h2>Opret bruger</h2>
+</div>
 
-            <label class="loginForm-label">Indtast ønskede adgangskode: </label>
-            <input class="loginForm-input" type="text" placeholder="Indtast her..." name="kode">
+<div id="generelBodyDiv" style="padding:40px 0px;">
+    <form class="login-form" action="/opretBruger" method="post">
 
-            <button class="loginForm-submitButton" type="submit">Opret bruger</button>
-        </form>
-    </div>
+        <table>
+            <tr>
+                <td><label class="generelFormLable">Indtast ønskede brugernavn: </label></td>
+                <td><input class="generelFormInput" type="text" placeholder="Indtast her..." name="brugernavn"></td>
+            </tr>
+            <tr>
+                <td><label class="generelFormLable">Indtast ønskede adgangskode: </label></td>
+                <td><input class="generelFormInput" type="text" placeholder="Indtast her..." name="kode"></td>
+            </tr>
+        </table>
+        <button class="greenButton" type="submit" style="margin-top:15px; width: 100%;">
+            Opret bruger
+        </button>
 
+    </form>
+</div>
+
+<div class="h2Div">
     <h2>Brugerliste</h2>
-    <thead>
-        <tr>
-            <th>Bruger ID</th>
-            <th>Brugernavn</th>
-            <th>Kodeord</th>
+</div>
+
+<div class="tableBody">
+    <table class="">
+
+        <thead>
+        <tr class="brugerlisteTr">
+            <th class="brugerlisteTh">Bruger ID</th>
+            <th class="brugerlisteTh">Brugernavn</th>
+            <th class="brugerlisteTh">Kodeord</th>
         </tr>
-    </thead>
-    <tbody>
-        <tr th:each="bruger : ${brugerListe}">
-            <td th:text="${bruger.bruger_id}"></td>
-            <td th:text="${bruger.brugernavn}"></td>
-            <td th:text="${bruger.kode}"></td>
+        </thead>
+
+        <tbody>
+        <tr class="brugerlisteTr" th:each="bruger : ${brugerListe}">
+            <td class="brugerlisteTd" th:text="${bruger.bruger_id}"></td>
+            <td class="brugerlisteTd" th:text="${bruger.brugernavn}"></td>
+            <td class="brugerlisteTd" th:text="${bruger.kode}"></td>
         </tr>
-    </tbody>
+        </tbody>
 
-</table>
+    </table>
+</div>
 
-<h2>Slet bruger</h2>
+<div class="h2Div">
+    <h2>Slet bruger</h2>
+</div>
 
-<form id="login-form" action="/sletBrugerSide" method="post">
-    <label class="loginForm-label">Husk bruger ID på den bruger du vil slette: </label>
-    <button class="loginForm-submitButton" type="submit">SLET EN BRUGER</button>
-</form>
+<div class="generelBodyDiv" style="padding:40px 0px;">
+    <form id="login-form" action="/sletBrugerSide" method="post">
+        <table>
+            <tr>
+                <td><label class="generelFormLable">Husk bruger ID på den bruger du vil slette: </label></td>
+                <td>
+                    <button class="redButton" type="submit">SLET BRUGER</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
 
-  <form class="annullerButton" action="/" method="get">
-    <button class="loginForm-submitButton" type="submit">Log ud</button>
-  </form>
-
-
+<div id="annullerButtonAddBilDiv">
+    <form action="/" method="get">
+        <button class="redButton" type="submit">Log ud</button>
+    </form>
+</div>
 </body>
 </html>
