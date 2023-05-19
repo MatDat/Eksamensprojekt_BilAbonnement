@@ -3,21 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
 
 <h1>Slet en bruger</h1>
 
+<div class="h2Div">
+    <h2>Dobbelt tjek bruger ID</h2>
+</div>
+
+<div class="generelBodyDiv">
     <form id="login-form" action="/sletBruger" method="post">
-        <p>Dobbelt tjek det bruger ID du indtaster.</p>
-        <label class="loginForm-label">Indtast brugerens ID for at slette: </label>
+        <table>
+            <tr>
+                <td><label class="generelFormLable">Indtast brugerens ID for at slette: </label></td>
 
-        <input type="input" name="bruger_id" th:value="${bruger_id}"/>
-        <button class="loginForm-submitButton" type="submit">SLET</button>
+                <td><input class="generelFormInput" type="input" name="bruger_id" th:value="${bruger_id}"/></td>
+            </tr>
+        </table>
+        <button class="redButton" type="submit" style="margin-top:15px;">Slet bruger</button>
     </form>
+</div>
 
-<form class="annullerButton" action="/adminSide" method="get">
-  <button class="loginForm-submitButton" type="submit">Tilbage</button>
-</form>
+
+<div id="annullerButtonAddBilDiv">
+    <form action="/adminSide" method="get">
+        <button class="redButton" type="submit">Tilbage</button>
+    </form>
+</div>
+
 </body>
 </html>

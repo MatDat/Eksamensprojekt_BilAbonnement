@@ -8,27 +8,44 @@
 
 <body>
 
-<div id="loginModul">
+<h1>Login</h1>
+
+<div id="h2Div">
+    <h2>Hovsa!</h2>
+</div>
+
+<div id="generelBodyDiv">
     <form id="login-form" action="/loginBruger" method="post">
 
-        <h1>Login</h1>
+        <table>
+            <tr>
+                <td><label class="generelFormLable">Brugernavn: </label></td>
+                <td><input class="generelFormInput" type="text" placeholder="Indtast her..." name="brugernavn"></td>
+            </tr>
+            <tr>
+                <td><label class="generelFormLable">Adgangskode: </label></td>
+                <td><input class="generelFormInput" type="text" placeholder="Indtast her..." name="kode"></td>
+            </tr>
+        </table>
 
-        <label class="loginForm-label">Brugernavn: </label>
-        <input class="loginForm-input" type="text" placeholder="Indtast her..." name="brugernavn">
+        <button class="greenButton" type="submit" style="margin-top:15px; width: 100%;">Login</button>
 
-        <label class="loginForm-label">Adgangskode: </label>
-        <input class="loginForm-input" type="text" placeholder="Indtast her..." name="kode">
-
-        <button class="loginForm-submitButton" type="submit">Login</button>
-
-        <p class="advarselstekst">Brugernavn eller kode er forkert. prøv igen</p>
-
-    </form>
-
-    <form id="annullerButton" action="/" method="get">
-        <button class="loginForm-submitButton" type="submit">Tilbage</button>
     </form>
 </div>
 
+
+
+<div class="advarselsDiv">
+    <div class="advarselsInnerDiv">
+        <h3>Fejl i brugernavn eller kode</h3>
+        <p class="advarselstekst">Prøv igen</p>
+    </div>
+</div>
+
+<div id="annullerButtonAddBilDiv">
+    <form action="/" method="get">
+        <button class="redButton" type="submit">Annuller</button>
+    </form>
+</div>
 </body>
 </html>
