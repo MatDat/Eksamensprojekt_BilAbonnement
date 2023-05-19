@@ -27,4 +27,9 @@ public class KundeRepo {//COMMENT
         return template.query(sql, rm,kunde_id);
     }
 
+    public void opretKunde(Kunde kunde){
+        String sql = "INSERT INTO bilabonnementDB.kunde (fornavn, efternavn, email, mobil) VALUES (?,?,?,?)";
+        template.update(sql,kunde.getFornavn(),kunde.getEfternavn(),kunde.getEmail(),kunde.getMobil());
+    }
+
 }

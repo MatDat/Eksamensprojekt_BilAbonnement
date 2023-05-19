@@ -21,4 +21,10 @@ public class KundeService {//COMMENT
     public List<Kunde> hentKundeFraId(int kunde_id){
         return kundeRepo.hentKundeFraId(kunde_id);
     }
+
+
+    public void opretKunde(Kunde kunde){
+        kundeRepo.opretKunde(kunde);
+    }
+
 }

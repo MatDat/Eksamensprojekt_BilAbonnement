@@ -81,4 +81,19 @@ public class DataRegistreringController {
         return "dataregistrering/visLejeaftale";
     }
 
+
+    @PostMapping("/opretKundeForm")
+    public String opretKundeForm(){
+        return "dataregistrering/opretKundeForm";
+    }
+
+    @PostMapping("/opretKunde")
+    public String opretKunde(@ModelAttribute Kunde kunde){
+        kundeService.opretKunde(kunde);
+
+
+        return "dataRegistrering/dataregistrering";
+    }
+
+
 }

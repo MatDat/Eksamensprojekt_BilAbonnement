@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret Kunde</title>
+    <link rel="stylesheet" href="/MyCSS.css">
+</head>
+<body>
+
+<h1>opret kunde</h1>
+
+
+<div id="generelBodyDiv">
+
+    <form action="/opretKunde" method="post">
+
+
+        <table>
+
+
+            <tr>
+                <td><label class="generelFormLable">Fornavn: </label></td>
+                <td><input class="generelFormInput" type="text" name="fornavn" required></td>
+            </tr>
+
+
+            <tr>
+                <td><label class="generelFormLable">Efternavn: </label></td>
+                <td><input class="generelFormInput" type="text" name="efternavn" required></td>
+            </tr>
+
+            <tr>
+                <td><label class="generelFormLable">Email: </label></td>
+                <td><input class="generelFormInput" type="email" name="email" required></td>
+            </tr>
+
+            <tr>
+                <td><label class="generelFormLable">Mobil: </label></td>
+                <td><input class="generelFormInput" type="text" name="mobil" required></td>
+            </tr>
+
+
+        </table>
+        <input type="submit" class="greenButton" style="float: right">
+    </form>
+
+
+</div>
+
+<div>
+    <form action="/dataRegistrering" method="get">
+    <input type="submit" class="redButton" value="tilbage">
+    </form>
+</div>
+
+
+</body>
+</html>
