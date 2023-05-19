@@ -3,69 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>Opret Lejeaftale</title>
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
 <h1>Opret Lejeaftale</h1>
-<form action="/saveLejeaftale" method="post">
-    <div style="margin-left: 2%;width: 30%;height: 80%; background-color: lightblue; padding: 5px; float: left">
+<div id="addBilFormDiv">
+    <form action="/saveLejeaftale" method="post">
 
-        <label>Vognnummer</label>
-        <input type="text" name="vognnummer">
-<!--        value="${kontrakt.vognnummer}"-->
-        <br>
 
-        <label>Kunde id</label>
-        <input type="text" name="kunde_id">
-        <br>
-
-        <label>Start Dato</label>
-        <input type="date" name="start_dato">
-        <br>
-
-        <label>Slut Dato</label>
-        <input type="date" name="slut_dato">
-        <br>
-
-        <label>Afhentningslokations id</label>
-        <input type="text" name="afhentningslokation_id">
-        <br>
-
-        <label>Afleveringslokation id</label>
-        <input type="text" name="afleveringslokation_id">
-        <br>
-
-        <label>Total pris</label>
-        <input type="text" name="total_pris">
-        <br>
-
-        <label>Bruger id</label>
-        <input type="text" name="bruger_id">
-        <br>
-
-        <input type="submit" value="Lav Kontrakt">
-    </div>
-</form>
-    <div style="width: 50%;height: 80%; background-color: lightblue; padding: 5px;margin-right: 2%; float: right">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <form action="/opretLejeaftale" method="get">
-                <input type="submit"name="seBiler" value="Biler">
-            </form>
-            <button>Button 2</button>
-            <button>Button 3</button>
-        </div>
         <table>
-            <thead>
             <tr>
-                <th th:each="kolonneNavn : ${kolonneNavne}" th:text="${kolonneNavn}"></th>
+                <td><label class="addBilLabel">Vognnummer</label>
+                <td><input class="addBilFormInput" type="text" name="vognnummer">
+                    <!--        value="${kontrakt.vognnummer}"-->
             </tr>
-            </thead>
-            <tbody>
-            <tr th:each="row : ${data}">
-                <td th:each="cell : ${row}" th:text="${cell}"></td>
+
+            <tr>
+                <td><label class="addBilLabel">Kunde id</label>
+                <td><input class="addBilFormInput" type="text" name="kunde_id">
             </tr>
-            </tbody>
+
+            <tr>
+                <td><label class="addBilLabel">Start Dato</label>
+                <td><input class="addBilFormInput" type="date" name="start_dato">
+            </tr>
+
+            <tr>
+                <td><label class="addBilLabel">Slut Dato</label>
+                <td><input class="addBilFormInput" type="date" name="slut_dato">
+            </tr>
+
+            <tr>
+                <td><label class="addBilLabel">Afhentningslokations id</label>
+                <td><input class="addBilFormInput" type="text" name="afhentningslokation_id">
+            </tr>
+
+            <tr>
+                <td><label class="addBilLabel">Afleveringslokation id</label>
+                <td><input class="addBilFormInput" type="text" name="afleveringslokation_id">
+            </tr>
+
+            <tr>
+                <td><label class="addBilLabel">Total pris</label>
+                <td><input class="addBilFormInput" type="text" name="total_pris">
+            </tr>
+
+            <tr>
+                <td><label class="addBilLabel">Bruger id</label>
+                <td><input class="addBilFormInput" type="text" name="bruger_id">
+            </tr>
         </table>
-    </div>
+        <input class="greenButton" type="submit" value="Lav Kontrakt" style="float: right;margin-top:15px;">
+    </form>
+</div>
+<div id="annullerButtonAddBilDiv">
+    <form action="dataRegistrering" method="get">
+        <button class="redButton" type="submit">Annuller</button>
+    </form>
+</div>
+<!--    <div style="width: 50%;height: 80%; background-color: lightblue; padding: 5px;margin-right: 2%; float: right">-->
+<!--        <div style="display: flex; justify-content: space-between; align-items: center;">-->
+<!--            <form action="/opretLejeaftale" method="get">-->
+<!--                <input type="submit"name="seBiler" value="Biler">-->
+<!--            </form>-->
+<!--            <button>Button 2</button>-->
+<!--            <button>Button 3</button>-->
+<!--        </div>-->
+<!--        <table>-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th th:each="kolonneNavn : ${kolonneNavne}" th:text="${kolonneNavn}"></th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="row : ${data}">-->
+<!--                <td th:each="cell : ${row}" th:text="${cell}"></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
 
 
 </body>

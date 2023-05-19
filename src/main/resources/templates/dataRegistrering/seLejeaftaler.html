@@ -49,10 +49,10 @@
         <p>Kontrakt ID: <span th:text="${kontrakt.kontrakt_id}"></span></p>
         <p>Start dato: <span th:text="${kontrakt.start_dato}"></span></p>
         <p>Slut dato: <span th:text="${kontrakt.slut_dato}"></span></p>
-        <p>Total Pris: <span th:text="${kontrakt.total_pris}"></span></p>
+        <p>Total Pris: <span th:text="${kontrakt.total_pris}"></span> DKK</p>
         <form action="/visLejeaftale" method="post">
             <input type="hidden" name="kontrakt_id" th:value="${kontrakt.kontrakt_id}">
-            <input class="greenButton" type="submit" value="Se Kontrakt">
+            <input class="greenButton" style="padding: 8px;font-size: 12px;margin-top: 6px" type="submit" value="Se Kontrakt">
         </form>
     </div>
 </div>

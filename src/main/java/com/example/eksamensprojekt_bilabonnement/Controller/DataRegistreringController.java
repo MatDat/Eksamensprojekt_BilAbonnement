@@ -35,11 +35,11 @@ public class DataRegistreringController {
 
     @GetMapping("/opretLejeaftale")
     public String opretLejeaftale(@ModelAttribute Kontrakt kontrakt,Model model) {
-        List<String> kolonneNavn = Arrays.asList("vognnummer", "stelnummer", "model_id", "staalpris", "registrerings_afgift", "CO2_udledning", "bil_tilstand");
-        List<List<String>> data = dataService.hentAlleBilerSomString();
-//        model.addAttribute("kontrakt", kontrakt); // til at gemme det user skriver i kontrakten. brug @ModelAttribute?
-        model.addAttribute("kolonneNavne", kolonneNavn);
-        model.addAttribute("data", data);
+//        List<String> kolonneNavn = Arrays.asList("vognnummer", "stelnummer", "model_id", "staalpris", "registrerings_afgift", "CO2_udledning", "bil_tilstand");
+//        List<List<String>> data = dataService.hentAlleBilerSomString();
+////        model.addAttribute("kontrakt", kontrakt); // til at gemme det user skriver i kontrakten. brug @ModelAttribute?
+//        model.addAttribute("kolonneNavne", kolonneNavn);
+//        model.addAttribute("data", data);
         return "dataRegistrering/opretLejeaftale";
     }
 
