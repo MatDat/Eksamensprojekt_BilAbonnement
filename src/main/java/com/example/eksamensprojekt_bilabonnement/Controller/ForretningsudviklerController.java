@@ -2,8 +2,10 @@ package com.example.eksamensprojekt_bilabonnement.Controller;
 
 
 import com.example.eksamensprojekt_bilabonnement.Model.Bil;
+import com.example.eksamensprojekt_bilabonnement.Model.Kunde;
 import com.example.eksamensprojekt_bilabonnement.Service.BilService;
 import com.example.eksamensprojekt_bilabonnement.Service.KontraktService;
+import com.example.eksamensprojekt_bilabonnement.Service.KundeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,9 @@ public class ForretningsudviklerController {
 
     @Autowired
     KontraktService kontraktService;
+
+    @Autowired
+    KundeService kundeService;
 
 
     @PostMapping("/forretningsudviklerSide")
@@ -57,4 +62,14 @@ public class ForretningsudviklerController {
         model.addAttribute("co2", bilService.hentCo2(bilListe));
         return "forretningsudvikler/seBiler";
     }
+
+    @PostMapping("/seKunder")
+    public String seKunder(Model model){
+        model.addAttribute("kundeListe",kundeService.hentAlleKunder());
+        return "forretningsudvikler/seKunder";
+    }
+
+
+
+
 }
