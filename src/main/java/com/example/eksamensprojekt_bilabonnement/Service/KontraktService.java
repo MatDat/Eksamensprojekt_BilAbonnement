@@ -85,7 +85,7 @@ public class KontraktService {
         return false;
     }
 
-    private boolean datoerErValid(Kontrakt kontrakt) { //TODO - Frikke
+    private boolean datoerErValid(Kontrakt kontrakt) {
         SimpleDateFormat datoFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date kDatoStart = datoFormat.parse(kontrakt.getStart_dato());

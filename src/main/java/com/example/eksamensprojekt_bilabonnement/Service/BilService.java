@@ -1,9 +1,6 @@
 package com.example.eksamensprojekt_bilabonnement.Service;
 
-import com.example.eksamensprojekt_bilabonnement.Model.Bil;
-import com.example.eksamensprojekt_bilabonnement.Model.BilTilstand;
-import com.example.eksamensprojekt_bilabonnement.Model.BilModel;
-import com.example.eksamensprojekt_bilabonnement.Model.Maerke;
+import com.example.eksamensprojekt_bilabonnement.Model.*;
 import com.example.eksamensprojekt_bilabonnement.Repository.BilRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,13 +18,13 @@ public class BilService {
         return bilRepo.hentAlleBiler();
     }
 
-    public List<Bil> hentBilerMedTilstand(String tilstand) {//TODO brug enum
-        return bilRepo.hentBilerMedTilstand(tilstand);
+    public List<Bil> hentBilerMedTilstand(BilTilstand tilstand) {
+        return bilRepo.hentBilerMedTilstand(String.valueOf(tilstand));
     }
 
-    public List<Bil> hentBilerMedBraendstof(String braendstof) {
-        return bilRepo.hentBilerMedBraendstof(braendstof);
-    }//TODO brug enum
+    public List<Bil> hentBilerMedBraendstof(braendstof braendstof) {
+        return bilRepo.hentBilerMedBraendstof(String.valueOf(braendstof));
+    }
 
     public List<Maerke> hentAlleMaerker() {
         return bilRepo.hentAlleMaerker();
