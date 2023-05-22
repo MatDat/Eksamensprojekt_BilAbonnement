@@ -16,51 +16,42 @@ public class BilController {
     @Autowired
     BilService bilService;
 
-    @GetMapping("opdaterBilTilstand")
+    @GetMapping("/opdaterBilTilstand")
     public String opdaterBilTilstand(BilTilstand bilTilstand, int vognnummer) {
         bilService.opdaterBilTilstand(bilTilstand, vognnummer);
         return "home/index";
     }
 
-    @GetMapping("addBilSide")
-    public String addBilSide() {
-        return "dataregistrering/addBil";
+    @GetMapping("/opretBilSide")
+    public String tilfoejBil() {
+        return "dataregistrering/tilfoejBil";
     }
 
-    @GetMapping("vaelgMaerkeSide")
+    @GetMapping("/vaelgMaerkeSide")
     public String vaelgMaerkeSide(Model model) {
-        List<Maerke> alleMaerkeNavne = bilService.hentAlleMaerker();
-        model.addAttribute("maerker", alleMaerkeNavne);
-
-//        System.out.println(alleMaerkeNavne.get(2).getMaerke_id());  //Test om ID kommer med
-
+        List<Maerke> maerkeNavnListe = bilService.hentAlleMaerker();
+        model.addAttribute("maerker", maerkeNavnListe);
         return "dataregistrering/vaelgMaerke";
     }
     @GetMapping("/vaelgModelSide")
     public String vaelgModelSide(Model model, @RequestParam("maerke_id") String maerke_id) {
-        System.out.println(maerke_id); //Test om navnet kommer med (Konsollen)
         String maerke_navn = bilService.hentMaerkeNavnFraID(Integer.valueOf(maerke_id)).get(0).getMaerke_navn();
         model.addAttribute("maerke_navn", maerke_navn );  //Tilføjer maerke_navn til h2
 
-        List<Bil_Model> valgteModels = bilService.hentValgteModeller(maerke_id); //Kalder Repo metoden
-        model.addAttribute("models", valgteModels); //Til at kalde listen i HTML'en
-
-        for (int i = 0; i < valgteModels.size(); i++) {
-            System.out.println(valgteModels.get(i).getModel_navn()); //Tester om liste kommer med (Konsollen)
-        }
-
+        List<BilModel> valgteModeller = bilService.hentValgteModeller(maerke_id); //Kalder Repo metoden
+        model.addAttribute("models", valgteModeller); //Til at kalde listen i HTML'en
         return "dataregistrering/vaelgModel";
     }
 
-    @GetMapping("opretBilSide")
+    @GetMapping("/opretBilSide")
     public String opretBilSide(Model model, @RequestParam("model_id") String model_id) {
         String model_navn = bilService.hentModelNavnFraID(Integer.valueOf(model_id)).get(0).getModel_navn();
         model.addAttribute("model", model_navn);
         model.addAttribute("model_id", model_id);
-        return "dataregistrering/addBil";
+        return "dataregistrering/tilfoejBil";
     }
 
-    @PostMapping("opretBil")
+    @PostMapping("/opretBil")
     public String opretBil(WebRequest wr) {
         Bil bil = new Bil();
 

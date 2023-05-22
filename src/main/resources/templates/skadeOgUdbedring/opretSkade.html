@@ -21,7 +21,7 @@
     </tr>
     </tbody>
 </table>
-<form action="opretSkade" method="post">
+<form action="/opretSkade" method="post">
 
     <label for="beskrivelse">Beskrivelse af skaden: </label>
     <input type="text" id="beskrivelse" name="beskrivelse" placeholder="beskrivelse">
@@ -32,9 +32,6 @@
 
     <input type="hidden" name="vognnummer2a" th:value="${vognnummer2a}" />
     <input type="hidden" name="vognnummer2b" th:value="${vognnummer2b}" />
-
-
-
     <input type="submit" value="SUBMIT">
 </form>
 

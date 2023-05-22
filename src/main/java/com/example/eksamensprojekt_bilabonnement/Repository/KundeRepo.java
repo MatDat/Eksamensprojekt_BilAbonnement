@@ -10,26 +10,25 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class KundeRepo {//COMMENT
+public class KundeRepo {
 
     @Autowired
     JdbcTemplate template;
 
-    public List<Kunde> hentAlleKunder(){
+    public List<Kunde> hentAlleKunder() {
         String sql = "SELECT * FROM bilabonnementDB.kunde;";
         RowMapper<Kunde> rowMapper = new BeanPropertyRowMapper<>(Kunde.class);
-        return template.query(sql,rowMapper);
+        return template.query(sql, rowMapper);
     }
 
-    public List<Kunde> hentKundeFraId(int kunde_id){
+    public List<Kunde> hentKundeFraId(int kunde_id) {
         String sql = "SELECT * FROM bilabonnementDB.kunde WHERE kunde_id = ?";
-        RowMapper<Kunde> rm = new BeanPropertyRowMapper<>(Kunde.class);
-        return template.query(sql, rm,kunde_id);
+        RowMapper<Kunde> rowMapper = new BeanPropertyRowMapper<>(Kunde.class);
+        return template.query(sql, rowMapper, kunde_id);
     }
 
-    public void opretKunde(Kunde kunde){
+    public void opretKunde(Kunde kunde) {
         String sql = "INSERT INTO bilabonnementDB.kunde (fornavn, efternavn, email, mobil) VALUES (?,?,?,?)";
-        template.update(sql,kunde.getFornavn(),kunde.getEfternavn(),kunde.getEmail(),kunde.getMobil());
+        template.update(sql, kunde.getFornavn(), kunde.getEfternavn(), kunde.getEmail(), kunde.getMobil());
     }
-
 }

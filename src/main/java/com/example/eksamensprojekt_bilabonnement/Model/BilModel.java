@@ -1,13 +1,13 @@
 package com.example.eksamensprojekt_bilabonnement.Model;
 
-public class Bil_Model {
+public class BilModel {
     private int model_id;
     private String model_navn;
 
-    public Bil_Model() {
+    public BilModel() {
     }
 
-    public Bil_Model(int model_id, String model_navn) {
+    public BilModel(int model_id, String model_navn) {
         this.model_id = model_id;
         this.model_navn = model_navn;
     }

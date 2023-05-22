@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tilføj Bil</title>
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
+</head>
+<body>
+
+<h1>Tilføj en ny bil</h1>
+
+<div id="generelBodyDiv">
+
+    <form action="/opretBil" method="post">
+        <input type="hidden" th:value="${model_id}" name="model_id"/>
+
+        <table>
+            <tr>
+                <td><label class="generalFormLabel">Model: </label></td>
+                <td><p><span th:text="${model}"></span></p></td>
+            </tr>
+            <tr>
+                <td><label class="generalFormLabel">Tilføj stelnummer: </label></td>
+                <td><input class="generalFormInput" type="text" name="stelnummer" placeholder="Indtast her..."></td>
+            </tr>
+
+            <tr>
+                <td><label class="generalFormLabel">Tilføj stålpris: </label></td>
+                <td><input class="generalFormInput" type="text" name="staalpris" placeholder="Indtast her..."></td>
+            </tr>
+
+            <tr>
+                <td><label class="generalFormLabel">Tilføj registreringspris: </label></td>
+                <td><input class="generalFormInput" type="text" name="registrerings_afgift"
+                           placeholder="Indtast her...">
+                </td>
+            </tr>
+
+            <tr>
+                <td><label class="generalFormLabel">Tilføj Co2-udledning: </label></td>
+                <td><input class="generalFormInput" type="text" name="CO2_udledning" placeholder="Indtast her..."></td>
+            </tr>
+
+            <tr>
+                <td><label class="generalFormLabel">Bil tilstand: </label></td>
+                <td>
+                    <input type="radio" class="generalFormInput" name="bilTilstand" value="LEJEKLAR" checked> Lejeklar
+                    <input type="radio" class="generalFormInput" name="bilTilstand" value="UDLEJET"> Udlejet
+                    <input type="radio" class="generalFormInput" name="bilTilstand" value="RAPPORTKLAR"> Rapportklar
+                    <input type="radio" class="generalFormInput" name="bilTilstand" value="SOLGT"> Solgt
+                    <input type="radio" class="generalFormInput" name="bilTilstand" value="SKADET"> Skadet
+                </td>
+            </tr>
+
+        </table>
+
+        <input class="greenButton" type="submit" value="Tilføj bil til databasen" style="margin-top:15px; width: 100%;">
+
+    </form>
+
+</div>
+
+<div id="annullerButtonAddBilDiv">
+    <form action="/dataRegistrering" method="get">
+        <button class="redButton" type="submit">Annuller</button>
+    </form>
+</div>
+
+</body>
+</html>

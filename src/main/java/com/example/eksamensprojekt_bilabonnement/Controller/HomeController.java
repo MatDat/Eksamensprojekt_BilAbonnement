@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class HomeController {//COMMENT
+public class HomeController {
 
     @GetMapping("/")
     public String indexLoggedInAs(Model model, HttpSession session) {
@@ -27,22 +27,22 @@ public class HomeController {//COMMENT
         return "home/index";
     }
 
-    @GetMapping("SkadeOgUdbedringLandingPage")
+    @GetMapping("/SkadeOgUdbedringLandingPage")
     public String skadeOgUdbedringLandingPage() {
         return "skadeOgUdbedring/skadeOgUdbedring";
     }
 
-    @GetMapping("dataRegistrering")
+    @GetMapping("/dataRegistrering")
     public String dataRegistrering() {
         return "dataRegistrering/dataregistrering";
     }
 
-    @GetMapping("loginButton")
+    @GetMapping("/loginButton")
     public String login() {
         return "bruger/login";
     }
 
-    @GetMapping("opretBrugerSide")
+    @GetMapping("/opretBrugerSide")
     public String opretBrugerSide(){
         return "bruger/opretBruger";
     }

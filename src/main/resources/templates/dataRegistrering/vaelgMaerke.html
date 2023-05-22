@@ -9,13 +9,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Vælg Mærke</title>
     <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
 
 <h1>Tilføj en ny bil</h1>
-
 
 <div id="h2Div">
     <h2>Vælg mærke</h2>
@@ -27,9 +26,9 @@
         <table>
 
             <tr>
-                <td><label class="generelFormLable">Vælg bilmærke:</label></td>
+                <td><label class="generalFormLabel">Vælg bilmærke:</label></td>
                 <td>
-                    <select class="generelFormInput" name="maerke_id">
+                    <select class="generalFormInput" name="maerke_id">
                         <option th:each="maerke : ${maerker}" th:value="${maerke.maerke_id}"
                                 th:text="${maerke.maerke_navn}" th:name="${maerke_id}"></option>
                     </select>
@@ -37,11 +36,8 @@
             </tr>
 
         </table>
-
         <input class="greenButton" type="submit" value="Næste" style="margin-top:15px; width: 100%;">
-
     </form>
-
 </div>
 
 <div id="annullerButtonAddBilDiv">

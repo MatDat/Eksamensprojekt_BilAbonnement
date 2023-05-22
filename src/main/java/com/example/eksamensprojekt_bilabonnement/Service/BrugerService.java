@@ -13,23 +13,23 @@ public class BrugerService {//COMMENT
     @Autowired
     BrugerRepo brugerRepo;
 
-    public boolean loginBruger(Bruger bruger){
-        return brugerRepo.loginBruger(bruger);
+    public boolean logIndBruger(Bruger bruger) {
+        return brugerRepo.logIndBruger(bruger);
     }
 
-    public boolean loginAdmin(Bruger bruger){
-        return brugerRepo.loginAdmin(bruger);
+    public boolean logIndAdmin(Bruger bruger) {
+        return brugerRepo.logIndAdmin(bruger);
     }
 
-    public boolean opretBruger(Bruger bruger){
+    public boolean opretBruger(Bruger bruger) {
         return brugerRepo.opretBruger(bruger);
     }
 
-    public boolean sletBruger(Bruger bruger){
+    public boolean sletBruger(Bruger bruger) {
         return brugerRepo.sletBruger(bruger);
     }
 
-    public List<Bruger> hentBrugerListe(){
+    public List<Bruger> hentBrugerListe() {
         return brugerRepo.hentBrugerListe();
     }
 }

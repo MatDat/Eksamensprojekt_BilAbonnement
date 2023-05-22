@@ -1,14 +1,15 @@
-*{
+* {
     font-family: Verdana;
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
 }
-a{
+
+a {
     color: #144164;
-    text-decoration:none;
+    text-decoration: none;
 }
+
 #aboveHeaderDiv {
-    /*width:100%;*/
     height: auto;
     display: flex;
     padding: 5px 20px 5px 20px;
@@ -16,64 +17,74 @@ a{
     align-items: center;
     border-bottom: 1px solid #E7E4D3;
 }
+
 .aboveHeaderItem {
     display: inline-block;
     padding: 5px 20px 5px 20px;
     background-color: white;
     border: 1px solid white;
 }
+
 .aboveHeaderItem:hover {
     background-color: #144164;
     border: 1px solid #206BA4;
     transition: 0.4s;
     color: white;
 }
+
 .aboveHeaderItem:last-child {
     margin-right: 30px;
 }
-h1{
+
+h1 {
     text-transform: uppercase;
     font-size: 38px;
     color: #144164;
     text-align: center;
-    padding:40px 0 40px 0;
+    padding: 40px 0 40px 0;
 }
-h2{
+
+h2 {
     text-align: center;
     font-size: 28px;
     color: white;
 }
-h3{
-    /*text-align: left;*/
+
+h3 {
     font-size: 25px;
     color: white;
     margin-bottom: 15px;
 }
-#h2Div{
+
+#h2Div {
     width: 100%;
     background-color: #10334f;
     padding: 15px 0;
 }
-.h2Div{
+
+.h2Div {
     width: 100%;
     background-color: #10334f;
     padding: 15px 0;
 }
-.menuBoxDiv{
+
+.menuBoxDiv {
     width: 100%;
     padding: 15px 0px;
     background-color: #144164;
     display: flex;
     justify-content: center;
 }
-.menuBoxDiv:nth-child(odd){
+
+.menuBoxDiv:nth-child(odd) {
     width: 100%;
     padding: 15px 0px;
     background-color: #10334f;
     display: flex;
     justify-content: center;
 }
-.menuPageItem{
+
+.menuPageItem {
     background-color: transparent;
     border: 1px solid transparent;
     color: white;
@@ -81,60 +92,70 @@ h3{
     padding: 30px 120px;
     cursor: pointer;
 }
-.menuPageItem:hover{
+
+.menuPageItem:hover {
     border: 1px solid white;
     transition: 0.5s;
 }
-#statusBar{
-    width:100%;
+
+#statusBar {
+    width: 100%;
     padding: 15px 0 15px 0;
     background-color: #144164;
     font-size: 12px;
     color: white;
 }
-#loggedInAsFunction{
+
+#loggedInAsFunction {
     text-align: center;
 }
-#bodyDiv{
+
+#bodyDiv {
     justify-content: space-evenly;
-    display:flex;
+    display: flex;
     background-color: #144164;
 }
+
 .c2aDiv1 {
     background-image: url("img/c2a1-test(1).jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
+
 .c2aDiv2 {
     background-image: url("img/c2a2.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
+
 .c2aDiv3 {
     background-image: url("img/c2a3.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
-.c2aDivInner{
-    background-color: rgb(255,255,255, 0);
+
+.c2aDivInner {
+    background-color: rgb(255, 255, 255, 0);
     padding: 90px 100px;
     background-size: cover;
 
 }
+
 .c2aButton {
-    background-color: rgb(13,42,64, 0.4);
+    background-color: rgb(13, 42, 64, 0.4);
     border: 1px solid white;
     font-size: 20px;
     text-transform: uppercase;
     padding: 200px 30px;
-    color:white;
+    color: white;
     cursor: pointer;
 }
-.c2aButton:hover{
-    background-color: rgb(13,42,64, 0.9);
+
+.c2aButton:hover {
+    background-color: rgb(13, 42, 64, 0.9);
     transition: 0.3s;
     color: white;
     border: 1px solid white;
@@ -147,92 +168,113 @@ h3{
     text-transform: uppercase;
     padding: 300px 120px;
 }
-.c2aButton3:hover{
+
+.c2aButton3:hover {
     background-color: darkorange;
     transition: 0.5s;
 }
-#annullerButton{
-    float:left;
+
+#annullerButton {
+    float: left;
 }
-#footerForside{
-    width:100%;
+
+#footerForside {
+    width: 100%;
     padding: 15px 0 15px 0;
     background-color: #144164;
     font-size: 12px;
     color: white;
 }
-#footerForside{
+
+#footerForside {
     text-align: center;
 }
 
 /* ADD BILL-SIDE CSS*/
-#generelBodyDiv{
+#generelBodyDiv {
     background-color: #144164;
-    padding:80px;
-    color:white;
+    padding: 80px;
+    color: white;
     justify-content: center;
     display: flex;
 }
-.generelBodyDiv{
+
+.generelBodyDiv {
     background-color: #144164;
-    padding:80px;
-    color:white;
+    padding: 80px;
+    color: white;
     justify-content: center;
     display: flex;
 }
-.advarselsDiv{
+
+.seBilerPageBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.advarselsDiv {
     background-color: #10334f;
-    padding:15px 0;
-    color:white;
+    padding: 15px 0;
+    color: white;
     justify-content: center;
     text-align: center;
     display: flex;
 }
-.advarselsInnerDiv{
-    border:1px solid white;
-    padding:15px;
+
+.advarselsInnerDiv {
+    border: 1px solid white;
+    padding: 15px;
     background-color: #641419;
 }
-.generelFormLable{
-    margin-right:50px;
+
+.generalFormLabel {
+    margin-right: 50px;
 }
-.generelFormInput{
+
+.generalFormInput {
     background-color: #BBD9EE;
     border: 1px solid white;
-    padding:5px 8px;
+    padding: 5px 8px;
     margin-bottom: 5px;
     margin-top: 5px;
 }
-#annullerButtonAddBilDiv{
+
+#annullerButtonAddBilDiv {
     width: 100%;
     display: flex;
     justify-content: center;
     background-color: #641419;
-    padding:10px 0px;
+    padding: 10px 0px;
 }
-.greenButton{
+
+.greenButton {
     background-color: #146437;
     color: white;
-    padding:10px 30px;
+    padding: 10px 30px;
     border: 1px solid white;
     cursor: pointer;
     font-size: 15px;
 }
-.greenButton:hover{
+
+.greenButton:hover {
     background-color: #0c3a20;
     transition: 0.5s;
 }
+
 .greenButtonSelected {
     background-color: #0c3a20;
     color: white;
-    padding:10px 30px;
+    padding: 10px 30px;
     border: 1px solid white;
     cursor: pointer;
     font-size: 15px;
 }
-.redButton{
-    padding:10px 150px;
-    width:100%;
+
+.redButton {
+    padding: 10px 150px;
+    width: 100%;
     border: 1px solid #641419;
     background-color: #641419;
     color: white;
@@ -240,12 +282,13 @@ h3{
     text-transform: uppercase;
     cursor: pointer;
 }
-.redButton:hover{
+
+.redButton:hover {
     border: 1px solid white;
     transition: 0.5s;
 }
 
-#lejeAftaleSortDiv{
+#lejeAftaleSortDiv {
     width: 100%;
     padding: 15px;
     background-color: #206BA4;
@@ -253,7 +296,8 @@ h3{
     justify-content: flex-start;
     box-sizing: border-box
 }
-#lejeAftaleSearchDiv{
+
+#lejeAftaleSearchDiv {
     width: 100%;
     padding: 15px;
     background-color: #144164;
@@ -261,7 +305,8 @@ h3{
     justify-content: flex-start;
     box-sizing: border-box
 }
-.kontrakt-box{
+
+.kontrakt-box {
     background-color: #206BA4;
     width: 300px;
     height: 120px;
@@ -273,7 +318,8 @@ h3{
     color: white;
 
 }
-.kontrakt-box-container{
+
+.kontrakt-box-container {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
@@ -281,20 +327,20 @@ h3{
 
 /*Forretningsudvikler/seBiler*/
 
-.dropDownDiv{
+.dropDownDiv {
     margin: 20px;
 }
 
-.seBilerTable{
+.seBilerTable {
     overflow-y: auto;
     overflow-x: auto;
     height: 600px;
 }
 
-.statBox{
+.statBox {
     display: flex;
     background-color: #144164;
-    color:white;
+    color: white;
     justify-content: center;
     flex-direction: column;
     margin-bottom: 20px;
@@ -302,8 +348,8 @@ h3{
     padding: 20px 20px 20px 20px;
     border: 1px solid black;
 }
-.statBoxContainer{
-    /*background-color: #144164;*/
+
+.statBoxContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -317,7 +363,8 @@ h3{
     height: 500px;
     overflow: auto;
 }
-.brugerlisteTh{
+
+.brugerlisteTh {
     padding: 10px 100px;
     text-align: center;
     vertical-align: middle;
@@ -327,46 +374,51 @@ h3{
     color: #144164;
     background-color: white;
 }
+
 .brugerlisteTd {
     padding: 10px 100px;
     text-align: center;
     vertical-align: middle;
 }
+
 .brugerlisteTr:nth-child(even) {
-    background-color: rgb(20,100,55, 0.15);
+    background-color: rgb(20, 100, 55, 0.15);
 }
+
 .brugerlisteTr {
     justify-content: center;
     margin-top: 6px;
 }
+
 /*ADMINISTRATIONS STYLING END*/
 
 
 /*Biler klar til rapport - Laurits*/
 
-.statBoxBilerRapport{
+.statBoxBilerRapport {
     display: flex;
     background-color: #144164;
-    color:white;
+    color: white;
     justify-content: center;
     flex-direction: column;
     padding-left: 10%;
     padding-right: 10%;
 }
 
-.statBoxBilerDATA{
+.statBoxBilerDATA {
     display: flex;
     background-color: #144164;
-    color:white;
+    color: white;
     justify-content: center;
     flex-direction: column;
     padding-left: 10%;
     padding-right: 10%;
 }
-.statBoxBilerDATA:nth-child(odd){
+
+.statBoxBilerDATA:nth-child(odd) {
     display: flex;
     background-color: pink;
-    color:white;
+    color: white;
     justify-content: center;
     flex-direction: column;
     padding-left: 10%;
