@@ -22,11 +22,6 @@ public class BilController {
         return "home/index";
     }
 
-    @GetMapping("/opretBilSide")
-    public String tilfoejBil() {
-        return "dataregistrering/tilfoejBil";
-    }
-
     @GetMapping("/vaelgMaerkeSide")
     public String vaelgMaerkeSide(Model model) {
         List<Maerke> maerkeNavnListe = bilService.hentAlleMaerker();
