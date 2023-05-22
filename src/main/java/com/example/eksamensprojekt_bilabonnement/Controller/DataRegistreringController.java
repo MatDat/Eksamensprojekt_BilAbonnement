@@ -3,7 +3,6 @@ package com.example.eksamensprojekt_bilabonnement.Controller;
 import com.example.eksamensprojekt_bilabonnement.Model.Kontrakt;
 import com.example.eksamensprojekt_bilabonnement.Model.Kunde;
 import com.example.eksamensprojekt_bilabonnement.Model.Lokation;
-import com.example.eksamensprojekt_bilabonnement.Service.DataService;
 import com.example.eksamensprojekt_bilabonnement.Service.KontraktService;
 import com.example.eksamensprojekt_bilabonnement.Service.KundeService;
 import com.example.eksamensprojekt_bilabonnement.Service.LokationService;
@@ -23,9 +22,6 @@ public class DataRegistreringController {
     KontraktService kontraktService;
 
     @Autowired
-    DataService dataService;
-
-    @Autowired
     LokationService lokationService;
 
     @Autowired
@@ -36,9 +32,9 @@ public class DataRegistreringController {
         return "dataRegistrering/opretLejeaftale";
     }
 
-    @PostMapping("/saveLejeaftale")
-    public String saveLejeaftale(@ModelAttribute Kontrakt kontrakt, Model model) {
-        List<String> fejlBeskeder = kontraktService.validerOgTilføjKontrakt(kontrakt);
+    @PostMapping("/gemLejeaftale")
+    public String gemLejeaftale(@ModelAttribute Kontrakt kontrakt, Model model) {
+        List<String> fejlBeskeder = kontraktService.validerOgTilfoejKontrakt(kontrakt);
         if (fejlBeskeder.isEmpty()) {
             return ("dataRegistrering/dataregistrering");
         } else {
@@ -52,13 +48,13 @@ public class DataRegistreringController {
     public String seLejeafaler(@RequestParam(name = "toggle", defaultValue = "0") int toggle,
                                @RequestParam(value = "sortMuligheder", required = false) String selectedOption,
                                Model model) {
-        model.addAttribute("maxKontraktId",kontraktService.hentAlleKontrakter().size());
+        model.addAttribute("maxKontraktId", kontraktService.hentAlleKontrakter().size());
         model.addAttribute("toggle", toggle);
         model.addAttribute("sortMuligheder", selectedOption);
         if (toggle == 0) {
-            model.addAttribute("kontraktListe", kontraktService.hentKontrakter(true, selectedOption));
+            model.addAttribute("kontraktListe", kontraktService.hentKontrakterMedSortering(true, selectedOption));
         } else if (toggle == 1) {
-            model.addAttribute("kontraktListe", kontraktService.hentKontrakter(false, selectedOption));
+            model.addAttribute("kontraktListe", kontraktService.hentKontrakterMedSortering(false, selectedOption));
         }
         return "dataregistrering/seLejeaftaler";
     }
@@ -82,17 +78,13 @@ public class DataRegistreringController {
 
 
     @PostMapping("/opretKundeForm")
-    public String opretKundeForm(){
+    public String opretKundeForm() {
         return "dataregistrering/opretKundeForm";
     }
 
     @PostMapping("/opretKunde")
-    public String opretKunde(@ModelAttribute Kunde kunde){
+    public String opretKunde(@ModelAttribute Kunde kunde) {
         kundeService.opretKunde(kunde);
-
-
         return "dataRegistrering/dataregistrering";
     }
-
-
 }

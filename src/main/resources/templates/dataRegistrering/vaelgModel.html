@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vælg mærke</title>
+    <title>Vælg Model</title>
     <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
@@ -15,12 +15,12 @@
 
 <div id="generelBodyDiv">
 
-    <form action="opretBilSide" method="get">
+    <form action="/opretBilSide" method="get">
         <table>
             <tr>
-                <td><label class="generelFormLable">Vælg en model: </label></td>
+                <td><label class="generalFormLabel">Vælg en model: </label></td>
                 <td>
-                    <select class="generelFormInput" name="model_id">
+                    <select class="generalFormInput" name="model_id">
                         <option th:each="model : ${models}"
                                 th:value="${model.model_id}"
                                 th:text="${model.model_navn}"></option>
@@ -35,7 +35,7 @@
 </div>
 
 <div id="annullerButtonAddBilDiv">
-    <form action="dataRegistrering" method="get">
+    <form action="/dataRegistrering" method="get">
         <button class="redButton" type="submit">Annuller</button>
     </form>
 </div>

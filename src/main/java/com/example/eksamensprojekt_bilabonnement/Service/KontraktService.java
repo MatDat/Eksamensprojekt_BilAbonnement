@@ -6,8 +6,6 @@ import com.example.eksamensprojekt_bilabonnement.Repository.KontraktRepo;
 import com.example.eksamensprojekt_bilabonnement.Repository.KundeRepo;
 import com.example.eksamensprojekt_bilabonnement.Repository.LokationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -30,47 +28,47 @@ public class KontraktService {
     @Autowired
     LokationRepo lokationRepo;
 
-    public List<String> validerOgTilføjKontrakt(Kontrakt k) {
+    public List<String> validerOgTilfoejKontrakt(Kontrakt k) {//TODO Frikke
         List<String> fejlBeskeder = opretFejlBeskeder(k);
-        if (!fejlBeskeder.isEmpty()) {          //TODO vi skal bruge List<String> fejlbeskeder til at informere hvilke
-            System.out.println(fejlBeskeder);   //input felter der er forkerte
+        if (!fejlBeskeder.isEmpty()) {
+            System.out.println(fejlBeskeder);
         } else {
-            kontraktRepo.addKontrakt(k);
+            kontraktRepo.tilfoejKontrakt(k);
         }
         return fejlBeskeder;
     }
 
     public Kontrakt hentKontraktMedId(int kontrakt_id) {
-        return kontraktRepo.hentKontraktMedId(kontrakt_id);
+        return kontraktRepo.hentKontraktFraId(kontrakt_id);
     }
 
 
-    public List<Double> getTotalPrisFraVognnummre(List<Integer> vognnumre) {
-        return kontraktRepo.getTotalPrisFraVognnummre(vognnumre);
+    public List<Double> hentTotalPrisFraVognnumre(List<Integer> vognnumre) {
+        return kontraktRepo.hentTotalPrisFraVognnumre(vognnumre);
     }
 
     private List<String> opretFejlBeskeder(Kontrakt k) {
         List<String> fejlBeskeder = new ArrayList<>();
         List<Bil> bilListe = bilRepo.hentAlleBiler();       //Loader de 3 lister for at sende samme liste rundt i
-        List<Kunde> kundeList = kundeRepo.hentAlleKunder(); //de private validTest metoder
-        List<Lokation> lokationList = lokationRepo.hentAlleLokationer();
+        List<Kunde> kundeListe = kundeRepo.hentAlleKunder(); //de private validTest metoder
+        List<Lokation> lokationListe = lokationRepo.hentAlleLokationer();
 
         //TODO tilføj bruger_id til tracking - tag den fra session? - k.setBruger_id();
 
-        if (!vognnumerOgBilTilstandErValid(k, bilListe)) {
+        if (!vognnummerOgBilTilstandErValid(k, bilListe)) {
             fejlBeskeder.add("Bilen med vognnummeret " + k.getVognnummer() + " findes ikke i systemet" +
                     " eller er ikke tilgængelig til udlejning");
         }
-        if (!kundeIdErValid(k, kundeList)) {
+        if (!kundeIdErValid(k, kundeListe)) {
             fejlBeskeder.add("Kunden med id: " + k.getKunde_id() + " findes ikke i systemet");
         }
         if (!datoerErValid(k)) {
             fejlBeskeder.add("Startdatoen må ikke være før slutdatoen eller før i dag");
         }
-        if (!afhentningslokationIdErValid(k, lokationList)) {
+        if (!afhentningslokationIdErValid(k, lokationListe)) {
             fejlBeskeder.add("Afhentningslokationen med id " + k.getAfhentningslokation_id() + " findes ikke i systemet");
         }
-        if (!afleveringslokationIdErValid(k, lokationList)) {
+        if (!afleveringslokationIdErValid(k, lokationListe)) {
             fejlBeskeder.add("Afleveringslokationen med id " + k.getAfleveringslokation_id() + " findes ikke i systemet");
         }
         return fejlBeskeder;
@@ -79,16 +77,17 @@ public class KontraktService {
         return kontraktRepo.hentAlleKontrakter();
     }
 
-    private boolean vognnumerOgBilTilstandErValid(Kontrakt kontrakt, List<Bil> bilList) {
-        for (int i = 0; i < bilList.size(); i++) {
-            if (bilList.get(i).getVognnummer() == kontrakt.getVognnummer() && bilList.get(i).getBilTilstand() == BilTilstand.LEJEKLAR) {
+    private boolean vognnummerOgBilTilstandErValid(Kontrakt kontrakt, List<Bil> bilListe) {
+        for (int i = 0; i < bilListe.size(); i++) {
+            if (bilListe.get(i).getVognnummer() == kontrakt.getVognnummer() &&
+                    bilListe.get(i).getBilTilstand() == BilTilstand.LEJEKLAR) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean datoerErValid(Kontrakt kontrakt) {
+    private boolean datoerErValid(Kontrakt kontrakt) { //TODO - Frikke
         SimpleDateFormat datoFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date kDatoStart = datoFormat.parse(kontrakt.getStart_dato());
@@ -106,38 +105,38 @@ public class KontraktService {
         return false;
     }
 
-    private boolean afhentningslokationIdErValid(Kontrakt k, List<Lokation> lokationList) {
-        for (int i = 0; i < lokationList.size(); i++) {
-            if (k.getAfhentningslokation_id() == lokationList.get(i).getLokation_id()) {
+    private boolean afhentningslokationIdErValid(Kontrakt k, List<Lokation> lokationListe) {
+        for (int i = 0; i < lokationListe.size(); i++) {
+            if (k.getAfhentningslokation_id() == lokationListe.get(i).getLokation_id()) {
                 return true;
             }
         }
         return false;
     }
 
-    public List<Kontrakt> hentKontrakter(boolean erNuværende, String sortering) {
-        return kontraktRepo.hentKontrakter(erNuværende, sortering);
+    public List<Kontrakt> hentKontrakterMedSortering(boolean erNuvaerende, String sortering) {
+        return kontraktRepo.hentKontrakterMedSortering(erNuvaerende, sortering);
     }
 
-    private boolean afleveringslokationIdErValid(Kontrakt k, List<Lokation> lokationList) {
-        for (int i = 0; i < lokationList.size(); i++) {
-            if (k.getAfleveringslokation_id() == lokationList.get(i).getLokation_id()) {
+    private boolean afleveringslokationIdErValid(Kontrakt k, List<Lokation> lokationListe) {
+        for (int i = 0; i < lokationListe.size(); i++) {
+            if (k.getAfleveringslokation_id() == lokationListe.get(i).getLokation_id()) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean kundeIdErValid(Kontrakt k, List<Kunde> kundeList) {
-        for (int i = 0; i < kundeList.size(); i++) {
-            if (k.getKunde_id() == kundeList.get(i).getKunde_id()) {
+    private boolean kundeIdErValid(Kontrakt k, List<Kunde> kundeListe) {
+        for (int i = 0; i < kundeListe.size(); i++) {
+            if (k.getKunde_id() == kundeListe.get(i).getKunde_id()) {
                 return true;
             }
         }
         return false;
     }
 
-    public List<Integer> hentKontraktIDFraVognnummer(int vognnummer) { // TODO: TEST
-        return kontraktRepo.hentKontraktIDFraVognnummer(vognnummer);
+    public List<Integer> hentKontraktIdFraVognnummer(int vognnummer) {
+        return kontraktRepo.hentKontraktIdFraVognnummer(vognnummer);
     }
 }

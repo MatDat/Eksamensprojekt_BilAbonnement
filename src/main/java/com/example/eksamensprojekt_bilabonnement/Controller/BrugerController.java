@@ -9,32 +9,31 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
 @Controller
 public class BrugerController {
-    //COMMENT
+
     @Autowired
     BrugerService brugerService;
 
 
-    @GetMapping("adminSide")
+    @GetMapping("/adminSide")
     public String adminSide(Model model) {
         List<Bruger> brugerListe = brugerService.hentBrugerListe();
         model.addAttribute("brugerListe", brugerListe);
-        return "bruger/brugerliste";
+        return "bruger/adminSide";
     }
 
-    @PostMapping("adminLogin")
+    @PostMapping("/adminLogin")
     public String adminLogin() {
         return "bruger/logIndAdmin";
     }
 
     @PostMapping("/adminLoggedInd")
     public String adminSide(@ModelAttribute Bruger bruger, HttpSession session) {
-        if (brugerService.loginAdmin(bruger)) {
+        if (brugerService.logIndAdmin(bruger)) {
             session.setAttribute("loggedInUser", "admin");
             return "redirect:/adminSide";
         } else {
@@ -42,26 +41,25 @@ public class BrugerController {
         }
     }
 
-    @PostMapping("loginBruger")
+    @PostMapping("/loginBruger")
     public String logBrugerInd(@ModelAttribute Bruger bruger, HttpSession session) {
-        if (brugerService.loginBruger(bruger)) {
+        if (brugerService.logIndBruger(bruger)) {
             session.setAttribute("bruger", bruger);
             return "redirect:/";
         } else {
-
             return "bruger/loginFejl";
         }
     }
 
-    @GetMapping("logBrugerUd")
-    public String logBrugerUd(HttpSession session, Model model) {
+    @GetMapping("/logBrugerUd")
+    public String logBrugerUd(HttpSession session) {
         session.removeAttribute("bruger");
         return "redirect:/";
     }
 
 
-    @PostMapping("opretBruger")
-    public String opretBruger(@ModelAttribute Bruger bruger, HttpSession session) {
+    @PostMapping("/opretBruger")
+    public String opretBruger(@ModelAttribute Bruger bruger) {
         boolean brugerOprettet = brugerService.opretBruger(bruger);
         if (brugerOprettet) {
             return "redirect:adminSide";
@@ -70,17 +68,17 @@ public class BrugerController {
         }
     }
 
-    @PostMapping("sletBruger")
+    @PostMapping("/sletBruger")
     public String sletBruger(@ModelAttribute Bruger bruger) {
         if (brugerService.sletBruger(bruger)) {
             return "redirect:adminSide";
         } else {
-            return "bruger/brugerlisteFejl";
+            return "bruger/adminSideFejl";
         }
     }
 
-    @PostMapping("sletBrugerSide")
+    @PostMapping("/sletBrugerSide")
     public String sletBrugerConfirm() {
-        return "bruger/sletBrugerConfirm";
+        return "bruger/sletBrugerBekraeft";
     }
 }

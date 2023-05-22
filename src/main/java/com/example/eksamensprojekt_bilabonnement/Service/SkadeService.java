@@ -1,5 +1,4 @@
 package com.example.eksamensprojekt_bilabonnement.Service;
-
 import com.example.eksamensprojekt_bilabonnement.Model.Skade;
 import com.example.eksamensprojekt_bilabonnement.Model.Skaderapport;
 import com.example.eksamensprojekt_bilabonnement.Repository.SkadeRepo;
@@ -9,34 +8,34 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SkadeService {//COMMENT
+public class SkadeService {
 
     @Autowired
     SkadeRepo skadeRepo;
 
-    public void nySkade(Skade skade) {
-        skadeRepo.nySkade(skade);
+    public void tilfoejSkade(Skade skade) {
+        skadeRepo.tilfoejSkade(skade);
     }
 
-    public void nySkadeRapport(Skaderapport skaderapport) {
-        skadeRepo.nySkadeRapport(skaderapport);
+    public void tilfoejSkadeRapport(Skaderapport skaderapport) {
+        skadeRepo.tilfoejSkadeRapport(skaderapport);
     }
 
     public List<Skaderapport> hentSkaderapporter() {
         return skadeRepo.hentSkaderapporter();
     }
 
-    public List<Skaderapport> hentSkaderapporterSORT(String sortering) {
-        return skadeRepo.hentSkaderapporterSORT(sortering);
+    public List<Skaderapport> hentSkaderapporterMedSortering(String sortering) {
+        return skadeRepo.hentSkaderapporterMedSortering(sortering);
     }
 
 
-    public List<Skade> hentSkader(int skaderapport_id) {
-        return skadeRepo.hentSkader(skaderapport_id);
+    public List<Skade> hentSkaderFraSkaderapportId(int skaderapport_id) {
+        return skadeRepo.hentSkaderFraSkaderapportId(skaderapport_id);
     }
 
-    public int hentSkaderapportIDFraKontraktID(int kontrakt_id) {
-        return skadeRepo.hentSkaderapportIDFraKontraktID(kontrakt_id);
+    public int hentSkaderapportIdFraKontraktId(int kontrakt_id) {
+        return skadeRepo.hentSkaderapportIdFraKontraktId(kontrakt_id);
     }
 
     public boolean bilErSkadet(int skaderapport_id) {

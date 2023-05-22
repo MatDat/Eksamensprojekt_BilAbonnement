@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class KundeService {//COMMENT
+public class KundeService {
 
     @Autowired
     KundeRepo kundeRepo;
 
-    public List<Kunde> hentAlleKunder(){
+    public List<Kunde> hentAlleKunder(){ //TODO Emil
         return kundeRepo.hentAlleKunder();
     }
 

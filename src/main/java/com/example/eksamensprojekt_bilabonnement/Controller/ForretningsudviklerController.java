@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.WebRequest;
 
 import java.util.*;
 
@@ -24,50 +23,38 @@ public class ForretningsudviklerController {
 
 
     @PostMapping("/forretningsudviklerSide")
-    public String forretningsudviklerSide(){
+    public String forretningsudviklerSide() {
         return "forretningsudvikler/forretningsudviklerSide";
     }
 
     @PostMapping("/seBiler")
-    public String seBiler(Model model){
+    public String seBiler(Model model) {
 
-        List<Bil> biler = bilService.hentAlleBiler();
-        model.addAttribute("biler", biler);
-        model.addAttribute("staalpriser",bilService.hentStaalpriser(biler));
-        model.addAttribute("co2",bilService.hentCo2(biler));
-
-
+        List<Bil> bilListe = bilService.hentAlleBiler();
+        model.addAttribute("biler", bilListe);
+        model.addAttribute("staalpriser", bilService.hentStaalpriser(bilListe));
+        model.addAttribute("co2", bilService.hentCo2(bilListe));
         return "forretningsudvikler/seBiler";
     }
 
 
     @PostMapping("/seBilerDropdown")
-    public String seBilerDropdown(@RequestParam("dropdown") String selectedOption, Model model) {
-        List<Bil> biler = null;
-
-
-        switch (selectedOption){
-            case "alle" -> biler = bilService.hentAlleBiler();
+    public String seBilerDropdown(@RequestParam("valgtMulighed") String valgtMulighed, Model model) {
+        List<Bil> bilListe = null;
+        switch (valgtMulighed) {
+            case "alle" -> bilListe = bilService.hentAlleBiler();
             case "UDLEJET" -> {
-                biler = bilService.hentBilerMedTilstand(selectedOption);
-                List<Double> priser = kontraktService.getTotalPrisFraVognnummre(bilService.hentVognnumre(biler));
-                model.addAttribute("toggle",1);
-                model.addAttribute("priser",priser);
+                bilListe = bilService.hentBilerMedTilstand(valgtMulighed);
+                List<Double> priser = kontraktService.hentTotalPrisFraVognnumre(bilService.hentVognnumre(bilListe));
+                model.addAttribute("toggle", 1);
+                model.addAttribute("priser", priser);
             }
-            case "SOLGT", "LEJEKLAR" -> biler = bilService.hentBilerMedTilstand(selectedOption);
-            case "EL","BENZIN","DIESEL" -> biler = bilService.hentBilerMedBraendstof(selectedOption);
+            case "SOLGT", "LEJEKLAR" -> bilListe = bilService.hentBilerMedTilstand(valgtMulighed);
+            case "EL", "BENZIN", "DIESEL" -> bilListe = bilService.hentBilerMedBraendstof(valgtMulighed);
         }
-
-        model.addAttribute("biler", biler);
-        model.addAttribute("staalpriser",bilService.hentStaalpriser(biler));
-        model.addAttribute("co2",bilService.hentCo2(biler));
-
-
-
+        model.addAttribute("biler", bilListe);
+        model.addAttribute("staalpriser", bilService.hentStaalpriser(bilListe));
+        model.addAttribute("co2", bilService.hentCo2(bilListe));
         return "forretningsudvikler/seBiler";
     }
-
-
-
-
 }

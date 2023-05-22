@@ -18,7 +18,7 @@
     </div>
     <div style="margin-left: auto;margin-right: auto">
         <form action="/visLejeaftale" method="post">
-            <input class="generelFormInput" type="number" min="1" th:max="${maxKontraktId}" name="kontrakt_id" placeholder="ID">
+            <input class="generalFormInput" type="number" min="1" th:max="${maxKontraktId}" name="kontrakt_id" placeholder="ID">
             <input class="greenButton" type="submit" value="Gå til Lejeaftale">
         </form>
     </div>
@@ -29,7 +29,7 @@
     </div>
     <div style="margin-left: auto;margin-right: auto">
         <form action="/seLejeaftaler" method="get">
-            <select class="generelFormInput" name="sortMuligheder">
+            <select class="generalFormInput" name="sortMuligheder">
                 <option value="kontrakt_id" th:selected="${sortMuligheder == 'kontrakt_id'}">ID</option>
                 <option value="start_dato" th:selected="${sortMuligheder == 'start_dato'}">Start Dato</option>
                 <option value="slut_dato" th:selected="${sortMuligheder == 'slut_dato'}">Slut Dato</option>
@@ -44,6 +44,7 @@
         </form>
     </div>
 </div>
+
 <div class="kontrakt-box-container">
     <div th:each="kontrakt : ${kontraktListe}" class="kontrakt-box">
         <p>Kontrakt ID: <span th:text="${kontrakt.kontrakt_id}"></span></p>
