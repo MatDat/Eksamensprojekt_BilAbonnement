@@ -28,11 +28,9 @@ public class KontraktService {
     @Autowired
     LokationRepo lokationRepo;
 
-    public List<String> validerOgTilfoejKontrakt(Kontrakt k) {//TODO Frikke
+    public List<String> validerOgTilfoejKontrakt(Kontrakt k) {
         List<String> fejlBeskeder = opretFejlBeskeder(k);
-        if (!fejlBeskeder.isEmpty()) {
-            System.out.println(fejlBeskeder);
-        } else {
+        if (fejlBeskeder.isEmpty()) {
             kontraktRepo.tilfoejKontrakt(k);
         }
         return fejlBeskeder;
@@ -94,7 +92,6 @@ public class KontraktService {
             Date kSlutStart = datoFormat.parse(kontrakt.getSlut_dato());
             Date dagsDato = datoFormat.parse(datoFormat.format(new Date()));
 
-            //TODO check om bilen er ved at blive booked i et tidsrum hvor den allerede er booket i
             if (kDatoStart.before(kSlutStart) && !kDatoStart.before(dagsDato)) {
                 return true;
             }
