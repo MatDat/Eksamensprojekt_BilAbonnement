@@ -28,7 +28,7 @@ public class SkadeOgUdbedringController {
 
     @GetMapping("/bilerKlarTilRapport")
     public String printBilerKlarTilSkadesRapport(Model model) {
-        List<Bil> bilListe = bilService.hentBilerMedTilstand("RAPPORTKLAR");
+        List<Bil> bilListe = bilService.hentBilerMedTilstand(BilTilstand.RAPPORTKLAR);
         model.addAttribute("biler", bilListe);
         return "skadeOgUdbedring/bilerKlarTilRapport";
     }
