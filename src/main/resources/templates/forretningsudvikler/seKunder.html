@@ -7,25 +7,27 @@
 </head>
 <body>
 
-<div id="generelBodyDiv">
+<h1>Kunder</h1>
+
+<div class="tableBody" style="padding: 20px">
 
   <table>
     <thead>
     <tr>
-      <th>Kunde ID</th>
-      <th>Fornavn</th>
-      <th>Efternavn</th>
-      <th>Mail</th>
-      <th>Mobil</th>
+      <th class="kundelisteTh" >Kunde ID</th>
+      <th class="kundelisteTh" >Fornavn</th>
+      <th class="kundelisteTh" >Efternavn</th>
+      <th class="kundelisteTh" >Email</th>
+      <th class="kundelisteTh" >Mobil</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="kunde, ${kundeListe}">
-      <td th:text="${kunde.kunde_id}"/>
-      <td th:text="${kunde.fornavn}"/>
-      <td th:text="${kunde.efternavn}"/>
-      <td th:text="${kunde.mail}"/>
-      <td th:text="${kunde.mobil}"/>
+    <tr class="kundelisteTr" th:each="kunde: ${kundeListe}">
+      <td class="kundelisteTd" th:text="${kunde.kunde_id}"/>
+      <td class="kundelisteTd" th:text="${kunde.fornavn}"/>
+      <td class="kundelisteTd" th:text="${kunde.efternavn}"/>
+      <td class="kundelisteTd" th:text="${kunde.email}"/>
+      <td class="kundelisteTd" th:text="${kunde.mobil}"/>
     </tr>
 
 
@@ -34,6 +36,12 @@
 
   </table>
 
+</div>
+
+<div>
+  <form action="/" method="get">
+    <button class="redButton" type="submit">Tilbage</button>
+  </form>
 </div>
 
 </body>

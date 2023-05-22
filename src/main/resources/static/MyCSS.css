@@ -332,9 +332,18 @@ h3 {
 }
 
 .seBilerTable {
+    background-color: #144164;
     overflow-y: auto;
     overflow-x: auto;
-    height: 600px;
+    max-height: 600px;
+
+}
+.seBilerTR{
+    color: white;
+    background-color: #10334f;
+}
+.seBilerTR:nth-child(even){
+    background-color: #144164;
 }
 
 .statBox {
@@ -354,6 +363,35 @@ h3 {
     flex-direction: column;
     justify-content: space-evenly;
 }
+/*forretningsudvikler se kunder*/
+
+.kundelisteTh {
+    padding: 5px 50px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #144164;
+    border-top: 1px solid #144164;
+    text-transform: uppercase;
+    color: #144164;
+    background-color: white;
+}
+
+.kundelisteTd {
+    padding: 5px 50px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.kundelisteTr:nth-child(even) {
+    background-color: rgb(20, 100, 55, 0.15);
+}
+
+.kundelisteTr {
+    justify-content: center;
+    margin-top: 6px;
+}
+
+
 
 /*ADMINISTRATIONS STYLING START*/
 .tableBody {
