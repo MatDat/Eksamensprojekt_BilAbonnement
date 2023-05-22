@@ -328,14 +328,17 @@ h3 {
 /*Forretningsudvikler/seBiler*/
 
 .dropDownDiv {
-    margin: 20px;
+    background-color: #144164;
+    width: 100%;
 }
 
 .seBilerTable {
+    color: white;
     background-color: #144164;
     overflow-y: auto;
     overflow-x: auto;
     max-height: 600px;
+    padding: 20px;
 
 }
 .seBilerTR{
@@ -356,6 +359,7 @@ h3 {
     margin-top: 20px;
     padding: 20px 20px 20px 20px;
     border: 1px solid black;
+    width: 100%;
 }
 
 .statBoxContainer {
@@ -365,7 +369,7 @@ h3 {
 }
 /*forretningsudvikler se kunder*/
 
-.kundelisteTh {
+.forretningsudviklerTh {
     padding: 5px 50px;
     text-align: center;
     vertical-align: middle;
@@ -376,17 +380,17 @@ h3 {
     background-color: white;
 }
 
-.kundelisteTd {
+.forretningsudviklerTd {
     padding: 5px 50px;
     text-align: center;
     vertical-align: middle;
 }
 
-.kundelisteTr:nth-child(even) {
+.forretningsudviklerTr:nth-child(even) {
     background-color: rgb(20, 100, 55, 0.15);
 }
 
-.kundelisteTr {
+.forretningsudviklerTr {
     justify-content: center;
     margin-top: 6px;
 }

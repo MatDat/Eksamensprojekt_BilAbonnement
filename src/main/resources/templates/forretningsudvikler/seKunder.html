@@ -14,20 +14,20 @@
   <table>
     <thead>
     <tr>
-      <th class="kundelisteTh" >Kunde ID</th>
-      <th class="kundelisteTh" >Fornavn</th>
-      <th class="kundelisteTh" >Efternavn</th>
-      <th class="kundelisteTh" >Email</th>
-      <th class="kundelisteTh" >Mobil</th>
+      <th class="forretningsudviklerTh" >Kunde ID</th>
+      <th class="forretningsudviklerTh" >Fornavn</th>
+      <th class="forretningsudviklerTh" >Efternavn</th>
+      <th class="forretningsudviklerTh" >Email</th>
+      <th class="forretningsudviklerTh" >Mobil</th>
     </tr>
     </thead>
     <tbody>
-    <tr class="kundelisteTr" th:each="kunde: ${kundeListe}">
-      <td class="kundelisteTd" th:text="${kunde.kunde_id}"/>
-      <td class="kundelisteTd" th:text="${kunde.fornavn}"/>
-      <td class="kundelisteTd" th:text="${kunde.efternavn}"/>
-      <td class="kundelisteTd" th:text="${kunde.email}"/>
-      <td class="kundelisteTd" th:text="${kunde.mobil}"/>
+    <tr class="forretningsudviklerTr" th:each="kunde: ${kundeListe}">
+      <td class="forretningsudviklerTd" th:text="${kunde.kunde_id}"/>
+      <td class="forretningsudviklerTd" th:text="${kunde.fornavn}"/>
+      <td class="forretningsudviklerTd" th:text="${kunde.efternavn}"/>
+      <td class="forretningsudviklerTd" th:text="${kunde.email}"/>
+      <td class="forretningsudviklerTd" th:text="${kunde.mobil}"/>
     </tr>
 
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tilføj lokation</title>
+  <link rel="stylesheet" href="/MyCSS.css">
+</head>
+<body>
+
+<h1>Opret Kunde</h1>
+
+
+<div id="generelBodyDiv">
+  <form action="/tilfoejLokation" method="post">
+
+    <table>
+
+      <tr>
+        <td><label class="generalFormLabel">Lokationens navn: </label></td>
+        <td><input class="generalFormInput" type="text" name="lokation_navn" required></td>
+      </tr>
+
+      <tr>
+        <td><label class="generalFormLabel">Adresse: </label></td>
+        <td><input class="generalFormInput" type="text" name="adresse" required></td>
+      </tr>
+
+      <tr>
+        <td><label class="generalFormLabel">By: </label></td>
+        <td><input class="generalFormInput" type="text" name="by_navn" required></td>
+      </tr>
+
+      <tr>
+        <td><label class="generalFormLabel">Postnummer: </label></td>
+        <td><input class="generalFormInput" type="number" name="postnummer" required></td>
+      </tr>
+
+
+
+    </table>
+    <input type="submit" class="greenButton" style="float: right">
+  </form>
+</div>
+
+<div>
+  <form action="/dataRegistrering" method="get">
+    <input type="submit" class="redButton" value="tilbage">
+  </form>
+</div>
+
+
+</body>
+</html>

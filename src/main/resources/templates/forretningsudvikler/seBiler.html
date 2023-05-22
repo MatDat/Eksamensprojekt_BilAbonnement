@@ -5,7 +5,7 @@
     <title>Biler</title>
     <link rel="stylesheet" href="/MyCSS.css">
 </head>
-<body style="margin: 20px">
+<body>
 <div class="seBilerPageBox">
     <div class="dropDownDiv">
         <form th:action="@{/seBilerDropdown}" method="post">
@@ -22,10 +22,12 @@
                     <option value="DIESEL">Diesel</option>
                 </optgroup>
             </select>
-            <input type="submit" value="Submit">
+            <input class="greenButton" type="submit" value="Sorter">
         </form>
 
     </div>
+
+    <br>
 
     <div class="seBilerTable">
         <table>

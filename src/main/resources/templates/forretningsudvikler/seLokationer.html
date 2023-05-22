@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lokationer</title>
+    <link rel="stylesheet" href="/MyCSS.css">
+</head>
+<body>
+
+
+
+<table>
+    <thead>
+    <tr>
+        <th class="forretningsudviklerTh" >Lokation ID</th>
+        <th class="forretningsudviklerTh" >Adresse</th>
+        <th class="forretningsudviklerTh" >Lokation navn</th>
+        <th class="forretningsudviklerTh" >By</th>
+        <th class="forretningsudviklerTh" >Postnummer</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr class="forretningsudviklerTr" th:each="lokation : ${lokationListe}">
+        <td class="forretningsudviklerTd" th:text="${lokation.lokation_id}" />
+        <td class="forretningsudviklerTd" th:text="${lokation.adresse}" />
+        <td class="forretningsudviklerTd" th:text="${lokation.lokation_navn}" />
+        <td class="forretningsudviklerTd" th:text="${lokation.by_navn}" />
+        <td class="forretningsudviklerTd" th:text="${lokation.postnummer}" />
+    </tr>
+
+    </tbody>
+
+</table>
+
+
+<div>
+    <form action="/" method="get">
+        <button class="redButton" type="submit">Tilbage</button>
+    </form>
+</div>
+
+</body>
+</html>

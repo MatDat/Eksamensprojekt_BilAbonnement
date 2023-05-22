@@ -18,4 +18,8 @@ public class LokationService {
     public List<Lokation> hentLokationFraId(int lokation_id) {
         return lokationRepo.hentLokationFraId(lokation_id);
     }
+
+    public void tilfoejLokation(Lokation lokation){
+        lokationRepo.tilfoejLokation(lokation);
+    }
 }
