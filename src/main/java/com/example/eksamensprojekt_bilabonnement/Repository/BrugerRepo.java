@@ -1,6 +1,7 @@
 package com.example.eksamensprojekt_bilabonnement.Repository;
 
 import com.example.eksamensprojekt_bilabonnement.Model.Bruger;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -11,10 +12,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BrugerRepo {//COMMENT
-
+public class BrugerRepo {
     @Autowired
     JdbcTemplate template;
+    @Autowired
+    HttpSession session;
 
     public List<Bruger> hentBrugerListe() {
         String sql = "SELECT bruger_id, brugernavn, kode FROM bruger";
@@ -24,10 +26,12 @@ public class BrugerRepo {//COMMENT
     }
 
     public boolean logIndBruger(Bruger bruger) {
-        String sql = "SELECT COUNT(*) FROM bilabonnementDB.bruger WHERE brugernavn = ? AND kode = ?";
+        String sql = "SELECT * FROM bilabonnementDB.bruger WHERE brugernavn = ? AND kode = ?";
         try {
-            int count = template.queryForObject(sql, Integer.class, bruger.getBrugernavn(), bruger.getKode());
-            return count > 0;
+            Bruger brugerLoggedInd = template.queryForObject(sql, new BeanPropertyRowMapper<>(Bruger.class),
+                    bruger.getBrugernavn(), bruger.getKode());
+            session.setAttribute("bruger", brugerLoggedInd);
+            return true;
         } catch (EmptyResultDataAccessException e) {
             return false;
         }

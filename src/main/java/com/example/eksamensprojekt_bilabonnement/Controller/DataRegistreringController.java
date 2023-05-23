@@ -1,11 +1,13 @@
 package com.example.eksamensprojekt_bilabonnement.Controller;
 
+import com.example.eksamensprojekt_bilabonnement.Model.Bruger;
 import com.example.eksamensprojekt_bilabonnement.Model.Kontrakt;
 import com.example.eksamensprojekt_bilabonnement.Model.Kunde;
 import com.example.eksamensprojekt_bilabonnement.Model.Lokation;
 import com.example.eksamensprojekt_bilabonnement.Service.KontraktService;
 import com.example.eksamensprojekt_bilabonnement.Service.KundeService;
 import com.example.eksamensprojekt_bilabonnement.Service.LokationService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +35,9 @@ public class DataRegistreringController {
     }
 
     @PostMapping("/gemLejeaftale")
-    public String gemLejeaftale(@ModelAttribute Kontrakt kontrakt, Model model) {
+    public String gemLejeaftale(@ModelAttribute Kontrakt kontrakt, Model model, HttpSession session) {
+        Bruger bruger = (Bruger) session.getAttribute("bruger");
+        kontrakt.setBruger_id(bruger.getBruger_id());
         List<String> fejlBeskeder = kontraktService.validerOgTilfoejKontrakt(kontrakt);
         if (fejlBeskeder.isEmpty()) {
             return ("dataRegistrering/dataregistrering");
