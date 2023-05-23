@@ -1,6 +1,6 @@
 package com.example.eksamensprojekt_bilabonnement.Model;
 
-public enum gear_type {//COMMENT
+public enum GearType {//COMMENT
 
 
     AUTOMATISK, MANUELT

@@ -32,9 +32,8 @@ public class BrugerController {
     }
 
     @PostMapping("/adminLoggedInd")
-    public String adminSide(@ModelAttribute Bruger bruger, HttpSession session) {
+    public String adminSide(@ModelAttribute Bruger bruger) {
         if (brugerService.logIndAdmin(bruger)) {
-            session.setAttribute("loggedInUser", "admin");
             return "redirect:/adminSide";
         } else {
             return "bruger/logIndAdminFejl";
@@ -42,9 +41,8 @@ public class BrugerController {
     }
 
     @PostMapping("/loginBruger")
-    public String logBrugerInd(@ModelAttribute Bruger bruger, HttpSession session) {
+    public String logBrugerInd(@ModelAttribute Bruger bruger) {
         if (brugerService.logIndBruger(bruger)) {
-            session.setAttribute("bruger", bruger);
             return "redirect:/";
         } else {
             return "bruger/loginFejl";
@@ -53,7 +51,7 @@ public class BrugerController {
 
     @GetMapping("/logBrugerUd")
     public String logBrugerUd(HttpSession session) {
-        session.removeAttribute("bruger");
+        session.invalidate();
         return "redirect:/";
     }
 

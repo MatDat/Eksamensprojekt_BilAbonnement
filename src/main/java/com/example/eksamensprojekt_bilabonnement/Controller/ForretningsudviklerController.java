@@ -3,8 +3,7 @@ package com.example.eksamensprojekt_bilabonnement.Controller;
 
 import com.example.eksamensprojekt_bilabonnement.Model.Bil;
 import com.example.eksamensprojekt_bilabonnement.Model.BilTilstand;
-import com.example.eksamensprojekt_bilabonnement.Model.Kunde;
-import com.example.eksamensprojekt_bilabonnement.Model.braendstof;
+import com.example.eksamensprojekt_bilabonnement.Model.Braendstof;
 import com.example.eksamensprojekt_bilabonnement.Service.BilService;
 import com.example.eksamensprojekt_bilabonnement.Service.KontraktService;
 import com.example.eksamensprojekt_bilabonnement.Service.KundeService;
@@ -57,7 +56,7 @@ public class ForretningsudviklerController {
                 model.addAttribute("priser", priser);
             }
             case "SOLGT", "LEJEKLAR" -> bilListe = bilService.hentBilerMedTilstand(BilTilstand.valueOf(valgtMulighed));
-            case "EL", "BENZIN", "DIESEL" -> bilListe = bilService.hentBilerMedBraendstof(braendstof.valueOf(valgtMulighed));
+            case "EL", "BENZIN", "DIESEL" -> bilListe = bilService.hentBilerMedBraendstof(Braendstof.valueOf(valgtMulighed));
         }
         model.addAttribute("biler", bilListe);
         model.addAttribute("staalpriser", bilService.hentStaalpriser(bilListe));

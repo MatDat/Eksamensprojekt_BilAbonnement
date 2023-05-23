@@ -22,7 +22,7 @@ public class BilService {
         return bilRepo.hentBilerMedTilstand(String.valueOf(tilstand));
     }
 
-    public List<Bil> hentBilerMedBraendstof(braendstof braendstof) {
+    public List<Bil> hentBilerMedBraendstof(Braendstof braendstof) {
         return bilRepo.hentBilerMedBraendstof(String.valueOf(braendstof));
     }
 

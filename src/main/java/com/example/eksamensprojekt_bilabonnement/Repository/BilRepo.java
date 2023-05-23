@@ -3,7 +3,6 @@ package com.example.eksamensprojekt_bilabonnement.Repository;
 import com.example.eksamensprojekt_bilabonnement.Model.Bil;
 import com.example.eksamensprojekt_bilabonnement.Model.BilModel;
 import com.example.eksamensprojekt_bilabonnement.Model.Maerke;
-import com.example.eksamensprojekt_bilabonnement.Model.braendstof;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
