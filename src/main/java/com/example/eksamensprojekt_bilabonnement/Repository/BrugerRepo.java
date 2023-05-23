@@ -27,9 +27,9 @@ public class BrugerRepo {
 
     public boolean logIndBruger(Bruger bruger) {
         String sql = "SELECT * FROM bilabonnementDB.bruger WHERE brugernavn = ? AND kode = ?";
+        RowMapper<Bruger> rowMapper = new BeanPropertyRowMapper<>(Bruger.class);
         try {
-            Bruger brugerLoggedInd = template.queryForObject(sql, new BeanPropertyRowMapper<>(Bruger.class),
-                    bruger.getBrugernavn(), bruger.getKode());
+            Bruger brugerLoggedInd = template.queryForObject(sql, rowMapper, bruger.getBrugernavn(), bruger.getKode());
             session.setAttribute("bruger", brugerLoggedInd);
             return true;
         } catch (EmptyResultDataAccessException e) {
