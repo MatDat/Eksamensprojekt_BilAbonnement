@@ -38,8 +38,8 @@ public class BilController {
         return "dataregistrering/vaelgModel";
     }
 
-    @GetMapping("/opretBilSide")
-    public String opretBilSide(Model model, @RequestParam("model_id") String model_id) {
+    @GetMapping("/tilfoejBilSide")
+    public String tilfoejBilSide(Model model, @RequestParam("model_id") String model_id) {
         String model_navn = bilService.hentModelNavnFraID(Integer.valueOf(model_id)).get(0).getModel_navn();
         model.addAttribute("model", model_navn);
         model.addAttribute("model_id", model_id);

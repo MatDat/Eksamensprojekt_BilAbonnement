@@ -41,7 +41,7 @@ public class BrugerController {
         }
     }
 
-    @PostMapping("/loginBruger")
+    @PostMapping("/logBrugerInd")
     public String logBrugerInd(@ModelAttribute Bruger bruger, HttpSession session) {
         if (brugerService.logIndBruger(bruger)) {
             session.setAttribute("bruger", bruger);
