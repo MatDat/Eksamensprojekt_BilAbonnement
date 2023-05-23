@@ -42,7 +42,6 @@ public class BrugerRepo {
         String sql = "SELECT * FROM bilabonnementDB.bruger WHERE brugernavn = 'Admin' AND kode = ? AND brugernavn = ?";
         //^Denne linie tjekker om indtastede brugernavn & kode stemmeroverens med Admin brugernavnet.
         RowMapper<Bruger> rowMapper = new BeanPropertyRowMapper<>(Bruger.class);
-
         try {
             template.queryForObject(sql, rowMapper, bruger.getKode(), bruger.getBrugernavn());
             return true;

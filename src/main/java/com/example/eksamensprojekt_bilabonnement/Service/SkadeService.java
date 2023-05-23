@@ -1,4 +1,5 @@
 package com.example.eksamensprojekt_bilabonnement.Service;
+
 import com.example.eksamensprojekt_bilabonnement.Model.Skade;
 import com.example.eksamensprojekt_bilabonnement.Model.Skaderapport;
 import com.example.eksamensprojekt_bilabonnement.Repository.SkadeRepo;
