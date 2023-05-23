@@ -40,7 +40,7 @@ public class SkadeService {
     }
 
     public boolean bilErSkadet(int skaderapport_id) {
-        return skadeRepo.bilErSkadet(skaderapport_id);
+        return skadeRepo.skaderapportIndeholderSkader(skaderapport_id);
     }
 
 }

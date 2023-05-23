@@ -13,7 +13,7 @@ public class KundeService {
     @Autowired
     KundeRepo kundeRepo;
 
-    public List<Kunde> hentAlleKunder(){ //TODO Emil
+    public List<Kunde> hentAlleKunder(){
         return kundeRepo.hentAlleKunder();
     }
 

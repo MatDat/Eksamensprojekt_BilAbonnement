@@ -17,12 +17,14 @@ public class SkadeRepo {
     JdbcTemplate template;
 
     public void tilfoejSkade(Skade skade) {
+        //Tilføjer en skade til Databasen, som metoden får med som inputparameter
         String sql = "INSERT INTO skade (beskrivelse, pris, skaderapport_id) " +
                 "VALUES (?, ?, ?)";
         template.update(sql, skade.getBeskrivelse(), skade.getPris(), skade.getSkaderapport_id());
     }
 
     public void tilfoejSkadeRapport(Skaderapport skaderapport) {
+        //Tilføjer en skaderapport til Databasen, som metoden får med som inputparameter
         String sql = "INSERT INTO skaderapport (skaderapport_dato, kontrakt_id, bruger_id) " +
                 "VALUES (?, ?, ?)";
         template.update(sql, skaderapport.getSkaderapport_dato(),
@@ -30,29 +32,40 @@ public class SkadeRepo {
     }
 
     public List<Skaderapport> hentSkaderapporter() {
+        //Henter hele skaderapport table, plotter det ind i Skaderapport objekter og returnerer en Liste
         String sql = "SELECT * FROM skaderapport";
         RowMapper<Skaderapport> rowMapper = new BeanPropertyRowMapper<>(Skaderapport.class);
         return template.query(sql, rowMapper);
     }
 
     public List<Skaderapport> hentSkaderapporterMedSortering(String sortering) {
+        //Henter hele skaderapport table, med given sortering i fra inputparameter,
+        // plotter det ind i Skaderapport objekter og returnerer en Liste
         String sql = "SELECT * FROM skaderapport ORDER BY " + sortering + " ASC";
         RowMapper<Skaderapport> rowMapper = new BeanPropertyRowMapper<>(Skaderapport.class);
         return template.query(sql, rowMapper);
     }
 
     public List<Skade> hentSkaderFraSkaderapportId(int skaderapport_id) {
+        //henter og returnerer en liste af skader med et givent skaderapport_id fra inputparameteret
+        //og returner en liste af Skade objekter
         String sql = "SELECT * FROM skade WHERE skaderapport_id = ?";
         RowMapper<Skade> rowMapper = new BeanPropertyRowMapper<>(Skade.class);
         return template.query(sql, rowMapper, skaderapport_id);
     }
 
     public int hentSkaderapportIdFraKontraktId(int kontrakt_id) {
+        //udfra et givent kontrakt_id fra inputparameteret vil denne metode returnere et skaderapport_id
         String sql = "SELECT skaderapport_id FROM skaderapport WHERE kontrakt_id = ?";
         return template.queryForObject(sql, Integer.class, kontrakt_id);
     }
 
-    public boolean bilErSkadet(int skaderapport_id) { //TODO ændres?
+    public boolean skaderapportIndeholderSkader(int skaderapport_id) {
+        // Denne metoder tjekker om en skaderapport indeholder mindst en skade
+        // Metoden tjekker ved at hente en liste af skader ud fra et skaderapport_id
+        // og så inde i en try catch prøve at printe det første element fra listen
+        // hvis listen indeholder en eller flere skader vil der returnes true
+        // hvis listen ikke indeholder noget så vil metoden catch en IndexOutOfBoundsException og returnere false
         String sql = "SELECT * FROM skade WHERE skaderapport_id = ?";
         RowMapper<Skade> rowMapper = new BeanPropertyRowMapper(Skade.class);
 

@@ -11,7 +11,7 @@ public class LokationService {
     @Autowired
     LokationRepo lokationRepo;
 
-    public List<Lokation> hentAlleLokationer() {//Todo skal bruges i view/controller
+    public List<Lokation> hentAlleLokationer() {
         return lokationRepo.hentAlleLokationer();
     }
 
