@@ -40,7 +40,7 @@ public class BrugerController {
         }
     }
 
-    @PostMapping("/loginBruger")
+    @PostMapping("/logBrugerInd")
     public String logBrugerInd(@ModelAttribute Bruger bruger) {
         if (brugerService.logIndBruger(bruger)) {
             return "redirect:/";
