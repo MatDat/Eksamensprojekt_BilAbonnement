@@ -23,11 +23,7 @@ public class BrugerRepo {//COMMENT
         return brugerListe;
     }
 
-    public boolean logIndBruger(Bruger bruger) { //TODO
-        if (bruger.getBrugernavn() == null || bruger.getKode() == null
-                || bruger.getBrugernavn().isEmpty() || bruger.getKode().isEmpty()) {
-            return false; //^Nægter adgang hvis man prøver at logge ind uden at skrive noget
-        }
+    public boolean logIndBruger(Bruger bruger) {
         String sql = "SELECT COUNT(*) FROM bilabonnementDB.bruger WHERE brugernavn = ? AND kode = ?";
         try {
             int count = template.queryForObject(sql, Integer.class, bruger.getBrugernavn(), bruger.getKode());
@@ -41,8 +37,10 @@ public class BrugerRepo {//COMMENT
     public boolean logIndAdmin(Bruger bruger) {
         String sql = "SELECT * FROM bilabonnementDB.bruger WHERE brugernavn = 'Admin' AND kode = ? AND brugernavn = ?";
         //^Denne linie tjekker om indtastede brugernavn & kode stemmeroverens med Admin brugernavnet.
+        RowMapper<Bruger> rowMapper = new BeanPropertyRowMapper<>(Bruger.class);
+
         try {
-            template.queryForObject(sql, new BeanPropertyRowMapper<>(Bruger.class), bruger.getKode(), bruger.getBrugernavn());
+            template.queryForObject(sql, rowMapper, bruger.getKode(), bruger.getBrugernavn());
             return true;
         } catch (EmptyResultDataAccessException e) {
             return false;
@@ -69,10 +67,10 @@ public class BrugerRepo {//COMMENT
         }
     }
 
-    public boolean sletBruger(Bruger bruger) { //TODO brug required in html
+    public boolean sletBruger(Bruger bruger) {
         String sql = "DELETE FROM bruger WHERE bruger_id = ? AND bruger_id != 1";
-        int paavirkedeRaekker = template.update(sql, bruger.getBruger_id()); //Gemmer antal af
-        return paavirkedeRaekker > 0;    //Hvis paavirkedeRaekker er større end 0, returns true - ellers false ofc
+        int paavirkedeRaekker = template.update(sql, bruger.getBruger_id());
+        return paavirkedeRaekker > 0;   // Disse 2 linier sørger for at man ikke kan skrive et ID som ikke er der.
     }
 
 }
