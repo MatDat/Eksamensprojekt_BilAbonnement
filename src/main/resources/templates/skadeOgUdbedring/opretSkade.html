@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Opret skade</title>
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
 <h1>Opret skade</h1>
 
 <h2>Skader tilføjet indtil videre</h2>
+
+<div class="statBoxBilerRapport">
 <table style="float: left">
-    <tr>
+    <tr style="text-align: left">
         <th>Beskrivelse</th>
         <th>Pris</th>
     </tr>
@@ -21,25 +24,29 @@
     </tr>
     </tbody>
 </table>
+</div>
+
+<div id="generelBodyDiv">
 <form action="/opretSkade" method="post">
 
-    <label for="beskrivelse">Beskrivelse af skaden: </label>
-    <input type="text" id="beskrivelse" name="beskrivelse" placeholder="beskrivelse">
+    <label class="generalFormLabel">Beskrivelse af skaden: </label>
+    <input class="generalFormInput" type="text" name="beskrivelse" placeholder="beskrivelse">
     <br>
-    <label for="pris">Pris på skaden: </label>
-    <input type="text" id="pris" name="pris" placeholder="pris">
+    <label class="generalFormLabel">Pris på skaden: </label>
+    <input class="generalFormInput" type="text" name="pris" placeholder="pris">
     <br>
 
     <input type="hidden" name="vognnummer2a" th:value="${vognnummer2a}" />
     <input type="hidden" name="vognnummer2b" th:value="${vognnummer2b}" />
-    <input type="submit" value="SUBMIT">
+    <input class="greenButton" type="submit" value="SUBMIT">
 </form>
-
+</div>
 
 <form action="/afslutRapport" method="post">
     <input type="hidden" name="vognnummer2b" th:value="${vognnummer2b}">
     <input type="hidden" name="vognnummer2a" th:value="${vognnummer2a}">
-    <input type="submit" value="Afslut rapport">
+    <input class="redButton" type="submit" value="Afslut rapport">
 </form>
+<p id="footerForside" style="background-color: #10334f">Husk at trykke på submit inden du trykker på afslut</p>
 </body>
 </html>

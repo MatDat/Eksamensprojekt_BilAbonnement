@@ -404,25 +404,17 @@ h3 {
     padding-left: 10%;
     padding-right: 10%;
 }
-
-.statBoxBilerDATA {
-    display: flex;
-    background-color: #144164;
-    color: white;
-    justify-content: center;
-    flex-direction: column;
-    padding-left: 10%;
-    padding-right: 10%;
+.statBoxBilerRapport tbody tr:nth-child(even) {
+    background-color: #10334f;
 }
 
-.statBoxBilerDATA:nth-child(odd) {
-    display: flex;
-    background-color: pink;
-    color: white;
-    justify-content: center;
-    flex-direction: column;
-    padding-left: 10%;
-    padding-right: 10%;
-}
+
+
+
+
+
+
+
+
 
 

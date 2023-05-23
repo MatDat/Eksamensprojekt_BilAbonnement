@@ -3,11 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Print Rapporter</title>
+    <link rel="stylesheet" href="/MyCSS.css">
 </head>
 <body>
 <h1>Her kommer en liste over alle rapporter, dem skal man kunne sortere i osv.</h1>
 
-<div>
+<div id="lejeAftaleSortDiv">
+    <form action="/printRapporterMedSortering" method="post">
+        <select name="sortMuligheder" class="generalFormInput">
+            <option value="skaderapport_id">ID</option>
+            <option value="skaderapport_dato">Dato</option>
+            <option value="bruger_id">Bruger ID</option>
+            <option value="kontrakt_id">Kontrakt ID</option>
+        </select>
+        <input type="submit" value="Sorter" class="greenButton">
+    </form>
+</div>
+
+<div class="statBoxBilerRapport">
     <table style="float: left">
         <tr>
             <th>ID: </th>
@@ -26,17 +39,6 @@
         </tbody>
     </table>
 </div>
-<div>
 
-    <form action="/printRapporterMedSortering" method="post">
-    <select name="sortMuligheder">
-        <option value="skaderapport_id">ID</option>
-        <option value="skaderapport_dato">Dato</option>
-        <option value="bruger_id">Bruger ID</option>
-        <option value="kontrakt_id">Kontrakt ID</option>
-    </select>
-        <input type="submit" value="Sorter">
-    </form>
-</div>
 </body>
 </html>

@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>RapportForm</title>
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
 <h1>Her laver du en rapport på den bil du lige har klikket ind på</h1>
 <h2>Input</h2>
-<h2 style="float: right; padding-right: 50%">Opslagstavle</h2>
+<div id="generelBodyDiv">
 <form action="/indsendRapportForm" style="float: left" method="post">
 
-    <label for="skaderapport_dato">Skaderapport dato</label>
-    <input type="date" id="skaderapport_dato" name="skaderapport_dato">
+    <label class="generalFormLabel">Skaderapport dato</label>
+    <input class="generalFormInput" type="date" name="skaderapport_dato">
     <br>
+
     <input type="hidden" name="vognnummer1" th:value="${vognnummer1}" />
-    <label for="bruger_id">Medarbejer ID (bruger_id)</label>
-    <input type="text" id="bruger_id" name="bruger_id">
+
+    <label class="generalFormLabel">Medarbejer ID</label>
+    <input class="generalFormInput" type="text" name="bruger_id">
     <br>
-    <input type="submit">
+    <input type="submit" class="greenButton">
 </form>
+</div>
 </body>
 </html>
