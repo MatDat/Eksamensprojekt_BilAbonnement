@@ -328,13 +328,25 @@ h3 {
 /*Forretningsudvikler/seBiler*/
 
 .dropDownDiv {
-    margin: 20px;
+    background-color: #144164;
+    width: 100%;
 }
 
 .seBilerTable {
+    color: white;
+    background-color: #144164;
     overflow-y: auto;
     overflow-x: auto;
-    height: 600px;
+    max-height: 600px;
+    padding: 20px;
+
+}
+.seBilerTR{
+    color: white;
+    background-color: #10334f;
+}
+.seBilerTR:nth-child(even){
+    background-color: #144164;
 }
 
 .statBox {
@@ -347,6 +359,7 @@ h3 {
     margin-top: 20px;
     padding: 20px 20px 20px 20px;
     border: 1px solid black;
+    width: 100%;
 }
 
 .statBoxContainer {
@@ -354,6 +367,35 @@ h3 {
     flex-direction: column;
     justify-content: space-evenly;
 }
+/*forretningsudvikler se kunder*/
+
+.forretningsudviklerTh {
+    padding: 5px 50px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #144164;
+    border-top: 1px solid #144164;
+    text-transform: uppercase;
+    color: #144164;
+    background-color: white;
+}
+
+.forretningsudviklerTd {
+    padding: 5px 50px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.forretningsudviklerTr:nth-child(even) {
+    background-color: rgb(20, 100, 55, 0.15);
+}
+
+.forretningsudviklerTr {
+    justify-content: center;
+    margin-top: 6px;
+}
+
+
 
 /*ADMINISTRATIONS STYLING START*/
 .tableBody {

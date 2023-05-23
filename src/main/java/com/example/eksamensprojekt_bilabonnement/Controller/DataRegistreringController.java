@@ -87,4 +87,16 @@ public class DataRegistreringController {
         kundeService.opretKunde(kunde);
         return "dataRegistrering/dataregistrering";
     }
+
+    @PostMapping("tilfoejLokationForm")
+    public String tilfoejLokationForm(){
+        return "dataregistrering/tilfoejLokation";
+    }
+
+    @PostMapping("/tilfoejLokation")
+    public String tilfoejLokation(@ModelAttribute Lokation lokation){
+        lokationService.tilfoejLokation(lokation);
+        return "dataRegistrering/dataregistrering";
+    }
+
 }

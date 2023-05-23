@@ -4,13 +4,8 @@
     <meta charset="UTF-8">
     <title>Biler</title>
     <link rel="stylesheet" href="/MyCSS.css">
-    <style>
-        table, th, td {
-            border: 1px solid;
-        }
-    </style>
 </head>
-<body style="background-color: #BBD9EE; margin: 20px">
+<body>
 <div class="seBilerPageBox">
     <div class="dropDownDiv">
         <form th:action="@{/seBilerDropdown}" method="post">
@@ -27,10 +22,12 @@
                     <option value="DIESEL">Diesel</option>
                 </optgroup>
             </select>
-            <input type="submit" value="Submit">
+            <input class="greenButton" type="submit" value="Sorter">
         </form>
 
     </div>
+
+    <br>
 
     <div class="seBilerTable">
         <table>
@@ -51,7 +48,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="bil, statistikIndex : ${biler}">
+            <tr class="seBilerTR" th:each="bil, statistikIndex : ${biler}">
                 <td th:text="${bil.vognnummer}"/>
                 <td th:text="${bil.stelnummer}"/>
                 <td th:text="${bil.maerke_navn}"/>
@@ -88,6 +85,12 @@
             <p>gennemsnit pr. bil: <span th:text="${#aggregates.avg(co2)}"/> g/km</p>
         </div>
     </div>
+</div>
+
+<div>
+    <form action="/" method="get">
+        <button class="redButton" type="submit">Tilbage</button>
+    </form>
 </div>
 
 </body>

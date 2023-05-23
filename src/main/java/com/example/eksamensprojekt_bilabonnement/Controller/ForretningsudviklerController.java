@@ -8,6 +8,7 @@ import com.example.eksamensprojekt_bilabonnement.Model.braendstof;
 import com.example.eksamensprojekt_bilabonnement.Service.BilService;
 import com.example.eksamensprojekt_bilabonnement.Service.KontraktService;
 import com.example.eksamensprojekt_bilabonnement.Service.KundeService;
+import com.example.eksamensprojekt_bilabonnement.Service.LokationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +28,9 @@ public class ForretningsudviklerController {
 
     @Autowired
     KundeService kundeService;
+
+    @Autowired
+    LokationService lokationService;
 
 
     @PostMapping("/forretningsudviklerSide")
@@ -69,6 +73,13 @@ public class ForretningsudviklerController {
     public String seKunder(Model model){
         model.addAttribute("kundeListe",kundeService.hentAlleKunder());
         return "forretningsudvikler/seKunder";
+    }
+
+
+    @PostMapping("seLokationer")
+    public String seLokationer(Model model){
+        model.addAttribute("lokationListe",lokationService.hentAlleLokationer());
+        return "forretningsudvikler/seLokationer";
     }
 
 

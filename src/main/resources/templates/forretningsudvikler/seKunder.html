@@ -7,25 +7,27 @@
 </head>
 <body>
 
-<div id="generelBodyDiv">
+<h1>Kunder</h1>
+
+<div class="tableBody" style="padding: 20px">
 
   <table>
     <thead>
     <tr>
-      <th>Kunde ID</th>
-      <th>Fornavn</th>
-      <th>Efternavn</th>
-      <th>Mail</th>
-      <th>Mobil</th>
+      <th class="forretningsudviklerTh" >Kunde ID</th>
+      <th class="forretningsudviklerTh" >Fornavn</th>
+      <th class="forretningsudviklerTh" >Efternavn</th>
+      <th class="forretningsudviklerTh" >Email</th>
+      <th class="forretningsudviklerTh" >Mobil</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="kunde, ${kundeListe}">
-      <td th:text="${kunde.kunde_id}"/>
-      <td th:text="${kunde.fornavn}"/>
-      <td th:text="${kunde.efternavn}"/>
-      <td th:text="${kunde.mail}"/>
-      <td th:text="${kunde.mobil}"/>
+    <tr class="forretningsudviklerTr" th:each="kunde: ${kundeListe}">
+      <td class="forretningsudviklerTd" th:text="${kunde.kunde_id}"/>
+      <td class="forretningsudviklerTd" th:text="${kunde.fornavn}"/>
+      <td class="forretningsudviklerTd" th:text="${kunde.efternavn}"/>
+      <td class="forretningsudviklerTd" th:text="${kunde.email}"/>
+      <td class="forretningsudviklerTd" th:text="${kunde.mobil}"/>
     </tr>
 
 
@@ -34,6 +36,12 @@
 
   </table>
 
+</div>
+
+<div>
+  <form action="/" method="get">
+    <button class="redButton" type="submit">Tilbage</button>
+  </form>
 </div>
 
 </body>
