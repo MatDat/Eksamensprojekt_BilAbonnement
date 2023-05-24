@@ -291,7 +291,7 @@ h3 {
 #lejeAftaleSortDiv {
     width: 100%;
     padding: 15px;
-    background-color: #206BA4;
+    background-color: #144164;
     display: flex;
     justify-content: flex-start;
     box-sizing: border-box
@@ -300,14 +300,14 @@ h3 {
 #lejeAftaleSearchDiv {
     width: 100%;
     padding: 15px;
-    background-color: #144164;
+    background-color: #10334f;
     display: flex;
     justify-content: flex-start;
     box-sizing: border-box
 }
 
 .kontrakt-box {
-    background-color: #206BA4;
+    background-color: #144164;
     width: 300px;
     height: 120px;
     margin: 15px;

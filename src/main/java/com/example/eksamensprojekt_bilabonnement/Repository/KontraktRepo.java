@@ -69,7 +69,7 @@ public class KontraktRepo {
     }
 
     public List<Integer> hentKontraktIdFraVognnummer(int vognnummer) {
-        //
+        //Metoden henter den senest afsluttede kontrakt baseret på et vognnummer
         String sql = "SELECT kontrakt_id FROM kontrakt WHERE vognnummer = ? AND " +
                 "slut_dato <= CURDATE() ORDER BY slut_dato DESC";
         List<Integer> kontraktIdListe = template.queryForList(sql, Integer.class, vognnummer);
