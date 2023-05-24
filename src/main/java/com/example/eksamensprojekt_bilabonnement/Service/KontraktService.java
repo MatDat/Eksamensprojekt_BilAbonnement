@@ -35,7 +35,6 @@ public class KontraktService {
             kontraktRepo.tilfoejKontrakt(k);
         }
         return fejlBeskeder;
-        //todo ikke return listen, return boolean? - hvordan får vi fejlBeskeder til controller/view - (hvis ikke, så er det "ok")
     }
 
     public Kontrakt hentKontraktMedId(int kontrakt_id) {
