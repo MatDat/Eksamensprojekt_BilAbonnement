@@ -122,4 +122,20 @@ public class SkadeOgUdbedringController {
         model.addAttribute("skaderapporter", skaderapporter);
         return "skadeOgUdbedring/printRapporter";
     }
+
+    @PostMapping("/visSkaderapport")
+    public String visSkaderapport(@RequestParam("skaderapport_id") int skaderapport_id, Model model) {
+        //Metoden henter alt der har noget med en kontrakt afgøre. Metoden gør brug af flere Service klasser for at
+        //kunne tilføje de nødvendige ting til model.
+        List<Skade> skader = skadeService.hentSkaderFraSkaderapportId(skaderapport_id);
+
+
+        model.addAttribute("skader", skader);
+        model.addAttribute("skaderapport_id", skaderapport_id);
+//        model.addAttribute("afhentningslokation", afhentningslokation);
+//        model.addAttribute("afleveringslokation", afleveringslokation);
+//        model.addAttribute("kunde", kunde);
+
+        return "skadeOgUdbedring/visSkaderapport";
+    }
 }
