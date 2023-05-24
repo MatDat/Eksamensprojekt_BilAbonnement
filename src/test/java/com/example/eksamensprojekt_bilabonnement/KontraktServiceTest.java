@@ -15,6 +15,9 @@ public class KontraktServiceTest {
 
     @Test
     public void testVognnummerOgBilTilstandErValid() {
+//      Testen tjekker, om metoden returnerer true, hvilket betyder, at vognnummeret
+//      og biltilstanden er gyldige i forhold til kontrakten.
+//      Hvis metoden returnerer true, så består testen.
         Kontrakt kontrakt = new Kontrakt();
         kontrakt.setVognnummer(1234);
 
@@ -32,7 +35,7 @@ public class KontraktServiceTest {
         bilListe.add(b2);
 
         KontraktService ks = new KontraktService();
-        boolean resultat = ks.vo;
+        boolean resultat = ks.vognnummerOgBilTilstandErValid(kontrakt, bilListe);
 
         assertTrue(resultat);
     }

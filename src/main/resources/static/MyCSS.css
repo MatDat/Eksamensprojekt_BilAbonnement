@@ -191,6 +191,14 @@ h3 {
 }
 
 /* ADD BILL-SIDE CSS*/
+#generalBodyDiv {
+    background-color: #144164;
+    padding: 80px;
+    color: white;
+    justify-content: center;
+    display: flex;
+}
+                                /* generel/general Body Divs skal være der*/
 #generelBodyDiv {
     background-color: #144164;
     padding: 80px;
@@ -207,6 +215,15 @@ h3 {
     display: flex;
 }
 
+.generalInnerDiv{
+    background-color: #10334f;
+    padding: 15px;
+    margin: 0 15px;
+    border: 1px solid white;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+}
 .seBilerPageBox {
     display: flex;
     flex-direction: column;
