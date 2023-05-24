@@ -39,6 +39,10 @@ public class ForretningsudviklerController {
 
     @PostMapping("/seBiler")
     public String seBiler(Model model) {
+        // der bliver oprettet en liste af Bil objekter som der bliver tilføjet model så det kan vises på html siden.
+        // Udfra Bil listen bliver der efterfølgende oprettet lister af stålpriser og co2-udleding,
+        // som også bliver tilføjet til model.
+        // Controlleren sender så brugeren til seBiler.html
 
         List<Bil> bilListe = bilService.hentAlleBiler();
         model.addAttribute("biler", bilListe);
@@ -50,6 +54,12 @@ public class ForretningsudviklerController {
 
     @PostMapping("/seBilerDropdown")
     public String seBilerDropdown(@RequestParam("dropdown") String valgtMulighed, Model model) {
+        // Denne controller sender den rette liste af biler til seBiler.html udfra hvilken dropdown mulighed brugeren
+        //har valgt. Hvis brugeren vælger udlejede biler bliver der også tilføjet en liste af udlejningspriser til model.
+        // Her vil der så også blive sat en værdi 1 til "toggle" på model. Dette bruges af et Thymeleaf if-statement
+        // på htmlsiden, så udlejningspris kun bliver vist hvis man vælger at se udlejede biler.
+
+
         List<Bil> bilListe = null;
         switch (valgtMulighed) {
             case "alle" -> bilListe = bilService.hentAlleBiler();
@@ -70,6 +80,7 @@ public class ForretningsudviklerController {
 
     @PostMapping("/seKunder")
     public String seKunder(Model model){
+        // tilføjer liste af Kunde objekter til model og sender brugeren til seKunder.html
         model.addAttribute("kundeListe",kundeService.hentAlleKunder());
         return "forretningsudvikler/seKunder";
     }
@@ -77,6 +88,7 @@ public class ForretningsudviklerController {
 
     @PostMapping("seLokationer")
     public String seLokationer(Model model){
+        // tilføjer liste af Lokation objekter til model og sender brugeren til seLokationer.html
         model.addAttribute("lokationListe",lokationService.hentAlleLokationer());
         return "forretningsudvikler/seLokationer";
     }
