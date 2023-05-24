@@ -35,6 +35,9 @@ public class DataRegistreringController {
     }
 
     @PostMapping("/gemLejeaftale")
+    /*Metoden validerer og gemmer lejeaftaler/kontrakter.
+    Metoden modtager user input fra opretLejeaftale.html. Inputtet bliver gemt i kontrakt objektet og valideret
+    Hvis input ikke er korrekt, vil toggle blive true, og der bliver printet fejlbesked(er) til brugeren*/
     public String gemLejeaftale(@ModelAttribute Kontrakt kontrakt, Model model, HttpSession session) {
         Bruger bruger = (Bruger) session.getAttribute("bruger");
         kontrakt.setBruger_id(bruger.getBruger_id());
@@ -49,6 +52,8 @@ public class DataRegistreringController {
     }
 
     @GetMapping("/seLejeaftaler")
+    //Metoden henter en liste af lejeaftaler (Kontrakter). Ved brug af toggle kan der skiftes mellem
+    //Nuværende og afsluttede kontrakter. sortMuligheder bruges til at sorterer i kontrakt objekterne
     public String seLejeafaler(@RequestParam(name = "toggle", defaultValue = "0") int toggle,
                                @RequestParam(value = "sortMuligheder", required = false) String selectedOption,
                                Model model) {
@@ -65,9 +70,9 @@ public class DataRegistreringController {
 
     @PostMapping("/visLejeaftale")
     public String visLejeaftale(@RequestParam("kontrakt_id") int kontrakt_id, Model model) {
-
+        //Metoden henter alt der har noget med en kontrakt afgøre. Metoden gør brug af flere Service klasser for at
+        //kunne tilføje de nødvendige ting til model.
         Kontrakt kontrakt = kontraktService.hentKontraktMedId(kontrakt_id);
-        System.out.println(kontrakt.getAfhentningslokation_id());
         Lokation afhentningslokation = lokationService.hentLokationFraId(kontrakt.getAfhentningslokation_id()).get(0);
         Lokation afleveringslokation = lokationService.hentLokationFraId(kontrakt.getAfleveringslokation_id()).get(0);
         Kunde kunde = kundeService.hentKundeFraId(kontrakt.getKunde_id()).get(0);
@@ -93,12 +98,12 @@ public class DataRegistreringController {
     }
 
     @PostMapping("tilfoejLokationForm")
-    public String tilfoejLokationForm(){
+    public String tilfoejLokationForm() {
         return "dataregistrering/tilfoejLokation";
     }
 
     @PostMapping("/tilfoejLokation")
-    public String tilfoejLokation(@ModelAttribute Lokation lokation){
+    public String tilfoejLokation(@ModelAttribute Lokation lokation) {
         lokationService.tilfoejLokation(lokation);
         return "dataRegistrering/dataregistrering";
     }
