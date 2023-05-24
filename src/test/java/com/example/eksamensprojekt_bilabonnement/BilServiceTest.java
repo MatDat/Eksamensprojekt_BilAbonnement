@@ -13,6 +13,8 @@ public class BilServiceTest {
 
     @Test
     public void testHentStaalpriser() {
+        //Denne test tjekker om vi får de forventede værdier ud fra vores metode.
+        // Vi lavet 3 test objekter som der testes på.
         List<Bil> bilList = new ArrayList<>();
         Bil b1 = new Bil();
         Bil b2 = new Bil();

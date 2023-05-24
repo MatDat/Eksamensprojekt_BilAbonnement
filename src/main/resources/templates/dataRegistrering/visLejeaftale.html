@@ -7,12 +7,14 @@
 </head>
 <body>
 <h1>Lejeaftale</h1>
-<p>Kontrakt_id:</p>
-<p> <span th:text="${kontrakt.kontrakt_id}"></span></p>
 
-<div>
+<div id="h2Div">
+    <h2>Kunde: <span th:text="${kunde.fornavn}"></span> <span th:text="${kunde.efternavn}"></h2>
+</div>
 
-    <div>
+<div id="generelBodyDiv">
+
+    <div class="generalInnerDiv">
         <h4>Kontrakt info</h4>
         <p>kontrakt_id: <span th:text="${kontrakt.kontrakt_id}"></span></p>
         <p>Start dato: <span th:text="${kontrakt.start_dato}"></span></p>
@@ -22,21 +24,22 @@
 
     </div>
 
-    <div>
+    <div class="generalInnerDiv">
         <h4>Kunde info</h4>
         <p>kunde navn: <span th:text="${kunde.fornavn}"></span> <span th:text="${kunde.efternavn}"></span></p>
         <p>Email adresse: <span th:text="${kunde.email}"></span></p>
         <p>Mobil: <span th:text="${kunde.mobil}"></span></p>
     </div>
 
-    <div>
+    <div class="generalInnerDiv">
         <h4>Afhentningslokation</h4>
         <p>Lokationsnavn: <span th:text="${afhentningslokation.lokation_navn}"></span></p>
         <p>Adresse: <span th:text="${afhentningslokation.adresse}"></span></p>
         <p>By: <span th:text="${afhentningslokation.by_navn}"></span></p>
         <p>Postnummer: <span th:text="${afhentningslokation.postnummer}"></span></p>
     </div>
-    <div>
+
+    <div class="generalInnerDiv">
         <h4>Afleveringslokation</h4>
         <p>Lokationsnavn: <span th:text="${afleveringslokation.lokation_navn}"></span></p>
         <p>Adresse: <span th:text="${afleveringslokation.adresse}"></span></p>
@@ -46,6 +49,11 @@
 
 </div>
 
+<div id="annullerButtonAddBilDiv">
+    <form action="/seLejeaftaler" method="get">
+        <button class="redButton" type="submit">Tilbage til oversigt</button>
+    </form>
+</div>
 
 </body>
 </html>
