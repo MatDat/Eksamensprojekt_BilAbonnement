@@ -1,12 +1,10 @@
 package com.example.eksamensprojekt_bilabonnement.Controller;
 
-import com.example.eksamensprojekt_bilabonnement.Model.Bil;
-import com.example.eksamensprojekt_bilabonnement.Model.BilTilstand;
-import com.example.eksamensprojekt_bilabonnement.Model.Skade;
-import com.example.eksamensprojekt_bilabonnement.Model.Skaderapport;
+import com.example.eksamensprojekt_bilabonnement.Model.*;
 import com.example.eksamensprojekt_bilabonnement.Service.BilService;
 import com.example.eksamensprojekt_bilabonnement.Service.KontraktService;
 import com.example.eksamensprojekt_bilabonnement.Service.SkadeService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,12 +38,18 @@ public class SkadeOgUdbedringController {
     }
 
     @PostMapping("/indsendRapportForm")
-    public String indsendRapportForm(@ModelAttribute Skaderapport skaderapport, Model model, WebRequest wr) {
+    public String indsendRapportForm(@ModelAttribute Skaderapport skaderapport, Model model, WebRequest wr,
+                                     HttpSession session) {
         //Vi får vognnummer med fra html i hidden form
 
         int vognnummer2a = Integer.parseInt(wr.getParameter("vognnummer1"));
         List<Integer> kontraktIdListe = kontraktService.hentKontraktIdFraVognnummer(vognnummer2a);
         skaderapport.setKontrakt_id(kontraktIdListe.get(0));
+
+        //Bruger session til at modtage bruger ID
+        Bruger bruger = (Bruger) session.getAttribute("bruger");
+        skaderapport.setBruger_id(bruger.getBruger_id());
+
         skadeService.tilfoejSkadeRapport(skaderapport);
         model.addAttribute("vognnummer2a", vognnummer2a);
         //Hvis man trykker afslut rapport uden at have trykke submit først så bliver skaden ikke oprettet.
