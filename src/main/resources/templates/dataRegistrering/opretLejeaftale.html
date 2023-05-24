@@ -6,18 +6,26 @@
     <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
+
 <h1>Opret Lejeaftale</h1>
+
+<div id="h2Div">
+    <h2>Indtast oplysninger om lejeaftalen</h2>
+</div>
+
 <div id="generelBodyDiv">
     <form action="/gemLejeaftale" method="post">
         <table>
             <tr>
                 <td><label class="generalFormLabel">Vognnummer</label>
-                <td><input class="generalFormInput" type="number" min="1" required name="vognnummer">
+                <td><input class="generalFormInput" type="number" min="1" required name="vognnummer"
+                           placeholder="Indtast her...">
             </tr>
 
             <tr>
                 <td><label class="generalFormLabel">Kunde id</label>
-                <td><input class="generalFormInput" type="number" min="0" required name="kunde_id">
+                <td><input class="generalFormInput" type="number" min="0" required name="kunde_id"
+                           placeholder="Indtast her...">
             </tr>
 
             <tr>
@@ -32,25 +40,24 @@
 
             <tr>
                 <td><label class="generalFormLabel">Afhentningslokations id</label>
-                <td><input class="generalFormInput" type="number" min="0" required name="afhentningslokation_id">
+                <td><input class="generalFormInput" type="number" min="0" required name="afhentningslokation_id"
+                           placeholder="Indtast her...">
             </tr>
 
             <tr>
                 <td><label class="generalFormLabel">Afleveringslokation id</label>
-                <td><input class="generalFormInput" type="number" min="0" required name="afleveringslokation_id">
+                <td><input class="generalFormInput" type="number" min="0" required name="afleveringslokation_id"
+                           placeholder="Indtast her...">
             </tr>
 
             <tr>
                 <td><label class="generalFormLabel">Total pris</label>
-                <td><input class="generalFormInput" type="number" step="0.01" min="0" required name="total_pris">
+                <td><input class="generalFormInput" type="number" step="0.01" min="0" required name="total_pris"
+                           placeholder="Indtast her...">
             </tr>
 
-            <tr>
-<!--                <td><label class="generalFormLabel">Bruger id</label>-->
-<!--                <td><input class="generalFormInput" type="number" min="0" required name="bruger_id">-->
-            </tr>
         </table>
-        <input class="greenButton" type="submit" value="Lav Kontrakt" style="float: right;margin-top:15px;">
+        <input class="greenButton" type="submit" value="Lav Kontrakt" style="margin-top:15px; width: 100%;">
     </form>
 </div>
 

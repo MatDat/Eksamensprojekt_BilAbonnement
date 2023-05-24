@@ -9,6 +9,10 @@
 
 <h1>Opret Kunde</h1>
 
+<div id="h2Div">
+    <h2>Indtast oplysninger om kunden</h2>
+</div>
+
 
 <div id="generelBodyDiv">
     <form action="/opretKunde" method="post">
@@ -16,32 +20,36 @@
         <table>
             <tr>
                 <td><label class="generalFormLabel">Fornavn: </label></td>
-                <td><input class="generalFormInput" type="text" name="fornavn" required></td>
+                <td><input class="generalFormInput" type="text" name="fornavn" required
+                           placeholder="Indtast her..."></td>
             </tr>
 
             <tr>
                 <td><label class="generalFormLabel">Efternavn: </label></td>
-                <td><input class="generalFormInput" type="text" name="efternavn" required></td>
+                <td><input class="generalFormInput" type="text" name="efternavn" required
+                           placeholder="Indtast her..."></td>
             </tr>
 
             <tr>
                 <td><label class="generalFormLabel">Email: </label></td>
-                <td><input class="generalFormInput" type="email" name="email" required></td>
+                <td><input class="generalFormInput" type="email" name="email" required
+                           placeholder="Indtast her..."></td>
             </tr>
 
             <tr>
                 <td><label class="generalFormLabel">Mobil: </label></td>
-                <td><input class="generalFormInput" type="text" name="mobil" required></td>
+                <td><input class="generalFormInput" type="text" name="mobil" required
+                           placeholder="Indtast her..."></td>
             </tr>
 
         </table>
-        <input type="submit" class="greenButton" style="float: right">
+        <input type="submit" class="greenButton" value="Opret kunde" style="margin-top:15px; width: 100%;">
     </form>
 </div>
 
-<div>
+<div class="annullerButtonAddBilDiv">
     <form action="/dataRegistrering" method="get">
-        <input type="submit" class="redButton" value="tilbage">
+        <button class="redButton" type="submit">Tilbage</button>
     </form>
 </div>
 

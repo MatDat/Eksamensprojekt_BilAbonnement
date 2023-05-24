@@ -7,35 +7,40 @@
 </head>
 <body>
 
+<h1>Se lokationer</h1>
 
+<div id="h2Div">
+    <h2>Lokationsliste</h2>
+</div>
 
-<table>
-    <thead>
-    <tr>
-        <th class="forretningsudviklerTh" >Lokation ID</th>
-        <th class="forretningsudviklerTh" >Adresse</th>
-        <th class="forretningsudviklerTh" >Lokation navn</th>
-        <th class="forretningsudviklerTh" >By</th>
-        <th class="forretningsudviklerTh" >Postnummer</th>
-    </tr>
-    </thead>
-    <tbody>
+<div class="tableBody" style="padding: 20px">
+    <table>
+        <thead>
+        <tr>
+            <th class="forretningsudviklerTh">Lokation ID</th>
+            <th class="forretningsudviklerTh">Adresse</th>
+            <th class="forretningsudviklerTh">Lokation navn</th>
+            <th class="forretningsudviklerTh">By</th>
+            <th class="forretningsudviklerTh">Postnummer</th>
+        </tr>
+        </thead>
+        <tbody>
 
-    <tr class="forretningsudviklerTr" th:each="lokation : ${lokationListe}">
-        <td class="forretningsudviklerTd" th:text="${lokation.lokation_id}" />
-        <td class="forretningsudviklerTd" th:text="${lokation.adresse}" />
-        <td class="forretningsudviklerTd" th:text="${lokation.lokation_navn}" />
-        <td class="forretningsudviklerTd" th:text="${lokation.by_navn}" />
-        <td class="forretningsudviklerTd" th:text="${lokation.postnummer}" />
-    </tr>
+        <tr class="forretningsudviklerTr" th:each="lokation : ${lokationListe}">
+            <td class="forretningsudviklerTd" th:text="${lokation.lokation_id}"/>
+            <td class="forretningsudviklerTd" th:text="${lokation.adresse}"/>
+            <td class="forretningsudviklerTd" th:text="${lokation.lokation_navn}"/>
+            <td class="forretningsudviklerTd" th:text="${lokation.by_navn}"/>
+            <td class="forretningsudviklerTd" th:text="${lokation.postnummer}"/>
+        </tr>
 
-    </tbody>
+        </tbody>
 
-</table>
+    </table>
+</div>
 
-
-<div>
-    <form action="/" method="get">
+<div class="annullerButtonAddBilDiv">
+    <form action="/forretningsudviklerSide" method="post">
         <button class="redButton" type="submit">Tilbage</button>
     </form>
 </div>

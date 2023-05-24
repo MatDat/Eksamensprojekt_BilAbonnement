@@ -191,15 +191,7 @@ h3 {
 }
 
 /* ADD BILL-SIDE CSS*/
-#generalBodyDiv {
-    background-color: #144164;
-    padding: 80px;
-    color: white;
-    justify-content: center;
-    display: flex;
-}
-                                /* generel/general Body Divs skal være der*/
-#generelBodyDiv {
+#generalBodyDiv, #generelBodyDiv {
     background-color: #144164;
     padding: 80px;
     color: white;
@@ -265,6 +257,13 @@ h3 {
     background-color: #641419;
     padding: 10px 0px;
 }
+.annullerButtonAddBilDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #641419;
+    padding: 10px 0px;
+}
 
 .greenButton {
     background-color: #146437;
@@ -308,7 +307,8 @@ h3 {
 #lejeAftaleSortDiv {
     width: 100%;
     padding: 15px;
-    background-color: #144164;
+    background-color: #10334f;
+    margin-top: 5px;
     display: flex;
     justify-content: flex-start;
     box-sizing: border-box
@@ -324,16 +324,15 @@ h3 {
 }
 
 .kontrakt-box {
-    background-color: #144164;
+    background-color: #10334f;
     width: 300px;
-    height: 120px;
     margin: 15px;
     padding: 10px;
-    border-radius: 15px;
+    /*border-radius: 15px;*/
+    border: 1px solid white;
     overflow: hidden;
     text-align: center;
     color: white;
-
 }
 
 .kontrakt-box-container {
@@ -345,8 +344,10 @@ h3 {
 /*Forretningsudvikler/seBiler*/
 
 .dropDownDiv {
-    background-color: #144164;
     width: 100%;
+    justify-content: center;
+    display: flex;
+    padding: 15px 0;
 }
 
 .seBilerTable {
@@ -372,11 +373,17 @@ h3 {
     color: white;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 15px;
     padding: 20px 20px 20px 20px;
-    border: 1px solid black;
-    width: 100%;
+    text-align: center;
+}
+
+.statBox:last-child {
+    margin-bottom: 15px;
+}
+
+.statBox:nth-child(odd) {
+    background-color: #10334f;
 }
 
 .statBoxContainer {
