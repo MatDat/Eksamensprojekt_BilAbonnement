@@ -12,6 +12,8 @@ public class HomeController {
 
     @GetMapping("/")
     public String indexLoggedInAs(Model model, HttpSession session) {
+        //Går ind på hjemmesidens forside. Som udgangspunkt går den ind på siden som 'ikke logget ind'.
+        // Den status kan man så ændre til logget ind via log ind funktionen
         Bruger bruger = (Bruger) session.getAttribute("bruger");    //Henter brugerobjektet fra sessionen.
         if (bruger != null) {       //Tjekker om brugeren er logget ind eller ej.
             model.addAttribute("toggle", 0); // Toggler log ud-knappen ON

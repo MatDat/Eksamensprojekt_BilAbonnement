@@ -21,6 +21,7 @@ public class BrugerController {
 
     @GetMapping("/adminSide")
     public String adminSide(Model model) {
+        //Går ind på adminsiden som indeholder bla. en liste over alle brugere
         List<Bruger> brugerListe = brugerService.hentBrugerListe();
         model.addAttribute("brugerListe", brugerListe);
         return "bruger/adminSide";
@@ -28,11 +29,14 @@ public class BrugerController {
 
     @PostMapping("/adminLogin")
     public String adminLogin() {
+        //Går ind på siden hvor Admin kan logge ind
         return "bruger/logIndAdmin";
     }
 
     @PostMapping("/adminLoggedInd")
     public String adminSide(@ModelAttribute Bruger bruger) {
+        //Tjekker om Admins log ind informationer er korrekt og logger Admin ind hvis korrekt
+        // og ellers giver en fejlside
         if (brugerService.logIndAdmin(bruger)) {
             return "redirect:/adminSide";
         } else {
@@ -42,6 +46,8 @@ public class BrugerController {
 
     @PostMapping("/logBrugerInd")
     public String logBrugerInd(@ModelAttribute Bruger bruger) {
+        //Tjekker  om brugerens log ind informationer er korrekt og logger Admin ind hvis korrekt
+        // og ellers giver en fejlside
         if (brugerService.logIndBruger(bruger)) {
             return "redirect:/";
         } else {
@@ -51,6 +57,7 @@ public class BrugerController {
 
     @GetMapping("/logBrugerUd")
     public String logBrugerUd(HttpSession session) {
+        //Logger brugeren ud af programmet
         session.invalidate();
         return "redirect:/";
     }
@@ -58,6 +65,7 @@ public class BrugerController {
 
     @PostMapping("/opretBruger")
     public String opretBruger(@ModelAttribute Bruger bruger) {
+        //Opretter en ny bruger i databasen
         boolean brugerOprettet = brugerService.opretBruger(bruger);
         if (brugerOprettet) {
             return "redirect:adminSide";
@@ -68,6 +76,7 @@ public class BrugerController {
 
     @PostMapping("/sletBruger")
     public String sletBruger(@ModelAttribute Bruger bruger) {
+        //Sletter en bruger fra databasen
         if (brugerService.sletBruger(bruger)) {
             return "redirect:adminSide";
         } else {
@@ -77,6 +86,7 @@ public class BrugerController {
 
     @PostMapping("/sletBrugerSide")
     public String sletBrugerConfirm() {
+        //Går ind på en side som gør at man lige skal dobbelttjekke hvem man ville slette
         return "bruger/sletBrugerBekraeft";
     }
 }
