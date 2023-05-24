@@ -67,13 +67,11 @@
     </div>
 
     <div class="statBoxContainer">
-
         <div class="statBox" th:if="${toggle == 1}">
             <h4>Pris for nuværende udlejede bilers kontrakter</h4>
             <p>sum: <span th:text="${#aggregates.sum(priser)}"/> DKK</p>
             <p>gennemsnit pr. bil: <span th:text="${#aggregates.avg(priser)}"/> DKK</p>
         </div>
-
         <div class="statBox">
             <h4>Stålpris for viste biler</h4>
             <p>sum: <span th:text="${#aggregates.sum(staalpriser)}"/> DKK</p>
