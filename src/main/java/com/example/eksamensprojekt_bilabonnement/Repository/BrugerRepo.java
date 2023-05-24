@@ -16,7 +16,7 @@ public class BrugerRepo {
     @Autowired
     JdbcTemplate template;
     @Autowired
-    HttpSession session;
+    HttpSession session; //todo spørg claus
 
     public List<Bruger> hentBrugerListe() {
         String sql = "SELECT bruger_id, brugernavn, kode FROM bruger";

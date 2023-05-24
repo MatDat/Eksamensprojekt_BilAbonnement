@@ -29,11 +29,13 @@ public class KontraktService {
     LokationRepo lokationRepo;
 
     public List<String> validerOgTilfoejKontrakt(Kontrakt k) {
+        //Metoden tilføjer kontrakten til DB
         List<String> fejlBeskeder = opretFejlBeskeder(k);
         if (fejlBeskeder.isEmpty()) {
             kontraktRepo.tilfoejKontrakt(k);
         }
         return fejlBeskeder;
+        //todo ikke return listen, return boolean? - hvordan får vi fejlBeskeder til controller/view - (hvis ikke, så er det "ok")
     }
 
     public Kontrakt hentKontraktMedId(int kontrakt_id) {
@@ -45,14 +47,15 @@ public class KontraktService {
         return kontraktRepo.hentTotalPrisFraVognnumre(vognnumre);
     }
 
-    private List<String> opretFejlBeskeder(Kontrakt k) {
+    public List<String> opretFejlBeskeder(Kontrakt k) {
+        //Denne metode opretter og returnerer en liste af Fejlbeskeder. Hvis listen er tom er kontrakten valid
+        //Den modtager et Kontrakt objekt og kalder en ErValid() metode på alle de relevante fields.
         List<String> fejlBeskeder = new ArrayList<>();
-        List<Bil> bilListe = bilRepo.hentAlleBiler();       //Loader de 3 lister for at sende samme liste rundt i
-        List<Kunde> kundeListe = kundeRepo.hentAlleKunder(); //de private validTest metoder
+        List<Bil> bilListe = bilRepo.hentAlleBiler();
+        List<Kunde> kundeListe = kundeRepo.hentAlleKunder();
         List<Lokation> lokationListe = lokationRepo.hentAlleLokationer();
 
-        //TODO tilføj bruger_id til tracking - tag den fra session? - k.setBruger_id();
-
+        //Her bliver hver ErValid() metode kaldt. Hvis metoderne er true, så tilføjet fejlbeskeden til listen
         if (!vognnummerOgBilTilstandErValid(k, bilListe)) {
             fejlBeskeder.add("Bilen med vognnummeret " + k.getVognnummer() + " findes ikke i systemet" +
                     " eller er ikke tilgængelig til udlejning");
@@ -71,11 +74,13 @@ public class KontraktService {
         }
         return fejlBeskeder;
     }
-    public List<Kontrakt> hentAlleKontrakter(){
+
+    public List<Kontrakt> hentAlleKontrakter() {
         return kontraktRepo.hentAlleKontrakter();
     }
 
-    private boolean vognnummerOgBilTilstandErValid(Kontrakt kontrakt, List<Bil> bilListe) {
+    public boolean vognnummerOgBilTilstandErValid(Kontrakt kontrakt, List<Bil> bilListe) {
+        //Metoden tjekker om vognnummer eksistere i DB, og om bilens BilTilstand er LEJEKLAR
         for (int i = 0; i < bilListe.size(); i++) {
             if (bilListe.get(i).getVognnummer() == kontrakt.getVognnummer() &&
                     bilListe.get(i).getBilTilstand() == BilTilstand.LEJEKLAR) {
@@ -85,7 +90,8 @@ public class KontraktService {
         return false;
     }
 
-    private boolean datoerErValid(Kontrakt kontrakt) {
+    public boolean datoerErValid(Kontrakt kontrakt) {
+        //Metoden tjekker om startDato er før slutDato, samt om startDato er før datoen idag.
         SimpleDateFormat datoFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date kDatoStart = datoFormat.parse(kontrakt.getStart_dato());
@@ -102,7 +108,8 @@ public class KontraktService {
         return false;
     }
 
-    private boolean afhentningslokationIdErValid(Kontrakt k, List<Lokation> lokationListe) {
+    public boolean afhentningslokationIdErValid(Kontrakt k, List<Lokation> lokationListe) {
+        //Metoden tjekker om afhentningslokationId'et eksisterer i DB
         for (int i = 0; i < lokationListe.size(); i++) {
             if (k.getAfhentningslokation_id() == lokationListe.get(i).getLokation_id()) {
                 return true;
@@ -111,11 +118,8 @@ public class KontraktService {
         return false;
     }
 
-    public List<Kontrakt> hentKontrakterMedSortering(boolean erNuvaerende, String sortering) {
-        return kontraktRepo.hentKontrakterMedSortering(erNuvaerende, sortering);
-    }
-
-    private boolean afleveringslokationIdErValid(Kontrakt k, List<Lokation> lokationListe) {
+    public boolean afleveringslokationIdErValid(Kontrakt k, List<Lokation> lokationListe) {
+        //Metoden tjekker om afleveringslokationId'et eksisterer i DB
         for (int i = 0; i < lokationListe.size(); i++) {
             if (k.getAfleveringslokation_id() == lokationListe.get(i).getLokation_id()) {
                 return true;
@@ -124,13 +128,18 @@ public class KontraktService {
         return false;
     }
 
-    private boolean kundeIdErValid(Kontrakt k, List<Kunde> kundeListe) {
+    public boolean kundeIdErValid(Kontrakt k, List<Kunde> kundeListe) {
+        //Metoden tjekker om kundeID'et eksisterer i DB
         for (int i = 0; i < kundeListe.size(); i++) {
             if (k.getKunde_id() == kundeListe.get(i).getKunde_id()) {
                 return true;
             }
         }
         return false;
+    }
+
+    public List<Kontrakt> hentKontrakterMedSortering(boolean erNuvaerende, String sortering) {
+        return kontraktRepo.hentKontrakterMedSortering(erNuvaerende, sortering);
     }
 
     public List<Integer> hentKontraktIdFraVognnummer(int vognnummer) {

@@ -16,22 +16,18 @@ public class KontraktRepo {
     @Autowired
     JdbcTemplate template;
 
-    public boolean tilfoejKontrakt(Kontrakt k) {
+    public void tilfoejKontrakt(Kontrakt k) {
+        //Metoden indsætter kontrakten i DB
         String sql = "INSERT INTO bilabonnementDB.kontrakt (kontrakt_id, start_dato, slut_dato, kunde_id, " +
                 "afhentningslokation_id, total_pris, afleveringslokation_id, bruger_id,vognnummer) " +
                 "VALUES (?,?,?,?,?,?,?,?,?)";
-        try {
-            template.update(sql, k.getKontrakt_id(), k.getStart_dato(), k.getSlut_dato(), k.getKunde_id(),
-                    k.getAfhentningslokation_id(), k.getTotal_pris(), k.getAfleveringslokation_id(),
-                    k.getBruger_id(), k.getVognnummer());
-            return true;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
+        template.update(sql, k.getKontrakt_id(), k.getStart_dato(), k.getSlut_dato(), k.getKunde_id(),
+                k.getAfhentningslokation_id(), k.getTotal_pris(), k.getAfleveringslokation_id(),
+                k.getBruger_id(), k.getVognnummer());
     }
 
     public List<Double> hentTotalPrisFraVognnumre(List<Integer> vognnumre) {
+        //Metoden henter en liste med totalPriser på alle kontrakter. Den tager udgangspunkt i en liste af vognnumre
         String sql = "SELECT total_pris " +
                 "FROM bilabonnementDB.kontrakt " +
                 "WHERE vognnummer = ? " +
@@ -44,12 +40,16 @@ public class KontraktRepo {
     }
 
     public Kontrakt hentKontraktFraId(int kontrakt_id) {
+        //Metoden returnerer et Kontrakt objekt på baggrund af et kontrakt_id
         String sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt_id = ?";
         RowMapper<Kontrakt> rowMapper = new BeanPropertyRowMapper(Kontrakt.class);
         return template.queryForObject(sql, rowMapper, kontrakt_id);
     }
 
     public List<Kontrakt> hentKontrakterMedSortering(boolean erNuvaerende, String sortering) {
+        //Metoden modtager en boolean der beskriver om der skal returneres kontrakter der er gældende eller afsluttet
+        //Metoden modtager også en String der beskriver på hvilket field der skal sortes. Dette indsættes efter ORDER BY
+        //Der returneres en liste af Kontrakter
         String sql;
         if (erNuvaerende) {
             sql = "SELECT * FROM bilabonnementDB.kontrakt WHERE kontrakt.slut_dato >= CURDATE() " +
@@ -69,6 +69,7 @@ public class KontraktRepo {
     }
 
     public List<Integer> hentKontraktIdFraVognnummer(int vognnummer) {
+        //
         String sql = "SELECT kontrakt_id FROM kontrakt WHERE vognnummer = ? AND " +
                 "slut_dato <= CURDATE() ORDER BY slut_dato DESC";
         List<Integer> kontraktIdListe = template.queryForList(sql, Integer.class, vognnummer);
