@@ -18,18 +18,23 @@ public class BilController {
 
     @GetMapping("/opdaterBilTilstand")
     public String opdaterBilTilstand(BilTilstand bilTilstand, int vognnummer) {
+        //Opdaterer/ændrer en bils tilstand
         bilService.opdaterBilTilstand(bilTilstand, vognnummer);
         return "home/index";
     }
 
     @GetMapping("/vaelgMaerkeSide")
     public String vaelgMaerkeSide(Model model) {
+        //Går ind på en side hvor man kan vælge et mærke fra databasen,
+        // med henblik på at oprette en ny bil i databasen
         List<Maerke> maerkeNavnListe = bilService.hentAlleMaerker();
         model.addAttribute("maerker", maerkeNavnListe);
         return "dataregistrering/vaelgMaerke";
     }
     @GetMapping("/vaelgModelSide")
     public String vaelgModelSide(Model model, @RequestParam("maerke_id") String maerke_id) {
+        //Gå ind på en side som henter en liste med alle modellerne ud fra valgt mærke på tidligere step.
+        // Den tager mærke ID med sig
         String maerke_navn = bilService.hentMaerkeNavnFraID(Integer.valueOf(maerke_id)).get(0).getMaerke_navn();
         model.addAttribute("maerke_navn", maerke_navn );  //Tilføjer maerke_navn til h2
 
@@ -40,6 +45,8 @@ public class BilController {
 
     @GetMapping("/tilfoejBilSide")
     public String tilfoejBilSide(Model model, @RequestParam("model_id") String model_id) {
+        //Går ind på en side med en formular hvor man inputter de sidste data
+        // som mangler for at oprette en bil til databasen. Den tager model ID med sig
         String model_navn = bilService.hentModelNavnFraID(Integer.valueOf(model_id)).get(0).getModel_navn();
         model.addAttribute("model", model_navn);
         model.addAttribute("model_id", model_id);
@@ -48,6 +55,9 @@ public class BilController {
 
     @PostMapping("/opretBil")
     public String opretBil(WebRequest wr) {
+        //Tager inputs fra formularen og setter dem på et nyoprettet bilobjekt,
+        // her efter INSERTER den via Service/Repo bilen i databasen og returnerer til forsiden.
+        //Fremtidig implementering: man kunne lave success/Fejl beskeder.
         Bil bil = new Bil();
 
         bil.setModel_id(Integer.valueOf(wr.getParameter("model_id")));

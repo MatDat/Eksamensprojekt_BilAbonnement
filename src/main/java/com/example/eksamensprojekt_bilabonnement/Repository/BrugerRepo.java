@@ -16,9 +16,10 @@ public class BrugerRepo {
     @Autowired
     JdbcTemplate template;
     @Autowired
-    HttpSession session;
+    HttpSession session; //todo spørg claus
 
     public List<Bruger> hentBrugerListe() {
+        //Henter en liste af alle brugere
         String sql = "SELECT bruger_id, brugernavn, kode FROM bruger";
         RowMapper<Bruger> rowMapper = new BeanPropertyRowMapper<>(Bruger.class);
         List<Bruger> brugerListe = template.query(sql, rowMapper);
@@ -26,6 +27,7 @@ public class BrugerRepo {
     }
 
     public boolean logIndBruger(Bruger bruger) {
+        //Logger en bruger ind i programmet
         String sql = "SELECT * FROM bilabonnementDB.bruger WHERE brugernavn = ? AND kode = ?";
         RowMapper<Bruger> rowMapper = new BeanPropertyRowMapper<>(Bruger.class);
         try {
@@ -39,6 +41,7 @@ public class BrugerRepo {
 
 
     public boolean logIndAdmin(Bruger bruger) {
+        //Logger admin ind på adminsiden
         String sql = "SELECT * FROM bilabonnementDB.bruger WHERE brugernavn = 'Admin' AND kode = ? AND brugernavn = ?";
         //^Denne linie tjekker om indtastede brugernavn & kode stemmeroverens med Admin brugernavnet.
         RowMapper<Bruger> rowMapper = new BeanPropertyRowMapper<>(Bruger.class);
@@ -51,6 +54,7 @@ public class BrugerRepo {
     }
 
     public boolean opretBruger(Bruger bruger) {
+        //Opretter en ny bruger i databasen
         if (!brugerEksisterer(bruger)) {
             String sql = "INSERT INTO bruger (bruger_id, brugernavn, kode) VALUES (?, ?, ?)";
             template.update(sql, bruger.getBruger_id(), bruger.getBrugernavn(), bruger.getKode());
@@ -60,6 +64,7 @@ public class BrugerRepo {
     }
 
     private boolean brugerEksisterer(Bruger bruger) {
+        //Tjekker om er brugernavn eksisterer - bruges bla. til at man ikke kan oprette 2 brugere med samme navn
         String sql = "SELECT * FROM bruger WHERE brugernavn = ?";
         RowMapper<Bruger> rowMapper = new BeanPropertyRowMapper<>(Bruger.class);
         try {
@@ -71,6 +76,7 @@ public class BrugerRepo {
     }
 
     public boolean sletBruger(Bruger bruger) {
+        //Sletter en bruger fra databasen
         String sql = "DELETE FROM bruger WHERE bruger_id = ? AND bruger_id != 1";
         int paavirkedeRaekker = template.update(sql, bruger.getBruger_id());
         return paavirkedeRaekker > 0;   // Disse 2 linier sørger for at man ikke kan skrive et ID som ikke er der.

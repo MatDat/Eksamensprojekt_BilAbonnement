@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BrugerService {//COMMENT
+public class BrugerService {
 
     @Autowired
     BrugerRepo brugerRepo;

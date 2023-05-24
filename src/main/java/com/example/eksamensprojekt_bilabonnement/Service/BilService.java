@@ -18,6 +18,7 @@ public class BilService {
         return bilRepo.hentAlleBiler();
     }
 
+    //Får en liste af biler med en bestemt tilstand fra BilRepo og laver det om til en String
     public List<Bil> hentBilerMedTilstand(BilTilstand tilstand) {
         return bilRepo.hentBilerMedTilstand(String.valueOf(tilstand));
     }
@@ -30,14 +31,17 @@ public class BilService {
         return bilRepo.hentAlleMaerker();
     }
 
+    //Får en liste af modeller ud fra valgt maerke fra Repo
     public List<BilModel> hentValgteModeller(String maerke_id) {
         return bilRepo.hentValgteModeller(maerke_id);
     }
 
+    //Henter mærke navn ud fra mærke ID
     public List<Maerke> hentMaerkeNavnFraID(int maerke_id) {
         return bilRepo.hentMaerkeNavnFraID(maerke_id);
     }
 
+    //Henter model navn ud fra model ID
     public List<BilModel> hentModelNavnFraID(int model_id) {
         return bilRepo.hentModelNavnFraID(model_id);
     }

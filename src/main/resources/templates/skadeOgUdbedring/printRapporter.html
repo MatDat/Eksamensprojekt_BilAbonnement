@@ -5,8 +5,14 @@
     <title>Print Rapporter</title>
     <link rel="stylesheet" href="/MyCSS.css">
 </head>
-<body>
-<h1>Her kommer en liste over alle rapporter, dem skal man kunne sortere i osv.</h1>
+<body style="background-color: #144164">
+<div id="annullerButtonAddBilDiv" style="justify-content: flex-start;padding: 0px">
+    <form action="/" method="get">
+        <button class="redButton" style="padding: 5px; font-size: 10px" type="submit">Tilbage til forsiden</button>
+    </form>
+</div>
+<h1 style="background-color: white">Her kommer en liste over alle rapporter, dem skal man kunne sortere i osv.</h1>
+
 
 <div id="lejeAftaleSortDiv">
     <form action="/printRapporterMedSortering" method="post">
@@ -20,24 +26,38 @@
     </form>
 </div>
 
-<div class="statBoxBilerRapport">
-    <table style="float: left">
-        <tr>
-            <th>ID: </th>
-            <th>Dato: </th>
-            <th>Bruger ID: </th>
-            <th>Kontrakt ID: </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="skaderapport: ${skaderapporter}">
-            <td th:text="${skaderapport.skaderapport_id}"/>
-            <td th:text="${skaderapport.skaderapport_dato}"/>
-            <td th:text="${skaderapport.bruger_id}"/>
-            <td th:text="${skaderapport.kontrakt_id}"/>
-        </tr>
-        </tbody>
-    </table>
+<!--<div class="statBoxBilerRapport">-->
+<!--    <table style="float: left">-->
+<!--        <tr style="text-align: left">-->
+<!--            <th>ID: </th>-->
+<!--            <th>Dato: </th>-->
+<!--            <th>Bruger ID: </th>-->
+<!--            <th>Kontrakt ID: </th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="skaderapport: ${skaderapporter}">-->
+<!--            <td th:text="${skaderapport.skaderapport_id}"/>-->
+<!--            <td th:text="${skaderapport.skaderapport_dato}"/>-->
+<!--            <td th:text="${skaderapport.bruger_id}"/>-->
+<!--            <td th:text="${skaderapport.kontrakt_id}"/>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
+
+<div class="kontrakt-box-container">
+    <div th:each="skaderapport : ${skaderapporter}" class="kontrakt-box">
+        <p>ID: <span th:text="${skaderapport.skaderapport_id}"></span></p>
+        <p>Dato: <span th:text="${skaderapport.skaderapport_dato}"></span></p>
+        <p>Bruger ID: <span th:text="${skaderapport.bruger_id}"></span></p>
+        <p>Kontrakt ID: <span th:text="${skaderapport.kontrakt_id}"></span> DKK</p>
+        <form action="/visSkaderapport" method="post">
+            <input type="hidden" name="skaderapport_id" th:value="${skaderapport.skaderapport_id}">
+            <input class="greenButton" style="padding: 8px;font-size: 12px;margin-top: 6px" type="submit"
+                   value="Se rapport">
+        </form>
+    </div>
 </div>
 
 </body>

@@ -6,27 +6,36 @@
     <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
+
 <div id="annullerButtonAddBilDiv" style="justify-content: flex-start;padding: 0px">
     <form action="/" method="get">
-        <button class="redButton" style="padding: 5px; font-size: 10px" type="submit">Tilbage til forsiden</button>
+        <button class="redButton" style="padding: 5px; font-size: 10px" type="submit">Tilbage</button>
     </form>
 </div>
+
 <h1>Se Lejeaftaler</h1>
+
 <div id="lejeAftaleSearchDiv">
+
     <div style="align-self: flex-start">
         <h3>Søg</h3>
     </div>
+
     <div style="margin-left: auto;margin-right: auto">
         <form action="/visLejeaftale" method="post">
-            <input class="generalFormInput" type="number" min="1" th:max="${maxKontraktId}" name="kontrakt_id" placeholder="ID">
+            <input class="generalFormInput" type="number" min="1" th:max="${maxKontraktId}" required name="kontrakt_id"
+                   placeholder="ID">
             <input class="greenButton" type="submit" value="Gå til Lejeaftale">
         </form>
     </div>
+
 </div>
+
 <div id="lejeAftaleSortDiv">
     <div style="align-self: flex-start">
         <h3>Sorter</h3>
     </div>
+
     <div style="margin-left: auto;margin-right: auto">
         <form action="/seLejeaftaler" method="get">
             <select class="generalFormInput" name="sortMuligheder">
@@ -45,18 +54,26 @@
     </div>
 </div>
 
-<div class="kontrakt-box-container">
-    <div th:each="kontrakt : ${kontraktListe}" class="kontrakt-box">
-        <p>Kontrakt ID: <span th:text="${kontrakt.kontrakt_id}"></span></p>
-        <p>Start dato: <span th:text="${kontrakt.start_dato}"></span></p>
-        <p>Slut dato: <span th:text="${kontrakt.slut_dato}"></span></p>
-        <p>Total Pris: <span th:text="${kontrakt.total_pris}"></span> DKK</p>
-        <form action="/visLejeaftale" method="post">
-            <input type="hidden" name="kontrakt_id" th:value="${kontrakt.kontrakt_id}">
-            <input class="greenButton" style="padding: 8px;font-size: 12px;margin-top: 6px" type="submit"
-                   value="Se Kontrakt">
-        </form>
+<div class="generelBodyDiv">
+    <div class="kontrakt-box-container">
+        <div th:each="kontrakt : ${kontraktListe}" class="kontrakt-box">
+            <p>Kontrakt ID: <span th:text="${kontrakt.kontrakt_id}"></span></p>
+            <p>Start dato: <span th:text="${kontrakt.start_dato}"></span></p>
+            <p>Slut dato: <span th:text="${kontrakt.slut_dato}"></span></p>
+            <p>Total Pris: <span th:text="${kontrakt.total_pris}"></span> DKK</p>
+            <form action="/visLejeaftale" method="post">
+                <input type="hidden" name="kontrakt_id" th:value="${kontrakt.kontrakt_id}">
+                <input class="greenButton"  style="margin-top:15px; width: 100%;" type="submit"
+                       value="Se Kontrakt">
+            </form>
+        </div>
     </div>
+</div>
+
+<div class="annullerButtonAddBilDiv">
+    <form action="/" method="get">
+        <button class="redButton" type="submit">Tilbage</button>
+    </form>
 </div>
 
 </body>
