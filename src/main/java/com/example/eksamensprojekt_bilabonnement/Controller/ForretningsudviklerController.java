@@ -39,16 +39,11 @@ public class ForretningsudviklerController {
 
     @PostMapping("/seBiler")
     public String seBiler(Model model) {
-        // der bliver oprettet en liste af Bil objekter som der bliver tilføjet model så det kan vises på html siden.
-        // Udfra Bil listen bliver der efterfølgende oprettet lister af stålpriser og co2-udleding,
-        // som også bliver tilføjet til model.
-        // Controlleren sender så brugeren til seBiler.html
-
-        List<Bil> bilListe = bilService.hentAlleBiler();
-        model.addAttribute("biler", bilListe);
-        model.addAttribute("staalpriser", bilService.hentStaalpriser(bilListe));
-        model.addAttribute("co2", bilService.hentCo2(bilListe));
-        return "forretningsudvikler/seBiler";
+        List<Bil> bilListe = bilService.hentAlleBiler(); // laver en liste af Bilobjekter
+        model.addAttribute("biler", bilListe); // tilføjer listen af Biler til model
+        model.addAttribute("staalpriser", bilService.hentStaalpriser(bilListe)); // Tilføjer stålpriser til model
+        model.addAttribute("co2", bilService.hentCo2(bilListe)); // Tilføjer Co2-udledning til model
+        return "forretningsudvikler/seBiler"; // Sender bruger til seBiler.html
     }
 
 
@@ -58,8 +53,6 @@ public class ForretningsudviklerController {
         //har valgt. Hvis brugeren vælger udlejede biler bliver der også tilføjet en liste af udlejningspriser til model.
         // Her vil der så også blive sat en værdi 1 til "toggle" på model. Dette bruges af et Thymeleaf if-statement
         // på htmlsiden, så udlejningspris kun bliver vist hvis man vælger at se udlejede biler.
-
-
         List<Bil> bilListe = null;
         switch (valgtMulighed) {
             case "alle" -> bilListe = bilService.hentAlleBiler();
