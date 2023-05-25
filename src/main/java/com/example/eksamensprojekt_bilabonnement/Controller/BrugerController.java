@@ -19,7 +19,7 @@ public class BrugerController {
     BrugerService brugerService;
 
 
-    @GetMapping("/adminSide")
+    @PostMapping ("/adminSide")
     public String adminSide(Model model) {
         //Går ind på adminsiden som indeholder bla. en liste over alle brugere
         List<Bruger> brugerListe = brugerService.hentBrugerListe();
@@ -34,11 +34,13 @@ public class BrugerController {
     }
 
     @PostMapping("/adminLoggedInd")
-    public String adminSide(@ModelAttribute Bruger bruger) {
+    public String adminSide(@ModelAttribute Bruger bruger, Model model) {
         //Tjekker om Admins log ind informationer er korrekt og logger Admin ind hvis korrekt
         // og ellers giver en fejlside
         if (brugerService.logIndAdmin(bruger)) {
-            return "redirect:/adminSide";
+            List<Bruger> brugerListe = brugerService.hentBrugerListe();
+            model.addAttribute("brugerListe", brugerListe);
+            return "bruger/adminSide";
         } else {
             return "bruger/logIndAdminFejl";
         }
@@ -46,7 +48,7 @@ public class BrugerController {
 
     @PostMapping("/logBrugerInd")
     public String logBrugerInd(@ModelAttribute Bruger bruger) {
-        //Tjekker  om brugerens log ind informationer er korrekt og logger Admin ind hvis korrekt
+        //Tjekker om brugerens log ind informationer er korrekt og logger Admin ind hvis korrekt
         // og ellers giver en fejlside
         if (brugerService.logIndBruger(bruger)) {
             return "redirect:/";
