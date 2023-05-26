@@ -23,7 +23,7 @@
 
     <div style="margin-left: auto;margin-right: auto">
         <form action="/visLejeaftale" method="post">
-            <input class="generalFormInput" type="number" min="1" th:max="${maxKontraktId}" name="kontrakt_id"
+            <input class="generalFormInput" type="number" min="1" th:max="${maxKontraktId}" required name="kontrakt_id"
                    placeholder="ID">
             <input class="greenButton" type="submit" value="Gå til Lejeaftale">
         </form>

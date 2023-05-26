@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Skaderapport</title>
+  <link rel="stylesheet" type="text/css" href="/MyCSS.css">
+</head>
+<body>
+<h1>Skaderapport</h1>
+<div id="h2Div">
+    <h2>Skaderapport ID: <span th:text="${skaderapport_id}"></span></h2>
+</div>
+
+<div>
+
+<!--  <div>-->
+<!--    <h4>Skader</h4>-->
+<!--    <p>Skade ID: <span th:text="${skaderapport.skaderapport_id}"></span></p>-->
+<!--    <p>Beskrivelse: <span th:text="${skaderapport.skaderapport_dato}"></span></p>-->
+<!--    <p>Pris: <span th:text="${kontrakt.slut_dato}"></span></p>-->
+<!--    <p>Skaderapport ID: <span th:text="${kontrakt.vognnummer}"></span></p>-->
+
+<!--  </div>-->
+
+<div class="generelBodyDiv">
+
+  <div class="statBoxBilerRapport">
+      <table style="float: left">
+          <tr style="text-align: left">
+              <th>ID: </th>
+              <th style="padding-left: 20px; padding-right: 20px">Beskrivelse: </th>
+              <th>Pris: </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="skade: ${skader}">
+              <td th:text="${skade.skade_id}"/>
+              <td style="padding-left: 20px; padding-right: 5%" th:text="${skade.beskrivelse}"/>
+              <td th:text="${skade.pris}"/>
+          </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+
+
+<!--  -->
+<!--  <div>-->
+<!--    <h4>Kunde info</h4>-->
+<!--    <p>kunde navn: <span th:text="${kunde.fornavn}"></span> <span th:text="${kunde.efternavn}"></span></p>-->
+<!--    <p>Email adresse: <span th:text="${kunde.email}"></span></p>-->
+<!--    <p>Mobil: <span th:text="${kunde.mobil}"></span></p>-->
+<!--  </div>-->
+
+</div>
+<div id="annullerButtonAddBilDiv">
+    <form action="/printRapporter" method="get">
+        <button class="redButton" type="submit">Tilbage til oversigt</button>
+    </form>
+</div>
+
+</body>
+</html>

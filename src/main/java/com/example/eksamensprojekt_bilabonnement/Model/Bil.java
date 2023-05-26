@@ -1,6 +1,6 @@
 package com.example.eksamensprojekt_bilabonnement.Model;
 
-public class Bil {//COMMENT
+public class Bil {
     private int vognnummer;
     private String stelnummer;
     private int model_id;

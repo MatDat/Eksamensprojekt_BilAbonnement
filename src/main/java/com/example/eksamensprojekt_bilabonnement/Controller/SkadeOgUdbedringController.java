@@ -103,6 +103,7 @@ public class SkadeOgUdbedringController {
 
     @GetMapping("/printRapporter")
     public String printRapporter(Model model) {
+        //Laver liste med alle skaderapporter og laver model.addAttribute så vi kan bruge dem i html siden.
         List<Skaderapport> skaderapportListe = skadeService.hentSkaderapporter();
         model.addAttribute("skaderapporter", skaderapportListe);
         return "skadeOgUdbedring/printRapporter";
@@ -112,6 +113,7 @@ public class SkadeOgUdbedringController {
     public String printRapporterMedSortering(@RequestParam("sortMuligheder") String valgtMulighed, Model model) {
         List<Skaderapport> skaderapporter = null;
 
+        //Switch case som gør det muligt at sortere efter valgte mulighed
         switch (valgtMulighed) {
             case "skaderapport_id" -> skaderapporter = skadeService.hentSkaderapporterMedSortering("skaderapport_id");
             case "skaderapport_dato" ->
@@ -121,5 +123,18 @@ public class SkadeOgUdbedringController {
         }
         model.addAttribute("skaderapporter", skaderapporter);
         return "skadeOgUdbedring/printRapporter";
+    }
+
+    @PostMapping("/visSkaderapport")
+    public String visSkaderapport(@RequestParam("skaderapport_id") int skaderapport_id, Model model) {
+        //Vi laver her en liste med alle skader og giver dem et navn så vi kan printe dem i html.
+        List<Skade> skader = skadeService.hentSkaderFraSkaderapportId(skaderapport_id);
+
+        model.addAttribute("skader", skader);
+
+        //Skaderapport ID har vi brug for at få isoleret så vi kan få vist den alene på html siden.
+        model.addAttribute("skaderapport_id", skaderapport_id);
+
+        return "skadeOgUdbedring/visSkaderapport";
     }
 }
