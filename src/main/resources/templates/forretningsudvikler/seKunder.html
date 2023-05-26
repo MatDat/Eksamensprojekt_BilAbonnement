@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>kunder</title>
-  <link rel="stylesheet" href="/MyCSS.css">
+    <link rel="stylesheet" href="/MyCSS.css">
 </head>
 <body>
 
@@ -15,30 +15,29 @@
 
 <div class="tableBody" style="padding: 20px">
 
-  <table>
-    <thead>
-    <tr>
-      <th class="forretningsudviklerTh" >Kunde ID</th>
-      <th class="forretningsudviklerTh" >Fornavn</th>
-      <th class="forretningsudviklerTh" >Efternavn</th>
-      <th class="forretningsudviklerTh" >Email</th>
-      <th class="forretningsudviklerTh" >Mobil</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="forretningsudviklerTr" th:each="kunde: ${kundeListe}">
-      <td class="forretningsudviklerTd" th:text="${kunde.kunde_id}"/>
-      <td class="forretningsudviklerTd" th:text="${kunde.fornavn}"/>
-      <td class="forretningsudviklerTd" th:text="${kunde.efternavn}"/>
-      <td class="forretningsudviklerTd" th:text="${kunde.email}"/>
-      <td class="forretningsudviklerTd" th:text="${kunde.mobil}"/>
-    </tr>
+    <table>
 
+        <thead>
+        <tr>
+            <th class="forretningsudviklerTh">Kunde ID</th>
+            <th class="forretningsudviklerTh">Fornavn</th>
+            <th class="forretningsudviklerTh">Efternavn</th>
+            <th class="forretningsudviklerTh">Email</th>
+            <th class="forretningsudviklerTh">Mobil</th>
+        </tr>
+        </thead>
 
-    </tbody>
+        <tbody>
+        <tr class="forretningsudviklerTr" th:each="kunde: ${kundeListe}">
+            <td class="forretningsudviklerTd" th:text="${kunde.kunde_id}"/>
+            <td class="forretningsudviklerTd" th:text="${kunde.fornavn}"/>
+            <td class="forretningsudviklerTd" th:text="${kunde.efternavn}"/>
+            <td class="forretningsudviklerTd" th:text="${kunde.email}"/>
+            <td class="forretningsudviklerTd" th:text="${kunde.mobil}"/>
+        </tr>
+        </tbody>
 
-
-  </table>
+    </table>
 
 </div>
 
