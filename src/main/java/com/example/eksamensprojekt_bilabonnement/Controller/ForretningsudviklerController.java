@@ -82,8 +82,4 @@ public class ForretningsudviklerController {
         model.addAttribute("lokationListe",lokationService.hentAlleLokationer());
         return "forretningsudvikler/seLokationer";
     }
-
-
-
-
 }

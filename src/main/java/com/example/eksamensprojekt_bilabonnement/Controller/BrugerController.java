@@ -64,7 +64,6 @@ public class BrugerController {
         return "redirect:/";
     }
 
-
     @PostMapping("/opretBruger")
     public String opretBruger(@ModelAttribute Bruger bruger) {
         //Opretter en ny bruger i databasen
