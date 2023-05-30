@@ -73,7 +73,7 @@ public class BilRepo {
 
     public void opdaterBilTilstand(String bilTilstand, int vognnummer) {
         //Opdaterer en bils tilstand
-        String sql = "UPDATE bil " +
+        String sql = "UPDATE bilabonnementDB.bil " +
                 "SET bil_tilstand = ? " +
                 "WHERE vognnummer = ?";
         template.update(sql, bilTilstand, vognnummer);
@@ -82,7 +82,7 @@ public class BilRepo {
 
     public boolean opretBil(Bil bil) {
         //Opretter en ny bil i databasen
-        String sql = "INSERT INTO bil (model_id, stelnummer, staalpris, registrerings_afgift, " +
+        String sql = "INSERT INTO bilabonnementDB.bil (model_id, stelnummer, staalpris, registrerings_afgift, " +
                 "CO2_udledning, bil_tilstand) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
 
