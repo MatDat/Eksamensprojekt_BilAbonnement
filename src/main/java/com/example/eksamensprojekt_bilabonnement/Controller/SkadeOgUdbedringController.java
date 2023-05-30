@@ -98,7 +98,7 @@ public class SkadeOgUdbedringController {
         } else {
             bilService.opdaterBilTilstand(BilTilstand.LEJEKLAR, vognnummer);
         }
-        return "home/index";
+        return "skadeOgUdbedring/skadeOgUdbedring";
     }
 
     @GetMapping("/printRapporter")
