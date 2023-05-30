@@ -32,10 +32,7 @@ public class ForretningsudviklerController {
     LokationService lokationService;
 
 
-    @PostMapping("/forretningsudviklerSide")
-    public String forretningsudviklerSide() {
-        return "forretningsudvikler/forretningsudviklerSide";
-    }
+
 
     @PostMapping("/seBiler")
     public String seBiler(Model model) {

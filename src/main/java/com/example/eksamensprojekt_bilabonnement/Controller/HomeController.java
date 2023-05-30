@@ -29,14 +29,36 @@ public class HomeController {
     }
 
     @GetMapping("/SkadeOgUdbedringLandingPage")
-    public String skadeOgUdbedringLandingPage() {
-        return "skadeOgUdbedring/skadeOgUdbedring";
+    public String skadeOgUdbedringLandingPage(HttpSession session) {
+        Bruger bruger = (Bruger) session.getAttribute("bruger");    //Henter brugerobjektet fra sessionen.
+        if(bruger == null){
+            return "bruger/login";
+        } else {
+            return "skadeOgUdbedring/skadeOgUdbedring";
+        }
+
     }
 
     @GetMapping("/dataRegistrering")
-    public String dataRegistrering() {
-        return "dataRegistrering/dataregistrering";
+    public String dataRegistrering(HttpSession session) {
+        Bruger bruger = (Bruger) session.getAttribute("bruger");    //Henter brugerobjektet fra sessionen.
+        if(bruger == null){
+            return "bruger/login";
+        } else {
+            return "dataRegistrering/dataregistrering";
+        }
     }
+
+    @PostMapping("/forretningsudviklerSide")
+    public String forretningsudviklerSide(HttpSession session) {
+        Bruger bruger = (Bruger) session.getAttribute("bruger");    //Henter brugerobjektet fra sessionen.
+        if(bruger == null){
+            return "bruger/login";
+        } else {
+            return "forretningsudvikler/forretningsudviklerSide";
+        }
+    }
+
 
     @GetMapping("/loginButton")
     public String login() {
