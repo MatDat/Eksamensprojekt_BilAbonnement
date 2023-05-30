@@ -43,7 +43,7 @@ public class LokationRepo {
         // tilføjer postby info til postby table, ved at tage nødvendige værdier fra et Lokation objekt
         // Da man altid tilføjer postby info lige efter en lokation, laver vi en select all statement først for at få
         // lokation_id'et så postby info er koblet på lokationen lige tilføjet
-        String select = "SELECT * FROM lokation";
+        String select = "SELECT * FROM bilabonnementDB.lokation";
         RowMapper<Lokation> rowMapper = new BeanPropertyRowMapper<>(Lokation.class);
         List<Lokation> lokationList = template.query(select,rowMapper);
 
