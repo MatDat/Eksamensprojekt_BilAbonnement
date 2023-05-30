@@ -19,7 +19,6 @@ public class HomeController {
             model.addAttribute("toggle", 0); // Toggler log ud-knappen ON
             String loggedInUser = "Status: {Logget ind som: " + bruger.getBrugernavn() + "}"; //Opretter en passende besked om logindstatus.
             model.addAttribute("loggedInUser", loggedInUser);           // Tilføjer beskeden som en attribut til modellen.
-            System.out.println("Status: {Logget ind som: " + bruger.getBrugernavn() + "}"); //Udskrift til konsol
         } else {
             String loggedInUser = "Status: {Ikke logget ind}";                      //Opretter en passende besked om logindstatus.
             model.addAttribute("toggle", 1);    // Toggler log ind-knappen ON
