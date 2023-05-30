@@ -19,7 +19,7 @@
             <tr>
                 <td><label class="generalFormLabel">Indtast brugerens ID for at slette: </label></td>
 
-                <td><input class="generalFormInput" required type="input" name="bruger_id" th:value="${bruger_id}"/></td>
+                <td><input class="generalFormInput" required type="number" name="bruger_id" th:value="${bruger_id}"/></td>
             </tr>
         </table>
         <button class="redButton" type="submit" style="margin-top:15px;">Slet bruger</button>
@@ -28,7 +28,7 @@
 
 
 <div id="annullerButtonAddBilDiv">
-    <form action="/adminSide" method="post">
+    <form action="/adminSide" method="get">
         <button class="redButton" type="submit">Tilbage</button>
     </form>
 </div>
