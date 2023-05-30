@@ -5,7 +5,7 @@
     <title>Print Rapporter</title>
     <link rel="stylesheet" href="/MyCSS.css">
 </head>
-<body style="background-color: #144164">
+<body>
 <div id="annullerButtonAddBilDiv" style="justify-content: flex-start;padding: 0px">
     <form action="/" method="get">
         <button class="redButton" style="padding: 5px; font-size: 10px" type="submit">Tilbage til forsiden</button>
@@ -26,18 +26,26 @@
     </form>
 </div>
 
-<div class="kontrakt-box-container">
-    <div th:each="skaderapport : ${skaderapporter}" class="kontrakt-box">
-        <p>ID: <span th:text="${skaderapport.skaderapport_id}"></span></p>
-        <p>Dato: <span th:text="${skaderapport.skaderapport_dato}"></span></p>
-        <p>Bruger ID: <span th:text="${skaderapport.bruger_id}"></span></p>
-        <p>Kontrakt ID: <span th:text="${skaderapport.kontrakt_id}"></span></p>
-        <form action="/visSkaderapport" method="post">
-            <input type="hidden" name="skaderapport_id" th:value="${skaderapport.skaderapport_id}">
-            <input class="greenButton" style="padding: 8px;font-size: 12px;margin-top: 6px" type="submit"
-                   value="Se rapport">
-        </form>
+<div class="generelBodyDiv">
+    <div class="kontrakt-box-container">
+        <div th:each="skaderapport : ${skaderapporter}" class="kontrakt-box">
+            <p>ID: <span th:text="${skaderapport.skaderapport_id}"></span></p>
+            <p>Dato: <span th:text="${skaderapport.skaderapport_dato}"></span></p>
+            <p>Bruger ID: <span th:text="${skaderapport.bruger_id}"></span></p>
+            <p>Kontrakt ID: <span th:text="${skaderapport.kontrakt_id}"></span></p>
+            <form action="/visSkaderapport" method="post">
+                <input type="hidden" name="skaderapport_id" th:value="${skaderapport.skaderapport_id}">
+                <input class="greenButton" style="margin-top:15px; width: 100%;" type="submit"
+                       value="Se rapport">
+            </form>
+        </div>
     </div>
+</div>
+
+<div class="annullerButtonAddBilDiv">
+    <form action="/" method="get">
+        <button class="redButton" type="submit">Tilbage til forsiden</button>
+    </form>
 </div>
 
 </body>

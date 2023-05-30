@@ -65,7 +65,7 @@ public class DataRegistreringController {
         } else if (toggle == 1) {
             model.addAttribute("kontraktListe", kontraktService.hentKontrakterMedSortering(false, selectedOption));
         }
-        return "dataregistrering/seLejeaftaler";
+        return "dataRegistrering/seLejeaftaler";
     }
 
     @PostMapping("/visLejeaftale")
@@ -82,13 +82,13 @@ public class DataRegistreringController {
         model.addAttribute("afleveringslokation", afleveringslokation);
         model.addAttribute("kunde", kunde);
 
-        return "dataregistrering/visLejeaftale";
+        return "dataRegistrering/visLejeaftale";
     }
 
 
     @PostMapping("/opretKundeForm")
     public String opretKundeForm() {
-        return "dataregistrering/opretKundeForm";
+        return "dataRegistrering/opretKundeForm";
     }
 
     @PostMapping("/opretKunde")
@@ -99,7 +99,7 @@ public class DataRegistreringController {
 
     @PostMapping("tilfoejLokationForm")
     public String tilfoejLokationForm() {
-        return "dataregistrering/tilfoejLokation";
+        return "dataRegistrering/tilfoejLokation";
     }
 
     @PostMapping("/tilfoejLokation")

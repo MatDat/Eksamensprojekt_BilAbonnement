@@ -29,7 +29,7 @@ public class BilController {
         // med henblik på at oprette en ny bil i databasen
         List<Maerke> maerkeNavnListe = bilService.hentAlleMaerker();
         model.addAttribute("maerker", maerkeNavnListe);
-        return "dataregistrering/vaelgMaerke";
+        return "dataRegistrering/vaelgMaerke";
     }
     @GetMapping("/vaelgModelSide")
     public String vaelgModelSide(Model model, @RequestParam("maerke_id") String maerke_id) {
@@ -40,7 +40,7 @@ public class BilController {
 
         List<BilModel> valgteModeller = bilService.hentValgteModeller(maerke_id); //Kalder Repo metoden
         model.addAttribute("models", valgteModeller); //Til at kalde listen i HTML'en
-        return "dataregistrering/vaelgModel";
+        return "dataRegistrering/vaelgModel";
     }
 
     @GetMapping("/tilfoejBilSide")
@@ -50,7 +50,7 @@ public class BilController {
         String model_navn = bilService.hentModelNavnFraID(Integer.valueOf(model_id)).get(0).getModel_navn();
         model.addAttribute("model", model_navn);
         model.addAttribute("model_id", model_id);
-        return "dataregistrering/tilfoejBil";
+        return "dataRegistrering/tilfoejBil";
     }
 
     @PostMapping("/opretBil")
