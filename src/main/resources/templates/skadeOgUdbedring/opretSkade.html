@@ -30,10 +30,10 @@
 <form action="/opretSkade" method="post">
 
     <label class="generalFormLabel">Beskrivelse af skaden: </label>
-    <input class="generalFormInput" type="text" name="beskrivelse" placeholder="beskrivelse">
+    <input class="generalFormInput" type="text" name="beskrivelse" placeholder="beskrivelse" required>
     <br>
     <label class="generalFormLabel">Pris på skaden: </label>
-    <input class="generalFormInput" type="text" name="pris" placeholder="pris">
+    <input class="generalFormInput" type="number" name="pris" step="0.01" min="0" placeholder="pris" required>
     <br>
 
     <input type="hidden" name="vognnummer2a" th:value="${vognnummer2a}" />
