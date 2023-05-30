@@ -48,7 +48,7 @@ public class BrugerController {
 
     @PostMapping("/logBrugerInd")
     public String logBrugerInd(@ModelAttribute Bruger bruger) {
-        //Tjekker om brugerens log ind informationer er korrekt og logger Admin ind hvis korrekt
+        //Tjekker om brugerens log ind informationer er korrekt og logger bruger ind hvis korrekt
         // og ellers giver en fejlside
         if (brugerService.logIndBruger(bruger)) {
             return "redirect:/";

@@ -16,7 +16,7 @@ public class BrugerRepo {
     @Autowired
     JdbcTemplate template;
     @Autowired
-    HttpSession session; //todo spørg claus
+    HttpSession session;
 
     public List<Bruger> hentBrugerListe() {
         //Henter en liste af alle brugere
