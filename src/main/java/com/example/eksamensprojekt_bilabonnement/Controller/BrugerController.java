@@ -19,12 +19,17 @@ public class BrugerController {
     BrugerService brugerService;
 
 
-    @PostMapping ("/adminSide")
-    public String adminSide(Model model) {
+    @GetMapping("/adminSide")
+    public String adminSide(Model model, HttpSession session) {
         //Går ind på adminsiden som indeholder bla. en liste over alle brugere
-        List<Bruger> brugerListe = brugerService.hentBrugerListe();
-        model.addAttribute("brugerListe", brugerListe);
-        return "bruger/adminSide";
+        Bruger bruger = (Bruger) session.getAttribute("bruger");
+        if (brugerService.logIndAdmin(bruger)) {
+            List<Bruger> brugerListe = brugerService.hentBrugerListe();
+            model.addAttribute("brugerListe", brugerListe);
+            return "bruger/adminSide";
+        } else {
+            return "bruger/logIndAdminFejl";
+        }
     }
 
     @PostMapping("/adminLogin")
@@ -34,10 +39,11 @@ public class BrugerController {
     }
 
     @PostMapping("/adminLoggedInd")
-    public String adminSide(@ModelAttribute Bruger bruger, Model model) {
+    public String adminSide(@ModelAttribute Bruger bruger, Model model, HttpSession session) {
         //Tjekker om Admins log ind informationer er korrekt og logger Admin ind hvis korrekt
         // og ellers giver en fejlside
         if (brugerService.logIndAdmin(bruger)) {
+            session.setAttribute("bruger", bruger);
             List<Bruger> brugerListe = brugerService.hentBrugerListe();
             model.addAttribute("brugerListe", brugerListe);
             return "bruger/adminSide";
