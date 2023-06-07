@@ -47,7 +47,7 @@ public class BilRepo {
         return template.query(sql, rowMapper, model_id);
     }
 
-    public List<BilModel> hentValgteModeller(String maerke_id) {
+    public List<BilModel> hentValgteModeller(int maerke_id) {
         //Henter en liste af alle modeller af et valgt mærke
         String sql = "SELECT * FROM bilabonnementDB.model " +
                 "WHERE maerke_id = ?";

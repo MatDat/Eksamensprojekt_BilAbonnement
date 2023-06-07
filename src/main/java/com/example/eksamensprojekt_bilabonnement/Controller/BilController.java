@@ -31,11 +31,13 @@ public class BilController {
         model.addAttribute("maerker", maerkeNavnListe);
         return "dataRegistrering/vaelgMaerke";
     }
+
+
     @GetMapping("/vaelgModelSide")
-    public String vaelgModelSide(Model model, @RequestParam("maerke_id") String maerke_id) {
+    public String vaelgModelSide(Model model, @RequestParam("maerke_id") int maerke_id) {
         //Gå ind på en side som henter en liste med alle modellerne ud fra valgt mærke på tidligere step.
         // Den tager mærke ID med sig
-        String maerke_navn = bilService.hentMaerkeNavnFraID(Integer.valueOf(maerke_id)).get(0).getMaerke_navn();
+        String maerke_navn = bilService.hentMaerkeNavnFraID(maerke_id);
         model.addAttribute("maerke_navn", maerke_navn );  //Tilføjer maerke_navn til h2
 
         List<BilModel> valgteModeller = bilService.hentValgteModeller(maerke_id); //Kalder Repo metoden
@@ -44,10 +46,10 @@ public class BilController {
     }
 
     @GetMapping("/tilfoejBilSide")
-    public String tilfoejBilSide(Model model, @RequestParam("model_id") String model_id) {
+    public String tilfoejBilSide(Model model, @RequestParam("model_id") int model_id) {
         //Går ind på en side med en formular hvor man inputter de sidste data
         // som mangler for at oprette en bil til databasen. Den tager model ID med sig
-        String model_navn = bilService.hentModelNavnFraID(Integer.valueOf(model_id)).get(0).getModel_navn();
+        String model_navn = bilService.hentModelNavnFraID(model_id);
         model.addAttribute("model", model_navn);
         model.addAttribute("model_id", model_id);
         return "dataRegistrering/tilfoejBil";
