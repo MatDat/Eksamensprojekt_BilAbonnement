@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class KontraktServiceTest {
@@ -32,7 +33,7 @@ public class KontraktServiceTest {
 
         Bil b2 = new Bil();
         b2.setVognnummer(4321);
-        b2.setBilTilstand(BilTilstand.LEJEKLAR);
+        b2.setBilTilstand(BilTilstand.SKADET);
 
         bilListe.add(b1);
         bilListe2.add(b2);
@@ -44,6 +45,6 @@ public class KontraktServiceTest {
         boolean resultat2 = ks2.vognnummerOgBilTilstandErValid(kontrakt2, bilListe2);
 
         assertTrue(resultat);
-        assertTrue(resultat2);
+        assertFalse(resultat2);
     }
 }
