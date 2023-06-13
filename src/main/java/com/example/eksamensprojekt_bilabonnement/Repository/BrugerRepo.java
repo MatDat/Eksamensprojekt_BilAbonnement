@@ -39,7 +39,6 @@ public class BrugerRepo {
         }
     }
 
-
     public boolean logIndAdmin(Bruger bruger) {
         //Logger admin ind på adminsiden
         String sql = "SELECT * FROM bilabonnementDB.bruger WHERE brugernavn = 'Admin' AND kode = ? AND brugernavn = ?";

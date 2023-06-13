@@ -20,8 +20,8 @@ public class HomeController {
             String loggedInUser = "Status: {Logget ind som: " + bruger.getBrugernavn() + "}"; //Opretter en passende besked om logindstatus.
             model.addAttribute("loggedInUser", loggedInUser);           // Tilføjer beskeden som en attribut til modellen.
         } else {
-            String loggedInUser = "Status: {Ikke logget ind}";                      //Opretter en passende besked om logindstatus.
             model.addAttribute("toggle", 1);    // Toggler log ind-knappen ON
+            String loggedInUser = "Status: {Ikke logget ind}";           //Opretter en passende besked om logindstatus.
             model.addAttribute("loggedInUser", loggedInUser);   // Tilføjer beskeden som en attribut til modellen.
         }
         return "home/index";

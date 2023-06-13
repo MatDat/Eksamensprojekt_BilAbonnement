@@ -20,8 +20,11 @@ public class KontraktServiceTest {
 //      Hvis metoden returnerer true, så består testen.
         Kontrakt kontrakt = new Kontrakt();
         kontrakt.setVognnummer(1234);
+        Kontrakt kontrakt2 = new Kontrakt();
+        kontrakt2.setVognnummer(4321);
 
         List<Bil> bilListe = new ArrayList<>();
+        List<Bil> bilListe2 = new ArrayList<>();
 
         Bil b1 = new Bil();
         b1.setVognnummer(1234);
@@ -29,14 +32,18 @@ public class KontraktServiceTest {
 
         Bil b2 = new Bil();
         b2.setVognnummer(4321);
-        b2.setBilTilstand(BilTilstand.SKADET);
+        b2.setBilTilstand(BilTilstand.LEJEKLAR);
 
         bilListe.add(b1);
-        bilListe.add(b2);
+        bilListe2.add(b2);
 
         KontraktService ks = new KontraktService();
+        KontraktService ks2 = new KontraktService();
+
         boolean resultat = ks.vognnummerOgBilTilstandErValid(kontrakt, bilListe);
+        boolean resultat2 = ks2.vognnummerOgBilTilstandErValid(kontrakt2, bilListe2);
 
         assertTrue(resultat);
+        assertTrue(resultat2);
     }
 }

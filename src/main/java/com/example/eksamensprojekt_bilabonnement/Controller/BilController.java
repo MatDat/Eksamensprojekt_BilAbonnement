@@ -38,7 +38,7 @@ public class BilController {
         String maerke_navn = bilService.hentMaerkeNavnFraID(Integer.valueOf(maerke_id)).get(0).getMaerke_navn();
         model.addAttribute("maerke_navn", maerke_navn );  //Tilføjer maerke_navn til h2
 
-        List<BilModel> valgteModeller = bilService.hentValgteModeller(maerke_id); //Kalder Repo metoden
+        List<BilModel> valgteModeller = bilService.hentValgteModeller(maerke_id); //Kalder Repo metoden til at hente modeller
         model.addAttribute("models", valgteModeller); //Til at kalde listen i HTML'en
         return "dataRegistrering/vaelgModel";
     }
@@ -48,8 +48,8 @@ public class BilController {
         //Går ind på en side med en formular hvor man inputter de sidste data
         // som mangler for at oprette en bil til databasen. Den tager model ID med sig
         String model_navn = bilService.hentModelNavnFraID(Integer.valueOf(model_id)).get(0).getModel_navn();
-        model.addAttribute("model", model_navn);
-        model.addAttribute("model_id", model_id);
+        model.addAttribute("model", model_navn); // Printer valgte model_navn i formularen
+        model.addAttribute("model_id", model_id); //Til at tage model_id med videre til tilfoejBil()
         return "dataRegistrering/tilfoejBil";
     }
 
